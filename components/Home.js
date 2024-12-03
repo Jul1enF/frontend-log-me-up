@@ -9,7 +9,7 @@ function Home() {
 
   useEffect(() => {
     setAnimationsBegin(true)
-    setTimeout(()=>setAnimations2Begin(true), 1600)
+    setTimeout(() => setAnimations2Begin(true), 1600)
   }, [])
 
 
@@ -35,12 +35,14 @@ function Home() {
           <h3 className={styles.name}>Julien Furic - Développeur d'applications web et mobile</h3>
         </div>
       </div>
-      
-      <div className={headerGradientLine}></div>
 
-      {/* <div className={modal}>
+      <div className={styles.headerLineContainer}>
+        <div className={headerGradientLine}></div>
+      </div>
 
-      </div> */}
+      <div className={modal}>
+
+      </div>
     </div>
   );
 }

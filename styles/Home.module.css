@@ -16,7 +16,7 @@
 .gradientBackgroundHeader1 {
   width: fit-content;
   height: 100%;
-  opacity: 0;
+  opacity: 0.2;
   background: linear-gradient(90deg, #7700a4, rgb(57	5	140	) 50%, #190088);
   display: flex;
   flex-direction: column;
@@ -58,11 +58,19 @@
   padding: 0;
 }
 
+.headerLineContainer{
+  width: 100vw;
+  min-height: 3px;
+  display: flex;
+  justify-content: center;
+}
+
 .headerGradientLine1 {
   min-height: 3px;
   width: 0vw;
   background: linear-gradient(90deg, #7700a4, rgb(57	5	140	) 50%, #190088);
   margin-bottom: 0.1vh;
+  opacity: 0.2;
 }
 
 .headerGradientLine2 {
@@ -71,6 +79,7 @@
   background: linear-gradient(90deg, #7700a4, rgb(57	5	140	) 50%, #190088);
   transition-duration: 2s;
   margin-bottom: 0.1vh;
+  opacity: 1;
 }
 
 
@@ -79,7 +88,7 @@
   left: -20vw;
   width: 20vw;
   height: 84.9vh;
-  background-color: rgb(240, 148, 0);
+  background: linear-gradient(90deg, #7700a4, #190088);
   border-radius: 1.5vw;
   border-top-left-radius: 0.5vw;
   box-shadow: inset 5px 5px 10px rgba(255, 255, 255, 0.3), inset -5px -5px 10px rgba(0,0,0,0.5);
@@ -91,10 +100,10 @@
   left: 0;
   width: 20vw;
   height: 84.9vh;
-  /* background-color: rgb(240, 148, 0); */
-  background: linear-gradient(90deg, rgb(240, 148, 0), rgb(235, 223, 0));
+  /* background: linear-gradient(90deg, #6800a4, #160076); */
+  background: linear-gradient(90deg, #5a008f, #120062);
   transition-duration: 1.5s;
   border-top-right-radius: 1vw;
   border-bottom-right-radius: 1vw;
-  box-shadow: inset 5px 3px 10px rgba(255, 255, 255, 0.3), inset -5px -5px 10px rgba(0,0,0,0.5);
+  box-shadow: inset 5px 5px 10px rgba(255, 255, 255, 0.3), inset -5px -5px 10px rgba(0,0,0,0.5);
 }
