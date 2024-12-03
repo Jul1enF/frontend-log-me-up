@@ -1,7 +1,7 @@
 .body {
   height: 100vh;
   width: 100vw;
-  background-color: black;
+  background-color: rgb(14, 14, 14);
   overflow: hidden;
 }
 
@@ -17,7 +17,7 @@
   width: fit-content;
   height: 100%;
   opacity: 0;
-  background: linear-gradient(45deg, rgb(240, 148, 0), rgb(235, 223, 0) 45%, rgb(37, 139, 0));
+  background: linear-gradient(90deg, #7700a4, rgb(57	5	140	) 50%, #190088);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,11 +31,7 @@
   height: 100%;
   opacity: 1;
 
-  /* background: linear-gradient(0deg, rgba( 228, 235, 0 , 1), rgba(80, 189, 0, 1)); */
-  /* background: linear-gradient(90deg, rgb(235, 223, 0), rgba(80, 189, 0, 1)); */
-  background: linear-gradient(45deg,rgb(240, 160, 0), rgb(235, 223, 0) 45%, rgba(80, 189, 0, 1));
-  /* background: linear-gradient(45deg,rgb(240, 160, 0), rgb(235, 223, 0) 45%, rgb(37, 139, 0)); */
-  /* background: linear-gradient(45deg, rgb(240, 148, 0), rgb(235, 223, 0) 45%, rgb(37, 139, 0)); */
+  background: linear-gradient(90deg, #7700a4, rgb(57	5	140	) 50%, #190088);
 
   display: flex;
   flex-direction: column;
@@ -43,14 +39,13 @@
   align-items: center;
   padding-bottom: 1.5vh;
   background-clip: text;
-  /* transition-duration: 3s; */
+  transition-duration: 2.5s;
 }
 
 .title {
   font-size: 65px;
   font-weight: 700;
   color: transparent;
-  /* color : black; */
   margin: 0;
   padding: 0;
 }
@@ -59,7 +54,6 @@
   font-size: 20px;
   font-weight: 700;
   color: transparent;
-  /* color : black; */
   margin: 0;
   padding: 0;
 }
@@ -67,14 +61,14 @@
 .headerGradientLine1 {
   min-height: 3px;
   width: 0vw;
-  background: linear-gradient(45deg, rgb(240, 148, 0), rgb(235, 223, 0) 45%, rgb(37, 139, 0));
+  background: linear-gradient(90deg, #7700a4, rgb(57	5	140	) 50%, #190088);
   margin-bottom: 0.1vh;
 }
 
 .headerGradientLine2 {
   min-height: 3px;
   width: 100vw;
-  background: linear-gradient(45deg, rgb(240, 148, 0), rgb(235, 223, 0) 45%, rgb(37, 139, 0));
+  background: linear-gradient(90deg, #7700a4, rgb(57	5	140	) 50%, #190088);
   transition-duration: 2s;
   margin-bottom: 0.1vh;
 }

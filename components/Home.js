@@ -35,11 +35,12 @@ function Home() {
           <h3 className={styles.name}>Julien Furic - Développeur d'applications web et mobile</h3>
         </div>
       </div>
+      
       <div className={headerGradientLine}></div>
 
-      <div className={modal}>
+      {/* <div className={modal}>
 
-      </div>
+      </div> */}
     </div>
   );
 }
