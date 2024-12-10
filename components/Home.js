@@ -38,6 +38,10 @@ function Home() {
   const buttonContainer = !animations3Begin ? styles.buttonContainer1 : styles.buttonContainer2
 
 
+  const rightContainer = !animations3Begin ? styles.rightContainer1 : styles.rightContainer2
+
+
+
 
 
   // Affichage conditionnel des boutons en fonction de la catégorie sélectionnée
@@ -63,7 +67,8 @@ function Home() {
         <div className={headerGradientLine}></div>
       </div>
 
-      <div className={styles.centralContainer}>
+
+      <div className={styles.mainContainer}>
 
 
         <div className={modal}>
@@ -72,7 +77,7 @@ function Home() {
             <div className={categoryButton1} onClick={() => setCategory("about")}>
               <div className={styles.categoryLine}></div>
               <div className={styles.gradientCategory}>
-                <h5 className={styles.category}>À propos</h5>
+                <h5 className={styles.category}>Présentation</h5>
               </div>
             </div>
             <div className={categoryButton2} onClick={() => setCategory("projects")}>
@@ -91,11 +96,21 @@ function Home() {
 
         </div>
 
-        {/* <div className={styles.leftContainer}>
+
+        <div className={rightContainer}>
+
+
+          <h3 className={styles.categoryTitle}>Présentation</h3>
+          <div className={styles.gradientTextContainer}>
+            <h4 className={styles.categorySubtitle}>À propos de moi</h4>
+          </div>
+          <p className={styles.paragraph1}>Hello ! Moi c'est Julien Furic et je suis développeur de site web et d'applications mobiles.</p>
+          <p className={styles.paragraph1}> Ayant obtenu un bac plus 3 auprès de la capsule.</p>
+
+
         </div>
 
-        <div className={styles.rightContainer}>
-        </div> */}
+
       </div>
 
     </div>

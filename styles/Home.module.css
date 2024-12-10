@@ -2,18 +2,20 @@
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  background-color: black;
+  background-color: rgb(7, 5, 8);
+  /* font-family: "Noto Sans Bengali", sans-serif; */
+  font-family: "Kumbh Sans", sans-serif;
 }
 
 .headerContainer {
   width: 100vw;
-  height: 9vw;
+  height: 10vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: black;
   position: relative;
   z-index: 3;
+  background-color: rgb(7, 5, 8);
 }
 
 .gradientBackgroundHeader1 {
@@ -44,20 +46,22 @@
 }
 
 .title {
-  font-size: 3.8vw;
-  font-weight: 700;
+  font-size: 3.7vw;
+  font-weight: 600;
+  letter-spacing: 0.15vw;
   color: transparent;
   margin: 0;
   padding: 0;
-  margin-bottom: 0.2vw;
+  margin-bottom: 0.4vw;
 }
 
 .subTitle {
-  font-size: 1.5vw;
-  font-weight: 700;
+  font-size: 1.4vw;
+  font-weight: 500;
   color: transparent;
   margin: 0;
   padding: 0;
+  letter-spacing: 0.05vw;
 }
 
 .headerLineContainer {
@@ -88,8 +92,8 @@
 }
 
 
-.centralContainer {
-  height: 100%;
+.mainContainer {
+  height: calc(100vh - 10vw);
   width: 100vw;
   display: flex;
 }
@@ -97,9 +101,9 @@
 
 .modal1 {
   position: relative;
-  margin-top: calc(-100vh + 8vw);
+  margin-top: calc(-100vh + 9vw);
   width: 23vw;
-  height: calc(100vh - 9vw);
+  height: calc(100vh - 10vw - 4px);
   /* background: linear-gradient(90deg, rgb(19, 19, 19), rgb(25, 25, 25)); */
   background: linear-gradient(90deg, rgb(13, 13, 13), rgb(23, 23, 23));
   border-bottom-right-radius: 1vw;
@@ -110,6 +114,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 8%;
 }
 
 /* 
@@ -124,7 +129,7 @@
   position: relative;
   margin-top: 0;
   width: 23vw;
-  height: calc(100vh - 9vw);
+  height: calc(100vh - 10vw);
   background: linear-gradient(90deg, rgb(10, 10, 10), rgb(21, 21, 21));
   transition-duration: 1s;
   border-bottom-right-radius: 1vw;
@@ -136,13 +141,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 8%;
 }
 
 
 .buttonContainer1 {
   width: 100%;
   height: 50%;
-  min-height: 20vw;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -155,7 +160,6 @@
 .buttonContainer2 {
   width: 100%;
   height: 50%;
-  min-height: 20vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -166,25 +170,23 @@
 }
 
 .button1 {
-  height: 5vw;
   width: 18vw;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  font-size: 1.3vw;
+  font-size: 1.4vw;
   cursor: pointer;
   transition-duration: 0.8s;
 }
 
 .button2 {
-  height: 5vw;
   width: 21vw;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  font-size: 1.6vw;
+  font-size: 1.7vw;
   cursor: pointer;
   transition-duration: 0.5s;
 }
@@ -205,20 +207,72 @@
 }
 
 .category {
-  color : rgb(240, 235, 243)
+  color : rgb(240, 235, 243);
+  margin : 0;
+  padding: 0;
+  font-weight: 400;
+  letter-spacing: 0.05vw;
 }
 
-.leftContainer {
-  border-right: 1px solid white;
-  height: 100%;
-  width: 30vw;
+.rightContainer1 {
+  width: 77vw;
+  height: calc(100vh - 9vw);
+  display: flex;
+  flex-direction: column;
+  padding-left: 12.5vw;
+  padding-top: 5vw;
+  padding-right : 12vw;
+  overflow-y: scroll;
+  opacity: 0;
 }
 
-.rightContainer {
-  border-right: 1px solid white;
-  height: 100%;
-  width: 70vw;
+.rightContainer2 {
+  width: 77vw;
+  height: calc(100vh - 9vw);
+  display: flex;
+  flex-direction: column;
+  padding-left: 12.5vw;
+  padding-top: 5vw;
+  padding-right : 12vw;
+  overflow-y: scroll;
+  transition-duration: 4s;
 }
+
+.categoryTitle {
+  color : rgb(240, 235, 243);
+  font-size: 1.45vw;
+  font-weight: 400;
+  letter-spacing: 0.05vw;
+  margin : 0;
+  margin-bottom: 0.8vw;
+}
+
+.gradientTextContainer {
+  width: fit-content;
+  height: fit-content;
+  background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
+  background-clip: text;
+  margin-bottom: 2.5vw;
+}
+
+.categorySubtitle {
+  color : transparent;
+  font-size: 2vw;
+  font-weight: 700;
+  letter-spacing: 0.05vw;
+  margin : 0;
+}
+
+.paragraph1 {
+  color : rgb(211, 204, 214);
+  font-size: 1.2vw;
+  font-weight: 300;
+  letter-spacing: 0.05vw;
+  margin : 0;
+  margin-bottom: 0.5vw;
+  text-indent: 1vw;
+}
+
 
 
 
@@ -226,13 +280,12 @@
 
 
 .button1:hover {
-  height: 5vw;
   width: 20vw;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  font-size: 1.5vw;
+  font-size: 1.6vw;
   cursor: pointer;
   transition-duration: 0.8s;
 }
