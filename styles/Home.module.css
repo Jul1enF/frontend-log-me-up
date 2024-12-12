@@ -42,13 +42,13 @@
   align-items: center;
   padding-bottom: 0.8vw;
   background-clip: text;
-  transition-duration: 1.3s;
+  transition-duration: 1.6s;
 }
 
 .title {
   font-size: 3.7vw;
-  font-weight: 600;
-  letter-spacing: 0.15vw;
+  font-weight: 650;
+  letter-spacing: 0.25vw;
   color: transparent;
   margin: 0;
   padding: 0;
@@ -56,12 +56,12 @@
 }
 
 .subTitle {
-  font-size: 1.4vw;
+  font-size: 1.55vw;
   font-weight: 500;
   color: transparent;
   margin: 0;
   padding: 0;
-  letter-spacing: 0.05vw;
+  letter-spacing: 0.07vw;
 }
 
 .headerLineContainer {
@@ -78,7 +78,7 @@
   width: 0vw;
   background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
   margin-bottom: 0.1vh;
-  opacity: 0.8;
+  opacity: 0.5;
 }
 
 .headerGradientLine2 {
@@ -147,7 +147,7 @@
 
 .buttonContainer1 {
   width: 100%;
-  height: 50%;
+  height: 55%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -159,7 +159,7 @@
 
 .buttonContainer2 {
   width: 100%;
-  height: 50%;
+  height: 55%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -175,18 +175,18 @@
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  font-size: 1.4vw;
+  font-size: 1.5vw;
   cursor: pointer;
   transition-duration: 0.8s;
 }
 
 .button2 {
-  width: 21vw;
+  width: 22.5vw;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  font-size: 1.7vw;
+  font-size: 1.8vw;
   cursor: pointer;
   transition-duration: 0.5s;
 }
@@ -197,14 +197,6 @@
   background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
 }
 
-.gradientCategory {
-  width: 40%;
-  height: 100%;
-  background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
-  background-clip: text;
-  display: flex;
-  align-items: center;
-}
 
 .category {
   color : rgb(240, 235, 243);
@@ -212,6 +204,7 @@
   padding: 0;
   font-weight: 400;
   letter-spacing: 0.05vw;
+  width: 40%;
 }
 
 .rightContainer1 {
@@ -219,9 +212,9 @@
   height: calc(100vh - 9vw);
   display: flex;
   flex-direction: column;
-  padding-left: 12.5vw;
+  padding-left: 4.5vw;
+  padding-right : 2vw;
   padding-top: 4vw;
-  padding-right : 12vw;
   overflow-y: scroll;
   opacity: 0;
 }
@@ -231,12 +224,28 @@
   height: calc(100vh - 9vw);
   display: flex;
   flex-direction: column;
-  padding-left: 12.5vw;
+  padding-left: 4.5vw;
+  padding-right : 2vw;
   padding-top: 4vw;
-  padding-right : 12vw;
+  padding-bottom: 4vw;
   overflow-y: scroll;
-  transition-duration: 4s;
+  scrollbar-width:thin;
+  scrollbar-color: grey black;
+  transition-duration: 3s;
 }
+
+.categoryContainer {
+  display: flex;
+  width: 100%;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width : 65%;
+}
+
 
 .categoryTitle {
   color : rgb(240, 235, 243);
@@ -244,7 +253,8 @@
   font-weight: 400;
   letter-spacing: 0.05vw;
   margin : 0;
-  margin-bottom: 0.8vw;
+  margin-bottom: 0.9vw;
+
 }
 
 .gradientTextContainer {
@@ -252,7 +262,7 @@
   height: fit-content;
   background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
   background-clip: text;
-  margin-bottom: 2.5vw;
+  margin-bottom: 3vw;
 }
 
 .categorySubtitle {
@@ -261,6 +271,7 @@
   font-weight: 700;
   letter-spacing: 0.05vw;
   margin : 0;
+
 }
 
 .paragraph1 {
@@ -273,6 +284,55 @@
   text-indent: 1vw;
 }
 
+.picturesContainer {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.squareGradient {
+  height : 6.5vw;
+  width : 13vw;
+  border-radius: 0.5vw;
+  background: linear-gradient(45deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0.3vw 0.2vw;
+  margin-bottom: 1vw;
+}
+
+.squareText {
+  color : rgb(255, 255, 255);
+  font-size: 1.1vw;
+  font-weight: 600;
+  letter-spacing: 0.05vw;
+  margin : 0;
+  text-align: center;
+  line-height: 1.5vw;
+}
+
+.skillsIcon {
+  color : white;
+  width : 2.3vw;
+  height : 2.3vw;
+}
+
+
+
+.avatarContainer {
+  width : 7vw;
+  height: 7vw;
+  object-fit: cover;
+  position: relative;
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
 
 
 
@@ -280,12 +340,12 @@
 
 
 .button1:hover {
-  width: 20vw;
+  width: 21.5vw;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  font-size: 1.6vw;
+  font-size: 1.7vw;
   cursor: pointer;
   transition-duration: 0.8s;
 }

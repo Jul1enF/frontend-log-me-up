@@ -1,5 +1,9 @@
 import styles from '../styles/Home.module.css';
 import { useState, useEffect } from 'react'
+import Image from 'next/image';
+import { Laptop } from 'react-bootstrap-icons';
+import { Phone } from 'react-bootstrap-icons';
+import { Palette } from 'react-bootstrap-icons';
 
 
 
@@ -76,21 +80,15 @@ function Home() {
           <div className={buttonContainer}>
             <div className={categoryButton1} onClick={() => setCategory("about")}>
               <div className={styles.categoryLine}></div>
-              <div className={styles.gradientCategory}>
-                <h5 className={styles.category}>Présentation</h5>
-              </div>
+              <h5 className={styles.category}>Présentation</h5>
             </div>
             <div className={categoryButton2} onClick={() => setCategory("projects")}>
               <div className={styles.categoryLine}></div>
-              <div className={styles.gradientCategory}>
-                <h5 className={styles.category}>Expériences</h5>
-              </div>
+              <h5 className={styles.category}>Expériences</h5>
             </div>
             <div className={categoryButton3} onClick={() => setCategory("contact")}>
               <div className={styles.categoryLine}></div>
-              <div className={styles.gradientCategory}>
-                <h5 className={styles.category}>Contact</h5>
-              </div>
+              <h5 className={styles.category}>Contact</h5>
             </div>
           </div>
 
@@ -104,8 +102,48 @@ function Home() {
           <div className={styles.gradientTextContainer}>
             <h4 className={styles.categorySubtitle}>À propos de moi</h4>
           </div>
-          <p className={styles.paragraph1}>Hello ! Moi c'est Julien, j'ai 35 ans et suis développeur de site web et d'applications mobiles.</p>
-          <p className={styles.paragraph1}> Ayant obtenu un bac plus 3 auprès de la capsule.</p>
+
+
+          <div className={styles.categoryContainer}>
+
+            <div className={styles.textContainer}>
+              <p className={styles.paragraph1}>Hello, moi c'est Julien, j'ai 35 ans et je suis développeur de site web et d'applications mobiles.</p>
+              <p className={styles.paragraph1}> J'ai obtenu à l'été 2024 un diplôme bac +3 de Développeur Fullstack après avoir suivi les cours de la formation La Capsule.</p>
+              <p className={styles.paragraph1}> Depuis je ne cesse de développer des projets de site web ou d'applications mobiles et cherche encore et toujours de nouveaux défis à relever !</p>
+              <p className={styles.paragraph1}> Pour cela, quinze années d'expériences dans la vidéo, le montage et le motion design m'accompagnent afin d'élargir mes compétences. Je peux ainsi personnaliser le design de mes créations, créer des animations ou des logos.</p>
+              <p className={styles.paragraph1}>N'hésitez pas à me contacter si vous avez un projet un tête et cherchez à la réaliser ou à en définir les contours !</p>
+            </div>
+
+            <div className={styles.picturesContainer}>
+
+              {/* <div className={styles.avatarContainer}>
+                <Image src="/avatar.png" alt="icone d'un avatar de personnage" layout="fill" objectFit='cover' className={styles.avatar} ></Image>
+              </div> */}
+
+              <div className={styles.squareGradient}>
+                <p className={styles.squareText}>
+                  Développeur web
+                </p>
+                <Laptop className={styles.skillsIcon} />
+              </div>
+
+              <div className={styles.squareGradient}>
+                <p className={styles.squareText}>
+                  Développeur mobile
+                </p>
+                <Phone className={styles.skillsIcon} />
+              </div>
+
+              <div className={styles.squareGradient}>
+                <p className={styles.squareText}>
+                  Motion designer
+                </p>
+                <Palette className={styles.skillsIcon} />
+              </div>
+
+            </div>
+
+          </div>
 
 
         </div>
