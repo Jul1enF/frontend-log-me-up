@@ -104,7 +104,7 @@ function Home() {
           <div className={styles.gradientTextContainer}>
             <h4 className={styles.categorySubtitle}>À propos de moi</h4>
           </div>
-          <p className={styles.paragraph1}>Hello ! Moi c'est Julien Furic et je suis développeur de site web et d'applications mobiles.</p>
+          <p className={styles.paragraph1}>Hello ! Moi c'est Julien, j'ai 35 ans et suis développeur de site web et d'applications mobiles.</p>
           <p className={styles.paragraph1}> Ayant obtenu un bac plus 3 auprès de la capsule.</p>
 
 
