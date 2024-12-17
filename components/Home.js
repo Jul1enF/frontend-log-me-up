@@ -1,5 +1,5 @@
 import styles from '../styles/Home.module.css';
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image';
 import { Laptop } from 'react-bootstrap-icons';
 import { Phone } from 'react-bootstrap-icons';
@@ -24,19 +24,10 @@ import { SiAdobeillustrator } from "react-icons/si";
 function Home() {
 
 
-  useEffect(() => {
-    setTimeout(() => setAnimationsBegin(true), 600)
-    setTimeout(() => setAnimations2Begin(true), 1400)
-    setTimeout(() => setAnimations3Begin(true), 2100)
-    setTimeout(() => setAnimations4Begin(true), 2600)
-  }, [])
+  // useRef pour scroller jusqu'à la catégorie choisie
 
-
-
-  const [animationsBegin, setAnimationsBegin] = useState(false)
-  const [animations2Begin, setAnimations2Begin] = useState(false)
-  const [animations3Begin, setAnimations3Begin] = useState(false)
-  const [animations4Begin, setAnimations4Begin] = useState(false)
+  const categoriesRef = useRef({})
+  const categoriesContainerRef = useRef(null)
 
 
 
@@ -46,21 +37,103 @@ function Home() {
 
 
 
+  useEffect(() => {
+
+    // Déclenchement des timings d'animation
+
+    setTimeout(() => setAnimationsBegin(true), 600)
+    setTimeout(() => setAnimations2Begin(true), 1400)
+    setTimeout(() => setAnimations3Begin(true), 1700)
+    setTimeout(() => setAnimations4Begin(true), 2600)
+    setTimeout(() => setAnimations5Begin(true), 3100)
+    setTimeout(() => setAnimationsEnd(true), 10000)
+
+  }, [])
+
+
+
+  // Fonction déclenchée en cliquant sur une catégorie pour scroller jusqu'à celle ci
+
+  const categoryClick = (cat) => {
+    const categoryToScroll = categoriesRef.current[cat]
+    const containerToScroll = categoriesContainerRef.current
+
+    const categoryOffsetTop = categoryToScroll.offsetTop
+    const containerOffsetTop = containerToScroll.offsetTop
+    const distanceToScroll = categoryOffsetTop - containerOffsetTop - 50
+
+    containerToScroll.scroll({
+      top: distanceToScroll,
+      behavior: "smooth"
+    })
+
+    setCategory(cat)
+  }
+
+
+
+
+  // Fonction déclenchée en scrollant dans rightContainer pour actualiser la catégorie choisie
+
+  const handleScroll = (height) => {
+    const skillsHeight = categoriesRef.current.skills.offsetTop
+    const projectsHeight = categoriesRef.current.projects.offsetTop
+    const containerHeight = categoriesContainerRef.current.offsetTop
+
+    if (category !== "about" && height < skillsHeight - containerHeight - 200) {
+      setCategory("about")
+    }
+
+    if (category !== "skills" && height >= skillsHeight - containerHeight - 200 && height < projectsHeight - containerHeight - 200) {
+      setCategory("skills")
+    }
+
+    if (category !== "projects" && height >= projectsHeight - containerHeight - 200) {
+      setCategory("projects")
+    }
+
+  }
+
+
+
+
+
+  // États pour setter les timings d'animation
+
+  const [animationsBegin, setAnimationsBegin] = useState(false)
+  const [animations2Begin, setAnimations2Begin] = useState(false)
+  const [animations3Begin, setAnimations3Begin] = useState(false)
+  const [animations4Begin, setAnimations4Begin] = useState(false)
+  const [animations5Begin, setAnimations5Begin] = useState(false)
+  const [animationsEnd, setAnimationsEnd] = useState(false)
+
+
+
   // Variable de className pour changement de styles pour les animations
+
+  let titleBackground = !animationsBegin ? styles.titleBackground1 : styles.titleBackground2
 
   const gradientBackgroundHeader = !animationsBegin ? styles.gradientBackgroundHeader1 : styles.gradientBackgroundHeader2
 
-  const headerGradientLine = !animationsBegin ? styles.headerGradientLine1 : styles.headerGradientLine2
+  let headerGradientLine = !animationsBegin ? styles.headerGradientLine1 : styles.headerGradientLine2
 
-  const modal = !animations2Begin ? styles.modal1 : styles.modal2
+  let modal = !animations3Begin ? styles.modal1 : styles.modal2
 
-  const buttonContainer = !animations3Begin ? styles.buttonContainer1 : styles.buttonContainer2
-
-
-  const rightContainer = !animations4Begin ? styles.rightContainer1 : styles.rightContainer2
+  const buttonContainer = !animations4Begin ? styles.buttonContainer1 : styles.buttonContainer2
 
 
+  let rightContainer = !animations5Begin ? styles.rightContainer1 : styles.rightContainer2
 
+  let backgroundVideo = !animations5Begin ? styles.backgroundVideo1 : styles.backgroundVideo2
+
+
+  if (animationsEnd) {
+    titleBackground = styles.titleBackground3
+    headerGradientLine = styles.headerGradientLine3
+    modal = styles.modal3
+    rightContainer = styles.rightContainer3
+    backgroundVideo = styles.backgroundVideo3
+  }
 
 
   // Affichage conditionnel des boutons et de leurs lignes en fonction de la catégorie sélectionnée
@@ -85,10 +158,15 @@ function Home() {
     <div className={styles.body}>
 
       <div className={styles.headerContainer}>
-        <div className={gradientBackgroundHeader}>
-          {/* <h1 className={styles.title}>LOG ME UP</h1> */}
-          <h1 className={styles.title}>Julien Furic</h1>
-          <h3 className={styles.subTitle}>Développeur d'applications web et mobile</h3>
+
+        <video src="/Test Header.mp4" className={backgroundVideo} autoPlay={true} loop={true} muted={true} ></video>
+
+        <div className={titleBackground}>
+          <div className={gradientBackgroundHeader}>
+            {/* <h1 className={styles.title}>LOG ME UP</h1> */}
+            <h1 className={styles.title}>Julien Furic</h1>
+            <h3 className={styles.subTitle}>Développeur d'applications web et mobile</h3>
+          </div>
         </div>
       </div>
 
@@ -103,19 +181,19 @@ function Home() {
         <div className={modal}>
 
           <div className={buttonContainer}>
-            <div className={categoryButton1} onClick={() => setCategory("about")}>
+            <div className={categoryButton1} onClick={() => categoryClick("about")}>
               <div className={categoryLine1}></div>
               <h5 className={styles.category}>Présentation</h5>
             </div>
-            <div className={categoryButton2} onClick={() => setCategory("skills")}>
+            <div className={categoryButton2} onClick={() => categoryClick("skills")}>
               <div className={categoryLine2}></div>
               <h5 className={styles.category}>Compétences</h5>
             </div>
-            <div className={categoryButton3} onClick={() => setCategory("projects")}>
+            <div className={categoryButton3} onClick={() => categoryClick("projects")}>
               <div className={categoryLine3}></div>
               <h5 className={styles.category}>Projets</h5>
             </div>
-            <div className={categoryButton4} onClick={() => setCategory("contact")}>
+            <div className={categoryButton4} onClick={() => categoryClick("contact")}>
               <div className={categoryLine4}></div>
               <h5 className={styles.category}>Contact</h5>
             </div>
@@ -124,10 +202,10 @@ function Home() {
         </div>
 
 
-        <div className={rightContainer}>
+        <div className={rightContainer} ref={categoriesContainerRef} onScroll={(e) => handleScroll(e.target.scrollTop)}>
 
 
-          <h3 className={styles.categoryTitle}>Présentation</h3>
+          <h3 className={styles.categoryTitle} ref={(m) => categoriesRef.current.about = m} >Présentation</h3>
           <div className={styles.gradientTextContainer}>
             <h4 className={styles.categorySubtitle}>À propos de moi</h4>
           </div>
@@ -176,7 +254,7 @@ function Home() {
           </div>
 
 
-          <h3 className={styles.categoryTitle}>Compétences</h3>
+          <h3 className={styles.categoryTitle} ref={(m) => categoriesRef.current.skills = m} >Compétences</h3>
           <div className={styles.gradientTextContainer}>
             <h4 className={styles.categorySubtitle}>Mes outils de travail</h4>
           </div>
@@ -278,6 +356,48 @@ function Home() {
             </div>
 
           </div>
+
+
+          <h3 className={styles.categoryTitle} ref={(m) => categoriesRef.current.projects = m} >Projets</h3>
+          <div className={styles.gradientTextContainer}>
+            <h4 className={styles.categorySubtitle}>Quelques exemples de mon travail</h4>
+          </div>
+
+          <div className={styles.toolsCategoriesContainer2}>
+
+            <div className={styles.rectangleGradient}>
+              <h6 className={styles.skillTitle}>Vidéo / Graphisme</h6>
+              <div className={styles.toolsContainer}>
+
+                <div className={styles.tool}>
+                  <p className={styles.toolText}>Premiere Pro</p>
+                  <SiAdobepremierepro className={styles.toolIcon} />
+                </div>
+
+                <div className={styles.tool}>
+                  <p className={styles.toolText}>After Effects</p>
+                  <SiAdobeaftereffects className={styles.toolIcon} />
+                </div>
+
+                <div className={styles.tool}>
+                  <p className={styles.toolText}>Photoshop</p>
+                  <SiAdobephotoshop className={styles.toolIcon} />
+                </div>
+
+                <div className={styles.tool}>
+                  <p className={styles.toolText}>Illustrator</p>
+                  <SiAdobeillustrator className={styles.toolIcon} />
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+
 
 
 
