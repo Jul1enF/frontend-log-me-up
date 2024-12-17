@@ -126,7 +126,7 @@ function Home() {
 
   let backgroundVideo = !animations4Begin ? styles.backgroundVideo0 : styles.backgroundVideo1
 
-  if (animations5Begin){ backgroundVideo = styles.backgroundVideo2}
+  if (animations5Begin) { backgroundVideo = styles.backgroundVideo2 }
 
 
   if (animationsEnd) {
@@ -161,7 +161,7 @@ function Home() {
 
       <div className={styles.headerContainer}>
 
-        <video src="/Header-Video.mp4" className={backgroundVideo} autoPlay={true} loop={true} muted={true} ></video>
+        {/* <video src="/Header-Video.mp4" className={backgroundVideo} autoPlay={true} loop={true} muted={true} ></video> */}
 
         <div className={titleBackground}>
           <div className={gradientBackgroundHeader}>
@@ -257,7 +257,7 @@ function Home() {
 
 
           <h3 className={styles.categoryTitle} ref={(m) => categoriesRef.current.skills = m} >Compétences</h3>
-          <div className={styles.gradientTextContainer}>
+          <div className={styles.gradientTextContainer2}>
             <h4 className={styles.categorySubtitle}>Mes outils de travail</h4>
           </div>
 
@@ -361,43 +361,59 @@ function Home() {
 
 
           <h3 className={styles.categoryTitle} ref={(m) => categoriesRef.current.projects = m} >Projets</h3>
-          <div className={styles.gradientTextContainer}>
+          <div className={styles.gradientTextContainer2}>
             <h4 className={styles.categorySubtitle}>Quelques exemples de mon travail</h4>
           </div>
 
-          <div className={styles.toolsCategoriesContainer2}>
+          <div className={styles.projectsContainer}>
 
-            <div className={styles.rectangleGradient}>
-              <h6 className={styles.skillTitle}>Vidéo / Graphisme</h6>
-              <div className={styles.toolsContainer}>
+            <div className={styles.projectsLine1}>
 
-                <div className={styles.tool}>
-                  <p className={styles.toolText}>Premiere Pro</p>
-                  <SiAdobepremierepro className={styles.toolIcon} />
+              <div className={styles.squareGradient2}>
+                <h6 className={styles.projectTitle}>Boost Up</h6>
+                <div className={styles.projectImgContainer}></div>
+                <p className={styles.projectSubtitle}>
+                  Appli fitness pour l'entreprise KevFit, bientôt sur App Store et Google Play.
+                </p>
+              </div>
+
+              <div className={styles.squareGradient2}>
+                <h6 className={styles.projectTitle}>Clothe Me Up</h6>
+                <div className={styles.projectImgContainer}>
+                  <Image alt="Vignette d'un site internet" fill={true} src="/Clothe-Me-Up2.png" className={styles.projectImg} />
                 </div>
+                <p className={styles.projectSubtitle}>
+                  Template pour site de e-commerce 100% fonctionnel.
+                </p>
+              </div>
 
-                <div className={styles.tool}>
-                  <p className={styles.toolText}>After Effects</p>
-                  <SiAdobeaftereffects className={styles.toolIcon} />
+            </div>
+
+            <div className={styles.projectsLine1}>
+
+              <div className={styles.squareGradient2}>
+                <h6 className={styles.projectTitle}>Kairos</h6>
+                <div className={styles.projectImgContainer}>
+                  <Image alt="Vignette d'un site internet" fill={true} src="/Kairos.png" className={styles.projectImg} />
                 </div>
+                <p className={styles.projectSubtitle}>
+                  Projet de fin d'étude visant à réaliser une étude de marché.
+                </p>
+              </div>
 
-                <div className={styles.tool}>
-                  <p className={styles.toolText}>Photoshop</p>
-                  <SiAdobephotoshop className={styles.toolIcon} />
+              <div className={styles.squareGradient2}>
+                <h6 className={styles.projectTitle}>Hackatweet</h6>
+                <div className={styles.projectImgContainer}>
+                  <Image alt="Vignette d'un site internet" fill={true} src="/Hackatweet.png" className={styles.projectImg} />
                 </div>
-
-                <div className={styles.tool}>
-                  <p className={styles.toolText}>Illustrator</p>
-                  <SiAdobeillustrator className={styles.toolIcon} />
-                </div>
-
+                <p className={styles.projectSubtitle}>
+                  Exercice de cours, réplique d'un réseau social.
+                </p>
               </div>
 
             </div>
 
           </div>
-
-
 
 
 

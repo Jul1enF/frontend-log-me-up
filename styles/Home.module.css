@@ -47,7 +47,7 @@
   object-fit: cover;
   object-position: top;
   z-index: -1;
-  opacity: 0.8;
+  opacity: 0.9;
   transition-duration: 5s;
 }
 
@@ -58,11 +58,11 @@
   object-fit: cover;
   object-position: top;
   z-index: -1;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .titleBackground1 {
-  background-color: rgba(253, 253, 253, 0);
+  background-color: rgba(233, 227, 235, 0);
   height: fit-content;
   width: fit-content;
   padding : 0.2vw 1.2vw 0.2vw;
@@ -70,7 +70,7 @@
 }
 
 .titleBackground2 {
-  background-color: rgba(253, 253, 253, 0.85);
+  background-color: rgba(233, 227, 235, 0.85);
   height: fit-content;
   width: fit-content;
   padding : 0.2vw 1.2vw 0.2vw;
@@ -79,7 +79,7 @@
 }
 
 .titleBackground3 {
-  background-color: rgba(253, 253, 253, 0.85);
+  background-color: rgba(233, 227, 235, 0.85);
   height: fit-content;
   width: fit-content;
   padding : 0.2vw 1.2vw 0.2vw;
@@ -451,6 +451,16 @@
   height: 2.3vw;
 }
 
+
+.gradientTextContainer2 {
+  width: fit-content;
+  height: fit-content;
+  background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
+  background-clip: text;
+  margin-bottom: 5.5vw;
+}
+
+
 .toolsCategoriesContainer1 {
   display: flex;
   justify-content: space-between;
@@ -519,6 +529,75 @@
 }
 
 
+.projectsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.projectsLine1 {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 1.5vw;
+  width: 80%;
+}
+
+
+.squareGradient2 {
+  width: 46%;
+  height : 25vw;
+  border-radius: 0.5vw;
+  background: linear-gradient(45deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1vw 1vw 0.5vw;
+  font-size: 1.3vw;
+  transition-duration: 0.5s;
+  cursor: pointer;
+}
+
+
+.projectTitle {
+  color: rgb(255, 255, 255);
+  font-size: 100%;
+  font-weight: 600;
+  letter-spacing:0.05em;
+  margin: 0;
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 0.6em;
+  text-decoration-thickness: 0.05em;
+  margin-bottom : 0.5em;
+}
+
+.projectSubtitle {
+  color: rgb(255, 255, 255);
+  font-size: 75%;
+  font-weight: 400;
+  letter-spacing:0.05em;
+  margin: 0;
+  text-align: center;
+  line-height: 150%;
+}
+
+
+.projectImgContainer {
+width: 100%;
+height : 70%;
+position: relative;
+}
+
+
+.projectImg {
+  border-radius: 0.5vw;
+  object-fit: contain;
+}
+
+
+
+
 /* Hover des composants  */
 
 
@@ -539,4 +618,20 @@
   background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
   transition-duration: 0.5s;
   border-radius: 3px;
+}
+
+
+.squareGradient2:hover {
+  width: 50%;
+  height : 27vw;
+  border-radius: 0.5vw;
+  background: linear-gradient(45deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1vw 1vw 0.5vw;
+  font-size: 1.4vw;
+  transition-duration: 0.5s;
+  cursor: pointer;
 }
