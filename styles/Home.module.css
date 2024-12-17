@@ -9,13 +9,70 @@
 
 .headerContainer {
   width: 100vw;
-  height: 10.5vw;
+  height: 11.5vw;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   z-index: 3;
   background-color: rgb(7, 5, 8);
+}
+
+.backgroundVideo1 {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+  z-index: -1;
+  opacity: 0;
+}
+
+.backgroundVideo2 {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+  z-index: -1;
+  opacity: 0.85;
+  transition-duration: 6s;
+}
+
+.backgroundVideo3 {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+  z-index: -1;
+  opacity: 0.85;
+}
+
+.titleBackground1 {
+  background-color: rgba(253, 253, 253, 0);
+  height: fit-content;
+  width: fit-content;
+  padding : 0.2vw 1.2vw 0.2vw;
+  border-radius: 0.7vw;
+}
+
+.titleBackground2 {
+  background-color: rgba(253, 253, 253, 0.85);
+  height: fit-content;
+  width: fit-content;
+  padding : 0.2vw 1.2vw 0.2vw;
+  border-radius: 0.7vw;
+  transition-duration: 3.7s;
+}
+
+.titleBackground3 {
+  background-color: rgba(253, 253, 253, 0.85);
+  height: fit-content;
+  width: fit-content;
+  padding : 0.2vw 1.2vw 0.2vw;
+  border-radius: 0.7vw;
+  transition-duration: 0s;
 }
 
 .gradientBackgroundHeader1 {
@@ -27,7 +84,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 1.5vh;
+  padding-bottom: 0.8vw;
   background-clip: text;
 }
 
@@ -47,8 +104,9 @@
 
 .title {
   font-size: 3.7vw;
-  font-weight: 650;
+  font-weight: 750;
   letter-spacing: 0.25vw;
+  line-height: 4.3vw;
   color: transparent;
   margin: 0;
   padding: 0;
@@ -57,7 +115,7 @@
 
 .subTitle {
   font-size: 1.55vw;
-  font-weight: 500;
+  font-weight: 700;
   color: transparent;
   margin: 0;
   padding: 0;
@@ -77,21 +135,29 @@
   min-height: 4px;
   width: 0vw;
   background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
-  opacity: 0.2;
+  opacity: 0.4;
 }
 
 .headerGradientLine2 {
   min-height: 4px;
   width: 100vw;
   background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
-  transition-duration: 1.2s;
+  transition-duration: 1.5s;
+  opacity: 1;
+  z-index: 1;
+}
+
+.headerGradientLine3 {
+  min-height: 4px;
+  width: 100vw;
+  background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
   opacity: 1;
   z-index: 1;
 }
 
 
 .mainContainer {
-  height: calc(100vh - 10.5vw - 4px);
+  height: calc(100vh - 11.5vw - 4px);
   width: 100vw;
   display: flex;
 }
@@ -99,9 +165,9 @@
 
 .modal1 {
   position: relative;
-  margin-top: calc(-100vh + 9vw);
+  margin-top: calc(-100vh + 10vw);
   width: 23vw;
-  height: calc(100vh - 10.5vw - 4px);
+  height: calc(100vh - 11.5vw - 4px);
   /* background: linear-gradient(90deg, rgb(19, 19, 19), rgb(25, 25, 25)); */
   background: linear-gradient(90deg, rgb(13, 13, 13), rgb(23, 23, 23));
   border-bottom-right-radius: 1vw;
@@ -127,9 +193,9 @@
   position: relative;
   margin-top: 0;
   width: 23vw;
-  height: calc(100vh - 10.5vw - 4px);
+  height: calc(100vh - 11.5vw - 4px);
   background: linear-gradient(90deg, rgb(10, 10, 10), rgb(21, 21, 21));
-  transition-duration: 1s;
+  transition-duration: 1.3s;
   border-bottom-right-radius: 1vw;
   border-top-right-radius: 1vw;
   box-shadow: inset -6px -6px 14px rgba(0, 0, 0, 0.6);
@@ -139,13 +205,31 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 9%;
+  padding-bottom: 8%;
+}
+
+.modal3 {
+  position: relative;
+  margin-top: 0;
+  width: 23vw;
+  height: calc(100vh - 11.5vw - 4px);
+  background: linear-gradient(90deg, rgb(10, 10, 10), rgb(21, 21, 21));
+  border-bottom-right-radius: 1vw;
+  border-top-right-radius: 1vw;
+  box-shadow: inset -6px -6px 14px rgba(0, 0, 0, 0.6);
+  overflow-y: scroll;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 8%;
 }
 
 
 .buttonContainer1 {
   width: 100%;
-  height: 55%;
+  height: 53%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -157,14 +241,14 @@
 
 .buttonContainer2 {
   width: 100%;
-  height: 55%;
+  height: 53%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   overflow-y: scroll;
   opacity: 1;
-  transition-duration: 1s;
+  transition-duration: 1.5s;
 }
 
 .button1 {
@@ -180,7 +264,7 @@
 }
 
 .button2 {
-  width: 23.5vw;
+  width: 23vw;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -220,25 +304,37 @@
 
 .rightContainer1 {
   width: 77vw;
-  height: calc(100vh - 10.5vw - 4px);
+  height: calc(100vh - 11.5vw - 4px);
   display: flex;
   flex-direction: column;
-  padding : 6vw 6vw;
+  padding : 4.5vw 6vw;
   overflow-y: scroll;
   opacity: 0;
 }
 
 .rightContainer2 {
   width: 77vw;
-  height: calc(100vh - 10.5vw - 4px);
+  height: calc(100vh - 11.5vw - 4px);
   display: flex;
   flex-direction: column;
   /* padding-left: 4.5vw; */
-  padding : 6vw 6vw;
+  padding : 4.5vw 6vw;
   overflow-y: scroll;
   scrollbar-width: thin;
   scrollbar-color: grey black;
   transition-duration: 3.5s;
+}
+
+.rightContainer3 {
+  width: 77vw;
+  height: calc(100vh - 11.5vw - 4px);
+  display: flex;
+  flex-direction: column;
+  /* padding-left: 4.5vw; */
+  padding : 4.5vw 6vw;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: grey black;
 }
 
 
@@ -346,35 +442,35 @@
 .toolsCategoriesContainer1 {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 2.6vw;
+  margin-bottom: 2.5vw;
   margin-top: 1vw;
 }
 
 .toolsCategoriesContainer2 {
   display: flex;
   justify-content: flex-start;
-  margin-bottom: 7vw;
+  margin-bottom: 8vw;
 }
 
 .rectangleGradient {
-  width: 48%;
+  width: 46%;
   border-radius: 0.5vw;
   background: linear-gradient(45deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  padding: 1vw 0vw 1.5vw;
+  padding: 1vw 1vw 1.3vw;
 }
 
 
 .skillTitle {
   color: rgb(255, 255, 255);
-  font-size: 1.5vw;
+  font-size: 1.4vw;
   font-weight: 600;
   letter-spacing: 0.05vw;
   margin: 0;
-  margin-bottom: 1.5vw;
+  margin-bottom: 1.6vw;
   text-align: center;
 }
 
@@ -393,7 +489,7 @@
 
 .toolText {
   color: rgb(255, 255, 255);
-  font-size: 1.1vw;
+  font-size: 1vw;
   font-weight: 400;
   letter-spacing: 0.05vw;
   margin: 0;
@@ -403,8 +499,8 @@
 
 .toolIcon {
   color: white;
-  height: 3vw;
-  width: 3vw;
+  height: 2.5vw;
+  width: 2.5vw;
 }
 
 
