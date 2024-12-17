@@ -43,9 +43,9 @@ function Home() {
 
     setTimeout(() => setAnimationsBegin(true), 600)
     setTimeout(() => setAnimations2Begin(true), 1400)
-    setTimeout(() => setAnimations3Begin(true), 1700)
-    setTimeout(() => setAnimations4Begin(true), 2600)
-    setTimeout(() => setAnimations5Begin(true), 3100)
+    setTimeout(() => setAnimations3Begin(true), 1900)
+    setTimeout(() => setAnimations4Begin(true), 2800)
+    setTimeout(() => setAnimations5Begin(true), 3300)
     setTimeout(() => setAnimationsEnd(true), 10000)
 
   }, [])
@@ -124,7 +124,9 @@ function Home() {
 
   let rightContainer = !animations5Begin ? styles.rightContainer1 : styles.rightContainer2
 
-  let backgroundVideo = !animations5Begin ? styles.backgroundVideo1 : styles.backgroundVideo2
+  let backgroundVideo = !animations4Begin ? styles.backgroundVideo0 : styles.backgroundVideo1
+
+  if (animations5Begin){ backgroundVideo = styles.backgroundVideo2}
 
 
   if (animationsEnd) {
@@ -159,7 +161,7 @@ function Home() {
 
       <div className={styles.headerContainer}>
 
-        <video src="/Test Header.mp4" className={backgroundVideo} autoPlay={true} loop={true} muted={true} ></video>
+        <video src="/Header-Video.mp4" className={backgroundVideo} autoPlay={true} loop={true} muted={true} ></video>
 
         <div className={titleBackground}>
           <div className={gradientBackgroundHeader}>

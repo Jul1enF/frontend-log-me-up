@@ -18,6 +18,18 @@
   background-color: rgb(7, 5, 8);
 }
 
+.backgroundVideo0 {
+  position: absolute;
+  display: none;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+  z-index: -1;
+  opacity: 0;
+}
+
+
 .backgroundVideo1 {
   position: absolute;
   height: 100%;
@@ -35,8 +47,8 @@
   object-fit: cover;
   object-position: top;
   z-index: -1;
-  opacity: 0.85;
-  transition-duration: 6s;
+  opacity: 0.8;
+  transition-duration: 5s;
 }
 
 .backgroundVideo3 {
@@ -46,7 +58,7 @@
   object-fit: cover;
   object-position: top;
   z-index: -1;
-  opacity: 0.85;
+  opacity: 0.8;
 }
 
 .titleBackground1 {
@@ -63,7 +75,7 @@
   width: fit-content;
   padding : 0.2vw 1.2vw 0.2vw;
   border-radius: 0.7vw;
-  transition-duration: 3.7s;
+  transition-duration: 5.2s;
 }
 
 .titleBackground3 {
@@ -442,7 +454,7 @@
 .toolsCategoriesContainer1 {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 2.5vw;
+  margin-bottom: 4.5vw;
   margin-top: 1vw;
 }
 
@@ -460,7 +472,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  padding: 1vw 1vw 1.3vw;
+  padding: 1vw 1.5vw 1.3vw;
 }
 
 
@@ -470,8 +482,11 @@
   font-weight: 600;
   letter-spacing: 0.05vw;
   margin: 0;
-  margin-bottom: 1.6vw;
+  margin-bottom: 3vw;
   text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 1vw;
+  text-decoration-thickness: 1px;
 }
 
 .toolsContainer {
