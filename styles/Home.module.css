@@ -579,7 +579,7 @@
   letter-spacing:0.05em;
   margin: 0;
   text-align: center;
-  line-height: 150%;
+  line-height: 160%;
 }
 
 
@@ -593,6 +593,12 @@ position: relative;
 .projectImg {
   border-radius: 0.5vw;
   object-fit: contain;
+}
+
+.boostUpVideo {
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
 }
 
 

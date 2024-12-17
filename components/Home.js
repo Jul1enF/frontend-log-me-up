@@ -161,7 +161,7 @@ function Home() {
 
       <div className={styles.headerContainer}>
 
-        {/* <video src="/Header-Video.mp4" className={backgroundVideo} autoPlay={true} loop={true} muted={true} ></video> */}
+        <video src="/Header-Video.mp4" className={backgroundVideo} autoPlay={true} loop={true} muted={true} ></video>
 
         <div className={titleBackground}>
           <div className={gradientBackgroundHeader}>
@@ -371,9 +371,11 @@ function Home() {
 
               <div className={styles.squareGradient2}>
                 <h6 className={styles.projectTitle}>Boost Up</h6>
-                <div className={styles.projectImgContainer}></div>
+                <div className={styles.projectImgContainer} style={{cursor : "auto"}}>
+                  <video src="/Test Boost Up.mp4" className={styles.boostUpVideo} autoPlay={true} loop={true} muted={true} ></video>
+                </div>
                 <p className={styles.projectSubtitle}>
-                  Appli fitness pour l'entreprise KevFit, bientôt sur App Store et Google Play.
+                  Appli fitness / actu pour l'entreprise KevFit, bientôt sur App Store et Google Play.
                 </p>
               </div>
 
