@@ -22,11 +22,25 @@ import { SiAdobeillustrator } from "react-icons/si";
 
 
 function Home() {
+   // États pour setter les timings d'animation
+
+   const [animationsBegin, setAnimationsBegin] = useState(false)
+   const [animations2Begin, setAnimations2Begin] = useState(false)
+   const [animations3Begin, setAnimations3Begin] = useState(false)
+   const [animations4Begin, setAnimations4Begin] = useState(false)
+   const [animations5Begin, setAnimations5Begin] = useState(false)
+   const [animationsEnd, setAnimationsEnd] = useState(false)
+
+
+
 
   // Listener taille de la fenêtre pour enregistrement vw
 
   const [vw, setVw] = useState(0);
   const [vh, setVh] = useState(0)
+  if (vh === 0 && vw === 0 && typeof window !== "undefined"){ setVw(window.innerWidth / 100);
+    setVh(window.innerHeight / 100)
+  }
 
   useEffect(() => {
     const handleResize = () => {
@@ -46,10 +60,16 @@ function Home() {
 
 
   const [scrollOffset, setScrollOffset] = useState(0)
+  console.log("SCROLL OFFSET :", scrollOffset)
 
   let headerStyle = {}
+  let mainContainerStyle = {}
 
+  if (animations5Begin) {
+    headerStyle = { height: 25 * vw - scrollOffset * vw }
 
+    mainContainerStyle = { height: 100 * vh - 25 * vw - 4 + scrollOffset * vw }
+  }
 
 
 
@@ -79,18 +99,6 @@ function Home() {
     setTimeout(() => setAnimationsEnd(true), 11000)
 
   }, [])
-
-
-
-  // États pour setter les timings d'animation
-
-  const [animationsBegin, setAnimationsBegin] = useState(false)
-  const [animations2Begin, setAnimations2Begin] = useState(false)
-  const [animations3Begin, setAnimations3Begin] = useState(false)
-  const [animations4Begin, setAnimations4Begin] = useState(false)
-  const [animations5Begin, setAnimations5Begin] = useState(false)
-  const [animationsEnd, setAnimationsEnd] = useState(false)
-
 
 
 
@@ -166,6 +174,13 @@ function Home() {
       setCategory("projects")
     }
 
+    // Enregistrement scrollOffset
+
+    if (height / vw <= 15 * 0.4) {
+      setScrollOffset(scrollOffset => height / 0.4 / vw)
+    }
+    else if (scrollOffset !== 15 || scrollOffset !== 0) { setScrollOffset(scrollOffset => 15) }
+
   }
 
 
@@ -192,7 +207,7 @@ function Home() {
   return (
     <div className={styles.body}>
 
-      <div className={styles.headerContainer} >
+      <div className={styles.headerContainer} style={headerStyle}>
 
         <video src="/Header-Video.mp4" className={backgroundVideo} autoPlay={true} loop={true} muted={true} ></video>
 
@@ -210,7 +225,7 @@ function Home() {
       </div>
 
 
-      <div className={styles.mainContainer}>
+      <div className={styles.mainContainer} style={mainContainerStyle}>
 
 
         <div className={modal}>
@@ -241,14 +256,14 @@ function Home() {
 
 
           <h3 className={styles.categoryTitle} ref={(m) => categoriesRef.current.about = m} >Présentation</h3>
-          <div className={styles.gradientTextContainer}>
+          <div className={styles.gradientTextContainer2}>
             <h4 className={styles.categorySubtitle}>À propos de moi</h4>
           </div>
 
 
-          {/* <div className={styles.avatarContainer}>
-            <Image src="/avatar.png" alt="icone d'un avatar de personnage" layout="fill" objectFit='cover' className={styles.avatar} ></Image>
-          </div> */}
+          <div className={styles.avatarContainer}>
+            <Image src="/ju.jpg" alt="icone d'un avatar de personnage" fill={true} className={styles.avatar} ></Image>
+          </div>
 
 
           <div className={styles.categoryDetailsContainer}>
