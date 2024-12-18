@@ -23,6 +23,36 @@ import { SiAdobeillustrator } from "react-icons/si";
 
 function Home() {
 
+  // Listener taille de la fenêtre pour enregistrement vw
+
+  const [vw, setVw] = useState(0);
+  const [vh, setVh] = useState(0)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setVw(window.innerWidth / 100);
+      setVh(window.innerHeight / 100)
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+
+
+  // État pour enregistrer le scroll offset et changements de style en fonction du scroll et de la taille du header
+
+
+  const [scrollOffset, setScrollOffset] = useState(0)
+
+  let headerStyle = {}
+
+
+
+
+
 
   // useRef pour scroller jusqu'à la catégorie choisie
 
@@ -46,9 +76,53 @@ function Home() {
     setTimeout(() => setAnimations3Begin(true), 1900)
     setTimeout(() => setAnimations4Begin(true), 2800)
     setTimeout(() => setAnimations5Begin(true), 3300)
-    setTimeout(() => setAnimationsEnd(true), 10000)
+    setTimeout(() => setAnimationsEnd(true), 11000)
 
   }, [])
+
+
+
+  // États pour setter les timings d'animation
+
+  const [animationsBegin, setAnimationsBegin] = useState(false)
+  const [animations2Begin, setAnimations2Begin] = useState(false)
+  const [animations3Begin, setAnimations3Begin] = useState(false)
+  const [animations4Begin, setAnimations4Begin] = useState(false)
+  const [animations5Begin, setAnimations5Begin] = useState(false)
+  const [animationsEnd, setAnimationsEnd] = useState(false)
+
+
+
+
+  // Variable de className pour changement de styles pour les animations
+
+  let titleBackground = !animationsBegin ? styles.titleBackground1 : styles.titleBackground2
+
+  const gradientBackgroundHeader = !animationsBegin ? styles.gradientBackgroundHeader1 : styles.gradientBackgroundHeader2
+
+  let headerGradientLine = !animationsBegin ? styles.headerGradientLine1 : styles.headerGradientLine2
+
+  let modal = !animations3Begin ? styles.modal1 : styles.modal2
+
+  const buttonContainer = !animations4Begin ? styles.buttonContainer1 : styles.buttonContainer2
+
+
+  let rightContainer = !animations5Begin ? styles.rightContainer1 : styles.rightContainer2
+
+  let backgroundVideo = !animations2Begin ? styles.backgroundVideo0 : styles.backgroundVideo1
+
+  if (animations3Begin) { backgroundVideo = styles.backgroundVideo2 }
+
+
+  if (animationsEnd) {
+    titleBackground = styles.titleBackground3
+    headerGradientLine = styles.headerGradientLine3
+    modal = styles.modal3
+    rightContainer = styles.rightContainer3
+    backgroundVideo = styles.backgroundVideo3
+  }
+
+
 
 
 
@@ -73,7 +147,7 @@ function Home() {
 
 
 
-  // Fonction déclenchée en scrollant dans rightContainer pour actualiser la catégorie choisie
+  // Fonction déclenchée en scrollant dans rightContainer pour actualiser la catégorie choisie et enregister le scroll offset
 
   const handleScroll = (height) => {
     const skillsHeight = categoriesRef.current.skills.offsetTop
@@ -96,48 +170,6 @@ function Home() {
 
 
 
-
-
-  // États pour setter les timings d'animation
-
-  const [animationsBegin, setAnimationsBegin] = useState(false)
-  const [animations2Begin, setAnimations2Begin] = useState(false)
-  const [animations3Begin, setAnimations3Begin] = useState(false)
-  const [animations4Begin, setAnimations4Begin] = useState(false)
-  const [animations5Begin, setAnimations5Begin] = useState(false)
-  const [animationsEnd, setAnimationsEnd] = useState(false)
-
-
-
-  // Variable de className pour changement de styles pour les animations
-
-  let titleBackground = !animationsBegin ? styles.titleBackground1 : styles.titleBackground2
-
-  const gradientBackgroundHeader = !animationsBegin ? styles.gradientBackgroundHeader1 : styles.gradientBackgroundHeader2
-
-  let headerGradientLine = !animationsBegin ? styles.headerGradientLine1 : styles.headerGradientLine2
-
-  let modal = !animations3Begin ? styles.modal1 : styles.modal2
-
-  const buttonContainer = !animations4Begin ? styles.buttonContainer1 : styles.buttonContainer2
-
-
-  let rightContainer = !animations5Begin ? styles.rightContainer1 : styles.rightContainer2
-
-  let backgroundVideo = !animations4Begin ? styles.backgroundVideo0 : styles.backgroundVideo1
-
-  if (animations5Begin) { backgroundVideo = styles.backgroundVideo2 }
-
-
-  if (animationsEnd) {
-    titleBackground = styles.titleBackground3
-    headerGradientLine = styles.headerGradientLine3
-    modal = styles.modal3
-    rightContainer = styles.rightContainer3
-    backgroundVideo = styles.backgroundVideo3
-  }
-
-
   // Affichage conditionnel des boutons et de leurs lignes en fonction de la catégorie sélectionnée
 
   const categoryButton1 = category === "about" ? styles.button2 : styles.button1
@@ -156,10 +188,11 @@ function Home() {
 
 
 
+
   return (
     <div className={styles.body}>
 
-      <div className={styles.headerContainer}>
+      <div className={styles.headerContainer} >
 
         <video src="/Header-Video.mp4" className={backgroundVideo} autoPlay={true} loop={true} muted={true} ></video>
 
@@ -371,7 +404,7 @@ function Home() {
 
               <div className={styles.squareGradient2}>
                 <h6 className={styles.projectTitle}>Boost Up</h6>
-                <div className={styles.projectImgContainer} style={{cursor : "auto"}}>
+                <div className={styles.projectImgContainer} style={{ cursor: "auto" }}>
                   <video src="/Test Boost Up.mp4" className={styles.boostUpVideo} autoPlay={true} loop={true} muted={true} ></video>
                 </div>
                 <p className={styles.projectSubtitle}>

@@ -9,6 +9,8 @@
 
 .headerContainer {
   width: 100vw;
+  /* height: 13.5vw; */
+  /* height: 9.5vw; */
   height: 11.5vw;
   display: flex;
   justify-content: center;
@@ -48,7 +50,7 @@
   object-position: top;
   z-index: -1;
   opacity: 0.9;
-  transition-duration: 5s;
+  transition-duration: 9s;
 }
 
 .backgroundVideo3 {
@@ -65,7 +67,7 @@
   background-color: rgba(233, 227, 235, 0);
   height: fit-content;
   width: fit-content;
-  padding : 0.2vw 1.2vw 0.2vw;
+  padding : 0.1vw 1vw 0.1vw;
   border-radius: 0.7vw;
 }
 
@@ -73,7 +75,8 @@
   background-color: rgba(233, 227, 235, 0.85);
   height: fit-content;
   width: fit-content;
-  padding : 0.2vw 1.2vw 0.2vw;
+  /* padding : 0.2vw 1.2vw 0.2vw; */
+  padding : 0.1vw 1vw 0.1vw;
   border-radius: 0.7vw;
   transition-duration: 5.2s;
 }
@@ -82,7 +85,7 @@
   background-color: rgba(233, 227, 235, 0.85);
   height: fit-content;
   width: fit-content;
-  padding : 0.2vw 1.2vw 0.2vw;
+  padding : 0.1vw 1vw 0.1vw;
   border-radius: 0.7vw;
   transition-duration: 0s;
 }
@@ -115,7 +118,7 @@
 }
 
 .title {
-  font-size: 3.7vw;
+  font-size: 3.2vw;
   font-weight: 750;
   letter-spacing: 0.25vw;
   line-height: 4.3vw;
@@ -126,7 +129,7 @@
 }
 
 .subTitle {
-  font-size: 1.55vw;
+  font-size: 1.4vw;
   font-weight: 700;
   color: transparent;
   margin: 0;
@@ -179,7 +182,7 @@
   position: relative;
   margin-top: calc(-100vh + 10vw);
   width: 23vw;
-  height: calc(100vh - 11.5vw - 4px);
+  height: 100%;
   /* background: linear-gradient(90deg, rgb(19, 19, 19), rgb(25, 25, 25)); */
   background: linear-gradient(90deg, rgb(13, 13, 13), rgb(23, 23, 23));
   border-bottom-right-radius: 1vw;
@@ -205,7 +208,7 @@
   position: relative;
   margin-top: 0;
   width: 23vw;
-  height: calc(100vh - 11.5vw - 4px);
+  height: 100%;
   background: linear-gradient(90deg, rgb(10, 10, 10), rgb(21, 21, 21));
   transition-duration: 1.3s;
   border-bottom-right-radius: 1vw;
@@ -224,7 +227,7 @@
   position: relative;
   margin-top: 0;
   width: 23vw;
-  height: calc(100vh - 11.5vw - 4px);
+  height: 100%;
   background: linear-gradient(90deg, rgb(10, 10, 10), rgb(21, 21, 21));
   border-bottom-right-radius: 1vw;
   border-top-right-radius: 1vw;
@@ -316,7 +319,7 @@
 
 .rightContainer1 {
   width: 77vw;
-  height: calc(100vh - 11.5vw - 4px);
+  height: 100%;
   display: flex;
   flex-direction: column;
   padding : 4.5vw 6vw;
@@ -326,7 +329,7 @@
 
 .rightContainer2 {
   width: 77vw;
-  height: calc(100vh - 11.5vw - 4px);
+  height: 100%;
   display: flex;
   flex-direction: column;
   /* padding-left: 4.5vw; */
@@ -339,7 +342,7 @@
 
 .rightContainer3 {
   width: 77vw;
-  height: calc(100vh - 11.5vw - 4px);
+  height: 100%;
   display: flex;
   flex-direction: column;
   /* padding-left: 4.5vw; */
