@@ -22,23 +22,24 @@ import { SiAdobeillustrator } from "react-icons/si";
 
 
 function Home() {
-   // États pour setter les timings d'animation
+  // États pour setter les timings d'animation
 
-   const [animationsBegin, setAnimationsBegin] = useState(false)
-   const [animations2Begin, setAnimations2Begin] = useState(false)
-   const [animations3Begin, setAnimations3Begin] = useState(false)
-   const [animations4Begin, setAnimations4Begin] = useState(false)
-   const [animations5Begin, setAnimations5Begin] = useState(false)
-   const [animationsEnd, setAnimationsEnd] = useState(false)
-
-
+  const [animationsBegin, setAnimationsBegin] = useState(false)
+  const [animations2Begin, setAnimations2Begin] = useState(false)
+  const [animations3Begin, setAnimations3Begin] = useState(false)
+  const [animations4Begin, setAnimations4Begin] = useState(false)
+  const [animations5Begin, setAnimations5Begin] = useState(false)
+  const [animationsEnd, setAnimationsEnd] = useState(false)
 
 
-  // Listener taille de la fenêtre pour enregistrement vw
+
+
+  // Listener taille de la fenêtre pour enregistrement vw et vh
 
   const [vw, setVw] = useState(0);
   const [vh, setVh] = useState(0)
-  if (vh === 0 && vw === 0 && typeof window !== "undefined"){ setVw(window.innerWidth / 100);
+  if (vh === 0 && vw === 0 && typeof window !== "undefined") {
+    setVw(window.innerWidth / 100);
     setVh(window.innerHeight / 100)
   }
 
@@ -56,20 +57,73 @@ function Home() {
 
 
 
-  // État pour enregistrer le scroll offset et changements de style en fonction du scroll et de la taille du header
+
+  // État et variables pour enregistrer le scroll offset et les changements de style
 
 
   const [scrollOffset, setScrollOffset] = useState(0)
-  console.log("SCROLL OFFSET :", scrollOffset)
 
+  let bodyStyle = {}
   let headerStyle = {}
-  let mainContainerStyle = {}
+  let videoStyle = {}
+  let titleBgStyle = {}
+  let lineStyle = {}
+  let modalStyle = {}
+  let rightContainerStyle = {}
 
-  if (animations5Begin) {
-    headerStyle = { height: 25 * vw - scrollOffset * vw }
 
-    mainContainerStyle = { height: 100 * vh - 25 * vw - 4 + scrollOffset * vw }
+
+
+
+  // Styles conditionnels en fonction du scroll et de la taille du header
+
+
+  // Le header n'a pas encore sa taille def
+  if (scrollOffset > 0 && scrollOffset < 50 * vh - 10 * vw){
+    bodyStyle = {paddingTop : scrollOffset, transitionDuration : "0s"}
+
+    headerStyle = { height: 50 * vh - scrollOffset, transitionDuration : "0s"}
+
+    modalStyle = { height: 50 * vh + scrollOffset, paddingTop : 5*vh + scrollOffset/3, transitionDuration : "0s" }
+
+    const opacityRatio = 1 - scrollOffset / (50 * vh - 10 * vw)
+    
+    titleBgStyle = { transitionDuration : "0s", backgroundColor : `rgba(233, 227, 235, ${(0.85 * opacityRatio).toFixed(2)})`}
+
+    videoStyle = {transitionDuration : "0s", opacity : `${0.95 * opacityRatio}`}
   }
+  // Le header a sa taille def
+  else if (vw && scrollOffset === 50 * vh - 10 * vw){
+    bodyStyle = {paddingTop : scrollOffset + 10*vw + 4, transitionDuration : "0s"}
+
+    headerStyle = { height: 50 * vh - scrollOffset, transitionDuration : "0s", position  : "absolute", top : 0}
+
+    modalStyle = { height: 50 * vh + scrollOffset, paddingTop : 5*vh + scrollOffset/3, transitionDuration : "0s", position : "absolute", top : 10*vw + 4 }
+
+    lineStyle= {position : "absolute", top : 10*vw, transitionDuration : "0S"}
+
+    rightContainerStyle={ paddingLeft : 29 * vw, width : 100 * vw, transitionDuration : "0S"}
+
+    titleBgStyle = { backgroundColor : `rgba(233, 227, 235, 0)`}
+
+    videoStyle = {transitionDuration : "0s", opacity : 0}
+  }
+
+
+
+
+  // Fonction activée en scrollant pour enregister le offset du scroll
+
+  const bodyScroll = (height) => {
+    if (50 * vh - height < 10 * vw && scrollOffset !== 0 && scrollOffset !== 50 * vh - 10 * vw) {
+      setScrollOffset(50 * vh - 10 * vw)
+    }
+    else if (50 * vh - height < 10 * vw) {
+      return
+    }
+    else { setScrollOffset(scrollOffset => height) }
+  }
+
 
 
 
@@ -117,9 +171,9 @@ function Home() {
 
   let rightContainer = !animations5Begin ? styles.rightContainer1 : styles.rightContainer2
 
-  let backgroundVideo = !animations2Begin ? styles.backgroundVideo0 : styles.backgroundVideo1
+  let backgroundVideo = !animationsBegin ? styles.backgroundVideo0 : styles.backgroundVideo1
 
-  if (animations3Begin) { backgroundVideo = styles.backgroundVideo2 }
+  if (animations2Begin) { backgroundVideo = styles.backgroundVideo2 }
 
 
   if (animationsEnd) {
@@ -176,10 +230,10 @@ function Home() {
 
     // Enregistrement scrollOffset
 
-    if (height / vw <= 15 * 0.4) {
-      setScrollOffset(scrollOffset => height / 0.4 / vw)
-    }
-    else if (scrollOffset !== 15 || scrollOffset !== 0) { setScrollOffset(scrollOffset => 15) }
+    // if (height / vw <= 15 * 0.4) {
+    //   setScrollOffset(scrollOffset => height / 0.4 / vw)
+    // }
+    // else if (scrollOffset !== 15 || scrollOffset !== 0) { setScrollOffset(scrollOffset => 15) }
 
   }
 
@@ -205,13 +259,13 @@ function Home() {
 
 
   return (
-    <div className={styles.body}>
+    <div className={styles.body} onScroll={(e) => bodyScroll(e.target.scrollTop)} style={bodyStyle}>
 
       <div className={styles.headerContainer} style={headerStyle}>
 
-        <video src="/Header-Video.mp4" className={backgroundVideo} autoPlay={true} loop={true} muted={true} ></video>
+        <video src="/Header-Video.mp4" className={backgroundVideo} style={videoStyle} autoPlay={true} loop={true} muted={true} ></video>
 
-        <div className={titleBackground}>
+        <div className={titleBackground} style={titleBgStyle}>
           <div className={gradientBackgroundHeader}>
             {/* <h1 className={styles.title}>LOG ME UP</h1> */}
             <h1 className={styles.title}>Julien Furic</h1>
@@ -220,15 +274,15 @@ function Home() {
         </div>
       </div>
 
-      <div className={styles.headerLineContainer}>
+      <div className={styles.headerLineContainer} style={lineStyle}>
         <div className={headerGradientLine}></div>
       </div>
 
 
-      <div className={styles.mainContainer} style={mainContainerStyle}>
+      <div className={styles.mainContainer}>
 
 
-        <div className={modal}>
+        <div className={modal} style={modalStyle}>
 
           <div className={buttonContainer}>
             <div className={categoryButton1} onClick={() => categoryClick("about")}>
@@ -252,18 +306,18 @@ function Home() {
         </div>
 
 
-        <div className={rightContainer} ref={categoriesContainerRef} onScroll={(e) => handleScroll(e.target.scrollTop)}>
+        <div className={rightContainer} ref={categoriesContainerRef} style={rightContainerStyle} >
 
 
           <h3 className={styles.categoryTitle} ref={(m) => categoriesRef.current.about = m} >Présentation</h3>
-          <div className={styles.gradientTextContainer2}>
+          <div className={styles.gradientTextContainer}>
             <h4 className={styles.categorySubtitle}>À propos de moi</h4>
           </div>
 
 
-          <div className={styles.avatarContainer}>
+          {/* <div className={styles.avatarContainer}>
             <Image src="/ju.jpg" alt="icone d'un avatar de personnage" fill={true} className={styles.avatar} ></Image>
-          </div>
+          </div> */}
 
 
           <div className={styles.categoryDetailsContainer}>
