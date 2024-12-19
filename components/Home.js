@@ -38,6 +38,7 @@ function Home() {
 
   const [vw, setVw] = useState(0);
   const [vh, setVh] = useState(0)
+
   if (vh === 0 && vw === 0 && typeof window !== "undefined") {
     setVw(window.innerWidth / 100);
     setVh(window.innerHeight / 100)
@@ -47,13 +48,19 @@ function Home() {
     const handleResize = () => {
       setVw(window.innerWidth / 100);
       setVh(window.innerHeight / 100)
+
+      bodyRef.current && bodyRef.current.scroll({
+        top: scrollOffset,
+        behavior : "smooth"
+      })
+
     };
 
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [vw, vh]);
 
 
 
@@ -72,42 +79,47 @@ function Home() {
   let rightContainerStyle = {}
 
 
-
+  console.log("SCROLL OFFSET :", scrollOffset)
+  console.log("LIMIT", 50 * vh - 10 * vw)
 
 
   // Styles conditionnels en fonction du scroll et de la taille du header
 
 
   // Le header n'a pas encore sa taille def
-  if (scrollOffset > 0 && scrollOffset < 50 * vh - 10 * vw){
-    bodyStyle = {paddingTop : scrollOffset, transitionDuration : "0s"}
+  if (scrollOffset > 0 && scrollOffset < 50 * vh - 10 * vw) {
+    !animationsEnd && setAnimationsEnd(true)
 
-    headerStyle = { height: 50 * vh - scrollOffset, transitionDuration : "0s"}
+    bodyStyle = { paddingTop: scrollOffset, transitionDuration: "0s" }
 
-    modalStyle = { height: 50 * vh + scrollOffset -4.5, paddingTop : 8*vh + scrollOffset/3, transitionDuration : "0s" }
+    headerStyle = { height: 50 * vh - scrollOffset, transitionDuration: "0s" }
+
+    modalStyle = { height: 50 * vh + scrollOffset - 4.5, paddingTop: 8 * vh + scrollOffset / 3, transitionDuration: "0s" }
 
     const opacityRatio = 1 - scrollOffset / (50 * vh - 10 * vw)
-    
-    titleBgStyle = { transitionDuration : "0.8s", backgroundColor : `rgba(233, 227, 235, ${(0.85 * opacityRatio).toFixed(2)})`}
 
-    videoStyle = {transitionDuration : "0.8s", opacity : `${0.95 * opacityRatio}`}
+    titleBgStyle = { transitionDuration: "0.8s", backgroundColor: `rgba(233, 227, 235, ${(0.85 * opacityRatio).toFixed(2)})` }
+
+    videoStyle = { transitionDuration: "0.8s", opacity: `${0.95 * opacityRatio}` }
   }
 
   // Le header a sa taille def
-  else if (vw && scrollOffset === 50 * vh - 10 * vw){
-    bodyStyle = {paddingTop : scrollOffset + 10*vw + 4.5, transitionDuration : "0s"}
+  else if (vw && scrollOffset >= 50 * vh - 10 * vw) {
+    const offset = 50 * vh - 10 * vw
 
-    headerStyle = { height: 50 * vh - scrollOffset, transitionDuration : "0s", position  : "absolute", top : 0}
+    bodyStyle = { paddingTop: offset + 10 * vw + 4.5, transitionDuration: "0s" }
 
-    modalStyle = { height: 50 * vh + scrollOffset - 4.5, paddingTop : 8*vh + scrollOffset/3, transitionDuration : "0s", position : "absolute", top : 10*vw + 4.5 }
+    headerStyle = { height: 50 * vh - offset, transitionDuration: "0s", position: "absolute", top: 0 }
 
-    lineStyle= {position : "absolute", top : 10*vw, transitionDuration : "0S"}
+    modalStyle = { height: 50 * vh + offset - 4.5, paddingTop: 8 * vh + offset / 3, transitionDuration: "0s", position: "absolute", top: 10 * vw + 4.5 }
 
-    rightContainerStyle={ paddingLeft : 29 * vw, width : 100 * vw, transitionDuration : "0S"}
+    lineStyle = { position: "absolute", top: 10 * vw, transitionDuration: "0S" }
 
-    titleBgStyle = { backgroundColor : `rgba(233, 227, 235, 0)`, transitionDuration : "0.8s"}
+    rightContainerStyle = { paddingLeft: 29 * vw, width: 100 * vw, transitionDuration: "0S" }
 
-    videoStyle = {transitionDuration : "0.8s", opacity : 0}
+    titleBgStyle = { backgroundColor: `rgba(233, 227, 235, 0)`, transitionDuration: "0.8s" }
+
+    videoStyle = { transitionDuration: "0.8s", opacity: 0 }
   }
 
 
@@ -116,23 +128,24 @@ function Home() {
   // Fonction activée en scrollant pour enregister le offset du scroll
 
   const bodyScroll = (height) => {
-    if (50 * vh - height < 10 * vw && scrollOffset !== 0 && scrollOffset !== 50 * vh - 10 * vw) {
-      setScrollOffset(50 * vh - 10 * vw)
+    setScrollOffset(height)
+
+    const skillsHeight = categoriesRef.current.skills.offsetTop
+    const projectsHeight = categoriesRef.current.projects.offsetTop
+    const containerHeight = rightContainerRef.current.offsetTop
+
+    if (category !== "about" && height < skillsHeight - containerHeight - 4 * vw) {
+      setCategory("about")
     }
-    else if (50 * vh - height < 10 * vw) {
-      return
+
+    if (category !== "skills" && height >= skillsHeight - containerHeight - 4 * vw && height < projectsHeight - containerHeight - 4 * vw) {
+      setCategory("skills")
     }
-    else { setScrollOffset(scrollOffset => height) }
+
+    if (category !== "projects" && height >= projectsHeight - containerHeight - 4 * vw) {
+      setCategory("projects")
+    }
   }
-
-
-
-
-
-  // useRef pour scroller jusqu'à la catégorie choisie
-
-  const categoriesRef = useRef({})
-  const categoriesContainerRef = useRef(null)
 
 
 
@@ -148,16 +161,16 @@ function Home() {
 
     setTimeout(() => setAnimationsBegin(true), 600)
     setTimeout(() => setAnimations2Begin(true), 1000)
-    setTimeout(() => setAnimations3Begin(true), 2700)
-    setTimeout(() => setAnimations4Begin(true), 3300)
-    setTimeout(() => setAnimations5Begin(true), 3600)
-    setTimeout(() => setAnimationsEnd(true), 8000)
+    setTimeout(() => setAnimations3Begin(true), 1800)
+    setTimeout(() => setAnimations4Begin(true), 2400)
+    setTimeout(() => setAnimations5Begin(true), 2700)
+    setTimeout(() => setAnimationsEnd(true), 9000)
 
   }, [])
 
 
 
-  // Variable de className pour changement de styles pour les animations
+  // Variable de className pour changement de styles pour les animations du début
 
   let titleBackground = !animations2Begin ? styles.titleBackground1 : styles.titleBackground2
 
@@ -188,16 +201,22 @@ function Home() {
 
 
 
+  // useRef pour scroller jusqu'à la catégorie choisie
+
+  const categoriesRef = useRef({})
+  const bodyRef = useRef(null)
+  const rightContainerRef = useRef(null)
+
+
+
 
   // Fonction déclenchée en cliquant sur une catégorie pour scroller jusqu'à celle ci
 
   const categoryClick = (cat) => {
     const categoryToScroll = categoriesRef.current[cat]
-    const containerToScroll = categoriesContainerRef.current
+    const containerToScroll = bodyRef.current
 
-    const categoryOffsetTop = categoryToScroll.offsetTop
-    const containerOffsetTop = containerToScroll.offsetTop
-    const distanceToScroll = categoryOffsetTop - containerOffsetTop - 50
+    const distanceToScroll = categoryToScroll.offsetTop - rightContainerRef.current.offsetTop + 50 * vh - 14 * vw
 
     containerToScroll.scroll({
       top: distanceToScroll,
@@ -208,35 +227,6 @@ function Home() {
   }
 
 
-
-
-  // Fonction déclenchée en scrollant dans rightContainer pour actualiser la catégorie choisie et enregister le scroll offset
-
-  const handleScroll = (height) => {
-    const skillsHeight = categoriesRef.current.skills.offsetTop
-    const projectsHeight = categoriesRef.current.projects.offsetTop
-    const containerHeight = categoriesContainerRef.current.offsetTop
-
-    if (category !== "about" && height < skillsHeight - containerHeight - 200) {
-      setCategory("about")
-    }
-
-    if (category !== "skills" && height >= skillsHeight - containerHeight - 200 && height < projectsHeight - containerHeight - 200) {
-      setCategory("skills")
-    }
-
-    if (category !== "projects" && height >= projectsHeight - containerHeight - 200) {
-      setCategory("projects")
-    }
-
-    // Enregistrement scrollOffset
-
-    // if (height / vw <= 15 * 0.4) {
-    //   setScrollOffset(scrollOffset => height / 0.4 / vw)
-    // }
-    // else if (scrollOffset !== 15 || scrollOffset !== 0) { setScrollOffset(scrollOffset => 15) }
-
-  }
 
 
 
@@ -260,9 +250,9 @@ function Home() {
 
 
   return (
-    <div className={styles.body} onScroll={(e) => bodyScroll(e.target.scrollTop)} style={bodyStyle}>
+    <div className={styles.body} onScroll={(e) => bodyScroll(e.target.scrollTop)} style={bodyStyle} ref={bodyRef}>
 
-      <div className={styles.headerContainer} style={headerStyle}>
+      <div className={styles.headerContainer} style={headerStyle} >
 
         <video src="/Header-Video.mp4" className={backgroundVideo} style={videoStyle} autoPlay={true} loop={true} muted={true} ></video>
 
@@ -307,7 +297,7 @@ function Home() {
         </div>
 
 
-        <div className={rightContainer} ref={categoriesContainerRef} style={rightContainerStyle} >
+        <div className={rightContainer} style={rightContainerStyle} ref={rightContainerRef} >
 
 
           <h3 className={styles.categoryTitle} ref={(m) => categoriesRef.current.about = m} >Présentation</h3>
