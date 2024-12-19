@@ -84,29 +84,30 @@ function Home() {
 
     headerStyle = { height: 50 * vh - scrollOffset, transitionDuration : "0s"}
 
-    modalStyle = { height: 50 * vh + scrollOffset, paddingTop : 5*vh + scrollOffset/3, transitionDuration : "0s" }
+    modalStyle = { height: 50 * vh + scrollOffset -4.5, paddingTop : 8*vh + scrollOffset/3, transitionDuration : "0s" }
 
     const opacityRatio = 1 - scrollOffset / (50 * vh - 10 * vw)
     
-    titleBgStyle = { transitionDuration : "0s", backgroundColor : `rgba(233, 227, 235, ${(0.85 * opacityRatio).toFixed(2)})`}
+    titleBgStyle = { transitionDuration : "0.8s", backgroundColor : `rgba(233, 227, 235, ${(0.85 * opacityRatio).toFixed(2)})`}
 
-    videoStyle = {transitionDuration : "0s", opacity : `${0.95 * opacityRatio}`}
+    videoStyle = {transitionDuration : "0.8s", opacity : `${0.95 * opacityRatio}`}
   }
+
   // Le header a sa taille def
   else if (vw && scrollOffset === 50 * vh - 10 * vw){
-    bodyStyle = {paddingTop : scrollOffset + 10*vw + 4, transitionDuration : "0s"}
+    bodyStyle = {paddingTop : scrollOffset + 10*vw + 4.5, transitionDuration : "0s"}
 
     headerStyle = { height: 50 * vh - scrollOffset, transitionDuration : "0s", position  : "absolute", top : 0}
 
-    modalStyle = { height: 50 * vh + scrollOffset, paddingTop : 5*vh + scrollOffset/3, transitionDuration : "0s", position : "absolute", top : 10*vw + 4 }
+    modalStyle = { height: 50 * vh + scrollOffset - 4.5, paddingTop : 8*vh + scrollOffset/3, transitionDuration : "0s", position : "absolute", top : 10*vw + 4.5 }
 
     lineStyle= {position : "absolute", top : 10*vw, transitionDuration : "0S"}
 
     rightContainerStyle={ paddingLeft : 29 * vw, width : 100 * vw, transitionDuration : "0S"}
 
-    titleBgStyle = { backgroundColor : `rgba(233, 227, 235, 0)`}
+    titleBgStyle = { backgroundColor : `rgba(233, 227, 235, 0)`, transitionDuration : "0.8s"}
 
-    videoStyle = {transitionDuration : "0s", opacity : 0}
+    videoStyle = {transitionDuration : "0.8s", opacity : 0}
   }
 
 
@@ -146,11 +147,11 @@ function Home() {
     // Déclenchement des timings d'animation
 
     setTimeout(() => setAnimationsBegin(true), 600)
-    setTimeout(() => setAnimations2Begin(true), 1400)
-    setTimeout(() => setAnimations3Begin(true), 1900)
-    setTimeout(() => setAnimations4Begin(true), 2800)
-    setTimeout(() => setAnimations5Begin(true), 3300)
-    setTimeout(() => setAnimationsEnd(true), 11000)
+    setTimeout(() => setAnimations2Begin(true), 1000)
+    setTimeout(() => setAnimations3Begin(true), 2700)
+    setTimeout(() => setAnimations4Begin(true), 3300)
+    setTimeout(() => setAnimations5Begin(true), 3600)
+    setTimeout(() => setAnimationsEnd(true), 8000)
 
   }, [])
 
@@ -158,7 +159,7 @@ function Home() {
 
   // Variable de className pour changement de styles pour les animations
 
-  let titleBackground = !animationsBegin ? styles.titleBackground1 : styles.titleBackground2
+  let titleBackground = !animations2Begin ? styles.titleBackground1 : styles.titleBackground2
 
   const gradientBackgroundHeader = !animationsBegin ? styles.gradientBackgroundHeader1 : styles.gradientBackgroundHeader2
 

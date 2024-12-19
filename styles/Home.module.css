@@ -52,7 +52,7 @@
   object-position: top;
   z-index: -1;
   opacity: 0.95;
-  transition-duration: 9s;
+  transition-duration: 7s;
 }
 
 .backgroundVideo3 {
@@ -63,14 +63,15 @@
   object-position: top;
   z-index: -1;
   opacity: 0.95;
+  transition-duration: 0.8s;
 }
 
 .titleBackground1 {
   background-color: rgba(233, 227, 235, 0);
   height: fit-content;
   width: fit-content;
-  padding: 0.1vw 1vw 0.1vw;
-  border-radius: 0.7vw;
+  padding: 0.4vw 1.1vw 0.4vw;
+  border-radius: 0.6vw;
 }
 
 .titleBackground2 {
@@ -78,18 +79,18 @@
   height: fit-content;
   width: fit-content;
   /* padding : 0.2vw 1.2vw 0.2vw; */
-  padding: 0.1vw 1vw 0.1vw;
+  padding: 0.4vw 1.1vw 0.4vw;
   border-radius: 0.7vw;
-  transition-duration: 5.2s;
+  transition-duration: 7s;
 }
 
 .titleBackground3 {
   background-color: rgba(233, 227, 235, 0.85);
   height: fit-content;
   width: fit-content;
-  padding: 0.1vw 1vw 0.1vw;
+  padding: 0.4vw 1.1vw 0.4vw;
   border-radius: 0.7vw;
-  transition-duration: 0s;
+  transition-duration: 0.8s;
 }
 
 .gradientBackgroundHeader1 {
@@ -149,23 +150,23 @@
 }
 
 .headerGradientLine1 {
-  min-height: 4px;
+  min-height: 5px;
   width: 0vw;
   background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
   opacity: 0.4;
 }
 
 .headerGradientLine2 {
-  min-height: 4px;
+  min-height: 5px;
   width: 100vw;
   background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
-  transition-duration: 1.5s;
+  transition-duration: 1.3s;
   opacity: 1;
   z-index: 1;
 }
 
 .headerGradientLine3 {
-  min-height: 4px;
+  min-height: 4.5px;
   width: 100vw;
   background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
   opacity: 1;
@@ -183,8 +184,8 @@
   position: relative;
   margin-top: -50vh;
   width: 23vw;
-  height: 50vh;
-  max-height: calc(100vh - 10vw - 4px);
+  height: calc(50vh - 4.5px);
+  max-height: calc(100vh - 10vw -5px);
   /* background: linear-gradient(90deg, rgb(19, 19, 19), rgb(25, 25, 25)); */
   background: linear-gradient(90deg, rgb(13, 13, 13), rgb(23, 23, 23));
   border-bottom-right-radius: 1vw;
@@ -195,7 +196,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding-top: 5vh;
+  padding-top: 8vh;
 }
 
 /* 
@@ -210,10 +211,10 @@
   position: relative;
   margin-top: 0;
   width: 23vw;
-  height: 50vh;
-  max-height: calc(100vh - 10vw - 4px);
+  height: calc(50vh - 4.5px);
+  max-height: calc(100vh - 10vw - 4.5px);
   background: linear-gradient(90deg, rgb(10, 10, 10), rgb(21, 21, 21));
-  transition-duration: 1.3s;
+  transition-duration: 1s;
   border-bottom-right-radius: 1vw;
   border-top-right-radius: 1vw;
   box-shadow: inset -6px -6px 14px rgba(0, 0, 0, 0.6);
@@ -223,15 +224,15 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding-top: 5vh;
+  padding-top: 8vh;
 }
 
 .modal3 {
   position: relative;
   margin-top: 0;
-  max-height: calc(100vh - 10vw - 4px);
+  max-height: calc(100vh - 10vw - 4.5px);
   width: 23vw;
-  height: 50vh;
+  height: calc(50vh - 4.5px);
   background: linear-gradient(90deg, rgb(10, 10, 10), rgb(21, 21, 21));
   border-bottom-right-radius: 1vw;
   border-top-right-radius: 1vw;
@@ -242,7 +243,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding-top: 5vh;
+  padding-top: 8vh;
 }
 
 
@@ -267,7 +268,7 @@
   justify-content: space-around;
   overflow-y: scroll;
   opacity: 1;
-  transition-duration: 1.5s;
+  transition-duration: 1.9s;
 }
 
 .button1 {
@@ -326,10 +327,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding-top: 6vw;
-  padding-right: 6vw;
-  padding-bottom: 6vw;
-  padding-left: 6vw;
+  padding: 7vw 6vw 6vw;
   overflow-y: scroll;
   opacity: 0;
 }
@@ -339,10 +337,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding-top: 6vw;
-  padding-right: 6vw;
-  padding-bottom: 6vw;
-  padding-left: 6vw;
+  padding: 7vw 6vw 6vw;
   overflow-y: scroll;
   scrollbar-width: thin;
   scrollbar-color: grey black;
