@@ -51,7 +51,7 @@ function Home() {
 
       bodyRef.current && bodyRef.current.scroll({
         top: scrollOffset,
-        behavior : "smooth"
+        behavior: "smooth"
       })
 
     };
@@ -69,6 +69,7 @@ function Home() {
 
 
   const [scrollOffset, setScrollOffset] = useState(0)
+  const offset = vw ? 50 * vh - 10 * vw : 0
 
   let bodyStyle = {}
   let headerStyle = {}
@@ -78,9 +79,6 @@ function Home() {
   let modalStyle = {}
   let rightContainerStyle = {}
 
-
-  console.log("SCROLL OFFSET :", scrollOffset)
-  console.log("LIMIT", 50 * vh - 10 * vw)
 
 
   // Styles conditionnels en fonction du scroll et de la taille du header
@@ -105,7 +103,6 @@ function Home() {
 
   // Le header a sa taille def
   else if (vw && scrollOffset >= 50 * vh - 10 * vw) {
-    const offset = 50 * vh - 10 * vw
 
     bodyStyle = { paddingTop: offset + 10 * vw + 4.5, transitionDuration: "0s" }
 
@@ -130,11 +127,16 @@ function Home() {
   const bodyScroll = (height) => {
     setScrollOffset(height)
 
+    const aboutHeight = categoriesRef.current.about.offsetTop
     const skillsHeight = categoriesRef.current.skills.offsetTop
     const projectsHeight = categoriesRef.current.projects.offsetTop
     const containerHeight = rightContainerRef.current.offsetTop
 
-    if (category !== "about" && height < skillsHeight - containerHeight - 4 * vw) {
+    if (category !== "home" && height < aboutHeight - containerHeight + 8 * vw) {
+      setCategory("home")
+    }
+
+    if (category !== "about" && height >= aboutHeight - containerHeight + 8 * vw && height < skillsHeight - containerHeight - 4 * vw) {
       setCategory("about")
     }
 
@@ -151,7 +153,7 @@ function Home() {
 
   // État pour la catégorie choisie
 
-  const [category, setCategory] = useState('about')
+  const [category, setCategory] = useState('home')
 
 
 
@@ -216,7 +218,7 @@ function Home() {
     const categoryToScroll = categoriesRef.current[cat]
     const containerToScroll = bodyRef.current
 
-    const distanceToScroll = categoryToScroll.offsetTop - rightContainerRef.current.offsetTop + 50 * vh - 14 * vw
+    const distanceToScroll = cat === "home" ? 0 : categoryToScroll.offsetTop - rightContainerRef.current.offsetTop + 50 * vh - 14 * vw
 
     containerToScroll.scroll({
       top: distanceToScroll,
@@ -232,11 +234,13 @@ function Home() {
 
   // Affichage conditionnel des boutons et de leurs lignes en fonction de la catégorie sélectionnée
 
+  const categoryButton0 = category === "home" ? styles.button3 : styles.button1
   const categoryButton1 = category === "about" ? styles.button2 : styles.button1
   const categoryButton2 = category === "skills" ? styles.button2 : styles.button1
-  const categoryButton3 = category === "projects" ? styles.button2 : styles.button1
-  const categoryButton4 = category === "contact" ? styles.button2 : styles.button1
+  const categoryButton3 = category === "projects" ? styles.button3 : styles.button1
+  const categoryButton4 = category === "contact" ? styles.button3 : styles.button1
 
+  const categoryLine0 = category === "home" ? styles.categoryLine2 : styles.categoryLine1
 
   const categoryLine1 = category === "about" ? styles.categoryLine2 : styles.categoryLine1
 
@@ -248,9 +252,37 @@ function Home() {
 
 
 
+  // Styles conditionnels pour les containers des compétences
+
+  let skill1
+  let skill2
+  let skill3
+
+  if (categoriesRef.current.skills && scrollOffset + 100 * vh < categoriesRef.current.skills.offsetTop + 17 * vw) {
+    skill1 = { left: -20 * vw, opacity: 0, transitionDuration: "3s", marginRight: 600 }
+    skill2 = { marginRight: -40 * vw, opacity: 0, transitionDuration: "3s" }
+    skill3 = { marginTop: 40 * vw, opacity: 0, transitionDuration: "3s" }
+  }
+
+
+  // Styles conditionnels pour les containers des projets
+
+  let project1 = {}
+  let project2
+
+  if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 17 * vw) {
+    project1 = { width: 12 * vw, height: 12.5 * vw, opacity: 0, transitionDuration: "3s", margin : 6*vw,}
+  }
+
+  if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 44 * vw) {
+    project2 = { width: 12 * vw, height: 12.5 * vw, opacity: 0, transitionDuration: "3s", margin : 6*vw,}
+  }
+
+
+
 
   return (
-    <div className={styles.body} onScroll={(e) => bodyScroll(e.target.scrollTop)} style={bodyStyle} ref={bodyRef}>
+    <div className={styles.body} onScroll={(e) => { bodyScroll(e.target.scrollTop) }} style={bodyStyle} ref={bodyRef}>
 
       <div className={styles.headerContainer} style={headerStyle} >
 
@@ -276,6 +308,10 @@ function Home() {
         <div className={modal} style={modalStyle}>
 
           <div className={buttonContainer}>
+            <div className={categoryButton0} onClick={() => categoryClick("home")}>
+              <div className={categoryLine0}></div>
+              <h5 className={styles.category}>Accueil</h5>
+            </div>
             <div className={categoryButton1} onClick={() => categoryClick("about")}>
               <div className={categoryLine1}></div>
               <h5 className={styles.category}>Présentation</h5>
@@ -356,7 +392,7 @@ function Home() {
 
           <div className={styles.toolsCategoriesContainer1}>
 
-            <div className={styles.rectangleGradient}>
+            <div className={styles.rectangleGradient} style={skill1}>
               <h6 className={styles.skillTitle}>Front-End</h6>
               <div className={styles.toolsContainer}>
 
@@ -389,7 +425,7 @@ function Home() {
 
             </div>
 
-            <div className={styles.rectangleGradient}>
+            <div className={styles.rectangleGradient} style={skill2}>
               <h6 className={styles.skillTitle}>Back-End</h6>
               <div className={styles.toolsContainer}>
 
@@ -422,12 +458,12 @@ function Home() {
 
           <div className={styles.toolsCategoriesContainer2}>
 
-            <div className={styles.rectangleGradient}>
+            <div className={styles.rectangleGradient} style={skill3}>
               <h6 className={styles.skillTitle}>Vidéo / Graphisme</h6>
               <div className={styles.toolsContainer}>
 
                 <div className={styles.tool}>
-                  <p className={styles.toolText}>Premiere Pro</p>
+                  <p className={styles.toolText}>Premiere</p>
                   <SiAdobepremierepro className={styles.toolIcon} />
                 </div>
 
@@ -462,49 +498,50 @@ function Home() {
 
             <div className={styles.projectsLine1}>
 
-              <div className={styles.squareGradient2}>
-                <h6 className={styles.projectTitle}>Boost Up</h6>
-                <div className={styles.projectImgContainer} style={{ cursor: "auto" }}>
-                  <video src="/Test Boost Up.mp4" className={styles.boostUpVideo} autoPlay={true} loop={true} muted={true} ></video>
+                <div className={styles.squareGradient2} style={Object.assign({ cursor: "auto" }, project1)}>
+                  <h6 className={styles.projectTitle}>Boost Up</h6>
+                  <div className={styles.projectImgContainer}>
+                    <video src="/Test Boost Up.mp4" className={styles.boostUpVideo} autoPlay={true} loop={true} muted={true} ></video>
+                  </div>
+                  <p className={styles.projectSubtitle}>
+                    Appli de coaching pour l'entreprise KevFit, bientôt sur App Store et Google Play.
+                  </p>
                 </div>
-                <p className={styles.projectSubtitle}>
-                  Appli fitness / actu pour l'entreprise KevFit, bientôt sur App Store et Google Play.
-                </p>
-              </div>
 
-              <div className={styles.squareGradient2}>
-                <h6 className={styles.projectTitle}>Clothe Me Up</h6>
-                <div className={styles.projectImgContainer}>
-                  <Image alt="Vignette d'un site internet" fill={true} src="/Clothe-Me-Up2.png" className={styles.projectImg} />
+                <div className={styles.squareGradient3}
+                style={project1} >
+                  <h6 className={styles.projectTitle}>Clothe Me Up</h6>
+                  <div className={styles.projectImgContainer}>
+                    <Image alt="Vignette d'un site internet" fill={true} src="/Clothe-Me-Up2.png" className={styles.projectImg} />
+                  </div>
+                  <p className={styles.projectSubtitle}>
+                    Template pour site de e-commerce 100% fonctionnel.
+                  </p>
                 </div>
-                <p className={styles.projectSubtitle}>
-                  Template pour site de e-commerce 100% fonctionnel.
-                </p>
-              </div>
 
             </div>
 
             <div className={styles.projectsLine1}>
 
-              <div className={styles.squareGradient2}>
-                <h6 className={styles.projectTitle}>Kairos</h6>
-                <div className={styles.projectImgContainer}>
-                  <Image alt="Vignette d'un site internet" fill={true} src="/Kairos.png" className={styles.projectImg} />
+                <div className={styles.squareGradient2} style={project2}>
+                  <h6 className={styles.projectTitle}>Kairos</h6>
+                  <div className={styles.projectImgContainer}>
+                    <Image alt="Vignette d'un site internet" fill={true} src="/Kairos.png" className={styles.projectImg} />
+                  </div>
+                  <p className={styles.projectSubtitle}>
+                    Site web pour réaliser une étude de marché (projet de fin de formation).
+                  </p>
                 </div>
-                <p className={styles.projectSubtitle}>
-                  Projet de fin d'étude visant à réaliser une étude de marché.
-                </p>
-              </div>
-
-              <div className={styles.squareGradient2}>
-                <h6 className={styles.projectTitle}>Hackatweet</h6>
-                <div className={styles.projectImgContainer}>
-                  <Image alt="Vignette d'un site internet" fill={true} src="/Hackatweet.png" className={styles.projectImg} />
+            
+                <div className={styles.squareGradient3} style={project2}>
+                  <h6 className={styles.projectTitle}>Hackatweet</h6>
+                  <div className={styles.projectImgContainer}>
+                    <Image alt="Vignette d'un site internet" fill={true} src="/Hackatweet.png" className={styles.projectImg} />
+                  </div>
+                  <p className={styles.projectSubtitle}>
+                    Exercice de cours, réplique d'un réseau social.
+                  </p>
                 </div>
-                <p className={styles.projectSubtitle}>
-                  Exercice de cours, réplique d'un réseau social.
-                </p>
-              </div>
 
             </div>
 
