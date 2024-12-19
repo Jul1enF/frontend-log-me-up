@@ -69,6 +69,8 @@ function Home() {
 
 
   const [scrollOffset, setScrollOffset] = useState(0)
+
+  // Offset à ne pas dépasser pour que le Header ne fasse pas moins de 10vw
   const offset = vw ? 50 * vh - 10 * vw : 0
 
   let bodyStyle = {}
@@ -85,7 +87,7 @@ function Home() {
 
 
   // Le header n'a pas encore sa taille def
-  if (scrollOffset > 0 && scrollOffset < 50 * vh - 10 * vw) {
+  if (scrollOffset > 0 && scrollOffset < offset) {
     !animationsEnd && setAnimationsEnd(true)
 
     bodyStyle = { paddingTop: scrollOffset, transitionDuration: "0s" }
@@ -94,7 +96,7 @@ function Home() {
 
     modalStyle = { height: 50 * vh + scrollOffset - 4.5, paddingTop: 8 * vh + scrollOffset / 3, transitionDuration: "0s" }
 
-    const opacityRatio = 1 - scrollOffset / (50 * vh - 10 * vw)
+    const opacityRatio = 1 - scrollOffset / (offset)
 
     titleBgStyle = { transitionDuration: "0.8s", backgroundColor: `rgba(233, 227, 235, ${(0.85 * opacityRatio).toFixed(2)})` }
 
@@ -102,7 +104,7 @@ function Home() {
   }
 
   // Le header a sa taille def
-  else if (vw && scrollOffset >= 50 * vh - 10 * vw) {
+  else if (vw && scrollOffset >= offset) {
 
     bodyStyle = { paddingTop: offset + 10 * vw + 4.5, transitionDuration: "0s" }
 
@@ -261,7 +263,7 @@ function Home() {
   if (categoriesRef.current.skills && scrollOffset + 100 * vh < categoriesRef.current.skills.offsetTop + 17 * vw) {
     skill1 = { left: -20 * vw, opacity: 0, transitionDuration: "3s", marginRight: 600 }
     skill2 = { marginRight: -40 * vw, opacity: 0, transitionDuration: "3s" }
-    skill3 = { marginTop: 40 * vw, opacity: 0, transitionDuration: "3s" }
+    skill3 = { marginTop: 10 * vw, opacity: 0, transitionDuration: "3s" }
   }
 
 
@@ -271,11 +273,11 @@ function Home() {
   let project2
 
   if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 17 * vw) {
-    project1 = { width: 12 * vw, height: 12.5 * vw, opacity: 0, transitionDuration: "3s", margin : 6*vw,}
+    project1 = { width: 18 * vw, height: 19.2 * vw, opacity: 0, transitionDuration: "3s", margin : 3*vw,}
   }
 
   if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 44 * vw) {
-    project2 = { width: 12 * vw, height: 12.5 * vw, opacity: 0, transitionDuration: "3s", margin : 6*vw,}
+    project2 = { width: 18 * vw, height: 19.2 * vw, opacity: 0, transitionDuration: "3s", margin : 3*vw,}
   }
 
 
@@ -286,7 +288,7 @@ function Home() {
 
       <div className={styles.headerContainer} style={headerStyle} >
 
-        <video src="/Header-Video.mp4" className={backgroundVideo} style={videoStyle} autoPlay={true} loop={true} muted={true} ></video>
+        <video src="/Header-Video-1.1.mp4" className={backgroundVideo} style={videoStyle} autoPlay={true} loop={true} muted={true} ></video>
 
         <div className={titleBackground} style={titleBgStyle}>
           <div className={gradientBackgroundHeader}>
