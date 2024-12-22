@@ -1,6 +1,8 @@
 import styles from '../styles/Home.module.css';
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image';
+import Link from 'next/link';
+
 import { Laptop } from 'react-bootstrap-icons';
 import { Phone } from 'react-bootstrap-icons';
 import { Palette } from 'react-bootstrap-icons';
@@ -19,6 +21,7 @@ import { SiAdobepremierepro } from "react-icons/si";
 import { SiAdobeaftereffects } from "react-icons/si";
 import { SiAdobephotoshop } from "react-icons/si";
 import { SiAdobeillustrator } from "react-icons/si";
+import { HiMiniXMark } from "react-icons/hi2";
 
 
 function Home() {
@@ -124,7 +127,7 @@ function Home() {
 
 
 
-  // Fonction activée en scrollant pour enregister le offset du scroll
+  // Fonction activée en scrollant pour enregister le offset du scroll et enregistrer la catégorie visionnée
 
   const bodyScroll = (height) => {
     setScrollOffset(height)
@@ -193,7 +196,7 @@ function Home() {
 
   if (animations2Begin) { backgroundVideo = styles.backgroundVideo2 }
 
-
+  // Nouvelles classeName avec réglages def et plus de transition duration pour les cas de resize de la fenêtre
   if (animationsEnd) {
     titleBackground = styles.titleBackground3
     headerGradientLine = styles.headerGradientLine3
@@ -269,16 +272,57 @@ function Home() {
 
   // Styles conditionnels pour les containers des projets
 
-  let project1 = {}
+  let project1
   let project2
+  let project3
 
   if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 17 * vw) {
-    project1 = { width: 18 * vw, height: 19.2 * vw, opacity: 0, transitionDuration: "3s", margin : 3*vw,}
+    project1 = { width: 18 * vw, height: 19.2 * vw, opacity: 0, transitionDuration: "3s", margin: 3 * vw }
   }
 
   if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 44 * vw) {
-    project2 = { width: 18 * vw, height: 19.2 * vw, opacity: 0, transitionDuration: "3s", margin : 3*vw,}
+    project2 = { width: 18 * vw, height: 19.2 * vw, opacity: 0, transitionDuration: "3s", margin: 3 * vw, }
   }
+
+  if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 74 * vw) {
+    project3 = { width: 18 * vw, height: 19.2 * vw, opacity: 0, transitionDuration: "3s", margin: 3 * vw, }
+  }
+
+
+
+
+
+  // États et styles conditionnel pour l'affichage des modals et de leur masque
+
+  const [modal1Visible, setModal1Visible] = useState(false)
+  const [modal2Visible, setModal2Visible] = useState(false)
+
+  const modal1Ref = useRef(null)
+
+  const modal1ViewportOffset =  modal1Ref.current && modal1Ref.current.offsetTop - scrollOffset
+
+  const modal1Style = modal1Visible ? {top : - modal1ViewportOffset + 8 * vw, } : {}
+
+  const mask1 = modal1Visible ? styles.maskOn : styles.maskOff
+  const modal1 = modal1Visible ? styles.squareGradient5 : styles.squareGradient4
+
+  const videoContainer1Style = modal1Visible ? styles.projectVideoContainer : styles.projectImgContainer
+
+
+
+  const modal2Ref = useRef(null)
+
+  const modal2ViewportOffset =  modal2Ref.current && modal2Ref.current.offsetTop - scrollOffset
+
+  const modal2Style = modal2Visible ? {top : - modal2ViewportOffset + 8 * vw, } : {}
+
+  const mask2 = modal2Visible ? styles.maskOn : styles.maskOff
+  const modal2 = modal2Visible ? styles.squareGradient5 : styles.squareGradient4
+
+  const videoContainer2Style = modal2Visible ? styles.projectVideoContainer : styles.projectImgContainer
+
+
+
 
 
 
@@ -292,7 +336,6 @@ function Home() {
 
         <div className={titleBackground} style={titleBgStyle}>
           <div className={gradientBackgroundHeader}>
-            {/* <h1 className={styles.title}>LOG ME UP</h1> */}
             <h1 className={styles.title}>Julien Furic</h1>
             <h3 className={styles.subTitle}>Développeur d'applications web et mobile</h3>
           </div>
@@ -496,56 +539,129 @@ function Home() {
             <h4 className={styles.categorySubtitle}>Quelques exemples de mon travail</h4>
           </div>
 
-          <div className={styles.projectsContainer}>
+          <div className={styles.projectsLine1} ref={modal1Ref}>
 
-            <div className={styles.projectsLine1}>
+            <div className={mask1} onClick={() => {
+              modal1Visible && setModal1Visible(false)
+            }}></div>
 
-                <div className={styles.squareGradient2} style={Object.assign({ cursor: "auto" }, project1)}>
-                  <h6 className={styles.projectTitle}>Boost Up</h6>
-                  <div className={styles.projectImgContainer}>
-                    <video src="/Test Boost Up.mp4" className={styles.boostUpVideo} autoPlay={true} loop={true} muted={true} ></video>
-                  </div>
-                  <p className={styles.projectSubtitle}>
-                    Appli de coaching pour l'entreprise KevFit, bientôt sur App Store et Google Play.
-                  </p>
-                </div>
+            <div className={styles.squareGradient2} style={project1} onClick={() => {
+              !modal1Visible && setModal1Visible(true)
+            }} >
+              <h6 className={styles.projectTitle}>Boost Up</h6>
+              <div className={videoContainer1Style}>
+                <video src="/BoostUp.mp4" className={styles.projectVideo} autoPlay={true} loop={true} muted={true} alt="vidéo d'un site internet"></video>
+              </div>
+              <p className={styles.projectSubtitle}>
+                Appli de coaching pour l'entreprise KevFit, bientôt sur App Store et Google Play.
+              </p>
+            </div>
+            <div className={modal1} style={modal1Style} >
+              <h6 className={styles.projectTitle}>Boost Up</h6>
+              <HiMiniXMark  className={styles.closeIcon} onClick={()=>setModal1Visible(false)} style={!modal1Visible && {opacity : 0, transitionDuration : "0.3s"}}/>
+              <div className={videoContainer1Style}>
+                <video src="/BoostUp.mp4" className={styles.projectVideo} autoPlay={true} loop={true} muted={true} alt="vidéo d'un site internet" ></video>
+              </div>
+              <p className={styles.projectSubtitle}>
+                Appli de coaching pour l'entreprise KevFit, bientôt sur App Store et Google Play.
+              </p>
+            </div>
 
-                <div className={styles.squareGradient3}
+            <Link href='https://frontend-clothe-me-up.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
+              <div className={styles.squareGradient3}
                 style={project1} >
-                  <h6 className={styles.projectTitle}>Clothe Me Up</h6>
-                  <div className={styles.projectImgContainer}>
-                    <Image alt="Vignette d'un site internet" fill={true} src="/Clothe-Me-Up2.png" className={styles.projectImg} />
-                  </div>
-                  <p className={styles.projectSubtitle}>
-                    Template pour site de e-commerce 100% fonctionnel.
-                  </p>
+                <h6 className={styles.projectTitle}>Clothe Me Up</h6>
+                <div className={styles.projectImgContainer}>
+                  <Image alt="Vignette d'un site internet" fill={true} src="/Clothe-Me-Up2.png" className={styles.projectImg} />
                 </div>
+                <p className={styles.projectSubtitle}>
+                  Template pour site de e-commerce 100% fonctionnel.
+                </p>
+              </div>
+            </Link>
 
+          </div>
+
+          <div className={styles.projectsLine1}>
+
+            <Link href='https://kairos-fronted.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
+              <div className={styles.squareGradient2} style={project2}>
+                <h6 className={styles.projectTitle}>Kairos</h6>
+                <div className={styles.projectImgContainer}>
+                  <Image alt="Vignette d'un site internet" fill={true} src="/Kairos.png" className={styles.projectImg} />
+                </div>
+                <p className={styles.projectSubtitle}>
+                  Site web pour réaliser une étude de marché (projet de fin de formation).
+                </p>
+              </div>
+            </Link>
+
+            <Link href='https://frontend-twitter2.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
+              <div className={styles.squareGradient3} style={project2}>
+                <h6 className={styles.projectTitle}>Hackatweet</h6>
+                <div className={styles.projectImgContainer}>
+                  <Image alt="Vignette d'un site internet" fill={true} src="/Hackatweet.png" className={styles.projectImg} />
+                </div>
+                <p className={styles.projectSubtitle}>
+                  Exercice de formation, réplique d'un réseau social.
+                </p>
+              </div>
+            </Link>
+
+          </div>
+
+          <div className={styles.projectsLine1} ref={modal2Ref}>
+{/* 
+            <div className={styles.squareGradient2} style={project3}>
+              <h6 className={styles.projectTitle}>ChatApp</h6>
+              <div className={styles.projectImgContainer}>
+                <video src="/ChatApp.mp4" className={styles.projectVideo} autoPlay={true} loop={true} muted={true} ></video>
+              </div>
+              <p className={styles.projectSubtitle}>
+                Exercice de formation, application de chat.
+              </p>
+            </div> */}
+
+
+
+            <div className={mask2} onClick={() => {
+              modal2Visible && setModal2Visible(false)
+            }}></div>
+
+            <div className={styles.squareGradient2} style={project3} onClick={() => {
+              !modal2Visible && setModal2Visible(true)
+            }} >
+              <h6 className={styles.projectTitle}>ChatApp</h6>
+              <div className={videoContainer2Style}>
+                <video src="/ChatApp.mp4" className={styles.projectVideo} autoPlay={true} loop={true} muted={true} alt="vidéo d'un site internet"></video>
+              </div>
+              <p className={styles.projectSubtitle}>
+              Exercice de formation, application de chat (messages et vocaux).
+              </p>
+            </div>
+            <div className={modal2} style={modal2Style} >
+              <h6 className={styles.projectTitle}>ChatApp</h6>
+              <HiMiniXMark  className={styles.closeIcon} onClick={()=>setModal2Visible(false)} style={!modal2Visible && {opacity : 0, transitionDuration : "0.3s"}}/>
+              <div className={videoContainer2Style}>
+                <video src="/ChatApp.mp4" className={styles.projectVideo} autoPlay={true} loop={true} muted={true} alt="vidéo d'un site internet" ></video>
+              </div>
+              <p className={styles.projectSubtitle}>
+              Exercice de formation, application de chat (messages et vocaux).
+              </p>
             </div>
 
-            <div className={styles.projectsLine1}>
-
-                <div className={styles.squareGradient2} style={project2}>
-                  <h6 className={styles.projectTitle}>Kairos</h6>
-                  <div className={styles.projectImgContainer}>
-                    <Image alt="Vignette d'un site internet" fill={true} src="/Kairos.png" className={styles.projectImg} />
-                  </div>
-                  <p className={styles.projectSubtitle}>
-                    Site web pour réaliser une étude de marché (projet de fin de formation).
-                  </p>
+            <Link href='https://morningnews-frontend-zeta.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
+              <div className={styles.squareGradient3}
+                style={project3} >
+                <h6 className={styles.projectTitle}>Morning News</h6>
+                <div className={styles.projectImgContainer}>
+                  <Image alt="Vignette d'un site internet" fill={true} src="/Morningnews.png" className={styles.projectImg} />
                 </div>
-            
-                <div className={styles.squareGradient3} style={project2}>
-                  <h6 className={styles.projectTitle}>Hackatweet</h6>
-                  <div className={styles.projectImgContainer}>
-                    <Image alt="Vignette d'un site internet" fill={true} src="/Hackatweet.png" className={styles.projectImg} />
-                  </div>
-                  <p className={styles.projectSubtitle}>
-                    Exercice de cours, réplique d'un réseau social.
-                  </p>
-                </div>
-
-            </div>
+                <p className={styles.projectSubtitle}>
+                  Exercice de formation, site d'informations sur la tech.
+                </p>
+              </div>
+            </Link>
 
           </div>
 

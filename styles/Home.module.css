@@ -1,7 +1,6 @@
 .body {
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
   background-color: rgb(7, 5, 8);
   /* font-family: "Noto Sans Bengali", sans-serif; */
   font-family: "Kumbh Sans", sans-serif;
@@ -344,6 +343,7 @@
   flex-direction: column;
   padding: 7vw 6vw 6vw;
   overflow-y: scroll;
+  overflow-x: hidden;
   opacity: 0;
 }
 
@@ -354,6 +354,7 @@
   flex-direction: column;
   padding: 7vw 6vw 6vw;
   overflow-y: scroll;
+  overflow-x: hidden;
   scrollbar-width: thin;
   scrollbar-color: grey black;
   transition-duration: 3.5s;
@@ -366,6 +367,7 @@
   flex-direction: column;
   padding: 7vw 6vw 6vw;
   overflow-y: scroll;
+  overflow-x: hidden;
   scrollbar-width: thin;
   scrollbar-color: grey black;
 }
@@ -485,6 +487,7 @@
   display: flex;
   justify-content: flex-start;
   margin-bottom: 1.3vw;
+  margin-right: 0;
 }
 
 .toolsCategoriesContainer2 {
@@ -498,7 +501,7 @@
 
 .rectangleGradient {
   width: 27vw;
-  height : 11.8vw;
+  height: 11.8vw;
   border-radius: 0.5vw;
   background: linear-gradient(45deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
   display: flex;
@@ -511,7 +514,7 @@
   z-index: 0;
   transition-duration: 1.3s;
   opacity: 1;
-  left : 0;
+  left: 0;
   margin-top: 0;
 }
 
@@ -570,6 +573,7 @@
   justify-content: space-between;
   margin-bottom: 2vw;
   width: 50vw;
+  position: relative;
 }
 
 .squareGradient2 {
@@ -599,9 +603,75 @@
   justify-content: space-between;
   padding: 1vw 1vw 0.5vw;
   font-size: 1.3vw;
-  transition-duration: 1.5s;
+  transition-duration: 1.2s;
   cursor: pointer;
   opacity: 1;
+}
+
+.squareGradient4 {
+  width: 24vw;
+  height: 25vw;
+  border-radius: 0.5vw;
+  background: linear-gradient(45deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1vw 1vw 0.5vw;
+  font-size: 1.3vw;
+  cursor: pointer;
+  opacity: 0;
+  top : 0;
+  left : 0vw;
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  transition : 
+  height 0.3s 0s, 
+  width 0.3s 0s,
+  opacity 0s 0.3s,
+  z-index 0s 0.3s,
+  top 0.3S 0s,
+  font-size 0.2s 0s,
+  left 0.3s 0s;
+}
+
+
+.squareGradient5 {
+  width: 51vw;
+  height: 44vw;
+  border-radius: 0.5vw;
+  background: linear-gradient(45deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5vw 1vw 0vw;
+  font-size: 1.6vw;
+  cursor: pointer;
+  opacity: 1;
+  left : -0.5vw;
+  top : -10vw;
+  position: absolute;
+  transition : 
+  height 0.3s, 
+  width 0.3s,
+  font-size 0.2s,
+  top 0.3s;
+  z-index: 11;
+  cursor: auto;
+}
+
+.closeIcon {
+  color : white;
+  position : absolute;
+  right : 0.8vw;
+  top : 0.7vw;
+  height: 2.2vw;
+  width: 2.2vw;
+  cursor: pointer;
+  opacity : 1 ;
+  transition : opacity 0.3s;
 }
 
 
@@ -623,8 +693,8 @@
   font-size: 75%;
   font-weight: 400;
   letter-spacing: 0.05em;
-  min-height : 3.5em;
-  max-height: 3.5em;
+  min-height: 3.3em;
+  max-height: 3.3em;
   margin: 0;
   text-align: center;
   line-height: 160%;
@@ -636,6 +706,14 @@
   width: 100%;
   height: 70%;
   position: relative;
+  transition-duration: 0.3s;
+}
+
+.projectVideoContainer {
+  width: 94.8%;
+  height: 80%;
+  position: relative;
+  transition-duration: 0.3s;
 }
 
 
@@ -644,13 +722,45 @@
   object-fit: contain;
 }
 
-.boostUpVideo {
+.projectVideo {
   object-fit: contain;
   height: 100%;
   width: 100%;
-  border-radius: 0.5vw;
+  border-radius: 3%;
 }
 
+
+.maskOn {
+  min-width: 100vw;
+  min-height: 250vh;
+  top: -100vh;
+  left: -29vw;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition : background-color 0.3s ;
+}
+
+.maskOff {
+  top: -100vh;
+  left: -29vw;
+  min-width: 0vw;
+  min-height: 0vh;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0);
+  transition : background-color 0.3s 0s,
+  min-width 0.1s 0.3s,
+  min-height 0.1s 0.3s ;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
 
 
 
@@ -678,8 +788,8 @@
 
 
 .squareGradient2:hover {
-  width: 26vw;
-  height: 27vw;
+  width: 25vw;
+  height: 26vw;
   border-radius: 0.7vw;
   background: linear-gradient(45deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
   display: flex;
@@ -690,12 +800,12 @@
   font-size: 1.4vw;
   transition-duration: 0.4s;
   cursor: pointer;
-  margin-left: -1vw;
+  margin-left: -0.5vw;
 }
 
 .squareGradient3:hover {
-  width: 26vw;
-  height: 27vw;
+  width: 25vw;
+  height: 26vw;
   border-radius: 0.7vw;
   background: linear-gradient(45deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
   display: flex;
@@ -706,5 +816,5 @@
   font-size: 1.4vw;
   transition-duration: 0.4s;
   cursor: pointer;
-  margin-right: -1vw;
+  margin-right: -0.5vw;
 }
