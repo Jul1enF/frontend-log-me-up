@@ -101,7 +101,7 @@ function Home() {
 
     const opacityRatio = 1 - scrollOffset / (offset)
 
-    titleBgStyle = { transitionDuration: "0.8s", backgroundColor: `rgba(233, 227, 235, ${(0.85 * opacityRatio).toFixed(2)})` }
+    // titleBgStyle = { transitionDuration: "0.8s", backgroundColor: `rgba(233, 227, 235, ${(0.85 * opacityRatio).toFixed(2)})` }
 
     videoStyle = { transitionDuration: "0.8s", opacity: `${0.95 * opacityRatio}` }
   }
@@ -119,7 +119,7 @@ function Home() {
 
     rightContainerStyle = { paddingLeft: 29 * vw, width: 100 * vw, transitionDuration: "0s" }
 
-    titleBgStyle = { backgroundColor: `rgba(233, 227, 235, 0)`, transitionDuration: "0.8s" }
+    // titleBgStyle = { backgroundColor: `rgba(233, 227, 235, 0)`, transitionDuration: "0.8s" }
 
     videoStyle = { transitionDuration: "0.8s", opacity: 0 }
   }
@@ -180,9 +180,7 @@ function Home() {
 
   // Variable de className pour changement de styles pour les animations du début
 
-  let titleBackground = !animations2Begin ? styles.titleBackground1 : styles.titleBackground2
-
-  const gradientBackgroundHeader = !animationsBegin ? styles.gradientBackgroundHeader1 : styles.gradientBackgroundHeader2
+  let titleBackground = !animationsBegin ? styles.titleBackground1 : styles.titleBackground2
 
   let headerGradientLine = !animationsBegin ? styles.headerGradientLine1 : styles.headerGradientLine2
 
@@ -267,7 +265,7 @@ function Home() {
   let skill2
   let skill3
 
-  if (categoriesRef.current.skills && scrollOffset + 100 * vh < categoriesRef.current.skills.offsetTop + 17 * vw) {
+  if (categoriesRef.current.skills && scrollOffset + 100 * vh < categoriesRef.current.skills.offsetTop + 14 * vw) {
     skill1 = { left: -20 * vw, opacity: 0, transitionDuration: "3s", marginRight: 600 }
     skill2 = { marginRight: -40 * vw, opacity: 0, transitionDuration: "3s" }
     skill3 = { marginTop: 10 * vw, opacity: 0, transitionDuration: "3s" }
@@ -339,7 +337,7 @@ function Home() {
         <video src="/Header-Video-1.1.mp4" className={backgroundVideo} style={videoStyle} autoPlay={true} loop={true} muted={true} ></video>
 
         <div className={titleBackground} style={titleBgStyle}>
-          <div className={gradientBackgroundHeader}>
+          <div className={styles.gradientBackgroundHeader}>
             <h1 className={styles.title}>Julien Furic</h1>
             <h3 className={styles.subTitle}>Développeur d'applications web et mobile</h3>
           </div>
