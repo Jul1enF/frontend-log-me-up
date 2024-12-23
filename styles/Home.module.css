@@ -18,7 +18,7 @@
   align-items: center;
   position: relative;
   z-index: 3;
-  background-color: rgb(7, 5, 8);
+  background-color: rgba(233, 227, 235, 0);
 }
 
 .backgroundVideo0 {
@@ -249,7 +249,7 @@
 
 .buttonContainer1 {
   width: 100%;
-  height: 15vw;
+  height: 17vw;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -262,7 +262,7 @@
 
 .buttonContainer2 {
   width: 100%;
-  height: 15vw;
+  height: 17vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -341,7 +341,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 7vw 6vw 6vw;
+  padding: 9vw 6vw 6vw;
   overflow-y: scroll;
   overflow-x: hidden;
   opacity: 0;
@@ -352,7 +352,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 7vw 6vw 6vw;
+  padding: 9vw 6vw 6vw;
   overflow-y: scroll;
   overflow-x: hidden;
   scrollbar-width: thin;
@@ -365,7 +365,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 7vw 6vw 6vw;
+  padding: 9vw 6vw 6vw;
   overflow-y: scroll;
   overflow-x: hidden;
   scrollbar-width: thin;
@@ -417,7 +417,7 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 8.75vw;
+  margin-bottom: 10.75vw;
 }
 
 .textContainer {
@@ -493,7 +493,7 @@
 .toolsCategoriesContainer2 {
   display: flex;
   justify-content: flex-start;
-  margin-bottom: 9vw;
+  margin-bottom: 11vw;
   max-height: 11.8vw;
   overflow: hidden;
 }
@@ -576,9 +576,17 @@
   position: relative;
 }
 
+.projectsLine2 {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 11vw;
+  width: 50vw;
+  position: relative;
+}
+
 .squareGradient2 {
-  width: 24vw;
-  height: 25vw;
+  width: 100%;
+  height: 100%;
   border-radius: 0.5vw;
   background: linear-gradient(45deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
   display: flex;
@@ -586,15 +594,27 @@
   align-items: center;
   justify-content: space-between;
   padding: 1vw 1vw 0.5vw;
-  font-size: 1.3vw;
-  transition-duration: 1.2s;
+  transition : 
+  height 1.2s, 
+  width 1.2s,
+  opacity 1.2s,
+  margin 1.2s,
+  font-size 0s;
   cursor: pointer;
   opacity: 1;
 }
 
-.squareGradient3 {
+.squareRevealContainer1 {
   width: 24vw;
   height: 25vw;
+  font-size: 1.3vw;
+  border-radius: 0.5vw;
+  transition-duration: 0.4s;
+}
+
+.squareGradient3 {
+  width: 100%;
+  height: 100%;
   border-radius: 0.5vw;
   background: linear-gradient(45deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
   display: flex;
@@ -602,10 +622,23 @@
   align-items: center;
   justify-content: space-between;
   padding: 1vw 1vw 0.5vw;
-  font-size: 1.3vw;
-  transition-duration: 1.2s;
+  transition : font-size 0.4s;
+  transition : 
+  height 1.2s, 
+  width 1.2s,
+  opacity 1.2s,
+  margin 1.2s,
+  font-size 0s;
   cursor: pointer;
   opacity: 1;
+}
+
+.squareRevealContainer2 {
+  width: 24vw;
+  height: 25vw;
+  font-size: 1.3vw;
+  border-radius: 0.5vw;
+  transition-duration: 0.4s;
 }
 
 .squareGradient4 {
@@ -787,34 +820,22 @@
 }
 
 
-.squareGradient2:hover {
+.squareRevealContainer1:hover {
   width: 25vw;
   height: 26vw;
   border-radius: 0.7vw;
   background: linear-gradient(45deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1vw 1vw 0.5vw;
   font-size: 1.4vw;
   transition-duration: 0.4s;
-  cursor: pointer;
   margin-left: -0.5vw;
 }
 
-.squareGradient3:hover {
+.squareRevealContainer2:hover {
   width: 25vw;
   height: 26vw;
   border-radius: 0.7vw;
   background: linear-gradient(45deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1vw 1vw 0.5vw;
   font-size: 1.4vw;
   transition-duration: 0.4s;
-  cursor: pointer;
   margin-right: -0.5vw;
 }
