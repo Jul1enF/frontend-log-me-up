@@ -13,7 +13,6 @@
 .headerContainer1 {
   width: 100vw;
   height: 50vh;
-  min-height: 9vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,19 +25,18 @@
   transition-duration: 5s;
   width: 100vw;
   height: 50vh;
-  min-height: 9vw;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   z-index: 3;
-  background-color: rgb(187,	169,	198	);
+  background-color: rgb(193	179	203		);
 }
 
 .headerContainer3 {
   width: 100vw;
   height: 50vh;
-  min-height: 9vw;
+  min-height: 8.5vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,14 +52,21 @@
   /* background: linear-gradient(90deg, #9962ad, rgb(233, 227, 235)); */
 
   /* Un peu moins contrasté */
-  /* background: linear-gradient(90deg, #9c69ae, rgb(233, 227, 235)); */
+  /* background: linear-gradient(90deg, #9c69ae, rgb(233, 227, 235) 110%); */
+
 
   /* Encore moins contrasté */
-  background: linear-gradient(90deg, #9e73ae, rgb(233, 227, 235));
+  /* background: linear-gradient(90deg, #9e73ae, rgb(233, 227, 235)); */
 
+  /* background: linear-gradient(90deg, #a37cb1, rgb(233, 227, 235)); */
 
-  /* Dégradés aux deux bords */
-  /* background: linear-gradient(90deg, rgb(226, 199, 235), rgb(233, 224, 236) 50%, rgb(226, 199, 235)); */
+  /* Beaucoup moins contrasté et peut-être mieux au final */
+  /* background: linear-gradient(90deg, #a682b3, rgb(233, 227, 235)); */
+
+  background: linear-gradient(90deg, #ad99b5, rgb(233, 227, 235)110%);
+
+  /* Tests autres couleurs */
+  /* background: linear-gradient(90deg,rgb(126, 78, 204), rgb(171, 153, 199)); */
 }
 
 .backgroundVideo0 {
@@ -116,28 +121,30 @@
   background-color: rgba(233, 227, 235, 0);
   height: fit-content;
   width: fit-content;
-  padding: 0.5vw 1.15vw 0.5vw;
+  padding: 0.2vw 1.15vw 0.2vw;
   border-radius: 0.6vw;
-  background: linear-gradient(90deg, rgba(178, 154, 191, 0.85), rgba(205,	190,	213, 0.85	));
+  background: linear-gradient(90deg, rgba(186,	169,	195,	0.85), rgba(206,	194,	212	,	 0.85	));
   opacity : 0;
 }
 
 .titleBackground2 {
-  background: linear-gradient(90deg, rgba(178, 154, 191, 0.85), rgba(205,	190,	213, 0.85	));
+  background: linear-gradient(90deg, rgba(186,	169,	195,	0.85), rgba(206,	194,	212	,	 0.85	));
   opacity : 1;
   height: fit-content;
   width: fit-content;
-  padding: 0.5vw 1.15vw 0.5vw;
+  padding: 0.2vw 1.15vw 0.2vw;
   border-radius: 0.7vw;
-  transition-duration: 7s;
+  transition-duration: 4s;
 }
 
 .titleBackground3 {
   /* background-color: rgba(233, 227, 235, 0.85); */
-  background: linear-gradient(90deg, rgba(178, 154, 191, 0.85), rgba(205,	190,	213, 0.85	));
+  /* background: linear-gradient(90deg, rgba(178, 154, 191, 0.85), rgba(205,	190,	213, 0.85	)); */
+  /* background: linear-gradient(90deg, rgba(184,	163,	195	, 0.85), rgba(208,	195,	215,	 0.85	)); */
+  /* background: linear-gradient(90deg, rgba(186,	169,	195,	0.85), rgba(206,	194,	212	,	 0.85	)); */
   height: fit-content;
   width: fit-content;
-  padding: 0.5vw 1.15vw 0.5vw;
+  padding: 0.2vw 1.15vw 0.2vw;
   border-radius: 0.7vw;
   transition-duration: 0.8s;
 }
@@ -157,18 +164,18 @@
 
 
 .title {
-  font-size: 3.4vw;
+  font-size: 2.8vw;
   font-weight: 750;
   letter-spacing: 0.25vw;
   line-height: 4.3vw;
   color: transparent;
   margin: 0;
   padding: 0;
-  margin-bottom: 0.4vw;
+  margin-bottom: 0vw;
 }
 
 .subTitle {
-  font-size: 1.5vw;
+  font-size: 1.48vw;
   font-weight: 700;
   color: transparent;
   margin: 0;
@@ -221,7 +228,6 @@
   margin-top: -50vh;
   width: 23vw;
   height: calc(50vh - 6px);
-  max-height: calc(100vh - 9vw -5px);
   background: linear-gradient(90deg, rgb(16, 16, 16), rgb(27, 27, 27));
   border-bottom-right-radius: 1vw;
   /* box-shadow: inset 5px 5px 10px rgba(255, 255, 255, 0.3), inset -5px -5px 10px rgba(0, 0, 0, 0.5); */
@@ -241,7 +247,6 @@
   margin-top: 0;
   width: 23vw;
   height: calc(50vh - 6px);
-  max-height: calc(100vh - 9vw - 6px);
   background: linear-gradient(90deg, rgb(16, 16, 16), rgb(27, 27, 27));
   transition-duration: 1s;
   border-bottom-right-radius: 1vw;
@@ -259,7 +264,7 @@
 .modal3 {
   position: relative;
   margin-top: 0;
-  max-height: calc(100vh - 9vw - 6px);
+  max-height: calc(100vh - 8.5vw - 6px);
   width: 23vw;
   height: calc(50vh - 6px);
   background: linear-gradient(90deg, rgb(16, 16, 16), rgb(27, 27, 27));
@@ -827,6 +832,68 @@
   align-items: center;
   justify-content: center;
   z-index: 10;
+}
+
+
+.textContainer2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 79%;
+}
+
+.paragraph2 {
+  color: rgb(227, 219, 230);
+  font-size: 1.4vw;
+  font-weight: 300;
+  letter-spacing: 0.05vw;
+  margin: 0;
+  margin-bottom: 2vw;
+  text-indent: 1vw;
+}
+
+.gradientMail {
+  /* width: 26.4vw; */
+  width: 52.8vw;
+  height: fit-content;
+  /* background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093); */
+  background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 25%, #1b0093 50%,  rgb(62, 6, 152) 75%, #8000af 100%);
+  /* transition : background-position 2.5s; */
+  background-position: 0vw;
+  background-clip: text;
+  margin-top: 2vw;
+  margin-left: 11vw;
+}
+
+.gradientMail2 {
+  width: 52.8vw;
+  height: fit-content;
+  background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 25%, #1b0093 50%,  rgb(62, 6, 152) 75%, #8000af 100%);
+  background-position: -26.4vw;
+  transition : background-position 1.5s;
+  background-clip: text;
+  margin-top: 2vw;
+  margin-left: 11vw;
+}
+
+.gradientMail3 {
+  width: 52.8vw;
+  height: fit-content;
+  background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 25%, #1b0093 50%,  rgb(62, 6, 152) 75%, #8000af 100%);
+  background-position: -52.8vw;
+  transition : background-position 1.5s;
+  background-clip: text;
+  margin-top: 2vw;
+  margin-left: 11vw;
+}
+
+.mail {
+  color: transparent;
+  font-size: 2vw;
+  font-weight: 600;
+  letter-spacing: 0.1vw;
+  margin: 0;
+  margin-bottom: 2vw;
 }
 
 

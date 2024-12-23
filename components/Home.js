@@ -74,7 +74,7 @@ function Home() {
   const [scrollOffset, setScrollOffset] = useState(0)
 
   // Offset à ne pas dépasser pour que le Header ne fasse pas moins de 10vw
-  const offset = vw ? 50 * vh - 9 * vw : 0
+  const offset = vw ? 50 * vh - 8.5 * vw : 0
 
   let bodyStyle = {}
   let headerStyle = {}
@@ -101,25 +101,21 @@ function Home() {
 
     const opacityRatio = 1 - scrollOffset / (offset)
 
-    // titleBgStyle = { transitionDuration: "0.8s", backgroundColor: `rgba(233, 227, 235, ${(0.85 * opacityRatio).toFixed(2)})` }
-
     videoStyle = { transitionDuration: "0.8s", opacity: `${0.95 * opacityRatio}` }
   }
 
   // Le header a sa taille def
   else if (vw && scrollOffset >= offset) {
 
-    bodyStyle = { paddingTop: offset + 9 * vw + 6, transitionDuration: "0s" }
+    bodyStyle = { paddingTop: offset + 8.5 * vw + 6, transitionDuration: "0s" }
 
-    headerStyle = { height: 50 * vh - offset, transitionDuration: "0s", position: "absolute", top: 0 }
+    headerStyle = { height: 8.5 * vw, transitionDuration: "0s", position: "absolute", top: 0 }
 
-    modalStyle = { height: 50 * vh + offset - 6, paddingTop: 8 * vh + offset / 3, transitionDuration: "0s", position: "absolute", top: 9 * vw + 6 }
+    modalStyle = { height: 50 * vh + offset - 6, paddingTop: 8 * vh + offset / 3, transitionDuration: "0s", position: "absolute", top: 8.5 * vw + 6 }
 
-    lineStyle = { position: "absolute", top: 9 * vw, transitionDuration: "0s" }
+    lineStyle = { position: "absolute", top: 8.5 * vw, transitionDuration: "0s" }
 
     rightContainerStyle = { paddingLeft: 29 * vw, width: 100 * vw, transitionDuration: "0s" }
-
-    // titleBgStyle = { backgroundColor: `rgba(233, 227, 235, 0)`, transitionDuration: "0.8s" }
 
     videoStyle = { transitionDuration: "0.8s", opacity: 0 }
   }
@@ -150,7 +146,7 @@ function Home() {
     else if (category !== "projects" && height >= projectsHeight - containerHeight - 4 * vw && height < contactHeight - containerHeight - 4 * vw) {
       setCategory("projects")
     }
-    else if(height >= contactHeight - containerHeight - 4 * vw) {
+    else if (height >= contactHeight - containerHeight - 4 * vw) {
       setCategory("contact")
     }
   }
@@ -322,6 +318,41 @@ function Home() {
   const modal2 = modal2Visible ? styles.squareGradient5 : styles.squareGradient4
 
   const videoContainer2Style = modal2Visible ? styles.projectVideoContainer : styles.projectImgContainer
+
+
+
+
+
+  // Animation pour l'adresse mail
+
+  const [gradientMailOffset, setGradientMailOffset]=useState(0)
+  // const [animationDelay, setAnimationDelay]=useState("2.5")
+
+  console.log(gradientMailOffset)
+  const [animationRunning, setAnimationRunning]=useState(false)
+
+  let gradientMailStyle = {backgroundPosition : gradientMailOffset * vw, transition : `background-position 4s`}
+
+  // if (!animationRunning){
+  //   if (gradientMailOffset < -600){
+  //     // setAnimationDelay("0")
+  //     setGradientMailOffset(-52.8)
+  //   }
+  //   else {
+  //     setGradientMailOffset(gradientMailOffset => gradientMailOffset - 52.8)
+  //     animationDelay !== "2.5" && setAnimationDelay("2.5")
+  //     gradientMailOffset <= -548.2 &&  setAnimationDelay("0")
+  //     setAnimationRunning(true)
+  //     setTimeout(()=> setAnimationRunning(false), 1400)
+  //   }
+  // }
+
+  if (!animationRunning){
+    setGradientMailOffset(gradientMailOffset => gradientMailOffset - 52.8)
+    setAnimationRunning(true)
+    setTimeout(()=> setAnimationRunning(false), 2000)
+  }
+
 
 
 
@@ -674,6 +705,14 @@ function Home() {
             <h4 className={styles.categorySubtitle}>Mes coordonnées</h4>
           </div>
 
+          <div className={styles.textContainer2}>
+            <p className={styles.paragraph2}>Une envie ? Une idée ? Une question ? N'hésitez pas à me contacter ! </p>
+            <p className={styles.paragraph2}>Vous pouvez me joindre à tout moment en m'écrivant à l'adresse mail suivante : </p>
+          </div>
+          
+          <div className={styles.gradientMail} style={gradientMailStyle}>
+          <h6 className={styles.mail}>contact@julien-furic.com</h6>
+          </div>
 
 
 
