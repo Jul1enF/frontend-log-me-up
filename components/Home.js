@@ -74,7 +74,7 @@ function Home() {
   const [scrollOffset, setScrollOffset] = useState(0)
 
   // Offset à ne pas dépasser pour que le Header ne fasse pas moins de 10vw
-  const offset = vw ? 50 * vh - 10 * vw : 0
+  const offset = vw ? 50 * vh - 9 * vw : 0
 
   let bodyStyle = {}
   let headerStyle = {}
@@ -97,7 +97,7 @@ function Home() {
 
     headerStyle = { height: 50 * vh - scrollOffset, transitionDuration: "0s" }
 
-    modalStyle = { height: 50 * vh + scrollOffset - 4.5, paddingTop: 8 * vh + scrollOffset / 3, transitionDuration: "0s" }
+    modalStyle = { height: 50 * vh + scrollOffset - 6, paddingTop: 8 * vh + scrollOffset / 3, transitionDuration: "0s" }
 
     const opacityRatio = 1 - scrollOffset / (offset)
 
@@ -109,15 +109,15 @@ function Home() {
   // Le header a sa taille def
   else if (vw && scrollOffset >= offset) {
 
-    bodyStyle = { paddingTop: offset + 10 * vw + 4.5, transitionDuration: "0s" }
+    bodyStyle = { paddingTop: offset + 9 * vw + 6, transitionDuration: "0s" }
 
     headerStyle = { height: 50 * vh - offset, transitionDuration: "0s", position: "absolute", top: 0 }
 
-    modalStyle = { height: 50 * vh + offset - 4.5, paddingTop: 8 * vh + offset / 3, transitionDuration: "0s", position: "absolute", top: 10 * vw + 4.5 }
+    modalStyle = { height: 50 * vh + offset - 6, paddingTop: 8 * vh + offset / 3, transitionDuration: "0s", position: "absolute", top: 9 * vw + 6 }
 
-    lineStyle = { position: "absolute", top: 10 * vw, transitionDuration: "0S" }
+    lineStyle = { position: "absolute", top: 9 * vw, transitionDuration: "0s" }
 
-    rightContainerStyle = { paddingLeft: 29 * vw, width: 100 * vw, transitionDuration: "0S" }
+    rightContainerStyle = { paddingLeft: 29 * vw, width: 100 * vw, transitionDuration: "0s" }
 
     titleBgStyle = { backgroundColor: `rgba(233, 227, 235, 0)`, transitionDuration: "0.8s" }
 
@@ -197,6 +197,8 @@ function Home() {
 
   if (animations2Begin) { backgroundVideo = styles.backgroundVideo2 }
 
+  let headerContainer = animations4Begin ? styles.headerContainer2 : styles.headerContainer1
+
   // Nouvelles classeName avec réglages def et plus de transition duration pour les cas de resize de la fenêtre
   if (animationsEnd) {
     titleBackground = styles.titleBackground3
@@ -204,6 +206,7 @@ function Home() {
     modal = styles.modal3
     rightContainer = styles.rightContainer3
     backgroundVideo = styles.backgroundVideo3
+    headerContainer = styles.headerContainer3
   }
 
 
@@ -224,7 +227,7 @@ function Home() {
     const categoryToScroll = categoriesRef.current[cat]
     const containerToScroll = bodyRef.current
 
-    const distanceToScroll = cat === "home" ? 0 : categoryToScroll.offsetTop - rightContainerRef.current.offsetTop + 50 * vh - 14 * vw
+    const distanceToScroll = cat === "home" ? 0 : categoryToScroll.offsetTop - rightContainerRef.current.offsetTop + 50 * vh - 12 * vw
 
     containerToScroll.scroll({
       top: distanceToScroll,
@@ -281,11 +284,11 @@ function Home() {
     project1 = { width: 18 * vw, height: 19.2 * vw, opacity: 0, transitionDuration: "3s", margin: 3 * vw }
   }
 
-  if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 44 * vw) {
+  if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 42 * vw) {
     project2 = { width: 18 * vw, height: 19.2 * vw, opacity: 0, transitionDuration: "3s", margin: 3 * vw, }
   }
 
-  if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 74 * vw) {
+  if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 72 * vw) {
     project3 = { width: 18 * vw, height: 19.2 * vw, opacity: 0, transitionDuration: "3s", margin: 3 * vw, }
   }
 
@@ -302,7 +305,7 @@ function Home() {
 
   const modal1ViewportOffset = modal1Ref.current && modal1Ref.current.offsetTop - scrollOffset
 
-  const modal1Style = modal1Visible ? { top: - modal1ViewportOffset + 8 * vw, } : {}
+  const modal1Style = modal1Visible ? { top: - modal1ViewportOffset + 3 * vw, } : {}
 
   const mask1 = modal1Visible ? styles.maskOn : styles.maskOff
   const modal1 = modal1Visible ? styles.squareGradient5 : styles.squareGradient4
@@ -315,7 +318,7 @@ function Home() {
 
   const modal2ViewportOffset = modal2Ref.current && modal2Ref.current.offsetTop - scrollOffset
 
-  const modal2Style = modal2Visible ? { top: - modal2ViewportOffset + 8 * vw, } : {}
+  const modal2Style = modal2Visible ? { top: - modal2ViewportOffset + 3 * vw, } : {}
 
   const mask2 = modal2Visible ? styles.maskOn : styles.maskOff
   const modal2 = modal2Visible ? styles.squareGradient5 : styles.squareGradient4
@@ -331,7 +334,7 @@ function Home() {
   return (
     <div className={styles.body} onScroll={(e) => { bodyScroll(e.target.scrollTop) }} style={bodyStyle} ref={bodyRef}>
 
-      <div className={styles.headerContainer} style={headerStyle} >
+      <div className={headerContainer} style={headerStyle} >
 
         <video src="/Header-Video-1.1.mp4" className={backgroundVideo} style={videoStyle} autoPlay={true} loop={true} muted={true} ></video>
 

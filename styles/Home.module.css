@@ -10,21 +10,58 @@
   scrollbar-color: grey black;
 }
 
-.headerContainer {
+.headerContainer1 {
   width: 100vw;
   height: 50vh;
-  min-height: 10vw;
+  min-height: 9vw;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   z-index: 3;
-  /* background-color: rgba(233, 227, 235, 0); */
-/* background-color: rgb(14, 14, 14); */
-/* background: linear-gradient(90deg, #8000af, rgb(233, 227, 235)); */
-background: linear-gradient(90deg, rgb(224, 192, 235), rgb(233, 227, 235) 90%);
-/* background: linear-gradient(90deg, rgb(227, 201, 235), rgb(233, 227, 235) 90%); */
-/* background: linear-gradient(90deg, rgb(226, 199, 235), rgb(233, 224, 236) 50%, rgb(226, 199, 235)); */
+  background-color :rgb(14, 14, 14);
+}
+
+.headerContainer2 {
+  transition-duration: 3s;
+  width: 100vw;
+  height: 50vh;
+  min-height: 9vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 3;
+  background-color: rgb(183, 179, 184);
+}
+
+.headerContainer3 {
+  width: 100vw;
+  height: 50vh;
+  min-height: 9vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 3;
+  /* Très foncé (trop ?) mais joli */
+  /* background: linear-gradient(90deg, #8000af, rgb(233, 227, 235)); */
+
+  /* Recherche d'un middle */
+  /* background: linear-gradient(90deg, #9443b1, rgb(233, 227, 235)); */
+
+  /* Pas mal */
+  /* background: linear-gradient(90deg, #9962ad, rgb(233, 227, 235)); */
+
+  /* Un peu moins contrasté */
+  /* background: linear-gradient(90deg, #9c69ae, rgb(233, 227, 235)); */
+
+  /* Encore moins contrasté */
+  background: linear-gradient(90deg, #9e73ae, rgb(233, 227, 235));
+
+
+  /* Dégradés aux deux bords */
+  /* background: linear-gradient(90deg, rgb(226, 199, 235), rgb(233, 224, 236) 50%, rgb(226, 199, 235)); */
 }
 
 .backgroundVideo0 {
@@ -36,6 +73,7 @@ background: linear-gradient(90deg, rgb(224, 192, 235), rgb(233, 227, 235) 90%);
   object-position: top;
   z-index: -1;
   opacity: 0;
+  filter: brightness(0.8);
 }
 
 
@@ -47,6 +85,7 @@ background: linear-gradient(90deg, rgb(224, 192, 235), rgb(233, 227, 235) 90%);
   object-position: top;
   z-index: -1;
   opacity: 0;
+  filter: brightness(0.8);
 }
 
 .backgroundVideo2 {
@@ -57,6 +96,7 @@ background: linear-gradient(90deg, rgb(224, 192, 235), rgb(233, 227, 235) 90%);
   object-position: top;
   z-index: -1;
   opacity: 0.95;
+  filter: brightness(0.8);
   transition-duration: 6s;
 }
 
@@ -68,6 +108,7 @@ background: linear-gradient(90deg, rgb(224, 192, 235), rgb(233, 227, 235) 90%);
   object-position: top;
   z-index: -1;
   opacity: 0.95;
+  filter: brightness(0.8);
   transition-duration: 0.8s;
 }
 
@@ -156,14 +197,14 @@ background: linear-gradient(90deg, rgb(224, 192, 235), rgb(233, 227, 235) 90%);
 }
 
 .headerGradientLine1 {
-  min-height: 5px;
+  min-height: 6px;
   width: 0vw;
   background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
   opacity: 0.4;
 }
 
 .headerGradientLine2 {
-  min-height: 5px;
+  min-height: 6px;
   width: 100vw;
   background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
   transition-duration: 1s;
@@ -172,7 +213,7 @@ background: linear-gradient(90deg, rgb(224, 192, 235), rgb(233, 227, 235) 90%);
 }
 
 .headerGradientLine3 {
-  min-height: 5px;
+  min-height: 6px;
   width: 100vw;
   background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
   opacity: 1;
@@ -203,12 +244,6 @@ background: linear-gradient(90deg, rgb(224, 192, 235), rgb(233, 227, 235) 90%);
   align-items: center;
   padding-top: 8vh;
 }
-
-/* 
-.modal2 {
-  background: linear-gradient(90deg, rgb(87	14	149	), #120062);
-  box-shadow: inset 4px 4px 8px rgba(255, 255, 255, 0.3), inset -5px -5px 10px rgba(0,0,0,0.5);
-} */
 
 
 
@@ -254,7 +289,7 @@ background: linear-gradient(90deg, rgb(224, 192, 235), rgb(233, 227, 235) 90%);
 
 .buttonContainer1 {
   width: 100%;
-  height: 17vw;
+  height: 16.5vw;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -267,7 +302,7 @@ background: linear-gradient(90deg, rgb(224, 192, 235), rgb(233, 227, 235) 90%);
 
 .buttonContainer2 {
   width: 100%;
-  height: 17vw;
+  height: 16.5vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -584,9 +619,10 @@ background: linear-gradient(90deg, rgb(224, 192, 235), rgb(233, 227, 235) 90%);
 .projectsLine2 {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 11vw;
+  margin-bottom: 10vw;
   width: 50vw;
   position: relative;
+  min-height: 26vw;
 }
 
 .squareGradient2 {
@@ -649,6 +685,7 @@ background: linear-gradient(90deg, rgb(224, 192, 235), rgb(233, 227, 235) 90%);
 .squareGradient4 {
   width: 24vw;
   height: 25vw;
+  max-height : 25vw;
   border-radius: 0.5vw;
   background: linear-gradient(45deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
   display: flex;
@@ -671,13 +708,15 @@ background: linear-gradient(90deg, rgb(224, 192, 235), rgb(233, 227, 235) 90%);
     z-index 0s 0.3s,
     top 0.3S 0s,
     font-size 0.2s 0s,
-    left 0.3s 0s;
+    left 0.3s 0s,
+    max-height 0.3s 0s;
 }
 
 
 .squareGradient5 {
   width: 51vw;
   height: 44vw;
+  max-height : 90vh;
   border-radius: 0.5vw;
   background: linear-gradient(45deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
   display: flex;
@@ -695,7 +734,8 @@ background: linear-gradient(90deg, rgb(224, 192, 235), rgb(233, 227, 235) 90%);
     height 0.3s,
     width 0.3s,
     font-size 0.2s,
-    top 0.3s;
+    top 0.3s,
+    max-height 0.3s;
   z-index: 11;
   cursor: auto;
 }
