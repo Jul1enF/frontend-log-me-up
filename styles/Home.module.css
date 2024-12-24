@@ -34,18 +34,6 @@
   background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
 }
 
-.backgroundVideo0 {
-  position: absolute;
-  display: none;
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  object-position: top;
-  z-index: -1;
-  opacity: 0;
-  filter: brightness(0.8);
-}
-
 
 .backgroundVideo1 {
   position: absolute;
@@ -55,7 +43,7 @@
   object-position: top;
   z-index: -1;
   opacity: 0;
-  filter: brightness(0.8);
+  filter: brightness(0.85);
 }
 
 .backgroundVideo2 {
@@ -66,8 +54,8 @@
   object-position: top;
   z-index: -1;
   opacity: 1;
-  filter: brightness(0.8);
-  transition-duration: 3.5s;
+  filter: brightness(0.85);
+  transition-duration: 3s;
   transition-timing-function: ease-in;
 }
 
@@ -79,7 +67,7 @@
   object-position: top;
   z-index: -1;
   opacity: 1;
-  filter: brightness(0.8);
+  filter: brightness(0.85);
   transition-duration: 0.8s;
 }
 
@@ -219,7 +207,7 @@
   margin-top: 0;
   max-height: calc(100vh - 9vw);
   width: 23vw;
-  height: calc(50vh - 6px);
+  height: calc(50vh);
   background: linear-gradient(90deg, rgb(11, 11, 11), rgb(21, 21, 21));
   border-bottom-right-radius: 1vw;
   border-top-right-radius: 1vw;
@@ -236,7 +224,7 @@
 
 .buttonContainer1 {
   width: 100%;
-  height: 16.5vw;
+  height: 17vw;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -249,14 +237,27 @@
 
 .buttonContainer2 {
   width: 100%;
-  height: 16.5vw;
+  height: 17vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
   overflow-y: scroll;
   opacity: 1;
-  transition-duration: 1.9s;
+  transition-duration: 1.4s;
+  scrollbar-width: none;
+}
+
+.buttonContainer3 {
+  width: 100%;
+  height: 17vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  overflow-y: scroll;
+  opacity: 1;
+  transition-duration: 0s;
   scrollbar-width: none;
 }
 
@@ -266,7 +267,7 @@
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  font-size: 1.4vw;
+  font-size: 1.5vw;
   cursor: pointer;
   transition-duration: 0.8s;
   color: rgb(240, 235, 243);
@@ -278,7 +279,7 @@
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  font-size: 1.8vw;
+  font-size: 1.9vw;
   cursor: pointer;
   transition-duration: 0.5s;
   color: rgb(255, 255, 255);
@@ -290,7 +291,7 @@
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  font-size: 2vw;
+  font-size: 2.1vw;
   cursor: pointer;
   transition-duration: 0.5s;
   color: rgb(255, 255, 255);
@@ -298,7 +299,7 @@
 
 .categoryLine1 {
   height: 4px;
-  width: 25%;
+  width: 27%;
   background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
   transition-duration: 0.8s;
   border-radius: 3px;
@@ -306,7 +307,7 @@
 
 .categoryLine2 {
   height: 6px;
-  width: 25%;
+  width: 27%;
   background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
   transition-duration: 0.5s;
   border-radius: 3px;
@@ -317,7 +318,7 @@
   padding: 0;
   font-weight: 400;
   letter-spacing: 0.08vw;
-  width: 40%;
+  width: 47%;
 }
 
 
@@ -344,7 +345,7 @@
   overflow-x: hidden;
   scrollbar-width: thin;
   scrollbar-color: grey black;
-  transition-duration: 3.5s;
+  transition-duration: 2.8s;
 }
 
 .rightContainer3 {
@@ -682,6 +683,7 @@
     width 0.3s,
     font-size 0.2s,
     top 0.3s,
+    left 0.2s,
     max-height 0.3s;
   z-index: 11;
   cursor: auto;
@@ -832,6 +834,7 @@
   letter-spacing: 0.1vw;
   margin: 0;
   margin-bottom: 2vw;
+
 }
 
 
@@ -845,7 +848,7 @@
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  font-size: 1.6vw;
+  font-size: 1.7vw;
   cursor: pointer;
   transition-duration: 0.8s;
 }

@@ -80,7 +80,7 @@ function Home() {
   let headerStyle = {}
   let videoStyle = {}
   let titleBgStyle = {}
-  let lineStyle = {}
+  let buttonContainerStyle = {}
   let modalStyle = {}
   let rightContainerStyle = {}
 
@@ -97,7 +97,11 @@ function Home() {
 
     headerStyle = { height: 50 * vh - scrollOffset, transitionDuration: "0s" }
 
-    modalStyle = { height: 50 * vh + scrollOffset, paddingTop: 8 * vh + scrollOffset / 3, transitionDuration: "0s" }
+    modalStyle = { height: 50 * vh + scrollOffset, paddingTop: 8 * vh + scrollOffset / 5, transitionDuration: "0s" }
+
+    const sizeRatio = scrollOffset / (offset)
+
+    buttonContainerStyle = { height : 17 * vw + sizeRatio * 5.5 * vw}
 
     const opacityRatio = 1 - scrollOffset / (offset)
 
@@ -113,9 +117,11 @@ function Home() {
 
     headerStyle = { height: 9 * vw, transitionDuration: "0s", position: "absolute", top: 0 }
 
-    modalStyle = { height: 50 * vh + offset, paddingTop: 8 * vh + offset / 3, transitionDuration: "0s", position: "absolute", top: 9 * vw}
+    modalStyle = { height: 50 * vh + offset, paddingTop: 8 * vh + offset / 5, transitionDuration: "0s", position: "absolute", top: 9 * vw}
 
     rightContainerStyle = { paddingLeft: 29 * vw, width: 100 * vw, transitionDuration: "0s" }
+
+    buttonContainerStyle = { height : 17 * vw + 5.5 * vw}
 
     videoStyle = { transitionDuration: "0.8s", opacity: 0 }
 
@@ -166,10 +172,10 @@ function Home() {
     // Déclenchement des timings d'animation
 
     setTimeout(() => setAnimationsBegin(true), 600)
-    setTimeout(() => setAnimations2Begin(true), 1000)
-    setTimeout(() => setAnimations3Begin(true), 2200)
-    setTimeout(() => setAnimations4Begin(true), 2800)
-    setTimeout(() => setAnimations5Begin(true), 3200)
+    setTimeout(() => setAnimations2Begin(true), 1200)
+    setTimeout(() => setAnimations3Begin(true), 2800)
+    setTimeout(() => setAnimations4Begin(true), 3500)
+    setTimeout(() => setAnimations5Begin(true), 3800)
     setTimeout(() => setAnimationsEnd(true), 9000)
 
   }, [])
@@ -184,14 +190,13 @@ function Home() {
 
   let modal = !animations3Begin ? styles.modal1 : styles.modal2
 
-  const buttonContainer = !animations4Begin ? styles.buttonContainer1 : styles.buttonContainer2
+  let buttonContainer = !animations4Begin ? styles.buttonContainer1 : styles.buttonContainer2
 
 
   let rightContainer = !animations5Begin ? styles.rightContainer1 : styles.rightContainer2
 
-  let backgroundVideo = !animationsBegin ? styles.backgroundVideo0 : styles.backgroundVideo1
+  let backgroundVideo = !animations2Begin ? styles.backgroundVideo1 : styles.backgroundVideo2
 
-  if (animations2Begin) { backgroundVideo = styles.backgroundVideo2 }
 
   let headerContainer = styles.headerContainer1
 
@@ -202,6 +207,7 @@ function Home() {
     rightContainer = styles.rightContainer3
     backgroundVideo = styles.backgroundVideo3
     headerContainer = styles.headerContainer2
+    buttonContainer = styles.buttonContainer3
   }
 
 
@@ -333,7 +339,7 @@ function Home() {
 
       <div className={headerContainer} style={headerStyle} >
 
-        <video src="/Header-Video-1.1.mp4" className={backgroundVideo} style={videoStyle} autoPlay={true} loop={true} muted={true} ></video>
+        <video src="/Header-Video-1.2.mp4#t=2" className={backgroundVideo} style={videoStyle} autoPlay={true} loop={true} muted={true} ></video>
 
 
         <div className={headerTextContainer}>
@@ -351,7 +357,7 @@ function Home() {
 
         <div className={modal} style={modalStyle}>
 
-          <div className={buttonContainer}>
+          <div className={buttonContainer} style={buttonContainerStyle}>
             <div className={categoryButton0} onClick={() => categoryClick("home")}>
               <div className={categoryLine0}></div>
               <h5 className={styles.category}>Accueil</h5>
