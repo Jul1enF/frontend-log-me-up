@@ -13,12 +13,12 @@
 .headerContainer1 {
   width: 100vw;
   height: 50vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
   z-index: 3;
   background-color: rgb(7, 5, 8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
@@ -26,38 +26,12 @@
   width: 100vw;
   height: 50vh;
   min-height: 8.5vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 3;
-  /* Très foncé (trop ?) mais joli */
-  /* background: linear-gradient(90deg, #8000af, rgb(233, 227, 235)); */
-
-  /* Recherche d'un middle */
-  /* background: linear-gradient(90deg, #9443b1, rgb(233, 227, 235)); */
-
-  /* Pas mal */
-  /* background: linear-gradient(90deg, #9962ad, rgb(233, 227, 235) 115%); */
-  /* background: linear-gradient(90deg, rgb(233, 227, 235), #9962ad); */
-
-  /* Un peu moins contrasté */
-  /* background: linear-gradient(90deg, #9c69ae, rgb(233, 227, 235) 110%); */
-
-
-  /* Encore moins contrasté */
-  /* background: linear-gradient(90deg, #9e73ae, rgb(233, 227, 235)); */
-
-  /* background: linear-gradient(90deg, #a37cb1, rgb(233, 227, 235)); */
-
-  /* Beaucoup moins contrasté et peut-être mieux au final */
-  /* background: linear-gradient(90deg, #a682b3, rgb(233, 227, 235)); */
-
-  /* PASSE PLUTOT BIEN AU FINAL */
-  background: linear-gradient(90deg, #ad99b5, rgb(233, 227, 235)110%);
-
-  /* Tests autres couleurs */
-  /* background: linear-gradient(90deg,rgb(126, 78, 204), rgb(171, 153, 199)); */
+  background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
 }
 
 .backgroundVideo0 {
@@ -93,7 +67,7 @@
   z-index: -1;
   opacity: 1;
   filter: brightness(0.8);
-  transition-duration: 6s;
+  transition-duration: 4s;
 }
 
 .backgroundVideo3 {
@@ -110,66 +84,91 @@
 
 .titleBackground1 {
   background-color: rgba(233, 227, 235, 0);
-  height: fit-content;
-  width: fit-content;
-  padding: 0.2vw 1.15vw 0.2vw;
+  position: absolute;
+  z-index: 4;
+  left : 0vw;
+  top : 0vh;
+  height: 100%;
+  width: 100%;
   border-radius: 0.6vw;
-  background: linear-gradient(90deg, rgba(189,	176,	196		,	0.75), rgba(207,	198,	213		,	 0.75	));
+  background: linear-gradient(90deg, rgba(78,	14,	152			,	0.75), rgba(45,	8,	144	,	 0.75	));
   opacity : 0;
 }
 
 .titleBackground2 {
-  background: linear-gradient(90deg, rgba(189,	176,	196		,	0.75), rgba(207,	198,	213		,	 0.75	));
+  background: linear-gradient(90deg, rgba(78,	14,	152			,	0.75), rgba(45,	8,	144	,	 0.75	));
+  position: absolute;
+  z-index: 4;
+  left : 0vw;
+  top : 0vh;
+  height: 100%;
+  width: 100%;
   opacity : 1;
-  height: fit-content;
-  width: fit-content;
-  padding: 0.2vw 1.15vw 0.2vw;
   border-radius: 0.7vw;
-  transition-duration: 4s;
+  transition-duration: 2s;
 }
 
 .titleBackground3 {
-  /* background: linear-gradient(90deg, rgba(203,	185,	212	,	0.75), rgba(174,	143,	191	,	 0.75	)); */
-  background: linear-gradient(90deg, rgba(189,	176,	196		,	0.75), rgba(207,	198,	213		,	 0.75	));
-  height: fit-content;
-  width: fit-content;
-  padding: 0.2vw 1.15vw 0.2vw;
+  background: linear-gradient(90deg, rgba(78,	14,	152			,	0.75), rgba(45,	8,	144	,	 0.75	));
+  position: absolute;
+  z-index: 4;
+  left : 0vw;
+  top : 0vh;
+  height: 100%;
+  width: 100%;
   border-radius: 0.7vw;
   transition-duration: 0.8s;
 }
 
-.gradientBackgroundHeader {
+.headerTextContainer1 {
+  padding: 0 1.2vw 1vw;
+  height: fit-content;
   width: fit-content;
-  height: 100%;
-  opacity: 1;
-  background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 0.8vw;
-  background-clip: text;
+  position: relative;
+  opacity: 0;
+  margin-top: 6px;
+}
+
+.headerTextContainer2 {
+  padding: 0 1.2vw 0.9vw;
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  opacity: 1;
+  transition-duration: 3s;
+  margin-top: 6px;
 }
 
 
 .title {
-  font-size: 2.8vw;
-  font-weight: 750;
+  font-size: 2.9vw;
+  font-weight: 600;
   letter-spacing: 0.25vw;
   line-height: 4.3vw;
-  color: transparent;
+  /* color: rgb(221, 216, 223); */
+  color: rgb(231, 225, 234);
   margin: 0;
   padding: 0;
-  margin-bottom: 0vw;
+  margin-bottom: 0.3vw;
+  z-index: 5;
 }
 
 .subTitle {
   font-size: 1.48vw;
-  font-weight: 700;
-  color: transparent;
+  font-weight: 600;
+  color: rgb(231, 225, 234);
   margin: 0;
   padding: 0;
-  letter-spacing: 0.07vw;
+  letter-spacing: 0.12vw;
+  z-index: 5;
 }
 
 .headerLineContainer {
@@ -217,7 +216,7 @@
   margin-top: -50vh;
   width: 23vw;
   height: calc(50vh - 6px);
-  background: linear-gradient(90deg, rgb(16, 16, 16), rgb(27, 27, 27));
+  background: linear-gradient(90deg, rgb(11, 11, 11), rgb(21, 21, 21));
   border-bottom-right-radius: 1vw;
   /* box-shadow: inset 5px 5px 10px rgba(255, 255, 255, 0.3), inset -5px -5px 10px rgba(0, 0, 0, 0.5); */
   box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.8);
@@ -236,7 +235,7 @@
   margin-top: 0;
   width: 23vw;
   height: calc(50vh - 6px);
-  background: linear-gradient(90deg, rgb(16, 16, 16), rgb(27, 27, 27));
+  background: linear-gradient(90deg, rgb(11, 11, 11), rgb(21, 21, 21));
   transition-duration: 1s;
   border-bottom-right-radius: 1vw;
   border-top-right-radius: 1vw;
@@ -256,8 +255,7 @@
   max-height: calc(100vh - 8.5vw - 6px);
   width: 23vw;
   height: calc(50vh - 6px);
-  background: linear-gradient(90deg, rgb(11, 11, 11), rgb(22, 22, 22));
-  /* background: linear-gradient(90deg, rgb(16, 16, 16), rgb(27, 27, 27)); */
+  background: linear-gradient(90deg, rgb(11, 11, 11), rgb(21, 21, 21));
   border-bottom-right-radius: 1vw;
   border-top-right-radius: 1vw;
   box-shadow: inset -6px -6px 14px rgba(0, 0, 0, 0.8);
