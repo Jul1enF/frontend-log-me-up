@@ -686,6 +686,10 @@ function Home() {
             <h6 className={styles.mail}>contact@julien-furic.com</h6>
           </div>
 
+          <div className={styles.gradientMail2} >
+            <div className={styles.gradientShadow}></div>
+            <h6 className={styles.mail2}>contact@julien-furic.com</h6>
+          </div>
 
 
 

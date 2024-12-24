@@ -353,7 +353,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 9vw 6vw 6vw;
+  padding: 9vw 6vw 20vw;
   overflow-y: scroll;
   overflow-x: hidden;
   scrollbar-width: thin;
@@ -476,12 +476,15 @@
   justify-content: flex-start;
   margin-bottom: 1.3vw;
   margin-right: 0;
+  min-height: 11.8vw;
+  max-height: 11.8vw;
 }
 
 .toolsCategoriesContainer2 {
   display: flex;
   justify-content: flex-start;
   margin-bottom: 11vw;
+  min-height: 11.8vw;
   max-height: 11.8vw;
   overflow: hidden;
 }
@@ -562,6 +565,7 @@
   margin-bottom: 2vw;
   width: 50vw;
   position: relative;
+  min-height: 25vw;
 }
 
 .projectsLine2 {
@@ -795,6 +799,7 @@
   flex-direction: column;
   justify-content: center;
   width: 79%;
+  margin-bottom: 2vw;
 }
 
 .paragraph2 {
@@ -810,11 +815,44 @@
 .gradientMail {
   width: 52.8vw;
   height: fit-content;
-  background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 25%, #1b0093 50%,  rgb(62, 6, 152) 75%, #8000af 100%);
+  margin-left: 3vw;
+  margin-bottom: 0.8vw;
+}
+
+
+.mail {
+  background-image: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 25%, #1b0093 50%,  rgb(62, 6, 152) 75%, #8000af 100%);
   background-clip: text;
-  margin-top: 2vw;
-  margin-left: 11vw;
-  animation : slidein 3s linear infinite;
+  animation : slidein 4s linear infinite;
+  color: transparent;
+  font-size: 3.5vw;
+  font-weight: 450;
+  letter-spacing: 0.1vw;
+  margin: 0;
+  transform: rotateX(0deg) ;
+}
+
+
+.gradientMail2 {
+  width: 52.8vw;
+  height: 4.5vw;
+  margin-left: 3vw;
+  position: relative;
+}
+
+
+.mail2 {
+  color: transparent;
+  background-image: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 25%, #1b0093 50%,  rgb(62, 6, 152) 75%, #8000af 100%);
+  background-clip: text;
+  font-size: 3.5vw;
+  font-weight: 400;
+  letter-spacing: 0.1vw;
+  margin: 0;
+  margin-bottom: 2vw;
+  transform: rotateX(180deg) ;
+  animation : slidein 4s linear infinite;
+  opacity: 1;
 }
 
 @keyframes slidein {
@@ -826,18 +864,13 @@
   }
 }
 
-
-.mail {
-  color: transparent;
-  font-size: 2vw;
-  font-weight: 600;
-  letter-spacing: 0.1vw;
-  margin: 0;
-  margin-bottom: 2vw;
-
+.gradientShadow {
+  position: absolute;
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(180deg, rgba(7, 5, 8, 0), rgba(7, 5, 8, 1) );
 }
-
-
 
 /* Hover des composants  */
 
