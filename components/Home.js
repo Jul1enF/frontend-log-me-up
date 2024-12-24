@@ -74,7 +74,7 @@ function Home() {
   const [scrollOffset, setScrollOffset] = useState(0)
 
   // Offset à ne pas dépasser pour que le Header ne fasse pas moins de 10vw
-  const offset = vw ? 50 * vh - 8.5 * vw : 0
+  const offset = vw ? 50 * vh - 9 * vw : 0
 
   let bodyStyle = {}
   let headerStyle = {}
@@ -97,7 +97,7 @@ function Home() {
 
     headerStyle = { height: 50 * vh - scrollOffset, transitionDuration: "0s" }
 
-    modalStyle = { height: 50 * vh + scrollOffset - 6, paddingTop: 8 * vh + scrollOffset / 3, transitionDuration: "0s" }
+    modalStyle = { height: 50 * vh + scrollOffset, paddingTop: 8 * vh + scrollOffset / 3, transitionDuration: "0s" }
 
     const opacityRatio = 1 - scrollOffset / (offset)
 
@@ -109,13 +109,11 @@ function Home() {
   // Le header a sa taille def
   else if (vw && scrollOffset >= offset) {
 
-    bodyStyle = { paddingTop: offset + 8.5 * vw + 6, transitionDuration: "0s" }
+    bodyStyle = { paddingTop: offset + 9 * vw, transitionDuration: "0s" }
 
-    headerStyle = { height: 8.5 * vw, transitionDuration: "0s", position: "absolute", top: 0 }
+    headerStyle = { height: 9 * vw, transitionDuration: "0s", position: "absolute", top: 0 }
 
-    modalStyle = { height: 50 * vh + offset - 6, paddingTop: 8 * vh + offset / 3, transitionDuration: "0s", position: "absolute", top: 8.5 * vw + 6 }
-
-    lineStyle = { position: "absolute", top: 8.5 * vw, transitionDuration: "0s" }
+    modalStyle = { height: 50 * vh + offset, paddingTop: 8 * vh + offset / 3, transitionDuration: "0s", position: "absolute", top: 9 * vw}
 
     rightContainerStyle = { paddingLeft: 29 * vw, width: 100 * vw, transitionDuration: "0s" }
 
@@ -169,9 +167,9 @@ function Home() {
 
     setTimeout(() => setAnimationsBegin(true), 600)
     setTimeout(() => setAnimations2Begin(true), 1000)
-    setTimeout(() => setAnimations3Begin(true), 1800)
-    setTimeout(() => setAnimations4Begin(true), 2400)
-    setTimeout(() => setAnimations5Begin(true), 2700)
+    setTimeout(() => setAnimations3Begin(true), 2200)
+    setTimeout(() => setAnimations4Begin(true), 2800)
+    setTimeout(() => setAnimations5Begin(true), 3200)
     setTimeout(() => setAnimationsEnd(true), 9000)
 
   }, [])
@@ -183,8 +181,6 @@ function Home() {
   let titleBackground = !animationsBegin ? styles.titleBackground1 : styles.titleBackground2
 
   let headerTextContainer =!animationsBegin ? styles.headerTextContainer1 : styles.headerTextContainer2
-
-  let headerGradientLine = !animationsBegin ? styles.headerGradientLine1 : styles.headerGradientLine2
 
   let modal = !animations3Begin ? styles.modal1 : styles.modal2
 
@@ -202,7 +198,6 @@ function Home() {
   // Nouvelles classeName avec réglages def et plus de transition duration pour les cas de resize de la fenêtre
   if (animationsEnd) {
     titleBackground = styles.titleBackground3
-    headerGradientLine = styles.headerGradientLine3
     modal = styles.modal3
     rightContainer = styles.rightContainer3
     backgroundVideo = styles.backgroundVideo3
@@ -348,10 +343,6 @@ function Home() {
         </div>
 
 
-      </div>
-
-      <div className={styles.headerLineContainer} style={lineStyle}>
-        <div className={headerGradientLine}></div>
       </div>
 
 
