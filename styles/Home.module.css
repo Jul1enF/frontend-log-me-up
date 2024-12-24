@@ -18,7 +18,7 @@
   align-items: center;
   position: relative;
   z-index: 3;
-  background-color :rgb(14, 14, 14);
+  background-color: rgb(7, 5, 8);
 }
 
 
@@ -39,7 +39,7 @@
 
   /* Pas mal */
   /* background: linear-gradient(90deg, #9962ad, rgb(233, 227, 235) 115%); */
-  background: linear-gradient(90deg, rgb(233, 227, 235), #9962ad);
+  /* background: linear-gradient(90deg, rgb(233, 227, 235), #9962ad); */
 
   /* Un peu moins contrasté */
   /* background: linear-gradient(90deg, #9c69ae, rgb(233, 227, 235) 110%); */
@@ -54,7 +54,7 @@
   /* background: linear-gradient(90deg, #a682b3, rgb(233, 227, 235)); */
 
   /* PASSE PLUTOT BIEN AU FINAL */
-  /* background: linear-gradient(90deg, #ad99b5, rgb(233, 227, 235)110%); */
+  background: linear-gradient(90deg, #ad99b5, rgb(233, 227, 235)110%);
 
   /* Tests autres couleurs */
   /* background: linear-gradient(90deg,rgb(126, 78, 204), rgb(171, 153, 199)); */
@@ -114,12 +114,12 @@
   width: fit-content;
   padding: 0.2vw 1.15vw 0.2vw;
   border-radius: 0.6vw;
-  background: linear-gradient(90deg, rgba(186,	169,	195,	0.85), rgba(206,	194,	212	,	 0.85	));
+  background: linear-gradient(90deg, rgba(189,	176,	196		,	0.75), rgba(207,	198,	213		,	 0.75	));
   opacity : 0;
 }
 
 .titleBackground2 {
-  background: linear-gradient(90deg, rgba(203,	185,	212	,	0.75), rgba(174,	143,	191	,	 0.75	));
+  background: linear-gradient(90deg, rgba(189,	176,	196		,	0.75), rgba(207,	198,	213		,	 0.75	));
   opacity : 1;
   height: fit-content;
   width: fit-content;
@@ -129,7 +129,8 @@
 }
 
 .titleBackground3 {
-  background: linear-gradient(90deg, rgba(203,	185,	212	,	0.75), rgba(174,	143,	191	,	 0.75	));
+  /* background: linear-gradient(90deg, rgba(203,	185,	212	,	0.75), rgba(174,	143,	191	,	 0.75	)); */
+  background: linear-gradient(90deg, rgba(189,	176,	196		,	0.75), rgba(207,	198,	213		,	 0.75	));
   height: fit-content;
   width: fit-content;
   padding: 0.2vw 1.15vw 0.2vw;
