@@ -101,7 +101,7 @@ function Home() {
 
     const opacityRatio = 1 - scrollOffset / (offset)
 
-    videoStyle = { transitionDuration: "0.8s", opacity: `${0.95 * opacityRatio}` }
+    videoStyle = { transitionDuration: "0.8s", opacity: `${1 * opacityRatio}` }
   }
 
   // Le header a sa taille def
@@ -191,7 +191,7 @@ function Home() {
 
   if (animations2Begin) { backgroundVideo = styles.backgroundVideo2 }
 
-  let headerContainer = animations4Begin ? styles.headerContainer2 : styles.headerContainer1
+  let headerContainer = styles.headerContainer1
 
   // Nouvelles classeName avec réglages def et plus de transition duration pour les cas de resize de la fenêtre
   if (animationsEnd) {
@@ -200,7 +200,7 @@ function Home() {
     modal = styles.modal3
     rightContainer = styles.rightContainer3
     backgroundVideo = styles.backgroundVideo3
-    headerContainer = styles.headerContainer3
+    headerContainer = styles.headerContainer2
   }
 
 
@@ -319,39 +319,6 @@ function Home() {
 
   const videoContainer2Style = modal2Visible ? styles.projectVideoContainer : styles.projectImgContainer
 
-
-
-
-
-  // Animation pour l'adresse mail
-
-  const [gradientMailOffset, setGradientMailOffset]=useState(0)
-  // const [animationDelay, setAnimationDelay]=useState("2.5")
-
-  console.log(gradientMailOffset)
-  const [animationRunning, setAnimationRunning]=useState(false)
-
-  let gradientMailStyle = {backgroundPosition : gradientMailOffset * vw, transition : `background-position 4s`}
-
-  // if (!animationRunning){
-  //   if (gradientMailOffset < -600){
-  //     // setAnimationDelay("0")
-  //     setGradientMailOffset(-52.8)
-  //   }
-  //   else {
-  //     setGradientMailOffset(gradientMailOffset => gradientMailOffset - 52.8)
-  //     animationDelay !== "2.5" && setAnimationDelay("2.5")
-  //     gradientMailOffset <= -548.2 &&  setAnimationDelay("0")
-  //     setAnimationRunning(true)
-  //     setTimeout(()=> setAnimationRunning(false), 1400)
-  //   }
-  // }
-
-  if (!animationRunning){
-    setGradientMailOffset(gradientMailOffset => gradientMailOffset - 52.8)
-    setAnimationRunning(true)
-    setTimeout(()=> setAnimationRunning(false), 2000)
-  }
 
 
 
@@ -710,7 +677,7 @@ function Home() {
             <p className={styles.paragraph2}>Vous pouvez me joindre à tout moment en m'écrivant à l'adresse mail suivante : </p>
           </div>
           
-          <div className={styles.gradientMail} style={gradientMailStyle}>
+          <div className={styles.gradientMail} >
           <h6 className={styles.mail}>contact@julien-furic.com</h6>
           </div>
 

@@ -1,8 +1,8 @@
 .body {
   height: 100vh;
   width: 100vw;
-  /* background-color: rgb(7, 5, 8); */
-  background-color: rgb(14, 14, 14);
+  background-color: rgb(7, 5, 8);
+  /* background-color: rgb(14, 14, 14); */
   /* font-family: "Noto Sans Bengali", sans-serif; */
   font-family: "Kumbh Sans", sans-serif;
   overflow-y: scroll;
@@ -21,19 +21,8 @@
   background-color :rgb(14, 14, 14);
 }
 
-.headerContainer2 {
-  transition-duration: 5s;
-  width: 100vw;
-  height: 50vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  z-index: 3;
-  background-color: rgb(193	179	203		);
-}
 
-.headerContainer3 {
+.headerContainer2 {
   width: 100vw;
   height: 50vh;
   min-height: 8.5vw;
@@ -49,7 +38,8 @@
   /* background: linear-gradient(90deg, #9443b1, rgb(233, 227, 235)); */
 
   /* Pas mal */
-  /* background: linear-gradient(90deg, #9962ad, rgb(233, 227, 235)); */
+  /* background: linear-gradient(90deg, #9962ad, rgb(233, 227, 235) 115%); */
+  background: linear-gradient(90deg, rgb(233, 227, 235), #9962ad);
 
   /* Un peu moins contrasté */
   /* background: linear-gradient(90deg, #9c69ae, rgb(233, 227, 235) 110%); */
@@ -63,7 +53,8 @@
   /* Beaucoup moins contrasté et peut-être mieux au final */
   /* background: linear-gradient(90deg, #a682b3, rgb(233, 227, 235)); */
 
-  background: linear-gradient(90deg, #ad99b5, rgb(233, 227, 235)110%);
+  /* PASSE PLUTOT BIEN AU FINAL */
+  /* background: linear-gradient(90deg, #ad99b5, rgb(233, 227, 235)110%); */
 
   /* Tests autres couleurs */
   /* background: linear-gradient(90deg,rgb(126, 78, 204), rgb(171, 153, 199)); */
@@ -100,7 +91,7 @@
   object-fit: cover;
   object-position: top;
   z-index: -1;
-  opacity: 0.95;
+  opacity: 1;
   filter: brightness(0.8);
   transition-duration: 6s;
 }
@@ -112,7 +103,7 @@
   object-fit: cover;
   object-position: top;
   z-index: -1;
-  opacity: 0.95;
+  opacity: 1;
   filter: brightness(0.8);
   transition-duration: 0.8s;
 }
@@ -128,7 +119,7 @@
 }
 
 .titleBackground2 {
-  background: linear-gradient(90deg, rgba(186,	169,	195,	0.85), rgba(206,	194,	212	,	 0.85	));
+  background: linear-gradient(90deg, rgba(203,	185,	212	,	0.75), rgba(174,	143,	191	,	 0.75	));
   opacity : 1;
   height: fit-content;
   width: fit-content;
@@ -138,10 +129,7 @@
 }
 
 .titleBackground3 {
-  /* background-color: rgba(233, 227, 235, 0.85); */
-  /* background: linear-gradient(90deg, rgba(178, 154, 191, 0.85), rgba(205,	190,	213, 0.85	)); */
-  /* background: linear-gradient(90deg, rgba(184,	163,	195	, 0.85), rgba(208,	195,	215,	 0.85	)); */
-  /* background: linear-gradient(90deg, rgba(186,	169,	195,	0.85), rgba(206,	194,	212	,	 0.85	)); */
+  background: linear-gradient(90deg, rgba(203,	185,	212	,	0.75), rgba(174,	143,	191	,	 0.75	));
   height: fit-content;
   width: fit-content;
   padding: 0.2vw 1.15vw 0.2vw;
@@ -267,7 +255,8 @@
   max-height: calc(100vh - 8.5vw - 6px);
   width: 23vw;
   height: calc(50vh - 6px);
-  background: linear-gradient(90deg, rgb(16, 16, 16), rgb(27, 27, 27));
+  background: linear-gradient(90deg, rgb(11, 11, 11), rgb(22, 22, 22));
+  /* background: linear-gradient(90deg, rgb(16, 16, 16), rgb(27, 27, 27)); */
   border-bottom-right-radius: 1vw;
   border-top-right-radius: 1vw;
   box-shadow: inset -6px -6px 14px rgba(0, 0, 0, 0.8);
@@ -853,39 +842,24 @@
 }
 
 .gradientMail {
-  /* width: 26.4vw; */
   width: 52.8vw;
   height: fit-content;
-  /* background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093); */
   background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 25%, #1b0093 50%,  rgb(62, 6, 152) 75%, #8000af 100%);
-  /* transition : background-position 2.5s; */
-  background-position: 0vw;
   background-clip: text;
   margin-top: 2vw;
   margin-left: 11vw;
+  animation : slidein 3s linear infinite;
 }
 
-.gradientMail2 {
-  width: 52.8vw;
-  height: fit-content;
-  background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 25%, #1b0093 50%,  rgb(62, 6, 152) 75%, #8000af 100%);
-  background-position: -26.4vw;
-  transition : background-position 1.5s;
-  background-clip: text;
-  margin-top: 2vw;
-  margin-left: 11vw;
+@keyframes slidein {
+  from {
+    background-position: 0vw;
+  }
+  to {
+    background-position: -52.8vw;
+  }
 }
 
-.gradientMail3 {
-  width: 52.8vw;
-  height: fit-content;
-  background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 25%, #1b0093 50%,  rgb(62, 6, 152) 75%, #8000af 100%);
-  background-position: -52.8vw;
-  transition : background-position 1.5s;
-  background-clip: text;
-  margin-top: 2vw;
-  margin-left: 11vw;
-}
 
 .mail {
   color: transparent;
