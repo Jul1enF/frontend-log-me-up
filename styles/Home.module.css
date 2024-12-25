@@ -866,8 +866,8 @@
 }
 
 .copyIcon {
-  height : 1.2vw;
-  color : rgb(227, 219, 230);
+  height : 1.15vw;
+  color : rgba(227, 219, 230, 0.85);
   position: absolute;
   right : 7vw;
   top : 1.7vw;
