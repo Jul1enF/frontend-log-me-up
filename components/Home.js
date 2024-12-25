@@ -9,6 +9,7 @@ import { Palette } from 'react-bootstrap-icons';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faReact, faNode } from '@fortawesome/free-brands-svg-icons'
+import { faClipboard } from '@fortawesome/free-solid-svg-icons' 
 
 import { SiNextdotjs } from "react-icons/si";
 import { SiTypescript } from "react-icons/si";
@@ -97,17 +98,17 @@ function Home() {
 
     headerStyle = { height: 50 * vh - scrollOffset, transitionDuration: "0s" }
 
-    modalStyle = { height: 50 * vh + scrollOffset, paddingTop: 8 * vh + scrollOffset / 5, transitionDuration: "0s" }
+    modalStyle = { height: 50 * vh + scrollOffset, paddingTop: 8 * vh + scrollOffset / 4.5, transitionDuration: "0s" }
 
     const sizeRatio = scrollOffset / (offset)
 
-    buttonContainerStyle = { height : 17 * vw + sizeRatio * 5.5 * vw}
+    buttonContainerStyle = { height: 17 * vw + sizeRatio * 4.5 * vw }
 
     const opacityRatio = 1 - scrollOffset / (offset)
 
     videoStyle = { transitionDuration: "0.8s", opacity: `${1 * opacityRatio}` }
 
-    titleBgStyle = {transitionDuration: "0.8s", opacity: `${1 * opacityRatio}`}
+    titleBgStyle = { transitionDuration: "0.8s", opacity: `${1 * opacityRatio}` }
   }
 
   // Le header a sa taille def
@@ -117,11 +118,11 @@ function Home() {
 
     headerStyle = { height: 9 * vw, transitionDuration: "0s", position: "absolute", top: 0 }
 
-    modalStyle = { height: 50 * vh + offset, paddingTop: 8 * vh + offset / 5, transitionDuration: "0s", position: "absolute", top: 9 * vw}
+    modalStyle = { height: 50 * vh + offset, paddingTop: 8 * vh + offset / 4.5, transitionDuration: "0s", position: "absolute", top: 9 * vw }
 
     rightContainerStyle = { paddingLeft: 29 * vw, width: 100 * vw, transitionDuration: "0s" }
 
-    buttonContainerStyle = { height : 17 * vw + 5.5 * vw}
+    buttonContainerStyle = { height: 17 * vw + 4.5 * vw }
 
     videoStyle = { transitionDuration: "0.8s", opacity: 0 }
 
@@ -186,7 +187,7 @@ function Home() {
 
   let titleBackground = !animationsBegin ? styles.titleBackground1 : styles.titleBackground2
 
-  let headerTextContainer =!animationsBegin ? styles.headerTextContainer1 : styles.headerTextContainer2
+  let headerTextContainer = !animationsBegin ? styles.headerTextContainer1 : styles.headerTextContainer2
 
   let modal = !animations3Begin ? styles.modal1 : styles.modal2
 
@@ -282,15 +283,15 @@ function Home() {
   let project3
 
   if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 17 * vw) {
-    project1 = { width: 18 * vw, height: 19.2 * vw, opacity: 0, transitionDuration: "3s", margin: 3 * vw }
+    project1 = { width: 18 * vw, height: 19.2 * vw, opacity: 0, transitionDuration: "3s", }
   }
 
   if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 42 * vw) {
-    project2 = { width: 18 * vw, height: 19.2 * vw, opacity: 0, transitionDuration: "3s", margin: 3 * vw, }
+    project2 = { width: 18 * vw, height: 19.2 * vw, opacity: 0, transitionDuration: "3s", }
   }
 
   if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 72 * vw) {
-    project3 = { width: 18 * vw, height: 19.2 * vw, opacity: 0, transitionDuration: "3s", margin: 3 * vw, }
+    project3 = { width: 18 * vw, height: 19.2 * vw, opacity: 0, transitionDuration: "3s", }
   }
 
 
@@ -328,7 +329,17 @@ function Home() {
 
 
 
+  // Fonction et état pour copier adresse mail
 
+  const [copyVisible, setCopyVisible]=useState(false)
+
+  const copy = !copyVisible ? styles.copy1 : styles.copy2
+
+  const copyText = () => {
+    navigator.clipboard.writeText("contact@julien-furic.com") 
+    setCopyVisible(true)
+    setTimeout(()=> setCopyVisible(false), 1500)
+  }
 
 
 
@@ -343,7 +354,7 @@ function Home() {
 
 
         <div className={headerTextContainer}>
-        <div className={titleBackground} style={titleBgStyle}></div>
+          <div className={titleBackground} style={titleBgStyle}></div>
           <h1 className={styles.title}>Julien Furic</h1>
           <h3 className={styles.subTitle}>Développeur d'applications web et mobile</h3>
         </div>
@@ -680,18 +691,24 @@ function Home() {
           <div className={styles.textContainer2}>
             <p className={styles.paragraph2}>Une envie ? Une idée ? Une question ? N'hésitez pas à me contacter ! </p>
             <p className={styles.paragraph2}>Vous pouvez me joindre à tout moment en m'écrivant à l'adresse mail suivante : </p>
+
+            <p className={copy}>Adresse mail copiée !</p>
+
           </div>
 
-          <div className={styles.gradientMail} >
+          <div className={styles.gradientMail} onClick={() => copyText()} >
             <h6 className={styles.mail}>contact@julien-furic.com</h6>
+
+              <FontAwesomeIcon icon={faClipboard} className={styles.copyIcon} onClick={() => copyText()}/>
+
           </div>
 
-          <div className={styles.gradientMail2} >
+          <div className={styles.gradientMail2} onClick={() => copyText()}>
             <div className={styles.gradientShadow}></div>
             <h6 className={styles.mail2}>contact@julien-furic.com</h6>
           </div>
 
-
+          <p className={styles.paragraph2}> À très bientôt ! :) </p>
 
         </div>
 
