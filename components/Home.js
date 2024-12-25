@@ -229,7 +229,7 @@ function Home() {
     const categoryToScroll = categoriesRef.current[cat]
     const containerToScroll = bodyRef.current
 
-    const distanceToScroll = cat === "home" ? 0 : categoryToScroll.offsetTop - rightContainerRef.current.offsetTop + 50 * vh - 12 * vw
+    const distanceToScroll = cat === "home" ? 0 : categoryToScroll.offsetTop - rightContainerRef.current.offsetTop + 50 * vh - 11 * vw
 
     containerToScroll.scroll({
       top: distanceToScroll,
