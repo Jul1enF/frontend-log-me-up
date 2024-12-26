@@ -350,7 +350,7 @@ function Home() {
 
       <div className={headerContainer} style={headerStyle} >
 
-        <video src="/Header-Video-1.2.mp4#t=2" className={backgroundVideo} style={videoStyle} autoPlay={true} loop={true} muted={true} ></video>
+        <video src="/Header-Video-1.3.mp4" className={backgroundVideo} style={videoStyle} autoPlay={true} loop={true} muted={true} ></video>
 
 
         <div className={headerTextContainer}>
