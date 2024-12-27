@@ -271,6 +271,9 @@
   cursor: pointer;
   transition-duration: 0.8s;
   color: rgb(240, 235, 243);
+  background-color: transparent;
+  border : none;
+  text-align: start;
 }
 
 .button2 {
@@ -283,6 +286,9 @@
   cursor: pointer;
   transition-duration: 0.5s;
   color: rgb(255, 255, 255);
+  background-color: transparent;
+  border : none;
+  text-align: start;
 }
 
 .button3 {
@@ -295,6 +301,9 @@
   cursor: pointer;
   transition-duration: 0.5s;
   color: rgb(255, 255, 255);
+  background-color: transparent;
+  border : none;
+  text-align: start;
 }
 
 .categoryLine1 {
@@ -846,7 +855,7 @@
 .gradientMail {
   width: 52.8vw;
   height: fit-content;
-  margin-left: 3vw;
+  margin-left: 3.5vw;
   margin-bottom: 0.8vw;
   position: relative;
 }
@@ -855,7 +864,7 @@
 .mail {
   background-image: linear-gradient(90deg, #910ec1, rgb(74, 17, 165) 25%, #2a0ea5 50%,  rgb(74, 17, 165) 75%, #910ec1 100%);
   background-clip: text;
-  animation : slidein 4s linear infinite;
+  animation : slidein 3.5s linear infinite;
   color: transparent;
   font-size: 3.3vw;
   font-weight: 450;
@@ -879,7 +888,7 @@
 .gradientMail2 {
   width: 52.8vw;
   height: 4.5vw;
-  margin-left: 3vw;
+  margin-left: 3.5vw;
   margin-bottom: 5vw;
   position: relative;
 }
@@ -895,7 +904,7 @@
   margin: 0;
   margin-bottom: 2vw;
   transform: rotateX(180deg) ;
-  animation : slidein 4s linear infinite;
+  animation : slidein 3.5s linear infinite;
   opacity: 1;
   cursor: pointer;
 }
@@ -917,6 +926,12 @@
   background: linear-gradient(180deg, rgba(7, 5, 8, 0), rgba(7, 5, 8, 1) );
   pointer-events: none;
 }
+
+
+
+
+
+
 
 /* Hover des composants  */
 

@@ -5,7 +5,12 @@ function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Next.js App</title>
+        <title>Julien Furic - Portfolio</title>
+        <meta name="description" content="Portfolio de Julien Furic, développeur web fullstack (Frontend + Backend)" />
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="keywords" content="Portfolio, Développeur, développeur web, Front-end, frontend, back-end, backend, fullstack, Julien, Furic" />
+        <link rel="icon" href="/logo-1-portfolio.png" />
       </Head>
       <Component {...pageProps} />
     </>

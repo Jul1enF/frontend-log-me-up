@@ -350,7 +350,7 @@ function Home() {
 
       <div className={headerContainer} style={headerStyle} >
 
-        <video src="/Header-Video-1.3.mp4" className={backgroundVideo} style={videoStyle} autoPlay={true} loop={true} muted={true} ></video>
+        <video src="/Header-Video-1.4.mp4" className={backgroundVideo} style={videoStyle} autoPlay={true} loop={true} muted={true}></video>
 
 
         <div className={headerTextContainer}>
@@ -369,26 +369,26 @@ function Home() {
         <div className={modal} style={modalStyle}>
 
           <div className={buttonContainer} style={buttonContainerStyle}>
-            <div className={categoryButton0} onClick={() => categoryClick("home")}>
+            <button type="button" className={categoryButton0} onClick={() => categoryClick("home")}>
               <div className={categoryLine0}></div>
               <h5 className={styles.category}>Accueil</h5>
-            </div>
-            <div className={categoryButton1} onClick={() => categoryClick("about")}>
+            </button>
+            <button type="button" className={categoryButton1} onClick={() => categoryClick("about")}>
               <div className={categoryLine1}></div>
               <h5 className={styles.category}>Présentation</h5>
-            </div>
-            <div className={categoryButton2} onClick={() => categoryClick("skills")}>
+            </button>
+            <button type="button" className={categoryButton2} onClick={() => categoryClick("skills")}>
               <div className={categoryLine2}></div>
               <h5 className={styles.category}>Compétences</h5>
-            </div>
-            <div className={categoryButton3} onClick={() => categoryClick("projects")}>
+            </button>
+            <button type="button" className={categoryButton3} onClick={() => categoryClick("projects")}>
               <div className={categoryLine3}></div>
               <h5 className={styles.category}>Projets</h5>
-            </div>
-            <div className={categoryButton4} onClick={() => categoryClick("contact")}>
+            </button>
+            <button type="button" className={categoryButton4} onClick={() => categoryClick("contact")}>
               <div className={categoryLine4}></div>
               <h5 className={styles.category}>Contact</h5>
-            </div>
+            </button>
           </div>
 
         </div>
@@ -592,7 +592,7 @@ function Home() {
                   style={project1} >
                   <h6 className={styles.projectTitle}>Clothe Me Up</h6>
                   <div className={styles.projectImgContainer}>
-                    <Image alt="Vignette d'un site internet" fill={true} src="/Clothe-Me-Up2.png" className={styles.projectImg} />
+                    <Image alt="Vignette d'un site internet" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw" fill={true} src="/Clothe-Me-Up2.png" className={styles.projectImg} />
                   </div>
                   <p className={styles.projectSubtitle}>
                     Template pour site de e-commerce 100% fonctionnel.
@@ -610,7 +610,7 @@ function Home() {
                 <div className={styles.squareGradient2} style={project2}>
                   <h6 className={styles.projectTitle}>Kairos</h6>
                   <div className={styles.projectImgContainer}>
-                    <Image alt="Vignette d'un site internet" fill={true} src="/Kairos.png" className={styles.projectImg} />
+                    <Image alt="Vignette d'un site internet" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw" fill={true} src="/Kairos.png" className={styles.projectImg} />
                   </div>
                   <p className={styles.projectSubtitle}>
                     Site web pour réaliser une étude de marché (projet de fin de formation).
@@ -624,7 +624,7 @@ function Home() {
                 <div className={styles.squareGradient3} style={project2}>
                   <h6 className={styles.projectTitle}>Hackatweet</h6>
                   <div className={styles.projectImgContainer}>
-                    <Image alt="Vignette d'un site internet" fill={true} src="/Hackatweet.png" className={styles.projectImg} />
+                    <Image alt="Vignette d'un site internet" fill={true} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw" src="/Hackatweet.png" className={styles.projectImg} />
                   </div>
                   <p className={styles.projectSubtitle}>
                     Exercice de formation, réplique d'un réseau social.
@@ -671,7 +671,7 @@ function Home() {
                   style={project3} >
                   <h6 className={styles.projectTitle}>Morning News</h6>
                   <div className={styles.projectImgContainer}>
-                    <Image alt="Vignette d'un site internet" fill={true} src="/Morningnews.png" className={styles.projectImg} />
+                    <Image alt="Vignette d'un site internet" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw" fill={true} src="/Morningnews.png" className={styles.projectImg} />
                   </div>
                   <p className={styles.projectSubtitle}>
                     Exercice de formation, site d'informations sur la tech.
@@ -699,7 +699,7 @@ function Home() {
           <div className={styles.gradientMail} onClick={() => copyText()} >
             <h6 className={styles.mail}>contact@julien-furic.com</h6>
 
-              <FontAwesomeIcon icon={faClipboard} className={styles.copyIcon} onClick={() => copyText()}/>
+              {/* <FontAwesomeIcon icon={faClipboard} className={styles.copyIcon} onClick={() => copyText()}/> */}
 
           </div>
 
