@@ -10,7 +10,7 @@ function App({ Component, pageProps }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="keywords" content="Portfolio, Développeur, développeur web, Front-end, frontend, back-end, backend, fullstack, Julien, Furic" />
-        <link rel="icon" href="/logo-2-portfolio.png" />
+        <link rel="icon" href="/logo-9-portfolio.png" />
       </Head>
       <Component {...pageProps} />
     </>
