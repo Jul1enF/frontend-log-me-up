@@ -177,7 +177,7 @@ function Home() {
     setTimeout(() => setAnimations3Begin(true), 2800)
     setTimeout(() => setAnimations4Begin(true), 3500)
     setTimeout(() => setAnimations5Begin(true), 3800)
-    setTimeout(() => setAnimationsEnd(true), 9000)
+    // setTimeout(() => setAnimationsEnd(true), 9000)
 
   }, [])
 
@@ -567,7 +567,7 @@ function Home() {
               }} >
                 <h6 className={styles.projectTitle}>Boost Up</h6>
                 <div className={videoContainer1Style}>
-                  <video src="/BoostUp.mp4" className={styles.projectVideo} autoPlay={true} loop={true} muted={true} alt="vidéo d'un site internet"></video>
+                  <video src="/BoostUp.mp4" className={styles.projectVideo} autoPlay={false} loop={true} muted={true} alt="vidéo d'un site internet"></video>
                 </div>
                 <p className={styles.projectSubtitle}>
                   Appli de coaching pour l'entreprise KevFit, bientôt sur App Store et Google Play.
@@ -579,7 +579,7 @@ function Home() {
               <h6 className={styles.projectTitle}>Boost Up</h6>
               <HiMiniXMark className={styles.closeIcon} onClick={() => setModal1Visible(false)} style={!modal1Visible && { opacity: 0, transitionDuration: "0.3s" }} />
               <div className={videoContainer1Style}>
-                <video src="/BoostUp.mp4" className={styles.projectVideo} autoPlay={true} loop={true} muted={true} alt="vidéo d'un site internet" ></video>
+                <video src="/BoostUp.mp4" className={styles.projectVideo} autoPlay={false} loop={true} muted={true} alt="vidéo d'un site internet" ></video>
               </div>
               <p className={styles.projectSubtitle}>
                 Appli de coaching pour l'entreprise KevFit, bientôt sur App Store et Google Play.
@@ -647,7 +647,7 @@ function Home() {
               }} >
                 <h6 className={styles.projectTitle}>ChatApp</h6>
                 <div className={videoContainer2Style}>
-                  <video src="/ChatApp.mp4" className={styles.projectVideo} autoPlay={true} loop={true} muted={true} alt="vidéo d'un site internet"></video>
+                  <video src="/ChatApp.mp4" className={styles.projectVideo} autoPlay={false} loop={true} muted={true} alt="vidéo d'un site internet"></video>
                 </div>
                 <p className={styles.projectSubtitle}>
                   Exercice de formation, application de chat (messages et vocaux).
