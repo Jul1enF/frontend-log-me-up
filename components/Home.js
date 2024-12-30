@@ -1,5 +1,5 @@
 import styles from '../styles/Home.module.css';
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useLayoutEffect } from 'react'
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -9,7 +9,7 @@ import { Palette } from 'react-bootstrap-icons';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faReact, faNode } from '@fortawesome/free-brands-svg-icons'
-import { faClipboard } from '@fortawesome/free-solid-svg-icons' 
+import { faClipboard } from '@fortawesome/free-solid-svg-icons'
 
 import { SiNextdotjs } from "react-icons/si";
 import { SiTypescript } from "react-icons/si";
@@ -38,18 +38,34 @@ function Home() {
 
 
 
-  // Listener taille de la fenêtre pour enregistrement vw et vh
+
+  // useLayoutEffect pour setter l'état initiale de la source de la vidéo et de vh et vw, après que la page ait monté mais avant qu'elle ne s'affiche
 
   const [vw, setVw] = useState(0);
   const [vh, setVh] = useState(0)
 
-  if (vh === 0 && vw === 0 && typeof window !== "undefined") {
+  const [src, setSrc] = useState(null)
+
+  useLayoutEffect(() => {
     setVw(window.innerWidth / 100);
     setVh(window.innerHeight / 100)
-  }
+
+    if (window.innerWidth / 100 > 11.5) {
+      setSrc("/Header-Video-1.4.mp4")
+    } else {
+      setSrc("/PhoneHeader-Video-2.mp4")
+    }
+  }, []);
+
+
+
+
+  // Listener taille de la fenêtre pour mise à jour vw et vh.
 
   useEffect(() => {
     const handleResize = () => {
+      if (vw < 11.5 && vw !== 0) { return }
+
       setVw(window.innerWidth / 100);
       setVh(window.innerHeight / 100)
 
@@ -90,8 +106,10 @@ function Home() {
   // Styles conditionnels en fonction du scroll et de la taille du header
 
 
+  // ÉCRAN D'ORDINATEUR
+
   // Le header n'a pas encore sa taille def
-  if (scrollOffset > 0 && scrollOffset < offset) {
+  if (vw && vw > 11.5 && scrollOffset > 0 && scrollOffset < offset) {
     !animationsEnd && setAnimationsEnd(true)
 
     bodyStyle = { paddingTop: scrollOffset, transitionDuration: "0s" }
@@ -112,7 +130,7 @@ function Home() {
   }
 
   // Le header a sa taille def
-  else if (vw && scrollOffset >= offset) {
+  else if (vw && vw > 11.5 && scrollOffset >= offset) {
 
     bodyStyle = { paddingTop: offset + 9 * vw, transitionDuration: "0s" }
 
@@ -269,6 +287,7 @@ function Home() {
   let skill2
   let skill3
 
+
   if (categoriesRef.current.skills && scrollOffset + 100 * vh < categoriesRef.current.skills.offsetTop + 14 * vw) {
     skill1 = { left: -20 * vw, opacity: 0, transitionDuration: "3s", marginRight: 600 }
     skill2 = { marginRight: -40 * vw, opacity: 0, transitionDuration: "3s" }
@@ -331,14 +350,84 @@ function Home() {
 
   // Fonction et état pour copier adresse mail
 
-  const [copyVisible, setCopyVisible]=useState(false)
+  const [copyVisible, setCopyVisible] = useState(false)
 
   const copy = !copyVisible ? styles.copy1 : styles.copy2
 
   const copyText = () => {
-    navigator.clipboard.writeText("contact@julien-furic.com") 
+    navigator.clipboard.writeText("contact@julien-furic.com")
     setCopyVisible(true)
-    setTimeout(()=> setCopyVisible(false), 1500)
+    setTimeout(() => setCopyVisible(false), 1500)
+  }
+
+
+
+
+
+  // PORTABLE  : Listener de scroll
+
+  useEffect(() => {
+    const windowScroll = () => {
+      if (typeof window !== "undefined" && vh < 11.5) {
+        bodyScroll(window.scrollY)
+      }
+    }
+
+    window.addEventListener('scroll', windowScroll)
+
+    return () => {
+      window.removeEventListener('scroll', windowScroll)
+    }
+
+  }, [scrollOffset])
+
+
+
+  // PORTABLE : Styles conditionnels en fonction du scroll et de la taille du header
+
+  const phoneOffset = 50 * vh - 9 * vw
+
+if (vw && vw <= 11.5){
+  headerStyle = {height : (100*vw)*0.85}
+}
+
+  // Le header n'a pas encore sa taille def
+  if (vw && vw > 11.5 && scrollOffset > 0 && scrollOffset < offset) {
+    !animationsEnd && setAnimationsEnd(true)
+
+    bodyStyle = { paddingTop: scrollOffset, transitionDuration: "0s" }
+
+    headerStyle = { height: 50 * vh - scrollOffset, transitionDuration: "0s" }
+
+    modalStyle = { height: 50 * vh + scrollOffset, paddingTop: 8 * vh + scrollOffset / 4.5, transitionDuration: "0s" }
+
+    const sizeRatio = scrollOffset / (offset)
+
+    buttonContainerStyle = { height: 17 * vw + sizeRatio * 4.5 * vw }
+
+    const opacityRatio = 1 - scrollOffset / (offset)
+
+    videoStyle = { transitionDuration: "0.8s", opacity: `${1 * opacityRatio}` }
+
+    titleBgStyle = { transitionDuration: "0.8s", opacity: `${1 * opacityRatio}` }
+  }
+
+  // Le header a sa taille def
+  else if (vw && vw > 11.5 && scrollOffset >= offset) {
+
+    bodyStyle = { paddingTop: offset + 9 * vw, transitionDuration: "0s" }
+
+    headerStyle = { height: 9 * vw, transitionDuration: "0s", position: "absolute", top: 0 }
+
+    modalStyle = { height: 50 * vh + offset, paddingTop: 8 * vh + offset / 4.5, transitionDuration: "0s", position: "absolute", top: 9 * vw }
+
+    rightContainerStyle = { paddingLeft: 29 * vw, width: 100 * vw, transitionDuration: "0s" }
+
+    buttonContainerStyle = { height: 17 * vw + 4.5 * vw }
+
+    videoStyle = { transitionDuration: "0.8s", opacity: 0 }
+
+    titleBgStyle = { transitionDuration: "0.8s", opacity: 0 }
   }
 
 
@@ -346,11 +435,13 @@ function Home() {
 
 
   return (
-    <div className={styles.body} onScroll={(e) => { bodyScroll(e.target.scrollTop) }} style={bodyStyle} ref={bodyRef}>
+    <div className={styles.body} onScroll={(e) => {
+      bodyScroll(e.target.scrollTop)
+    }} style={bodyStyle} ref={bodyRef} >
 
       <div className={headerContainer} style={headerStyle} >
 
-        <video src="/Header-Video-1.4.mp4" className={backgroundVideo} style={videoStyle} autoPlay={true} loop={true} muted={true}></video>
+        <video src={src} className={backgroundVideo} style={videoStyle} autoPlay={true} loop={true} muted={true} playsInline></video>
 
 
         <div className={headerTextContainer}>
@@ -363,7 +454,7 @@ function Home() {
       </div>
 
 
-      <div className={styles.mainContainer}>
+      <div className={styles.mainContainer} >
 
 
         <div className={modal} style={modalStyle}>
@@ -699,7 +790,7 @@ function Home() {
           <div className={styles.gradientMail} onClick={() => copyText()} >
             <h6 className={styles.mail}>contact@julien-furic.com</h6>
 
-              {/* <FontAwesomeIcon icon={faClipboard} className={styles.copyIcon} onClick={() => copyText()}/> */}
+            {/* <FontAwesomeIcon icon={faClipboard} className={styles.copyIcon} onClick={() => copyText()}/> */}
 
           </div>
 

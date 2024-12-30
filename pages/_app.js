@@ -12,8 +12,7 @@ function App({ Component, pageProps }) {
         <meta name="keywords" content="Portfolio, Développeur, développeur web, Front-end, frontend, back-end, backend, fullstack, Julien, Furic" />
         <link rel="icon" href="/logo-9-portfolio.png" />
         {/* Fond status bar pour téléphones : */}
-        {/* <meta name="theme-color" content="f50202"></meta> */}
-        <meta name="apple-mobile-web-app-status-bar-style" content="black"></meta>
+        <meta name="theme-color" content="070508"></meta>
       </Head>
       <Component {...pageProps} />
     </>

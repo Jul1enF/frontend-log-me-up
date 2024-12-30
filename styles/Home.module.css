@@ -1010,21 +1010,19 @@
 
 
   .body {
-    /* height: 100lvh; */
-    width: 100vw;
+   
+    width:100vw;
+   height: fit-content;
     background-color: rgb(7, 5, 8);
-    /* background-color: rgb(14, 14, 14); */
-    /* font-family: "Noto Sans Bengali", sans-serif; */
     font-family: "Kumbh Sans", sans-serif;
     overflow-y: scroll;
+    overflow-x: hidden;
     scrollbar-width: thin;
     scrollbar-color: grey black;
   }
-  
+
   .headerContainer1 {
-    top : -30px;
     width: 100vw;
-    height: 50vh;
     position: relative;
     z-index: 3;
     background-color: rgb(7, 5, 8);
@@ -1036,7 +1034,7 @@
   
   .headerContainer2 {
     width: 100vw;
-    height: 50vh;
+    height: 50svh;
     min-height: 9vw;
     position: relative;
     display: flex;
@@ -1148,20 +1146,20 @@
   
   
   .title {
-    font-size: 2.9vw;
+    font-size: 9vw;
     font-weight: 600;
     letter-spacing: 0.25vw;
-    line-height: 4.3vw;
+    line-height: 9vw;
     /* color: rgb(221, 216, 223); */
     color: rgb(231, 225, 234);
     margin: 0;
     padding: 0;
-    margin-bottom: 0.3vw;
+    margin-bottom: 2vw;
     z-index: 5;
   }
   
   .subTitle {
-    font-size: 1.48vw;
+    font-size: 4vw;
     font-weight: 600;
     color: rgb(231, 225, 234);
     margin: 0;
@@ -1173,6 +1171,7 @@
   .mainContainer {
     width: 100vw;
     display: flex;
+    flex-direction: column;
   }
   
   
@@ -1347,22 +1346,20 @@
   
   .rightContainer1 {
     width: 77vw;
-    height: 100%;
+   
     display: flex;
     flex-direction: column;
     padding: 9vw 6vw 6vw;
-    overflow-y: scroll;
     overflow-x: hidden;
     opacity: 0;
   }
   
   .rightContainer2 {
     width: 77vw;
-    height: 100%;
+  
     display: flex;
     flex-direction: column;
     padding: 9vw 6vw 6vw;
-    overflow-y: scroll;
     overflow-x: hidden;
     scrollbar-width: thin;
     scrollbar-color: grey black;
@@ -1371,11 +1368,10 @@
   
   .rightContainer3 {
     width: 77vw;
-    height: 100%;
+
     display: flex;
     flex-direction: column;
     padding: 9vw 6vw 6vw;
-    overflow-y: scroll;
     overflow-x: hidden;
     scrollbar-width: thin;
     scrollbar-color: grey black;
