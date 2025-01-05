@@ -64,6 +64,8 @@ function Home() {
 
   useEffect(() => {
     const handleResize = () => {
+
+      // Pour éviter resize portable quand la barre url disparait
       if (vw < 11.5 && vw !== 0) { return }
 
       setVw(window.innerWidth / 100);
@@ -150,7 +152,9 @@ function Home() {
 
 
 
-  // Fonction activée en scrollant pour enregister le offset du scroll et enregistrer la catégorie visionnée
+  // Fonction activée en scrollant pour enregister le offset du scroll, sélectionner la catégorie visionnée et sur portable scroller dans le container des boutons
+
+  const buttonContainerRef = useRef(null)
 
   const bodyScroll = (height) => {
     setScrollOffset(height)
@@ -195,7 +199,7 @@ function Home() {
     setTimeout(() => setAnimations3Begin(true), 2800)
     setTimeout(() => setAnimations4Begin(true), 3500)
     setTimeout(() => setAnimations5Begin(true), 3800)
-    // setTimeout(() => setAnimationsEnd(true), 9000)
+    setTimeout(() => setAnimationsEnd(true), 9000)
 
   }, [])
 
@@ -249,7 +253,15 @@ function Home() {
 
     const distanceToScroll = cat === "home" ? 0 : categoryToScroll.offsetTop - rightContainerRef.current.offsetTop + 50 * vh - 11 * vw
 
-    containerToScroll.scroll({
+    console.log("VH", vh)
+  
+
+    vw > 11.5 && containerToScroll.scroll({
+      top: distanceToScroll,
+      behavior: "smooth"
+    })
+
+    vw <= 11.5 && window.scroll({
       top: distanceToScroll,
       behavior: "smooth"
     })
@@ -278,7 +290,6 @@ function Home() {
   const categoryLine3 = category === "projects" ? styles.categoryLine2 : styles.categoryLine1
 
   const categoryLine4 = category === "contact" ? styles.categoryLine2 : styles.categoryLine1
-
 
 
   // Styles conditionnels pour les containers des compétences
@@ -382,52 +393,45 @@ function Home() {
   }, [scrollOffset])
 
 
+  
 
   // PORTABLE : Styles conditionnels en fonction du scroll et de la taille du header
 
-  const phoneOffset = 50 * vh - 9 * vw
+  const headerSize = 30 * vw
+  const phoneOffset = 85 * vw - headerSize
+  const modalSize = 12.5 * vw
 
-if (vw && vw <= 11.5){
-  headerStyle = {height : (100*vw)*0.85}
-}
 
   // Le header n'a pas encore sa taille def
-  if (vw && vw > 11.5 && scrollOffset > 0 && scrollOffset < offset) {
+  if (vw && vw <= 11.5 && scrollOffset > 0 && scrollOffset < phoneOffset) {
     !animationsEnd && setAnimationsEnd(true)
 
-    bodyStyle = { paddingTop: scrollOffset, transitionDuration: "0s" }
+    rightContainerStyle = { paddingTop: modalSize, transitionDuration: "0s" }
 
-    headerStyle = { height: 50 * vh - scrollOffset, transitionDuration: "0s" }
+    headerStyle = { height: 85 * vw - scrollOffset, transitionDuration: "0s" }
 
-    modalStyle = { height: 50 * vh + scrollOffset, paddingTop: 8 * vh + scrollOffset / 4.5, transitionDuration: "0s" }
+    modalStyle = { top : 85 * vw - scrollOffset}
 
-    const sizeRatio = scrollOffset / (offset)
+    const sizeRatio = scrollOffset / (phoneOffset)
 
-    buttonContainerStyle = { height: 17 * vw + sizeRatio * 4.5 * vw }
+    const opacityRatio = 1 - scrollOffset / (phoneOffset)
 
-    const opacityRatio = 1 - scrollOffset / (offset)
+    videoStyle = { transitionDuration: "0s", opacity: `${1 * opacityRatio}` }
 
-    videoStyle = { transitionDuration: "0.8s", opacity: `${1 * opacityRatio}` }
-
-    titleBgStyle = { transitionDuration: "0.8s", opacity: `${1 * opacityRatio}` }
+    titleBgStyle = { transitionDuration: "0s", opacity: `${1 * opacityRatio}` }
   }
 
   // Le header a sa taille def
-  else if (vw && vw > 11.5 && scrollOffset >= offset) {
+  else if (vw && vw <= 11.5 && scrollOffset >= phoneOffset) {
+    rightContainerStyle = { paddingTop: modalSize, transitionDuration: "0s" }
 
-    bodyStyle = { paddingTop: offset + 9 * vw, transitionDuration: "0s" }
+    headerStyle = { height: headerSize, transitionDuration: "0s", position: "fixed", top: 0 }
 
-    headerStyle = { height: 9 * vw, transitionDuration: "0s", position: "absolute", top: 0 }
-
-    modalStyle = { height: 50 * vh + offset, paddingTop: 8 * vh + offset / 4.5, transitionDuration: "0s", position: "absolute", top: 9 * vw }
-
-    rightContainerStyle = { paddingLeft: 29 * vw, width: 100 * vw, transitionDuration: "0s" }
-
-    buttonContainerStyle = { height: 17 * vw + 4.5 * vw }
+    modalStyle = { top : headerSize }
 
     videoStyle = { transitionDuration: "0.8s", opacity: 0 }
 
-    titleBgStyle = { transitionDuration: "0.8s", opacity: 0 }
+    titleBgStyle = { transitionDuration: "0s", opacity: 0 }
   }
 
 
@@ -441,7 +445,7 @@ if (vw && vw <= 11.5){
 
       <div className={headerContainer} style={headerStyle} >
 
-        <video src={src} className={backgroundVideo} style={videoStyle} autoPlay={true} loop={true} muted={true} playsInline></video>
+        <video src={src} className={backgroundVideo} style={videoStyle} autoPlay={false} loop={true} muted={true} playsInline></video>
 
 
         <div className={headerTextContainer}>
@@ -449,7 +453,6 @@ if (vw && vw <= 11.5){
           <h1 className={styles.title}>Julien Furic</h1>
           <h3 className={styles.subTitle}>Développeur d'applications web et mobile</h3>
         </div>
-
 
       </div>
 
@@ -459,7 +462,7 @@ if (vw && vw <= 11.5){
 
         <div className={modal} style={modalStyle}>
 
-          <div className={buttonContainer} style={buttonContainerStyle}>
+          <div className={buttonContainer} style={buttonContainerStyle} ref={buttonContainerRef}>
             <button type="button" className={categoryButton0} onClick={() => categoryClick("home")}>
               <div className={categoryLine0}></div>
               <h5 className={styles.category}>Accueil</h5>
@@ -670,7 +673,7 @@ if (vw && vw <= 11.5){
               <h6 className={styles.projectTitle}>Boost Up</h6>
               <HiMiniXMark className={styles.closeIcon} onClick={() => setModal1Visible(false)} style={!modal1Visible && { opacity: 0, transitionDuration: "0.3s" }} />
               <div className={videoContainer1Style}>
-                <video src="/BoostUp.mp4" className={styles.projectVideo} autoPlay={false} loop={true} muted={true} alt="vidéo d'un site internet" ></video>
+                <video src="/BoostUp.mp4" className={styles.projectVideo} autoPlay={false} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>
               </div>
               <p className={styles.projectSubtitle}>
                 Appli de coaching pour l'entreprise KevFit, bientôt sur App Store et Google Play.
@@ -749,7 +752,7 @@ if (vw && vw <= 11.5){
               <h6 className={styles.projectTitle}>ChatApp</h6>
               <HiMiniXMark className={styles.closeIcon} onClick={() => setModal2Visible(false)} style={!modal2Visible && { opacity: 0, transitionDuration: "0.3s" }} />
               <div className={videoContainer2Style}>
-                <video src="/ChatApp.mp4" className={styles.projectVideo} autoPlay={true} loop={true} muted={true} alt="vidéo d'un site internet" ></video>
+                <video src="/ChatApp.mp4" className={styles.projectVideo} autoPlay={false} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>
               </div>
               <p className={styles.projectSubtitle}>
                 Exercice de formation, application de chat (messages et vocaux).
