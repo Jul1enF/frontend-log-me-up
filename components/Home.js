@@ -368,6 +368,7 @@ function Home() {
   const modal1ViewportOffset = modal1Ref.current && modal1Ref.current.offsetTop - scrollOffset
 
   const modal1Style = modal1Visible ? { top: - modal1ViewportOffset + 3 * vw, } : {}
+  // const modal1Style =  {}
 
   const mask1 = modal1Visible ? styles.maskOn : styles.maskOff
   const modal1 = modal1Visible ? styles.squareGradient5 : styles.squareGradient4
@@ -691,10 +692,10 @@ function Home() {
               }} >
                 <h6 className={styles.projectTitle}>Boost Up</h6>
                 <div className={videoContainer1Style}>
-                  <video src="/BoostUp.mp4" className={styles.projectVideo} autoPlay={false} loop={true} muted={true} alt="vidéo d'un site internet"></video>
+                  <video src="/BoostUp.mp4" className={styles.projectVideo} autoPlay={true} loop={true} playsInline muted={true} alt="vidéo d'un site internet"></video>
                 </div>
                 <p className={styles.projectSubtitle}>
-                  Appli de coaching pour l'entreprise KevFit, bientôt sur App Store et Google Play.
+                  Appli de coaching pour l'entreprise Kevfit, bientôt sur App Store et Google Play.
                 </p>
               </div>
             </div>
@@ -703,10 +704,10 @@ function Home() {
               <h6 className={styles.projectTitle}>Boost Up</h6>
               <HiMiniXMark className={styles.closeIcon} onClick={() => setModal1Visible(false)} style={!modal1Visible && { opacity: 0, transitionDuration: "0.3s" }} />
               <div className={videoContainer1Style}>
-                <video src="/BoostUp.mp4" className={styles.projectVideo} autoPlay={false} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>
+                <video src="/BoostUp.mp4" className={styles.projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>
               </div>
               <p className={styles.projectSubtitle}>
-                Appli de coaching pour l'entreprise KevFit, bientôt sur App Store et Google Play.
+                Appli de coaching pour l'entreprise Kevfit, bientôt sur App Store et Google Play.
               </p>
             </div>
 
@@ -771,7 +772,7 @@ function Home() {
               }} >
                 <h6 className={styles.projectTitle}>ChatApp</h6>
                 <div className={videoContainer2Style}>
-                  <video src="/ChatApp.mp4" className={styles.projectVideo} autoPlay={false} loop={true} muted={true} alt="vidéo d'un site internet"></video>
+                  <video src="/ChatApp.mp4" className={styles.projectVideo} autoPlay={true} loop={true} playsInline muted={true} alt="vidéo d'un site internet"></video>
                 </div>
                 <p className={styles.projectSubtitle}>
                   Application de chat (messages et vocaux). Exercice de formation.
@@ -782,7 +783,7 @@ function Home() {
               <h6 className={styles.projectTitle}>ChatApp</h6>
               <HiMiniXMark className={styles.closeIcon} onClick={() => setModal2Visible(false)} style={!modal2Visible && { opacity: 0, transitionDuration: "0.3s" }} />
               <div className={videoContainer2Style}>
-                <video src="/ChatApp.mp4" className={styles.projectVideo} autoPlay={false} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>
+                <video src="/ChatApp.mp4" className={styles.projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>
               </div>
               <p className={styles.projectSubtitle}>
                 Exercice de formation, application de chat (messages et vocaux).

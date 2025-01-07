@@ -697,7 +697,6 @@
     justify-content: space-between;
     padding: 0.5vw 1vw 0vw;
     font-size: 1.6vw;
-    cursor: pointer;
     opacity: 1;
     left: -4vw;
     top: -10vw;
@@ -783,10 +782,10 @@
 
   .maskOn {
     min-width: 100vw;
-    min-height: 250vh;
-    top: -100vh;
-    left: -29vw;
-    position: absolute;
+    min-height: 150vh;
+    top: -25vh;
+    left: 0;
+    position: fixed;
     background-color: rgba(0, 0, 0, 0.75);
     z-index: 8;
     display: flex;
@@ -1587,8 +1586,10 @@
 
   .projectsLine1 {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    margin-bottom: 2vw;
+    align-items: center;
+    margin-bottom: 6vw;
     width: 100%;
     position: relative;
     min-height: 25vw;
@@ -1596,8 +1597,10 @@
 
   .projectsLine2 {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    margin-bottom: 10vw;
+    align-items: center;
+    margin-bottom: 18vw;
     width: 100%;
     position: relative;
     min-height: 26vw;
@@ -1606,13 +1609,13 @@
   .squareGradient2 {
     width: 100%;
     height: 100%;
-    border-radius: 0.5vw;
+    border-radius: 2vw;
     background: linear-gradient(45deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 1vw 1vw 0.5vw;
+    padding: 2vw 1vw 1.5vw;
     position: relative;
     transition:
       height 1.2s,
@@ -1624,28 +1627,24 @@
   }
 
   .squareRevealContainer1 {
-    width: 47vw;
-    height: 65vw;
+    width: 85vw;
+    height: 85vw;
     font-size: 4.5vw;
-    border-radius: 2vw;
     transition-duration: 0.4s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-bottom: 6vw;
   }
 
   .squareGradient3 {
     width: 100%;
     height: 100%;
-    border-radius: 0.5vw;
+    border-radius: 2vw;
     background: linear-gradient(45deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 1vw 1vw 0.5vw;
+    padding: 2vw 1vw 1.5vw;
     position: relative;
-    transition: font-size 0.4s;
     transition:
       height 1.2s,
       width 1.2s,
@@ -1656,29 +1655,28 @@
   }
 
   .squareRevealContainer2 {
-    width: 47vw;
-    height: 65vw;
+    width: 85vw;
+    height: 85vw;
     font-size: 4.5vw;
-    border-radius: 2vw;
     transition-duration: 0.4s;
   }
 
   .squareGradient4 {
-    width: 24vw;
-    height: 25vw;
-    max-height: 25vw;
-    border-radius: 0.5vw;
+    width: 85vw;
+    height: 85vw;
+    max-height: 85vw;
+    border-radius: 2vw;
     background: linear-gradient(45deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 1vw 1vw 0.5vw;
-    font-size: 1.3vw;
+    padding: 2vw 1vw 1.5vw;
+    font-size: 4.5vw;
     cursor: pointer;
     opacity: 0;
     top: 0;
-    left: 0vw;
+    left: 6vw;
     position: absolute;
     z-index: -1;
     pointer-events: none;
@@ -1695,8 +1693,8 @@
 
 
   .squareGradient5 {
-    width: 51vw;
-    height: 44vw;
+    width: 100vw;
+    height: 80vw;
     max-height: 90vh;
     border-radius: 0.5vw;
     background: linear-gradient(45deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
@@ -1706,11 +1704,9 @@
     justify-content: space-between;
     padding: 0.5vw 1vw 0vw;
     font-size: 1.6vw;
-    cursor: pointer;
     opacity: 1;
-    left: -4vw;
-    top: -10vw;
-    position: absolute;
+    top : 0;
+    position: fixed;
     transition:
       height 0.3s,
       width 0.3s,
@@ -1719,7 +1715,6 @@
       left 0.2s,
       max-height 0.3s;
     z-index: 11;
-    cursor: auto;
   }
 
   .closeIcon {
@@ -1743,14 +1738,14 @@
     margin: 0;
     text-align: center;
     text-decoration: underline;
-    text-underline-offset: 0.6em;
+    text-underline-offset: 0.5em;
     text-decoration-thickness: 0.05em;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.9em;
   }
 
   .projectSubtitle {
     color: rgb(255, 255, 255);
-    font-size: 75%;
+    font-size: 83%;
     font-weight: 400;
     letter-spacing: 0.05em;
     margin: 0;
@@ -1762,7 +1757,7 @@
 
   .projectImgContainer {
     width: 100%;
-    height: 50%;
+    height: 68%;
     position: relative;
     transition-duration: 0.3s;
   }
@@ -1790,10 +1785,10 @@
 
   .maskOn {
     min-width: 100vw;
-    min-height: 250vh;
-    top: -100vh;
-    left: -29vw;
-    position: absolute;
+    min-height: 140vh;
+    top: -20vh;
+    left: 0;
+    position: fixed;
     background-color: rgba(0, 0, 0, 0.75);
     z-index: 8;
     display: flex;
