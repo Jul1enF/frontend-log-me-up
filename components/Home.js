@@ -365,10 +365,19 @@ function Home() {
 
   const modal1Ref = useRef(null)
 
+
+  // Réglage du offset top de la modal par rapport au viewport (normalement par rapport à son parent vu qu'en position : absolute)
   const modal1ViewportOffset = modal1Ref.current && modal1Ref.current.offsetTop - scrollOffset
 
-  const modal1Style = modal1Visible ? { top: - modal1ViewportOffset + 3 * vw, } : {}
-  // const modal1Style =  {}
+  let modal1Style
+  // ORDINATEUR
+  if (vw > 11.5 && modal1Visible){
+    modal1Style = { top: - modal1ViewportOffset + 3 * vw, }
+  }
+  // PORTABLE
+  if (vw <= 11.5 && modal1Visible){
+    modal1Style = { top: - modal1ViewportOffset + 20 * vw, }
+  }
 
   const mask1 = modal1Visible ? styles.maskOn : styles.maskOff
   const modal1 = modal1Visible ? styles.squareGradient5 : styles.squareGradient4
@@ -376,17 +385,35 @@ function Home() {
   const videoContainer1Style = modal1Visible ? styles.projectVideoContainer : styles.projectImgContainer
 
 
-
   const modal2Ref = useRef(null)
 
   const modal2ViewportOffset = modal2Ref.current && modal2Ref.current.offsetTop - scrollOffset
 
-  const modal2Style = modal2Visible ? { top: - modal2ViewportOffset + 3 * vw, } : {}
+  let modal2Style
+  // ORDINATEUR
+  if (vw > 11.5 && modal2Visible){
+    modal2Style = { top: - modal2ViewportOffset + 3 * vw, }
+  }
+  // PORTABLE
+  if (vw <= 11.5 && modal2Visible){
+    modal2Style = { top: - modal2ViewportOffset + 20 * vw, }
+  }
 
   const mask2 = modal2Visible ? styles.maskOn : styles.maskOff
   const modal2 = modal2Visible ? styles.squareGradient5 : styles.squareGradient4
 
   const videoContainer2Style = modal2Visible ? styles.projectVideoContainer : styles.projectImgContainer
+
+
+  // PORTABLE Pour mettre la vidéo de la modal en cover
+  let projectVideo = styles.projectVideo
+  if (vw <= 11.5 && (modal1Visible || modal2Visible) ){
+    projectVideo = styles.modalVideo
+  }
+
+
+
+
 
 
 
@@ -702,9 +729,9 @@ function Home() {
 
             <div className={modal1} style={modal1Style} >
               <h6 className={styles.projectTitle}>Boost Up</h6>
-              <HiMiniXMark className={styles.closeIcon} onClick={() => setModal1Visible(false)} style={!modal1Visible && { opacity: 0, transitionDuration: "0.3s" }} />
+              <HiMiniXMark className={styles.closeIcon} onClick={() => setModal1Visible(false)} />
               <div className={videoContainer1Style}>
-                <video src="/BoostUp.mp4" className={styles.projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>
+                <video src="/BoostUp.mp4" className={projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>
               </div>
               <p className={styles.projectSubtitle}>
                 Appli de coaching pour l'entreprise Kevfit, bientôt sur App Store et Google Play.
@@ -781,9 +808,9 @@ function Home() {
             </div>
             <div className={modal2} style={modal2Style} >
               <h6 className={styles.projectTitle}>ChatApp</h6>
-              <HiMiniXMark className={styles.closeIcon} onClick={() => setModal2Visible(false)} style={!modal2Visible && { opacity: 0, transitionDuration: "0.3s" }} />
+              <HiMiniXMark className={styles.closeIcon} onClick={() => setModal2Visible(false)} />
               <div className={videoContainer2Style}>
-                <video src="/ChatApp.mp4" className={styles.projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>
+                <video src="/ChatApp.mp4" className={projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>
               </div>
               <p className={styles.projectSubtitle}>
                 Exercice de formation, application de chat (messages et vocaux).

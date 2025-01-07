@@ -1693,20 +1693,20 @@
 
 
   .squareGradient5 {
-    width: 100vw;
-    height: 80vw;
+    width: 96vw;
+    height: 130vw;
     max-height: 90vh;
-    border-radius: 0.5vw;
+    border-radius: 2vw;
     background: linear-gradient(45deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 0.5vw 1vw 0vw;
-    font-size: 1.6vw;
+    padding: 3vw 1vw;
+    font-size: 5.2vw;
     opacity: 1;
-    top : 0;
-    position: fixed;
+    left : 2vw;
+    position: absolute;
     transition:
       height 0.3s,
       width 0.3s,
@@ -1720,10 +1720,10 @@
   .closeIcon {
     color: white;
     position: absolute;
-    right: 0.8vw;
-    top: 0.7vw;
-    height: 2.2vw;
-    width: 2.2vw;
+    right: 3.5vw;
+    top: 2vw;
+    height: 7vw;
+    width: 7vw;
     cursor: pointer;
     opacity: 1;
     transition: opacity 0.3s;
@@ -1763,8 +1763,8 @@
   }
 
   .projectVideoContainer {
-    width: 94.8%;
-    height: 80%;
+    width: 94%;
+    height: 72%;
     position: relative;
     transition-duration: 0.3s;
   }
@@ -1780,6 +1780,15 @@
     height: 100%;
     width: 100%;
     border-radius: 3%;
+    transition-duration: 0.3s;
+  }
+
+  .modalVideo {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 3%;
+    transition-duration: 0.3s;
   }
 
 
@@ -1789,7 +1798,7 @@
     top: -20vh;
     left: 0;
     position: fixed;
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(0, 0, 0, 0.9);
     z-index: 8;
     display: flex;
     align-items: center;
@@ -1799,11 +1808,11 @@
   }
 
   .maskOff {
-    top: -100vh;
-    left: -29vw;
+    top: -20vh;
+    left: 0;
     min-width: 0vw;
     min-height: 0vh;
-    position: absolute;
+    position: fixed;
     background-color: rgba(0, 0, 0, 0);
     transition: background-color 0.3s 0s,
       min-width 0.1s 0.3s,
@@ -1820,14 +1829,14 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 79%;
-    margin-bottom: 3vw;
+    width: 100%;
+    margin-bottom: 8vw;
     position: relative;
   }
 
   .paragraph2 {
     color: rgb(227, 219, 230);
-    font-size: 1.4vw;
+    font-size: 4.2vw;
     font-weight: 300;
     letter-spacing: 0.05vw;
     margin: 0;
@@ -1860,9 +1869,9 @@
   }
 
   .gradientMail {
-    width: 52.8vw;
+    width: 96vw;
     height: fit-content;
-    margin-left: 3.5vw;
+    margin-left: 2.5vw;
     margin-bottom: 0.8vw;
     position: relative;
   }
@@ -1873,7 +1882,7 @@
     background-clip: text;
     animation: slidein 3.5s linear infinite;
     color: transparent;
-    font-size: 3.3vw;
+    font-size: 7.5vw;
     font-weight: 450;
     letter-spacing: 0.1vw;
     margin: 0;
@@ -1893,10 +1902,10 @@
 
 
   .gradientMail2 {
-    width: 52.8vw;
-    height: 4.5vw;
-    margin-left: 3.5vw;
-    margin-bottom: 5vw;
+    width: 96vw;
+    height: fit-content;
+    margin-left: 2.5vw;
+    margin-bottom: 8vw;
     position: relative;
   }
 
@@ -1905,11 +1914,10 @@
     color: transparent;
     background-image: linear-gradient(90deg, #910ec1, rgb(74, 17, 165) 25%, #2a0ea5 50%, rgb(74, 17, 165) 75%, #910ec1 100%);
     background-clip: text;
-    font-size: 3.3vw;
+    font-size: 7.5vw;
     font-weight: 400;
     letter-spacing: 0.1vw;
     margin: 0;
-    margin-bottom: 2vw;
     transform: rotateX(180deg);
     animation: slidein 3.5s linear infinite;
     opacity: 1;
@@ -1922,7 +1930,7 @@
     }
 
     to {
-      background-position: -52.8vw;
+      background-position: -96vw;
     }
   }
 
@@ -1931,7 +1939,7 @@
     z-index: 10;
     height: 100%;
     width: 100%;
-    background: linear-gradient(180deg, rgba(7, 5, 8, 0), rgba(7, 5, 8, 1));
+    background: linear-gradient(180deg, rgba(7, 5, 8, 0) 10%, rgba(7, 5, 8, 1));
     pointer-events: none;
   }
 
