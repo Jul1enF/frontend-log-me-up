@@ -1702,7 +1702,7 @@
 
   .squareGradient5 {
     width: 96vw;
-    height: 130vw;
+    height: 140vw;
     max-height: 90vh;
     border-radius: 2vw;
     background: linear-gradient(45deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
@@ -1718,7 +1718,7 @@
     transition:
       height 0.3s,
       width 0.3s,
-      font-size 0.2s,
+      font-size 0.3s,
       top 0.3s,
       left 0.2s,
       max-height 0.3s;
@@ -1764,27 +1764,28 @@
 
 
   .projectImgContainer {
-    width: 100%;
+    width: 89%;
     height: 68%;
     position: relative;
     transition-duration: 0.3s;
+  
   }
 
   .projectVideoContainer {
     width: 94%;
-    height: 72%;
+    height: 75%;
     position: relative;
     transition-duration: 0.3s;
   }
 
 
   .projectImg {
-    border-radius: 0.5vw;
+    border-radius: 2vw;
     object-fit: contain;
   }
 
   .projectVideo {
-    object-fit: contain;
+    object-fit: cover;
     height: 100%;
     width: 100%;
     border-radius: 3%;

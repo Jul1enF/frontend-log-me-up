@@ -168,13 +168,25 @@ function Home() {
 
     if (category !== "home" && height < aboutHeight - containerHeight + 8 * vw) {
       setCategory("home")
+      // PORTABLE, SCROLLER MENU CATÉGORIES
+      if (vw <= 11.5) {
+        categoryClicked === "home" && buttonContainerRef.current.scroll({
+          left: 0 * vw,
+          behavior: "smooth"
+        })
+      }
     }
     else if (category !== "about" && height >= aboutHeight - containerHeight + 8 * vw && height < skillsHeight - containerHeight - 4 * vw) {
       setCategory("about")
       // PORTABLE, SCROLLER MENU CATÉGORIES
-      if (vw < 11.5) {
-        buttonContainerRef.current.scroll({
-          left: 0,
+      if (vw <= 11.5) {
+        //Éviter scroll si la catégorie est juste survolée après un clique dans le menu
+        userScrolling && buttonContainerRef.current.scroll({
+          left: 0 * vw,
+          behavior: "smooth"
+        })
+        categoryClicked === "about" && buttonContainerRef.current.scroll({
+          left: 0 * vw,
           behavior: "smooth"
         })
       }
@@ -182,8 +194,13 @@ function Home() {
     else if (category !== "skills" && height >= skillsHeight - containerHeight - 4 * vw && height < projectsHeight - containerHeight - 4 * vw) {
       setCategory("skills")
       // PORTABLE, SCROLLER MENU CATÉGORIES
-      if (vw < 11.5) {
-        buttonContainerRef.current.scroll({
+      if (vw <= 11.5) {
+        //Éviter scroll si la catégorie est juste survolée après un clique dans le menu
+        userScrolling && buttonContainerRef.current.scroll({
+          left: 22 * vw,
+          behavior: "smooth"
+        })
+        categoryClicked === "skills" && buttonContainerRef.current.scroll({
           left: 22 * vw,
           behavior: "smooth"
         })
@@ -192,15 +209,29 @@ function Home() {
     else if (category !== "projects" && height >= projectsHeight - containerHeight - 4 * vw && height < contactHeight - containerHeight - 4 * vw) {
       setCategory("projects")
       // PORTABLE, SCROLLER MENU CATÉGORIES
-      if (vw < 11.5) {
-        buttonContainerRef.current.scroll({
-          left: 70 * vw,
+      if (vw <= 11.5) {
+        //Éviter scroll si la catégorie est juste survolée après un clique dans le menu
+        userScrolling && buttonContainerRef.current.scroll({
+          left: 170 * vw,
           behavior: "smooth"
         })
+        categoryClicked === "projects" &&
+          buttonContainerRef.current.scroll({
+            left: 170 * vw,
+            behavior: "smooth"
+          })
       }
     }
-    else if (height >= contactHeight - containerHeight - 4 * vw) {
+    else if (category !== "contact" && height >= contactHeight - containerHeight - 4 * vw) {
       setCategory("contact")
+      // PORTABLE, SCROLLER MENU CATÉGORIES
+      if (vw <= 11.5) {
+        categoryClicked === "contact" &&
+          buttonContainerRef.current.scroll({
+            left: 170 * vw,
+            behavior: "smooth"
+          })
+      }
     }
   }
 
@@ -277,6 +308,10 @@ function Home() {
 
   // Fonction déclenchée en cliquant sur une catégorie pour scroller jusqu'à celle ci
 
+  // États pour ne pas scroller dans la modal du PORTABLE quand la fonction scroll
+  const [userScrolling, setUserScrolling] = useState(true)
+  const [categoryClicked, setCategoryClicked] = useState('')
+
   const categoryClick = (cat) => {
     const categoryToScroll = categoriesRef.current[cat]
     const containerToScroll = bodyRef.current
@@ -297,7 +332,9 @@ function Home() {
       behavior: "smooth"
     })
 
-    setCategory(cat)
+    setUserScrolling(false)
+    setTimeout(() => setUserScrolling(true), 500)
+    setCategoryClicked(cat)
   }
 
 
@@ -389,16 +426,16 @@ function Home() {
   // PORTABLE
   if (vw <= 11.5) {
     if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 55 * vw) {
-      project1 = { width: 55 * vw, height: 55 * vw, opacity: 0, transitionDuration: "1s", fontSize : 2.9 * vw }
+      project1 = { width: 55 * vw, height: 55 * vw, opacity: 0, transitionDuration: "1s", fontSize: 2.9 * vw }
     }
     if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 135 * vw) {
-      project2 = { width: 55 * vw, height: 55 * vw, opacity: 0, transitionDuration: "1s", fontSize : 2.9 * vw }
+      project2 = { width: 55 * vw, height: 55 * vw, opacity: 0, transitionDuration: "1s", fontSize: 2.9 * vw }
     }
     if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 190 * vw) {
-      project3 = { width: 55 * vw, height: 55 * vw, opacity: 0, transitionDuration: "1s", fontSize : 2.9 * vw }
-      project4 = { width: 55 * vw, height: 55 * vw, opacity: 0, transitionDuration: "1s", fontSize : 2.9 * vw }
-      project5 = { width: 55 * vw, height: 55 * vw, opacity: 0, transitionDuration: "1s", fontSize : 2.9 * vw }
-      project6 = { width: 55 * vw, height: 55 * vw, opacity: 0, transitionDuration: "1s", fontSize : 2.9 * vw }
+      project3 = { width: 55 * vw, height: 55 * vw, opacity: 0, transitionDuration: "1s", fontSize: 2.9 * vw }
+      project4 = { width: 55 * vw, height: 55 * vw, opacity: 0, transitionDuration: "1s", fontSize: 2.9 * vw }
+      project5 = { width: 55 * vw, height: 55 * vw, opacity: 0, transitionDuration: "1s", fontSize: 2.9 * vw }
+      project6 = { width: 55 * vw, height: 55 * vw, opacity: 0, transitionDuration: "1s", fontSize: 2.9 * vw }
     }
   }
 
@@ -851,7 +888,7 @@ function Home() {
                   <video src="/ChatApp.mp4" className={styles.projectVideo} autoPlay={true} loop={true} playsInline muted={true} alt="vidéo d'un site internet"></video>
                 </div>
                 <p className={styles.projectSubtitle}>
-                  Application de chat (messages et vocaux). Exercice de formation.
+                  Application de Chat (messages et vocaux). Exercice de formation.
                 </p>
               </div>
             </div>
@@ -862,7 +899,7 @@ function Home() {
                 <video src="/ChatApp.mp4" className={projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>
               </div>
               <p className={styles.projectSubtitle}>
-                Exercice de formation, application de chat (messages et vocaux).
+                Application de Chat (messages et vocaux). Exercice de formation.
               </p>
             </div>
 
