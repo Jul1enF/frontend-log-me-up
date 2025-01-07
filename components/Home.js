@@ -93,7 +93,8 @@ function Home() {
   const [scrollOffset, setScrollOffset] = useState(0)
 
   // Offset à ne pas dépasser pour que le Header ne fasse pas moins de 10vw
-  const offset = vw ? 50 * vh - 9 * vw : 0
+  const headerSize = 9 * vw
+  const offset = 50 * vh - headerSize
 
   let bodyStyle = {}
   let headerStyle = {}
@@ -134,11 +135,11 @@ function Home() {
   // Le header a sa taille def
   else if (vw && vw > 11.5 && scrollOffset >= offset) {
 
-    bodyStyle = { paddingTop: offset + 9 * vw, transitionDuration: "0s" }
+    bodyStyle = { paddingTop: offset + headerSize, transitionDuration: "0s" }
 
-    headerStyle = { height: 9 * vw, transitionDuration: "0s", position: "absolute", top: 0 }
+    headerStyle = { height: headerSize, transitionDuration: "0s", position: "absolute", top: 0 }
 
-    modalStyle = { height: 50 * vh + offset, paddingTop: 8 * vh + offset / 4.5, transitionDuration: "0s", position: "absolute", top: 9 * vw }
+    modalStyle = { height: 50 * vh + offset, paddingTop: 8 * vh + offset / 4.5, transitionDuration: "0s", position: "absolute", top: headerSize }
 
     rightContainerStyle = { paddingLeft: 29 * vw, width: 100 * vw, transitionDuration: "0s" }
 
@@ -170,8 +171,8 @@ function Home() {
     }
     else if (category !== "about" && height >= aboutHeight - containerHeight + 8 * vw && height < skillsHeight - containerHeight - 4 * vw) {
       setCategory("about")
-       // PORTABLE, SCROLLER MENU CATÉGORIES
-       if (vw < 11.5){
+      // PORTABLE, SCROLLER MENU CATÉGORIES
+      if (vw < 11.5) {
         buttonContainerRef.current.scroll({
           left: 0,
           behavior: "smooth"
@@ -181,7 +182,7 @@ function Home() {
     else if (category !== "skills" && height >= skillsHeight - containerHeight - 4 * vw && height < projectsHeight - containerHeight - 4 * vw) {
       setCategory("skills")
       // PORTABLE, SCROLLER MENU CATÉGORIES
-      if (vw < 11.5){
+      if (vw < 11.5) {
         buttonContainerRef.current.scroll({
           left: 22 * vw,
           behavior: "smooth"
@@ -190,8 +191,8 @@ function Home() {
     }
     else if (category !== "projects" && height >= projectsHeight - containerHeight - 4 * vw && height < contactHeight - containerHeight - 4 * vw) {
       setCategory("projects")
-       // PORTABLE, SCROLLER MENU CATÉGORIES
-       if (vw < 11.5){
+      // PORTABLE, SCROLLER MENU CATÉGORIES
+      if (vw < 11.5) {
         buttonContainerRef.current.scroll({
           left: 70 * vw,
           behavior: "smooth"
@@ -237,7 +238,15 @@ function Home() {
   let buttonContainer = !animations4Begin ? styles.buttonContainer1 : styles.buttonContainer2
 
 
-  let rightContainer = !animations5Begin ? styles.rightContainer1 : styles.rightContainer2
+  let rightContainer = styles.rightContainer1
+  // ORDINATEUR
+  if (vw > 11.5 && animations5Begin) {
+    rightContainer = styles.rightContainer2
+  }
+  // PORTABLE
+  if (vw <= 11.5 && animations4Begin) {
+    rightContainer = styles.rightContainer2
+  }
 
   let backgroundVideo = !animations2Begin ? styles.backgroundVideo1 : styles.backgroundVideo2
 
@@ -272,14 +281,17 @@ function Home() {
     const categoryToScroll = categoriesRef.current[cat]
     const containerToScroll = bodyRef.current
 
-    const distanceToScroll = cat === "home" ? 0 : categoryToScroll.offsetTop - rightContainerRef.current.offsetTop + 50 * vh - 11 * vw
-  
+    // Offset différent Portable / Ordi
+    const categoryOffset = vw > 11.5 ? 50 * vh - 11 * vw : 45 * vw
 
+    const distanceToScroll = cat === "home" ? 0 : categoryToScroll.offsetTop - rightContainerRef.current.offsetTop + categoryOffset
+
+    // ORDINATEUR
     vw > 11.5 && containerToScroll.scroll({
       top: distanceToScroll,
       behavior: "smooth"
     })
-
+    // PORTABLE
     vw <= 11.5 && window.scroll({
       top: distanceToScroll,
       behavior: "smooth"
@@ -311,6 +323,11 @@ function Home() {
   const categoryLine4 = category === "contact" ? styles.categoryLine2 : styles.categoryLine1
 
 
+
+
+
+
+
   // Styles conditionnels pour les containers des compétences
 
   let skill1
@@ -327,7 +344,7 @@ function Home() {
   }
   // PORTABLE
   if (vw <= 11.5 && skillContainer && scrollOffset + 100 * vh < skillContainer.offsetTop + 30 * vw) {
-    skill1 = { left: -40 * vw, opacity: 0, transitionDuration: "1s"}
+    skill1 = { left: -40 * vw, opacity: 0, transitionDuration: "1s" }
   }
   if (vw <= 11.5 && skillContainer && scrollOffset + 100 * vh < skillContainer.offsetTop + 65 * vw) {
     skill2 = { left: 40 * vw, opacity: 0, transitionDuration: "1s" }
@@ -336,23 +353,55 @@ function Home() {
     skill3 = { left: -40 * vw, opacity: 0, transitionDuration: "1s" }
   }
 
+
+
+
+
+
+
   // Styles conditionnels pour les containers des projets
 
   let project1
   let project2
   let project3
+  let project4
+  let project5
+  let project6
 
-  if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 17 * vw) {
-    project1 = { width: 18 * vw, height: 19.2 * vw, opacity: 0, transitionDuration: "3s", }
+  // ORDINATEUR
+  if (vw > 11.5) {
+    if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 17 * vw) {
+      project1 = { width: 18 * vw, height: 19.2 * vw, opacity: 0, transitionDuration: "3s", }
+      project2 = { width: 18 * vw, height: 19.2 * vw, opacity: 0, transitionDuration: "3s", }
+    }
+
+    if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 42 * vw) {
+      project3 = { width: 18 * vw, height: 19.2 * vw, opacity: 0, transitionDuration: "3s", }
+      project4 = { width: 18 * vw, height: 19.2 * vw, opacity: 0, transitionDuration: "3s", }
+    }
+
+    if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 72 * vw) {
+      project5 = { width: 18 * vw, height: 19.2 * vw, opacity: 0, transitionDuration: "3s", }
+      project6 = { width: 18 * vw, height: 19.2 * vw, opacity: 0, transitionDuration: "3s", }
+    }
   }
 
-  if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 42 * vw) {
-    project2 = { width: 18 * vw, height: 19.2 * vw, opacity: 0, transitionDuration: "3s", }
+  // PORTABLE
+  if (vw <= 11.5) {
+    if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 55 * vw) {
+      project1 = { width: 55 * vw, height: 55 * vw, opacity: 0, transitionDuration: "1s", fontSize : 2.9 * vw }
+    }
+    if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 135 * vw) {
+      project2 = { width: 55 * vw, height: 55 * vw, opacity: 0, transitionDuration: "1s", fontSize : 2.9 * vw }
+    }
+    if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 190 * vw) {
+      project3 = { width: 55 * vw, height: 55 * vw, opacity: 0, transitionDuration: "1s", fontSize : 2.9 * vw }
+      project4 = { width: 55 * vw, height: 55 * vw, opacity: 0, transitionDuration: "1s", fontSize : 2.9 * vw }
+      project5 = { width: 55 * vw, height: 55 * vw, opacity: 0, transitionDuration: "1s", fontSize : 2.9 * vw }
+      project6 = { width: 55 * vw, height: 55 * vw, opacity: 0, transitionDuration: "1s", fontSize : 2.9 * vw }
+    }
   }
 
-  if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 72 * vw) {
-    project3 = { width: 18 * vw, height: 19.2 * vw, opacity: 0, transitionDuration: "3s", }
-  }
 
 
 
@@ -366,16 +415,16 @@ function Home() {
   const modal1Ref = useRef(null)
 
 
-  // Réglage du offset top de la modal par rapport au viewport (normalement par rapport à son parent vu qu'en position : absolute)
+  // Réglage du offset top de la modal par rapport au viewport (normalement réglé par rapport à son parent vu qu'en position : absolute)
   const modal1ViewportOffset = modal1Ref.current && modal1Ref.current.offsetTop - scrollOffset
 
   let modal1Style
   // ORDINATEUR
-  if (vw > 11.5 && modal1Visible){
+  if (vw > 11.5 && modal1Visible) {
     modal1Style = { top: - modal1ViewportOffset + 3 * vw, }
   }
   // PORTABLE
-  if (vw <= 11.5 && modal1Visible){
+  if (vw <= 11.5 && modal1Visible) {
     modal1Style = { top: - modal1ViewportOffset + 20 * vw, }
   }
 
@@ -391,11 +440,11 @@ function Home() {
 
   let modal2Style
   // ORDINATEUR
-  if (vw > 11.5 && modal2Visible){
+  if (vw > 11.5 && modal2Visible) {
     modal2Style = { top: - modal2ViewportOffset + 3 * vw, }
   }
   // PORTABLE
-  if (vw <= 11.5 && modal2Visible){
+  if (vw <= 11.5 && modal2Visible) {
     modal2Style = { top: - modal2ViewportOffset + 20 * vw, }
   }
 
@@ -407,7 +456,7 @@ function Home() {
 
   // PORTABLE Pour mettre la vidéo de la modal en cover
   let projectVideo = styles.projectVideo
-  if (vw <= 11.5 && (modal1Visible || modal2Visible) ){
+  if (vw <= 11.5 && (modal1Visible || modal2Visible)) {
     projectVideo = styles.modalVideo
   }
 
@@ -451,13 +500,13 @@ function Home() {
   }, [scrollOffset])
 
 
-  
+
 
   // PORTABLE : Styles conditionnels en fonction du scroll et de la taille du header
 
-  const headerSize = 32 * vw
-  const phoneOffset = 85 * vw - headerSize
-  const modalSize = 12.5 * vw
+  const phoneHeaderSize = 32 * vw
+  const phoneOffset = 85 * vw - phoneHeaderSize
+  const modalSize = 13 * vw
 
 
   // Le header n'a pas encore sa taille def
@@ -468,7 +517,7 @@ function Home() {
 
     headerStyle = { height: 85 * vw - scrollOffset, transitionDuration: "0s" }
 
-    modalStyle = { top : 85 * vw - scrollOffset}
+    modalStyle = { top: 85 * vw - scrollOffset }
 
     const sizeRatio = scrollOffset / (phoneOffset)
 
@@ -483,9 +532,9 @@ function Home() {
   else if (vw && vw <= 11.5 && scrollOffset >= phoneOffset) {
     rightContainerStyle = { paddingTop: modalSize, transitionDuration: "0s" }
 
-    headerStyle = { height: headerSize, transitionDuration: "0s", position: "fixed", top: 0 }
+    headerStyle = { height: phoneHeaderSize, transitionDuration: "0s", position: "fixed", top: 0 }
 
-    modalStyle = { top : headerSize }
+    modalStyle = { top: phoneHeaderSize }
 
     videoStyle = { transitionDuration: "0.8s", opacity: 0 }
 
@@ -503,7 +552,7 @@ function Home() {
 
       <div className={headerContainer} style={headerStyle} >
 
-        <video src={src} className={backgroundVideo} style={videoStyle} autoPlay={false} loop={true} muted={true} playsInline></video>
+        <video src={src} className={backgroundVideo} style={videoStyle} autoPlay={true} loop={true} muted={true} playsInline></video>
 
 
         <div className={headerTextContainer}>
@@ -741,7 +790,7 @@ function Home() {
             <Link href='https://frontend-clothe-me-up.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
               <div className={styles.squareRevealContainer2}  >
                 <div className={styles.squareGradient3}
-                  style={project1} >
+                  style={project2} >
                   <h6 className={styles.projectTitle}>Clothe Me Up</h6>
                   <div className={styles.projectImgContainer}>
                     <Image alt="Vignette d'un site internet" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw" fill={true} src="/Clothe-Me-Up2.png" className={styles.projectImg} />
@@ -759,7 +808,7 @@ function Home() {
 
             <Link href='https://kairos-fronted.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
               <div className={styles.squareRevealContainer1}>
-                <div className={styles.squareGradient2} style={project2}>
+                <div className={styles.squareGradient2} style={project3}>
                   <h6 className={styles.projectTitle}>Kairos</h6>
                   <div className={styles.projectImgContainer}>
                     <Image alt="Vignette d'un site internet" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw" fill={true} src="/Kairos.png" className={styles.projectImg} />
@@ -773,7 +822,7 @@ function Home() {
 
             <Link href='https://frontend-twitter2.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
               <div className={styles.squareRevealContainer2}  >
-                <div className={styles.squareGradient3} style={project2}>
+                <div className={styles.squareGradient3} style={project4}>
                   <h6 className={styles.projectTitle}>Hackatweet</h6>
                   <div className={styles.projectImgContainer}>
                     <Image alt="Vignette d'un site internet" fill={true} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw" src="/Hackatweet.png" className={styles.projectImg} />
@@ -794,7 +843,7 @@ function Home() {
             }}></div>
 
             <div className={styles.squareRevealContainer1}>
-              <div className={styles.squareGradient2} style={project3} onClick={() => {
+              <div className={styles.squareGradient2} style={project5} onClick={() => {
                 !modal2Visible && setModal2Visible(true)
               }} >
                 <h6 className={styles.projectTitle}>ChatApp</h6>
@@ -820,7 +869,7 @@ function Home() {
             <Link href='https://morningnews-frontend-zeta.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
               <div className={styles.squareRevealContainer2}>
                 <div className={styles.squareGradient3}
-                  style={project3} >
+                  style={project6} >
                   <h6 className={styles.projectTitle}>Morning News</h6>
                   <div className={styles.projectImgContainer}>
                     <Image alt="Vignette d'un site internet" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw" fill={true} src="/Morningnews.png" className={styles.projectImg} />
