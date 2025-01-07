@@ -1,6 +1,3 @@
-
-
-
 @media only screen and (min-width: 1150px) {
 
   .body {
@@ -14,7 +11,7 @@
     scrollbar-width: thin;
     scrollbar-color: grey black;
   }
-  
+
   .headerContainer1 {
     width: 100vw;
     height: 50vh;
@@ -25,8 +22,8 @@
     align-items: center;
     justify-content: center;
   }
-  
-  
+
+
   .headerContainer2 {
     width: 100vw;
     height: 50vh;
@@ -38,8 +35,8 @@
     z-index: 3;
     background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
   }
-  
-  
+
+
   .backgroundVideo1 {
     position: absolute;
     height: 100%;
@@ -50,7 +47,7 @@
     opacity: 0;
     filter: brightness(0.85);
   }
-  
+
   .backgroundVideo2 {
     position: absolute;
     height: 100%;
@@ -63,7 +60,7 @@
     transition-duration: 3s;
     transition-timing-function: ease-in;
   }
-  
+
   .backgroundVideo3 {
     position: absolute;
     height: 100%;
@@ -75,7 +72,7 @@
     filter: brightness(0.85);
     transition-duration: 0.8s;
   }
-  
+
   .titleBackground1 {
     background-color: rgba(233, 227, 235, 0);
     position: absolute;
@@ -88,7 +85,7 @@
     background: linear-gradient(90deg, rgba(78, 14, 152, 0.75), rgba(45, 8, 144, 0.75));
     opacity: 0;
   }
-  
+
   .titleBackground2 {
     background: linear-gradient(90deg, rgba(78, 14, 152, 0.75), rgba(45, 8, 144, 0.75));
     position: absolute;
@@ -101,7 +98,7 @@
     border-radius: 0.7vw;
     transition-duration: 2s;
   }
-  
+
   .titleBackground3 {
     background: linear-gradient(90deg, rgba(78, 14, 152, 0.75), rgba(45, 8, 144, 0.75));
     position: absolute;
@@ -113,7 +110,7 @@
     border-radius: 0.7vw;
     transition-duration: 0.8s;
   }
-  
+
   .headerTextContainer1 {
     padding: 0 1.2vw 1vw;
     height: fit-content;
@@ -125,7 +122,7 @@
     position: relative;
     opacity: 0;
   }
-  
+
   .headerTextContainer2 {
     padding: 0 1.2vw 0.9vw;
     height: fit-content;
@@ -138,8 +135,8 @@
     opacity: 1;
     transition-duration: 2s;
   }
-  
-  
+
+
   .title {
     font-size: 2.9vw;
     font-weight: 600;
@@ -152,7 +149,7 @@
     margin-bottom: 0.3vw;
     z-index: 5;
   }
-  
+
   .subTitle {
     font-size: 1.48vw;
     font-weight: 600;
@@ -162,13 +159,13 @@
     letter-spacing: 0.12vw;
     z-index: 5;
   }
-  
+
   .mainContainer {
     width: 100vw;
     display: flex;
   }
-  
-  
+
+
   .modal1 {
     position: relative;
     margin-top: -50vh;
@@ -185,9 +182,9 @@
     align-items: center;
     padding-top: 8vh;
   }
-  
-  
-  
+
+
+
   .modal2 {
     position: relative;
     margin-top: 0;
@@ -206,7 +203,7 @@
     align-items: center;
     padding-top: 8vh;
   }
-  
+
   .modal3 {
     position: relative;
     margin-top: 0;
@@ -225,8 +222,8 @@
     align-items: center;
     padding-top: 8vh;
   }
-  
-  
+
+
   .buttonContainer1 {
     width: 100%;
     height: 17vw;
@@ -239,7 +236,7 @@
     opacity: 0;
     scrollbar-width: none;
   }
-  
+
   .buttonContainer2 {
     width: 100%;
     height: 17vw;
@@ -252,7 +249,7 @@
     transition-duration: 1.4s;
     scrollbar-width: none;
   }
-  
+
   .buttonContainer3 {
     width: 100%;
     height: 17vw;
@@ -265,7 +262,7 @@
     transition-duration: 0s;
     scrollbar-width: none;
   }
-  
+
   .button1 {
     width: 18vw;
     display: flex;
@@ -280,7 +277,7 @@
     border: none;
     text-align: start;
   }
-  
+
   .button2 {
     width: 23vw;
     display: flex;
@@ -295,7 +292,7 @@
     border: none;
     text-align: start;
   }
-  
+
   .button3 {
     width: 23vw;
     display: flex;
@@ -310,7 +307,7 @@
     border: none;
     text-align: start;
   }
-  
+
   .categoryLine1 {
     height: 4px;
     width: 27%;
@@ -318,7 +315,7 @@
     transition-duration: 0.8s;
     border-radius: 3px;
   }
-  
+
   .categoryLine2 {
     height: 6px;
     width: 27%;
@@ -326,7 +323,7 @@
     transition-duration: 0.5s;
     border-radius: 3px;
   }
-  
+
   .category {
     margin: 0;
     padding: 0;
@@ -334,10 +331,10 @@
     letter-spacing: 0.08vw;
     width: 47%;
   }
-  
-  
-  
-  
+
+
+
+
   .rightContainer1 {
     width: 77vw;
     height: 100%;
@@ -348,7 +345,7 @@
     overflow-x: hidden;
     opacity: 0;
   }
-  
+
   .rightContainer2 {
     width: 77vw;
     height: 100%;
@@ -361,7 +358,7 @@
     scrollbar-color: grey black;
     transition-duration: 2.8s;
   }
-  
+
   .rightContainer3 {
     width: 77vw;
     height: 100%;
@@ -373,8 +370,8 @@
     scrollbar-width: thin;
     scrollbar-color: grey black;
   }
-  
-  
+
+
   .categoryTitle {
     color: rgb(240, 235, 243);
     font-size: 1.5vw;
@@ -382,9 +379,9 @@
     letter-spacing: 0.08vw;
     margin: 0;
     margin-bottom: 1.8vw;
-  
+
   }
-  
+
   .gradientTextContainer {
     width: fit-content;
     height: fit-content;
@@ -392,16 +389,16 @@
     background-clip: text;
     margin-bottom: 4vw;
   }
-  
+
   .categorySubtitle {
     color: transparent;
     font-size: 2.1vw;
     font-weight: 700;
     letter-spacing: 0.05vw;
     margin: 0;
-  
+
   }
-  
+
   .avatarContainer {
     width: 10vw;
     min-height: 10vw;
@@ -409,45 +406,48 @@
     margin-top: -1.5vw;
     margin-bottom: 3vw;
   }
-  
+
   .avatar {
     border-radius: 50%;
     object-fit: contain;
   }
-  
+
   .categoryDetailsContainer {
     display: flex;
     justify-content: space-between;
     width: 100%;
     margin-bottom: 10.75vw;
   }
-  
+
   .textContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 68%;
   }
-  
+
   .paragraph1 {
     /* color: rgb(211, 204, 214); */
     color: rgb(227, 219, 230);
-    font-size: 1.2vw;
-    font-weight: 300;
+    font-size: 1.25vw;
+    line-height: 1.6em;
+    font-weight: 350;
     letter-spacing: 0.05vw;
     margin: 0;
-    margin-bottom: 0.5vw;
-    text-indent: 1vw;
+    margin-bottom: 1vw;
+    /* text-indent: 1vw; */
   }
-  
+
   .picturesContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-evenly;
+    padding: 2vw 0;
   }
-  
+
   .squareGradient {
-    height: 6.5vw;
+    height: 7.3vw;
     width: 13vw;
     border-radius: 0.5vw;
     background: linear-gradient(45deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
@@ -458,7 +458,7 @@
     padding: 0.3vw 0.2vw;
     margin-bottom: 1.5vw;
   }
-  
+
   .squareText {
     color: rgb(255, 255, 255);
     font-size: 1.1vw;
@@ -468,14 +468,14 @@
     text-align: center;
     line-height: 1.5vw;
   }
-  
+
   .skillsIcon {
     color: white;
     width: 2.3vw;
     height: 2.3vw;
   }
-  
-  
+
+
   .gradientTextContainer2 {
     width: fit-content;
     height: fit-content;
@@ -483,8 +483,8 @@
     background-clip: text;
     margin-bottom: 5.5vw;
   }
-  
-  
+
+
   .toolsCategoriesContainer1 {
     display: flex;
     justify-content: flex-start;
@@ -493,7 +493,7 @@
     min-height: 11.8vw;
     max-height: 11.8vw;
   }
-  
+
   .toolsCategoriesContainer2 {
     display: flex;
     justify-content: flex-start;
@@ -502,8 +502,8 @@
     max-height: 11.8vw;
     overflow: hidden;
   }
-  
-  
+
+
   .rectangleGradient {
     width: 27vw;
     height: 11.8vw;
@@ -522,8 +522,8 @@
     left: 0;
     margin-top: 0;
   }
-  
-  
+
+
   .skillTitle {
     color: rgb(255, 255, 255);
     font-size: 1.4vw;
@@ -536,20 +536,20 @@
     text-underline-offset: 1vw;
     text-decoration-thickness: 1px;
   }
-  
+
   .toolsContainer {
     width: 100%;
     display: flex;
     justify-content: space-around;
   }
-  
+
   .tool {
     display: flex;
     flex-direction: column;
     align-items: center;
     /* border : white solid 1px */
   }
-  
+
   .toolText {
     color: rgb(255, 255, 255);
     font-size: 1vw;
@@ -559,20 +559,20 @@
     text-align: center;
     margin-bottom: 1.2vw;
   }
-  
+
   .toolIcon {
     color: white;
     height: 2.9vw;
     width: 2.9vw;
   }
-  
-  
+
+
   .projectsContainer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
-  
+
   .projectsLine1 {
     display: flex;
     justify-content: space-between;
@@ -581,7 +581,7 @@
     position: relative;
     min-height: 25vw;
   }
-  
+
   .projectsLine2 {
     display: flex;
     justify-content: space-between;
@@ -590,7 +590,7 @@
     position: relative;
     min-height: 26vw;
   }
-  
+
   .squareGradient2 {
     width: 100%;
     height: 100%;
@@ -610,7 +610,7 @@
     cursor: pointer;
     opacity: 1;
   }
-  
+
   .squareRevealContainer1 {
     width: 24vw;
     height: 25vw;
@@ -621,7 +621,7 @@
     justify-content: center;
     align-items: center;
   }
-  
+
   .squareGradient3 {
     width: 100%;
     height: 100%;
@@ -642,7 +642,7 @@
     cursor: pointer;
     opacity: 1;
   }
-  
+
   .squareRevealContainer2 {
     width: 24vw;
     height: 25vw;
@@ -653,7 +653,7 @@
     justify-content: center;
     align-items: center;
   }
-  
+
   .squareGradient4 {
     width: 24vw;
     height: 25vw;
@@ -683,8 +683,8 @@
       left 0.3s 0s,
       max-height 0.3s 0s;
   }
-  
-  
+
+
   .squareGradient5 {
     width: 51vw;
     height: 44vw;
@@ -712,7 +712,7 @@
     z-index: 11;
     cursor: auto;
   }
-  
+
   .closeIcon {
     color: white;
     position: absolute;
@@ -724,8 +724,8 @@
     opacity: 1;
     transition: opacity 0.3s;
   }
-  
-  
+
+
   .projectTitle {
     color: rgb(255, 255, 255);
     font-size: 100%;
@@ -738,7 +738,7 @@
     text-decoration-thickness: 0.05em;
     margin-bottom: 0.5em;
   }
-  
+
   .projectSubtitle {
     color: rgb(255, 255, 255);
     font-size: 75%;
@@ -751,36 +751,36 @@
     line-height: 160%;
     overflow: hidden;
   }
-  
-  
+
+
   .projectImgContainer {
     width: 100%;
     height: 70%;
     position: relative;
     transition-duration: 0.3s;
   }
-  
+
   .projectVideoContainer {
     width: 94.8%;
     height: 80%;
     position: relative;
     transition-duration: 0.3s;
   }
-  
-  
+
+
   .projectImg {
     border-radius: 0.5vw;
     object-fit: contain;
   }
-  
+
   .projectVideo {
     object-fit: contain;
     height: 100%;
     width: 100%;
     border-radius: 3%;
   }
-  
-  
+
+
   .maskOn {
     min-width: 100vw;
     min-height: 250vh;
@@ -795,7 +795,7 @@
     z-index: 10;
     transition: background-color 0.3s;
   }
-  
+
   .maskOff {
     top: -100vh;
     left: -29vw;
@@ -812,8 +812,8 @@
     justify-content: center;
     z-index: 10;
   }
-  
-  
+
+
   .textContainer2 {
     display: flex;
     flex-direction: column;
@@ -822,7 +822,7 @@
     margin-bottom: 3vw;
     position: relative;
   }
-  
+
   .paragraph2 {
     color: rgb(227, 219, 230);
     font-size: 1.4vw;
@@ -832,7 +832,7 @@
     margin-bottom: 2vw;
     text-indent: 1vw;
   }
-  
+
   .copy1 {
     color: rgb(227, 219, 230);
     font-size: 1.2vw;
@@ -844,7 +844,7 @@
     left: 18vw;
     display: none;
   }
-  
+
   .copy2 {
     color: rgb(227, 219, 230);
     font-size: 1.2vw;
@@ -856,7 +856,7 @@
     left: 18vw;
     display: flex;
   }
-  
+
   .gradientMail {
     width: 52.8vw;
     height: fit-content;
@@ -864,8 +864,8 @@
     margin-bottom: 0.8vw;
     position: relative;
   }
-  
-  
+
+
   .mail {
     background-image: linear-gradient(90deg, #910ec1, rgb(74, 17, 165) 25%, #2a0ea5 50%, rgb(74, 17, 165) 75%, #910ec1 100%);
     background-clip: text;
@@ -878,7 +878,7 @@
     transform: rotateX(0deg);
     cursor: pointer;
   }
-  
+
   .copyIcon {
     height: 1.15vw;
     color: rgba(227, 219, 230, 0.85);
@@ -888,8 +888,8 @@
     z-index: 11;
     cursor: pointer;
   }
-  
-  
+
+
   .gradientMail2 {
     width: 52.8vw;
     height: 4.5vw;
@@ -897,8 +897,8 @@
     margin-bottom: 5vw;
     position: relative;
   }
-  
-  
+
+
   .mail2 {
     color: transparent;
     background-image: linear-gradient(90deg, #910ec1, rgb(74, 17, 165) 25%, #2a0ea5 50%, rgb(74, 17, 165) 75%, #910ec1 100%);
@@ -913,17 +913,17 @@
     opacity: 1;
     cursor: pointer;
   }
-  
+
   @keyframes slidein {
     from {
       background-position: 0vw;
     }
-  
+
     to {
       background-position: -52.8vw;
     }
   }
-  
+
   .gradientShadow {
     position: absolute;
     z-index: 10;
@@ -932,9 +932,9 @@
     background: linear-gradient(180deg, rgba(7, 5, 8, 0), rgba(7, 5, 8, 1));
     pointer-events: none;
   }
-  
-  
-  
+
+
+
 
 
 
@@ -1122,7 +1122,7 @@
   }
 
   .headerTextContainer1 {
-    padding: 3.5vw 2.3vw 4vw;
+    padding: 3.5vw 2vw 4vw;
     height: fit-content;
     width: fit-content;
     display: flex;
@@ -1134,7 +1134,7 @@
   }
 
   .headerTextContainer2 {
-    padding: 3.5vw 2.3vw 4vw;
+    padding: 3.5vw 2vw 4vw;
     height: fit-content;
     width: fit-content;
     display: flex;
@@ -1155,17 +1155,16 @@
     color: rgb(231, 225, 234);
     margin: 0;
     padding: 0;
-    margin-bottom: 3vw;
+    margin-bottom: 3.5vw;
     z-index: 5;
   }
 
   .subTitle {
-    font-size: 4.4vw;
-    font-weight: 600;
+    font-size: 4.6vw;
+    font-weight: 550;
     color: rgb(231, 225, 234);
     margin: 0;
     padding: 0;
-    letter-spacing: 0.1vw;
     z-index: 5;
   }
 
@@ -1175,7 +1174,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding-top: 8vw;
+    padding-top: 14vw;
   }
 
 
@@ -1199,7 +1198,7 @@
     z-index: 1;
     background-color: rgb(28, 28, 28);
     transition: top 1.5s;
- 
+
   }
 
   .modal3 {
@@ -1216,8 +1215,8 @@
   .buttonContainer1 {
     width: 100%;
     height: 100%;
-    padding-left : 3vw;
-    padding-right : 3vw;
+    padding-left: 3vw;
+    padding-right: 3vw;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -1231,8 +1230,8 @@
   .buttonContainer2 {
     width: 100%;
     height: 100%;
-    padding-left : 3vw;
-    padding-right : 3vw;
+    padding-left: 3vw;
+    padding-right: 3vw;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -1246,8 +1245,8 @@
   .buttonContainer3 {
     width: 100%;
     height: 100%;
-    padding-left : 3vw;
-    padding-right : 3vw;
+    padding-left: 3vw;
+    padding-right: 3vw;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -1267,12 +1266,12 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    font-size: 4.2vw;
+    font-size: 5vw;
     cursor: pointer;
     transition-duration: 0.5s;
     color: rgb(240, 235, 243);
     border: none;
-    padding: 1.5vw 3vw;
+    padding: 1.7vw 3.5vw;
     border-radius: 4vw;
     background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
   }
@@ -1286,38 +1285,38 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    font-size: 4.2vw;
+    font-size: 5vw;
     cursor: pointer;
     transition-duration: 0.5s;
     color: rgb(255, 255, 255);
     border: none;
-    padding: 1.5vw 3vw;
+    padding: 1.7vw 3.5vw;
     border-radius: 6vw;
     background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
   }
 
   .button3 {
-   width: fit-content;
-   height: fit-content;
+    width: fit-content;
+    height: fit-content;
     margin-right: 2.5vw;
     position: relative;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    font-size: 4.2vw;
+    font-size: 5vw;
     cursor: pointer;
     transition-duration: 0.5s;
     color: rgb(255, 255, 255);
     border: none;
-    padding: 1.5vw 3vw;
+    padding: 1.7vw 3.5vw;
     border-radius: 6vw;
     background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
   }
 
   .categoryLine1 {
-    height: 85%;
-    width: 96%;
+    height: 89%;
+    width: 97%;
     position: absolute;
     background-color: rgb(28, 28, 28);
     border-radius: 4vw;
@@ -1348,7 +1347,7 @@
 
     display: flex;
     flex-direction: column;
-    padding: 12.5vw 3vw 25vw ;
+    padding: 12.5vw 1.5vw 25vw;
     overflow-x: hidden;
     opacity: 0;
   }
@@ -1358,7 +1357,7 @@
 
     display: flex;
     flex-direction: column;
-    padding: 12.5vw 3vw 25vw ;
+    padding: 12.5vw 1.5vw 25vw;
     overflow-x: hidden;
     scrollbar-width: thin;
     scrollbar-color: grey black;
@@ -1370,7 +1369,7 @@
 
     display: flex;
     flex-direction: column;
-    padding: 12.5vw 3vw 25vw ;
+    padding: 12.5vw 1.5vw 25vw;
     overflow-x: hidden;
     scrollbar-width: thin;
     scrollbar-color: grey black;
@@ -1392,12 +1391,12 @@
     height: fit-content;
     background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
     background-clip: text;
-    margin-bottom: 6vw;
+    margin-bottom: 9vw;
   }
 
   .categorySubtitle {
     color: transparent;
-    font-size: 5.5vw;
+    font-size: 5.8vw;
     font-weight: 700;
     letter-spacing: 0.05vw;
     margin: 0;
@@ -1419,10 +1418,10 @@
 
   .categoryDetailsContainer {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: flex-start;
     width: 100%;
-    margin-bottom: 10.75vw;
+    margin-bottom: 18vw;
   }
 
   .textContainer {
@@ -1434,11 +1433,12 @@
   .paragraph1 {
     /* color: rgb(211, 204, 214); */
     color: rgb(227, 219, 230);
-    font-size: 4vw;
-    font-weight: 400;
+    font-size: 4.2vw;
+    line-height: 1.5em;
+    font-weight: 450;
     letter-spacing: 0.05vw;
     margin: 0;
-    margin-bottom: 2.5vw;
+    margin-bottom: 2vw;
     text-indent: 5vw;
   }
 
@@ -1448,36 +1448,36 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin-top: 6vw;
+    margin-bottom: 9vw;
   }
 
   .squareGradient {
-    height: 18.5vw;
-    width: 28vw;
+    height: 28vw;
+    width: 30vw;
     border-radius: 1.5vw;
     background: linear-gradient(45deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-    padding: 0.3vw 1vw;
+    justify-content: space-between;
+    padding: 3vw 1vw;
     margin-bottom: 1.5vw;
   }
 
   .squareText {
     color: rgb(255, 255, 255);
-    font-size: 3.1vw;
+    font-size: 3.8vw;
     font-weight: 600;
     letter-spacing: 0.05vw;
     margin: 0;
     text-align: center;
-    line-height: 3.1vw;
+    line-height: 1.3em;
   }
 
   .skillsIcon {
     color: white;
-    width: 6.3vw;
-    height: 6.3vw;
+    width: 8vw;
+    height: 8vw;
   }
 
 
@@ -1486,43 +1486,46 @@
     height: fit-content;
     background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
     background-clip: text;
-    margin-bottom: 5.5vw;
+    margin-bottom: 9vw;
   }
 
 
   .toolsCategoriesContainer1 {
     display: flex;
-    justify-content: flex-start;
-    margin-bottom: 1.3vw;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 4vw;
     margin-right: 0;
-    min-height: 11.8vw;
-    max-height: 11.8vw;
+    min-height: 74vw;
+    max-height: 74vw;
   }
 
   .toolsCategoriesContainer2 {
     display: flex;
-    justify-content: flex-start;
-    margin-bottom: 11vw;
-    min-height: 11.8vw;
-    max-height: 11.8vw;
+    justify-content: center;
+    margin-bottom: 20vw;
+    min-height: 35vw;
+    max-height: 35vw;
     overflow: hidden;
   }
 
 
   .rectangleGradient {
-    width: 27vw;
-    height: 11.8vw;
-    border-radius: 0.5vw;
+    width: 95%;
+    height: 35vw;
+    border-radius: 1.5vw;
     background: linear-gradient(45deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-    padding: 1vw 0vw 1.3vw;
+    justify-content: space-between;
+    padding: 3vw 1.5vw 3.5vw;
     margin-right: 1.3vw;
     position: relative;
     z-index: 0;
-    transition-duration: 1.3s;
+    transition-duration: 1.5s;
     opacity: 1;
     left: 0;
     margin-top: 0;
@@ -1531,14 +1534,15 @@
 
   .skillTitle {
     color: rgb(255, 255, 255);
-    font-size: 1.4vw;
+    font-size: 4.6vw;
+    line-height: 1em;
     font-weight: 600;
     letter-spacing: 0.05vw;
     margin: 0;
     margin-bottom: 2.4vw;
     text-align: center;
     text-decoration: underline;
-    text-underline-offset: 1vw;
+    text-underline-offset: 0.5em;
     text-decoration-thickness: 1px;
   }
 
@@ -1546,6 +1550,7 @@
     width: 100%;
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
   }
 
   .tool {
@@ -1557,19 +1562,21 @@
 
   .toolText {
     color: rgb(255, 255, 255);
-    font-size: 1vw;
+    font-size: 3.8vw;
     font-weight: 400;
     letter-spacing: 0.05vw;
     margin: 0;
     text-align: center;
-    margin-bottom: 1.2vw;
+    margin-bottom: 3vw;
   }
 
   .toolIcon {
     color: white;
-    height: 2.9vw;
-    width: 2.9vw;
+    height: 7vw;
+    width: 7vw;
   }
+
+
 
 
   .projectsContainer {
@@ -1582,7 +1589,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 2vw;
-    width: 50vw;
+    width: 100%;
     position: relative;
     min-height: 25vw;
   }
@@ -1591,7 +1598,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 10vw;
-    width: 50vw;
+    width: 100%;
     position: relative;
     min-height: 26vw;
   }
@@ -1617,10 +1624,10 @@
   }
 
   .squareRevealContainer1 {
-    width: 24vw;
-    height: 25vw;
-    font-size: 1.3vw;
-    border-radius: 0.5vw;
+    width: 47vw;
+    height: 65vw;
+    font-size: 4.5vw;
+    border-radius: 2vw;
     transition-duration: 0.4s;
     display: flex;
     justify-content: center;
@@ -1649,14 +1656,11 @@
   }
 
   .squareRevealContainer2 {
-    width: 24vw;
-    height: 25vw;
-    font-size: 1.3vw;
-    border-radius: 0.5vw;
+    width: 47vw;
+    height: 65vw;
+    font-size: 4.5vw;
+    border-radius: 2vw;
     transition-duration: 0.4s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 
   .squareGradient4 {
@@ -1749,8 +1753,6 @@
     font-size: 75%;
     font-weight: 400;
     letter-spacing: 0.05em;
-    min-height: 3.3em;
-    max-height: 3.3em;
     margin: 0;
     text-align: center;
     line-height: 160%;
@@ -1760,7 +1762,7 @@
 
   .projectImgContainer {
     width: 100%;
-    height: 70%;
+    height: 50%;
     position: relative;
     transition-duration: 0.3s;
   }

@@ -170,12 +170,33 @@ function Home() {
     }
     else if (category !== "about" && height >= aboutHeight - containerHeight + 8 * vw && height < skillsHeight - containerHeight - 4 * vw) {
       setCategory("about")
+       // PORTABLE, SCROLLER MENU CATÉGORIES
+       if (vw < 11.5){
+        buttonContainerRef.current.scroll({
+          left: 0,
+          behavior: "smooth"
+        })
+      }
     }
     else if (category !== "skills" && height >= skillsHeight - containerHeight - 4 * vw && height < projectsHeight - containerHeight - 4 * vw) {
       setCategory("skills")
+      // PORTABLE, SCROLLER MENU CATÉGORIES
+      if (vw < 11.5){
+        buttonContainerRef.current.scroll({
+          left: 22 * vw,
+          behavior: "smooth"
+        })
+      }
     }
     else if (category !== "projects" && height >= projectsHeight - containerHeight - 4 * vw && height < contactHeight - containerHeight - 4 * vw) {
       setCategory("projects")
+       // PORTABLE, SCROLLER MENU CATÉGORIES
+       if (vw < 11.5){
+        buttonContainerRef.current.scroll({
+          left: 70 * vw,
+          behavior: "smooth"
+        })
+      }
     }
     else if (height >= contactHeight - containerHeight - 4 * vw) {
       setCategory("contact")
@@ -252,8 +273,6 @@ function Home() {
     const containerToScroll = bodyRef.current
 
     const distanceToScroll = cat === "home" ? 0 : categoryToScroll.offsetTop - rightContainerRef.current.offsetTop + 50 * vh - 11 * vw
-
-    console.log("VH", vh)
   
 
     vw > 11.5 && containerToScroll.scroll({
@@ -298,13 +317,24 @@ function Home() {
   let skill2
   let skill3
 
+  const skillContainer = categoriesRef.current.skills
 
-  if (categoriesRef.current.skills && scrollOffset + 100 * vh < categoriesRef.current.skills.offsetTop + 14 * vw) {
+  // ORDINATEUR
+  if (vw > 11.5 && skillContainer && scrollOffset + 100 * vh < skillContainer.offsetTop + 14 * vw) {
     skill1 = { left: -20 * vw, opacity: 0, transitionDuration: "3s", marginRight: 600 }
     skill2 = { marginRight: -40 * vw, opacity: 0, transitionDuration: "3s" }
     skill3 = { marginTop: 10 * vw, opacity: 0, transitionDuration: "3s" }
   }
-
+  // PORTABLE
+  if (vw <= 11.5 && skillContainer && scrollOffset + 100 * vh < skillContainer.offsetTop + 30 * vw) {
+    skill1 = { left: -40 * vw, opacity: 0, transitionDuration: "1s"}
+  }
+  if (vw <= 11.5 && skillContainer && scrollOffset + 100 * vh < skillContainer.offsetTop + 65 * vw) {
+    skill2 = { left: 40 * vw, opacity: 0, transitionDuration: "1s" }
+  }
+  if (vw <= 11.5 && skillContainer && scrollOffset + 100 * vh < skillContainer.offsetTop + 100 * vw) {
+    skill3 = { left: -40 * vw, opacity: 0, transitionDuration: "1s" }
+  }
 
   // Styles conditionnels pour les containers des projets
 
@@ -397,7 +427,7 @@ function Home() {
 
   // PORTABLE : Styles conditionnels en fonction du scroll et de la taille du header
 
-  const headerSize = 30 * vw
+  const headerSize = 32 * vw
   const phoneOffset = 85 * vw - headerSize
   const modalSize = 12.5 * vw
 
@@ -506,9 +536,9 @@ function Home() {
 
             <div className={styles.textContainer}>
               <p className={styles.paragraph1}>Hello, moi c'est Julien ! J'ai 35 ans et je suis développeur de site web et d'applications mobiles.</p>
-              <p className={styles.paragraph1}> J'ai obtenu à l'été 2024 un diplôme bac +3 de Développeur Fullstack après avoir suivi les cours de la formation La Capsule.</p>
-              <p className={styles.paragraph1}> Depuis je ne cesse de développer des projets de site web ou d'applications mobiles et cherche encore et toujours de nouveaux défis à relever !</p>
-              <p className={styles.paragraph1}> Pour cela, quinze années d'expériences dans la vidéo, le montage et le motion design m'accompagnent afin d'élargir mes compétences. Je peux ainsi personnaliser le design de mes créations, créer des animations ou des logos.</p>
+              <p className={styles.paragraph1}>Après avoir suivi les cours de la formation La Capsule, j'ai obtenu à l'été 2024 un diplôme bac +3 de Développeur Fullstack et travaille depuis sur des projets pros.</p>
+              {/* <p className={styles.paragraph1}> Depuis je ne cesse de développer des projets de site web ou d'applications mobiles et cherche encore et toujours de nouveaux défis à relever !</p> */}
+              <p className={styles.paragraph1}> Pour cela, quinze années d'expériences dans la vidéo, le montage et le motion design m'accompagnent afin d'élargir ma palette de compétences. Je peux ainsi apporter une touche personalisée au design de mes applications, en créant des animations vidéos ou des logos.</p>
               <p className={styles.paragraph1}>N'hésitez pas à me contacter si vous avez un projet en tête et cherchez à le réaliser ou à en définir les contours !</p>
             </div>
 
@@ -689,7 +719,7 @@ function Home() {
                     <Image alt="Vignette d'un site internet" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw" fill={true} src="/Clothe-Me-Up2.png" className={styles.projectImg} />
                   </div>
                   <p className={styles.projectSubtitle}>
-                    Template pour site de e-commerce 100% fonctionnel.
+                    Template pour site de e-commerce.
                   </p>
                 </div>
               </div>
@@ -707,7 +737,7 @@ function Home() {
                     <Image alt="Vignette d'un site internet" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw" fill={true} src="/Kairos.png" className={styles.projectImg} />
                   </div>
                   <p className={styles.projectSubtitle}>
-                    Site web pour réaliser une étude de marché (projet de fin de formation).
+                    Site web pour réaliser une étude de marché. Projet de fin de formation.
                   </p>
                 </div>
               </div>
@@ -721,7 +751,7 @@ function Home() {
                     <Image alt="Vignette d'un site internet" fill={true} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw" src="/Hackatweet.png" className={styles.projectImg} />
                   </div>
                   <p className={styles.projectSubtitle}>
-                    Exercice de formation, réplique d'un réseau social.
+                    Réplique d'un réseau social. Exercice de formation.
                   </p>
                 </div>
               </div>
@@ -744,7 +774,7 @@ function Home() {
                   <video src="/ChatApp.mp4" className={styles.projectVideo} autoPlay={false} loop={true} muted={true} alt="vidéo d'un site internet"></video>
                 </div>
                 <p className={styles.projectSubtitle}>
-                  Exercice de formation, application de chat (messages et vocaux).
+                  Application de chat (messages et vocaux). Exercice de formation.
                 </p>
               </div>
             </div>
@@ -768,7 +798,7 @@ function Home() {
                     <Image alt="Vignette d'un site internet" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw" fill={true} src="/Morningnews.png" className={styles.projectImg} />
                   </div>
                   <p className={styles.projectSubtitle}>
-                    Exercice de formation, site d'informations sur la tech.
+                    Site d'informations sur la tech. Exercice de formation.
                   </p>
                 </div>
               </div>
