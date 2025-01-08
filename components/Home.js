@@ -9,7 +9,7 @@ import { Palette } from 'react-bootstrap-icons';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faReact, faNode } from '@fortawesome/free-brands-svg-icons'
-import { faClipboard } from '@fortawesome/free-solid-svg-icons'
+import { faCopy } from '@fortawesome/free-solid-svg-icons'
 
 import { SiNextdotjs } from "react-icons/si";
 import { SiTypescript } from "react-icons/si";
@@ -87,6 +87,11 @@ function Home() {
 
 
 
+
+  // État pour valider le chargement de la vidéo du header
+
+  const [videoLoaded, setVideoLoaded] = useState(false)
+
   // État et variables pour enregistrer le scroll offset et les changements de style
 
 
@@ -96,7 +101,7 @@ function Home() {
   const headerSize = 9 * vw
   const offset = 50 * vh - headerSize
 
-  let bodyStyle = {}
+  let bodyStyle = videoLoaded ? {} : { display: "none" }
   let headerStyle = {}
   let videoStyle = {}
   let titleBgStyle = {}
@@ -237,10 +242,9 @@ function Home() {
 
 
 
-  // État pour la catégorie choisie et valider le chargement de la vidéo du header
+  // État pour la catégorie choisie
 
   const [category, setCategory] = useState('home')
-  const [videoLoaded, setVideoLoaded] = useState(false)
 
 
   // Fonction et useEffect pour le déclenchement des timings d'animations une fois la vidéo chargée
@@ -587,7 +591,7 @@ function Home() {
 
 
 
-  
+
 
 
 
@@ -595,7 +599,7 @@ function Home() {
   return (
     <div className={styles.body} onScroll={(e) => {
       bodyScroll(e.target.scrollTop)
-    }} style={bodyStyle + videoLoaded ? { display: "auto" } : { display: "none" }} ref={bodyRef} >
+    }} style={bodyStyle} ref={bodyRef} >
 
       <div className={headerContainer} style={headerStyle} >
 
@@ -906,7 +910,7 @@ function Home() {
               <h6 className={styles.projectTitle}>ChatApp</h6>
               <HiMiniXMark className={styles.closeIcon} onClick={() => setModal2Visible(false)} />
               <div className={videoContainer2Style}>
-               {animationsEnd &&  <video src="/ChatApp.mp4" className={projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>}
+                {animationsEnd && <video src="/ChatApp.mp4" className={projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>}
               </div>
               <p className={styles.projectSubtitle}>
                 Application de Chat (messages et vocaux). Exercice de formation.
@@ -947,7 +951,7 @@ function Home() {
           <div className={styles.gradientMail} onClick={() => copyText()} >
             <h6 className={styles.mail}>contact@julien-furic.com</h6>
 
-            {/* <FontAwesomeIcon icon={faClipboard} className={styles.copyIcon} onClick={() => copyText()}/> */}
+            <FontAwesomeIcon icon={faCopy} className={styles.copyIcon} onClick={() => copyText()} />
 
           </div>
 
@@ -957,6 +961,16 @@ function Home() {
           </div>
 
           <p className={styles.paragraph2}> À très bientôt ! :) </p>
+
+          <div className={styles.bottomContainer}>
+            <div className={styles.siteLogoContainer}>
+              <Image alt="Logo du présent site internet"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw"
+                fill={true} src="/logo-9-portfolio.png"
+                className={styles.siteLogo} />
+            </div>
+            <p className={styles.paragraph3}>2025 </p>
+          </div>
 
         </div>
 
