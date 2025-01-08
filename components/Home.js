@@ -237,15 +237,16 @@ function Home() {
 
 
 
-  // État pour la catégorie choisie
+  // État pour la catégorie choisie et valider le chargement de la vidéo du header
 
   const [category, setCategory] = useState('home')
+  const [videoLoaded, setVideoLoaded] = useState(false)
 
 
+  // Fonction et useEffect pour le déclenchement des timings d'animations une fois la vidéo chargée
 
-  useEffect(() => {
-
-    // Déclenchement des timings d'animation
+  const timingFunction = () => {
+    if (!videoLoaded) { return }
 
     setTimeout(() => setAnimationsBegin(true), 600)
     setTimeout(() => setAnimations2Begin(true), 1200)
@@ -253,8 +254,11 @@ function Home() {
     setTimeout(() => setAnimations4Begin(true), 3500)
     setTimeout(() => setAnimations5Begin(true), 3800)
     setTimeout(() => setAnimationsEnd(true), 9000)
+  }
 
-  }, [])
+  useEffect(() => {
+    timingFunction()
+  }, [videoLoaded])
 
 
 
@@ -428,7 +432,7 @@ function Home() {
     if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 55 * vw) {
       project1 = { width: 55 * vw, height: 55 * vw, opacity: 0, transitionDuration: "1s", fontSize: 2.9 * vw }
     }
-    if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 135 * vw) {
+    if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 110 * vw) {
       project2 = { width: 55 * vw, height: 55 * vw, opacity: 0, transitionDuration: "1s", fontSize: 2.9 * vw }
     }
     if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 190 * vw) {
@@ -582,14 +586,15 @@ function Home() {
 
 
 
+
   return (
     <div className={styles.body} onScroll={(e) => {
       bodyScroll(e.target.scrollTop)
-    }} style={bodyStyle} ref={bodyRef} >
+    }} style={bodyStyle + videoLoaded ? { display: "auto" } : { display: "none" }} ref={bodyRef} >
 
       <div className={headerContainer} style={headerStyle} >
 
-        <video src={src} className={backgroundVideo} style={videoStyle} autoPlay={true} loop={true} muted={true} playsInline></video>
+        <video src={src} className={backgroundVideo} style={videoStyle} autoPlay={true} loop={true} muted={true} playsInline onLoadedData={() => setVideoLoaded(true)}></video>
 
 
         <div className={headerTextContainer}>
