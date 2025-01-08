@@ -587,6 +587,11 @@ function Home() {
 
 
 
+  
+
+
+
+
   return (
     <div className={styles.body} onScroll={(e) => {
       bodyScroll(e.target.scrollTop)
@@ -810,7 +815,7 @@ function Home() {
               }} >
                 <h6 className={styles.projectTitle}>Boost Up</h6>
                 <div className={videoContainer1Style}>
-                  <video src="/BoostUp.mp4" className={styles.projectVideo} autoPlay={true} loop={true} playsInline muted={true} alt="vidéo d'un site internet"></video>
+                  {animationsEnd && <video src="/BoostUp.mp4" className={styles.projectVideo} autoPlay={true} loop={true} playsInline muted={true} alt="vidéo d'un site internet"></video>}
                 </div>
                 <p className={styles.projectSubtitle}>
                   Appli de coaching pour l'entreprise Kevfit, bientôt sur App Store et Google Play.
@@ -822,7 +827,7 @@ function Home() {
               <h6 className={styles.projectTitle}>Boost Up</h6>
               <HiMiniXMark className={styles.closeIcon} onClick={() => setModal1Visible(false)} />
               <div className={videoContainer1Style}>
-                <video src="/BoostUp.mp4" className={projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>
+                {animationsEnd && <video src="/BoostUp.mp4" className={projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>}
               </div>
               <p className={styles.projectSubtitle}>
                 Appli de coaching pour l'entreprise Kevfit, bientôt sur App Store et Google Play.
@@ -890,7 +895,7 @@ function Home() {
               }} >
                 <h6 className={styles.projectTitle}>ChatApp</h6>
                 <div className={videoContainer2Style}>
-                  <video src="/ChatApp.mp4" className={styles.projectVideo} autoPlay={true} loop={true} playsInline muted={true} alt="vidéo d'un site internet"></video>
+                  {animationsEnd && <video src="/ChatApp.mp4" className={styles.projectVideo} autoPlay={true} loop={true} playsInline muted={true} alt="vidéo d'un site internet"></video>}
                 </div>
                 <p className={styles.projectSubtitle}>
                   Application de Chat (messages et vocaux). Exercice de formation.
@@ -901,7 +906,7 @@ function Home() {
               <h6 className={styles.projectTitle}>ChatApp</h6>
               <HiMiniXMark className={styles.closeIcon} onClick={() => setModal2Visible(false)} />
               <div className={videoContainer2Style}>
-                <video src="/ChatApp.mp4" className={projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>
+               {animationsEnd &&  <video src="/ChatApp.mp4" className={projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>}
               </div>
               <p className={styles.projectSubtitle}>
                 Application de Chat (messages et vocaux). Exercice de formation.
