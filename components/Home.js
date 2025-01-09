@@ -388,14 +388,14 @@ function Home() {
     skill3 = { marginTop: 10 * vw, opacity: 0, transitionDuration: "3s" }
   }
   // PORTABLE
-  if (vw <= 11.5 && skillContainer && scrollOffset + 100 * vh < skillContainer.offsetTop + 30 * vw) {
-    skill1 = { left: -40 * vw, opacity: 0, transitionDuration: "1s" }
+  if (vw <= 11.5 && skillContainer && scrollOffset + 100 * vh < skillContainer.offsetTop + 20 * vw) {
+    skill1 = { left: 40 * vw, opacity: 0, transitionDuration: "1s" }
   }
-  if (vw <= 11.5 && skillContainer && scrollOffset + 100 * vh < skillContainer.offsetTop + 65 * vw) {
-    skill2 = { left: 40 * vw, opacity: 0, transitionDuration: "1s" }
+  if (vw <= 11.5 && skillContainer && scrollOffset + 100 * vh < skillContainer.offsetTop + 55 * vw) {
+    skill2 = { left: -40 * vw, opacity: 0, transitionDuration: "1s" }
   }
-  if (vw <= 11.5 && skillContainer && scrollOffset + 100 * vh < skillContainer.offsetTop + 100 * vw) {
-    skill3 = { left: -40 * vw, opacity: 0, transitionDuration: "1s" }
+  if (vw <= 11.5 && skillContainer && scrollOffset + 100 * vh < skillContainer.offsetTop + 90 * vw) {
+    skill3 = { left: 40 * vw, opacity: 0, transitionDuration: "1s" }
   }
 
 
@@ -666,7 +666,7 @@ function Home() {
               <p className={styles.paragraph1}>Hello, moi c'est Julien ! J'ai 35 ans et je suis développeur de site web et d'applications mobiles.</p>
               <p className={styles.paragraph1}>Après avoir suivi les cours de la formation La Capsule, j'ai obtenu à l'été 2024 un diplôme bac +3 de Développeur Fullstack et travaille depuis sur des projets pros.</p>
               {/* <p className={styles.paragraph1}> Depuis je ne cesse de développer des projets de site web ou d'applications mobiles et cherche encore et toujours de nouveaux défis à relever !</p> */}
-              <p className={styles.paragraph1}> Pour cela, quinze années d'expériences dans la vidéo, le montage et le motion design m'accompagnent afin d'élargir ma palette de compétences. Je peux ainsi apporter une touche personalisée au design de mes applications, en créant des animations vidéos ou des logos.</p>
+              <p className={styles.paragraph1}> Pour cela, quinze années d'expériences dans la vidéo, le montage et le motion design m'accompagnent afin d'élargir ma palette de compétences. Je peux ainsi personnaliser le design de mes applications en créant des animations vidéos ou des logos.</p>
               <p className={styles.paragraph1}>N'hésitez pas à me contacter si vous avez un projet en tête et cherchez à le réaliser ou à en définir les contours !</p>
             </div>
 
