@@ -995,7 +995,7 @@
     height: 26vw;
     border-radius: 0.7vw;
     background: linear-gradient(45deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
-    font-size: 1.4vw;
+    font-size: 1.35vw;
     transition-duration: 0.4s;
     margin-left: -0.5vw;
   }
@@ -1005,7 +1005,7 @@
     height: 26vw;
     border-radius: 0.7vw;
     background: linear-gradient(45deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
-    font-size: 1.4vw;
+    font-size: 1.35vw;
     transition-duration: 0.4s;
     margin-right: -0.5vw;
   }
