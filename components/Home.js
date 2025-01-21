@@ -67,13 +67,21 @@ function Home() {
 
       setVw(window.innerWidth / 100);
       setVh(window.innerHeight / 100)
+
+       // Vérification que le scrollOffset est bien égal à la nouvelle hauteur scrollée dans la fenêtre.
+      if (vw <= 6 && scrollOffset !== window.scrollY){
+        setScrollOffset(window.scrollY)
+      }
+      if (vw > 6 && bodyRef.current && scrollOffset!== bodyRef.current.scrollTop){
+        setScrollOffset(bodyRef.current.scrollTop)
+      }
     };
 
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [vw, vh]);
+  }, [vw, vh, scrollOffset]);
 
 
 
