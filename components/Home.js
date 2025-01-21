@@ -260,9 +260,21 @@ function Home() {
     setTimeout(() => setAnimationsEnd(true), 9000)
   }
 
+
   useEffect(() => {
     timingFunction()
   }, [videoLoaded])
+
+
+
+
+
+  // useEffect  pour quand l'utilisateur rafraichit la page, retour en haut et réinitialisation du scrolloffset.
+
+  useEffect(() => {
+    window.history.scrollRestoration = 'manual'
+  }, []);
+
 
 
 
@@ -822,7 +834,7 @@ function Home() {
                   {animationsEnd && <video src="/BoostUp.mp4" className={styles.projectVideo} autoPlay={true} loop={true} playsInline muted={true} alt="vidéo d'un site internet"></video>}
                 </div>
                 <p className={styles.projectSubtitle}>
-                Appli de coaching pour l'entreprise Kevfit, dispo sur App Store et bientôt Google.
+                  Appli de coaching pour l'entreprise Kevfit, dispo sur App Store et bientôt Google.
                 </p>
               </div>
             </div>
