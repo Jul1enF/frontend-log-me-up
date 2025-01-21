@@ -69,7 +69,7 @@ function Home() {
     const handleResize = () => {
 
       // Pour éviter resize portable quand la barre url disparait
-      if (vw <= 6 && vw !== 0 && scrollOffset === window.scrollY) { return }
+      if (vw <= 6 && window.innerWidth / 100 <= 6 && vw !== 0) { return }
 
       setVw(window.innerWidth / 100);
       setVh(window.innerHeight / 100)
