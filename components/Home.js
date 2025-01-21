@@ -58,6 +58,12 @@ function Home() {
   }, []);
 
 
+
+  // État pour enregistrer la distance scrollée
+  const [scrollOffset, setScrollOffset] = useState(0)
+
+
+
  
   useEffect(() => {
     const handleResize = () => {
@@ -67,14 +73,6 @@ function Home() {
 
       setVw(window.innerWidth / 100);
       setVh(window.innerHeight / 100)
-
-       // Vérification que le scrollOffset est bien égal à la nouvelle hauteur scrollée dans la fenêtre.
-      if (vw <= 6 && scrollOffset !== window.scrollY){
-        setScrollOffset(window.scrollY)
-      }
-      if (vw > 6 && bodyRef.current && scrollOffset!== bodyRef.current.scrollTop){
-        setScrollOffset(bodyRef.current.scrollTop)
-      }
     };
 
     window.addEventListener("resize", handleResize);
@@ -91,10 +89,9 @@ function Home() {
 
   const [videoLoaded, setVideoLoaded] = useState(false)
 
-  // État et variables pour enregistrer le scroll offset et les changements de style
 
 
-  const [scrollOffset, setScrollOffset] = useState(0)
+  // Variables pour enregistrer le offset max et les changements de style
 
   // Offset à ne pas dépasser pour que le Header ne fasse pas moins de 10vw
   const headerSize = 9 * vw
