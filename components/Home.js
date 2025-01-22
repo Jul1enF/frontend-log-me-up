@@ -828,7 +828,7 @@ function Home() {
                   {animationsEnd && <video src="/BoostUp.mp4" className={styles.projectVideo} autoPlay={true} loop={true} playsInline muted={true} alt="vidéo d'un site internet"></video>}
                 </div>
                 <p className={styles.projectSubtitle}>
-                  Appli de coaching pour l'entreprise Kevfit, dispo sur App Store et bientôt Google.
+                  Appli de coaching pour l'entreprise Kevfit, dispo sur App Store et Google Play Store.
                 </p>
               </div>
             </div>
@@ -840,7 +840,7 @@ function Home() {
                 {animationsEnd && <video src="/BoostUp.mp4" className={projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>}
               </div>
               <p className={styles.projectSubtitle}>
-                Appli de coaching pour l'entreprise Kevfit, dispo sur App Store et bientôt Google.
+                Appli de coaching pour l'entreprise Kevfit, dispo sur App Store et Google Play Store.
               </p>
             </div>
 
