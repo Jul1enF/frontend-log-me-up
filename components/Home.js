@@ -669,7 +669,7 @@ function Home() {
           <div className={styles.categoryDetailsContainer}>
 
             <div className={styles.textContainer}>
-              <p className={styles.paragraph1}>Hello, moi c'est Julien ! J'ai 35 ans et je suis développeur de site web et d'applications mobiles.</p>
+              <p className={styles.paragraph1}>Hello, moi c'est Julien ! J'ai 36 ans et je suis développeur de site web et d'applications mobiles.</p>
               <p className={styles.paragraph1}>Après avoir suivi les cours de la formation La Capsule, j'ai obtenu un diplôme bac +3 de Développeur Fullstack et travaille depuis sur des projets pros.</p>
               {/* <p className={styles.paragraph1}> Depuis je ne cesse de développer des projets de site web ou d'applications mobiles et cherche encore et toujours de nouveaux défis à relever !</p> */}
               <p className={styles.paragraph1}> Pour cela, quinze années d'expériences dans la vidéo, le montage et le motion design m'accompagnent afin d'élargir ma palette de compétences. Je peux ainsi personnaliser le design de mes applications en créant des animations vidéos ou des logos.</p>
