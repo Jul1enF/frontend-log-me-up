@@ -64,7 +64,7 @@ function Home() {
 
 
 
- 
+
   useEffect(() => {
     const handleResize = () => {
 
@@ -464,52 +464,77 @@ function Home() {
 
   const [modal1Visible, setModal1Visible] = useState(false)
   const [modal2Visible, setModal2Visible] = useState(false)
+  const [modal3Visible, setModal3Visible] = useState(false)
 
-  const modal1Ref = useRef(null)
+  const projectsLine1Ref = useRef(null)
 
 
   // Réglage du offset top de la modal par rapport au viewport, pour qu'elle reste fixe dans l'écran (car normalement réglée par rapport à son parent vu qu'en position : absolute)
-  const modal1ViewportOffset = modal1Ref.current && modal1Ref.current.offsetTop - scrollOffset
+  const projectsLine1ViewportOffset = projectsLine1Ref.current && projectsLine1Ref.current.offsetTop - scrollOffset
+
+  const mask1 = (modal1Visible || modal2Visible) ? styles.maskOn : styles.maskOff
+
 
   let modal1Style
   // ORDINATEUR
   if (vw > 6 && modal1Visible) {
-    modal1Style = { top: - modal1ViewportOffset + 3 * vw, }
+    modal1Style = { top: - projectsLine1ViewportOffset + 3 * vw, }
   }
   // PORTABLE
   if (vw <= 6 && modal1Visible) {
-    modal1Style = { top: - modal1ViewportOffset + 20 * vw, }
+    modal1Style = { top: - projectsLine1ViewportOffset + 20 * vw, }
   }
 
-  const mask1 = modal1Visible ? styles.maskOn : styles.maskOff
   const modal1 = modal1Visible ? styles.squareGradient5 : styles.squareGradient4
 
   const videoContainer1Style = modal1Visible ? styles.projectVideoContainer : styles.projectImgContainer
 
 
-  const modal2Ref = useRef(null)
-
-  const modal2ViewportOffset = modal2Ref.current && modal2Ref.current.offsetTop - scrollOffset
 
   let modal2Style
   // ORDINATEUR
   if (vw > 6 && modal2Visible) {
-    modal2Style = { top: - modal2ViewportOffset + 3 * vw, }
+    modal2Style = { top: - projectsLine1ViewportOffset + 3 * vw, }
   }
   // PORTABLE
   if (vw <= 6 && modal2Visible) {
-    modal2Style = { top: - modal2ViewportOffset + 20 * vw, }
+    modal2Style = { top: - projectsLine1ViewportOffset + 20 * vw, }
   }
 
-  const mask2 = modal2Visible ? styles.maskOn : styles.maskOff
-  const modal2 = modal2Visible ? styles.squareGradient5 : styles.squareGradient4
+  const modal2 = modal2Visible ? styles.squareGradient5 : styles.squareGradient4B
 
   const videoContainer2Style = modal2Visible ? styles.projectVideoContainer : styles.projectImgContainer
 
 
+
+
+
+  const projectsLine3Ref = useRef(null)
+
+  const modal3ViewportOffset = projectsLine3Ref.current && projectsLine3Ref.current.offsetTop - scrollOffset
+
+  const mask3 = modal3Visible ? styles.maskOn : styles.maskOff
+
+  let modal3Style
+  // ORDINATEUR
+  if (vw > 6 && modal3Visible) {
+    modal3Style = { top: - modal3ViewportOffset + 3 * vw, }
+  }
+  // PORTABLE
+  if (vw <= 6 && modal3Visible) {
+    modal3Style = { top: - modal3ViewportOffset + 20 * vw, }
+  }
+
+  const modal3 = modal3Visible ? styles.squareGradient5 : styles.squareGradient4B
+
+  const videoContainer3Style = modal3Visible ? styles.projectVideoContainer : styles.projectImgContainer
+
+
+
+
   // PORTABLE Pour mettre la vidéo de la modal en cover
   let projectVideo = styles.projectVideo
-  if (vw <= 6 && (modal1Visible || modal2Visible)) {
+  if (vw <= 6 && (modal1Visible || modal2Visible || modal3Visible)) {
     projectVideo = styles.modalVideo
   }
 
@@ -813,18 +838,51 @@ function Home() {
             <h4 className={styles.categorySubtitle}>Quelques exemples de mon travail</h4>
           </div>
 
-          <div className={styles.projectsLine1} ref={modal1Ref}>
+
+
+
+          <div className={styles.projectsLine1} ref={projectsLine1Ref}>
 
             <div className={mask1} onClick={() => {
               modal1Visible && setModal1Visible(false)
+              modal2Visible && setModal2Visible(false)
             }}></div>
+
 
             <div className={styles.squareRevealContainer1}>
               <div className={styles.squareGradient2} style={project1} onClick={() => {
                 !modal1Visible && setModal1Visible(true)
               }} >
-                <h6 className={styles.projectTitle}>Boost Up</h6>
+                <h6 className={styles.projectTitle}>Me Baudelin</h6>
                 <div className={videoContainer1Style}>
+                  {animationsEnd && <video src="/Me-Baudelin.mp4" className={styles.projectVideo} autoPlay={true} loop={true} playsInline muted={true} alt="vidéo d'un site internet"></video>}
+                </div>
+                <p className={styles.projectSubtitle}>
+                  Appli de conseils légaux pour le cabinet Baudelin, bientôt sur les stores.
+                </p>
+              </div>
+            </div>
+            {/* Appli de conseils légaux pour le cabinet Baudelin, dispo sur IOS et Android stores. */}
+
+            <div className={modal1} style={modal1Style} >
+              <h6 className={styles.projectTitle}>Me Baudelin</h6>
+              <HiMiniXMark className={styles.closeIcon} onClick={() => setModal1Visible(false)} />
+              <div className={videoContainer1Style}>
+                {animationsEnd && <video src="/Me-Baudelin.mp4" className={projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>}
+              </div>
+              <p className={styles.projectSubtitle}>
+              Appli de conseils légaux pour le cabinet Baudelin, bientôt sur les stores.
+              </p>
+            </div>
+
+
+
+            <div className={styles.squareRevealContainer2}>
+              <div className={styles.squareGradient3} style={project2} onClick={() => {
+                !modal2Visible && setModal2Visible(true)
+              }} >
+                <h6 className={styles.projectTitle}>Boost Up</h6>
+                <div className={videoContainer2Style}>
                   {animationsEnd && <video src="/BoostUp.mp4" className={styles.projectVideo} autoPlay={true} loop={true} playsInline muted={true} alt="vidéo d'un site internet"></video>}
                 </div>
                 <p className={styles.projectSubtitle}>
@@ -833,10 +891,10 @@ function Home() {
               </div>
             </div>
 
-            <div className={modal1} style={modal1Style} >
+            <div className={modal2} style={modal2Style} >
               <h6 className={styles.projectTitle}>Boost Up</h6>
-              <HiMiniXMark className={styles.closeIcon} onClick={() => setModal1Visible(false)} />
-              <div className={videoContainer1Style}>
+              <HiMiniXMark className={styles.closeIcon} onClick={() => setModal2Visible(false)} />
+              <div className={videoContainer2Style}>
                 {animationsEnd && <video src="/BoostUp.mp4" className={projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>}
               </div>
               <p className={styles.projectSubtitle}>
@@ -844,10 +902,20 @@ function Home() {
               </p>
             </div>
 
-            <Link href='https://frontend-clothe-me-up.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
-              <div className={styles.squareRevealContainer2}  >
-                <div className={styles.squareGradient3}
-                  style={project2} >
+
+          </div>
+
+
+
+
+
+          <div className={styles.projectsLine1}>
+
+
+             <Link href='https://frontend-clothe-me-up.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
+              <div className={styles.squareRevealContainer1}  >
+                <div className={styles.squareGradient2}
+                  style={project3} >
                   <h6 className={styles.projectTitle}>Clothe Me Up</h6>
                   <div className={styles.projectImgContainer}>
                     <Image alt="Vignette d'un site internet" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw" fill={true} src="/Clothe-Me-Up2.png" className={styles.projectImg} />
@@ -859,13 +927,11 @@ function Home() {
               </div>
             </Link>
 
-          </div>
 
-          <div className={styles.projectsLine1}>
 
             <Link href='https://kairos-fronted.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
-              <div className={styles.squareRevealContainer1}>
-                <div className={styles.squareGradient2} style={project3}>
+              <div className={styles.squareRevealContainer2}>
+                <div className={styles.squareGradient3} style={project4}>
                   <h6 className={styles.projectTitle}>Kairos</h6>
                   <div className={styles.projectImgContainer}>
                     <Image alt="Vignette d'un site internet" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw" fill={true} src="/Kairos.png" className={styles.projectImg} />
@@ -877,9 +943,24 @@ function Home() {
               </div>
             </Link>
 
-            <Link href='https://frontend-twitter2.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
-              <div className={styles.squareRevealContainer2}  >
-                <div className={styles.squareGradient3} style={project4}>
+
+          </div>
+
+
+
+
+
+
+          <div className={styles.projectsLine2} ref={projectsLine3Ref}>
+
+            <div className={mask3} onClick={() => {
+              modal3Visible && setModal3Visible(false)
+            }}></div>
+
+
+             <Link href='https://frontend-twitter2.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
+              <div className={styles.squareRevealContainer1}  >
+                <div className={styles.squareGradient2} style={project5}>
                   <h6 className={styles.projectTitle}>Hackatweet</h6>
                   <div className={styles.projectImgContainer}>
                     <Image alt="Vignette d'un site internet" fill={true} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw" src="/Hackatweet.png" className={styles.projectImg} />
@@ -891,20 +972,14 @@ function Home() {
               </div>
             </Link>
 
-          </div>
 
-          <div className={styles.projectsLine2} ref={modal2Ref}>
 
-            <div className={mask2} onClick={() => {
-              modal2Visible && setModal2Visible(false)
-            }}></div>
-
-            <div className={styles.squareRevealContainer1}>
-              <div className={styles.squareGradient2} style={project5} onClick={() => {
-                !modal2Visible && setModal2Visible(true)
+            <div className={styles.squareRevealContainer2}>
+              <div className={styles.squareGradient3} style={project6} onClick={() => {
+                !modal3Visible && setModal3Visible(true)
               }} >
                 <h6 className={styles.projectTitle}>ChatApp</h6>
-                <div className={videoContainer2Style}>
+                <div className={videoContainer3Style}>
                   {animationsEnd && <video src="/ChatApp.mp4" className={styles.projectVideo} autoPlay={true} loop={true} playsInline muted={true} alt="vidéo d'un site internet"></video>}
                 </div>
                 <p className={styles.projectSubtitle}>
@@ -912,10 +987,10 @@ function Home() {
                 </p>
               </div>
             </div>
-            <div className={modal2} style={modal2Style} >
+            <div className={modal3} style={modal3Style} >
               <h6 className={styles.projectTitle}>ChatApp</h6>
-              <HiMiniXMark className={styles.closeIcon} onClick={() => setModal2Visible(false)} />
-              <div className={videoContainer2Style}>
+              <HiMiniXMark className={styles.closeIcon} onClick={() => setModal3Visible(false)} />
+              <div className={videoContainer3Style}>
                 {animationsEnd && <video src="/ChatApp.mp4" className={projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>}
               </div>
               <p className={styles.projectSubtitle}>
@@ -923,7 +998,7 @@ function Home() {
               </p>
             </div>
 
-            <Link href='https://morningnews-frontend-zeta.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
+            {/* <Link href='https://morningnews-frontend-zeta.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
               <div className={styles.squareRevealContainer2}>
                 <div className={styles.squareGradient3}
                   style={project6} >
@@ -936,7 +1011,7 @@ function Home() {
                   </p>
                 </div>
               </div>
-            </Link>
+            </Link> */}
 
           </div>
 
