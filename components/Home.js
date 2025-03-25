@@ -858,7 +858,7 @@ function Home() {
                   {animationsEnd && <video src="/Me-Baudelin.mp4" className={styles.projectVideo} autoPlay={true} loop={true} playsInline muted={true} alt="vidéo d'un site internet"></video>}
                 </div>
                 <p className={styles.projectSubtitle}>
-                  Appli de conseils légaux pour le cabinet Baudelin, bientôt sur les stores.
+                Appli de conseils légaux pour le cabinet Baudelin, dispo sur App store.
                 </p>
               </div>
             </div>
@@ -871,7 +871,7 @@ function Home() {
                 {animationsEnd && <video src="/Me-Baudelin.mp4" className={projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>}
               </div>
               <p className={styles.projectSubtitle}>
-              Appli de conseils légaux pour le cabinet Baudelin, bientôt sur les stores.
+              Appli de conseils légaux pour le cabinet Baudelin, dispo sur App store.
               </p>
             </div>
 
