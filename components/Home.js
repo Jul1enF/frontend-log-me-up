@@ -858,7 +858,7 @@ function Home() {
                   {animationsEnd && <video src="/Me-Baudelin.mp4" className={styles.projectVideo} autoPlay={true} loop={true} playsInline muted={true} alt="vidéo d'un site internet"></video>}
                 </div>
                 <p className={styles.projectSubtitle}>
-                Appli de conseils légaux pour le cabinet Baudelin, dispo sur App store.
+                Appli de conseils légaux pour le cabinet Baudelin, dispo sur IOS et Android stores.
                 </p>
               </div>
             </div>
@@ -871,7 +871,7 @@ function Home() {
                 {animationsEnd && <video src="/Me-Baudelin.mp4" className={projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>}
               </div>
               <p className={styles.projectSubtitle}>
-              Appli de conseils légaux pour le cabinet Baudelin, dispo sur App store.
+              Appli de conseils légaux pour le cabinet Baudelin, dispo sur IOS et Android stores.
               </p>
             </div>
 
@@ -886,7 +886,7 @@ function Home() {
                   {animationsEnd && <video src="/BoostUp.mp4" className={styles.projectVideo} autoPlay={true} loop={true} playsInline muted={true} alt="vidéo d'un site internet"></video>}
                 </div>
                 <p className={styles.projectSubtitle}>
-                  Appli de coaching pour l'entreprise Kevfit, dispo sur App Store et Google Play Store.
+                  Appli de coaching pour l'entreprise Kevfit, dispo sur IOS et Android stores.
                 </p>
               </div>
             </div>
@@ -898,7 +898,7 @@ function Home() {
                 {animationsEnd && <video src="/BoostUp.mp4" className={projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>}
               </div>
               <p className={styles.projectSubtitle}>
-                Appli de coaching pour l'entreprise Kevfit, dispo sur App Store et Google Play Store.
+                Appli de coaching pour l'entreprise Kevfit, dispo sur IOS et Android stores.
               </p>
             </div>
 
@@ -1036,12 +1036,12 @@ function Home() {
 
           </div>
 
-          <div className={styles.gradientMail2} onClick={() => copyText()}>
+          {/* <div className={styles.gradientMail2} onClick={() => copyText()}>
             <div className={styles.gradientShadow}></div>
             <h6 className={styles.mail2}>contact@julien-furic.com</h6>
-          </div>
+          </div> */}
 
-          <p className={styles.paragraph2}> À très bientôt ! :) </p>
+          {/* <p className={styles.paragraph2}> À très bientôt ! :) </p> */}
 
           <div className={styles.bottomContainer}>
             <div className={styles.siteLogoContainer}>
