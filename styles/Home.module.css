@@ -6,7 +6,8 @@
     background-color: rgb(7, 5, 8);
     /* background-color: rgb(14, 14, 14); */
     /* font-family: "Noto Sans Bengali", sans-serif; */
-    font-family: "Kumbh Sans", sans-serif;
+    /* font-family: "Kumbh Sans", sans-serif; */
+    font-family: "DM Sans", sans-serif;
     overflow-y: scroll;
     scrollbar-width: thin;
     scrollbar-color: grey black;
@@ -138,7 +139,7 @@
 
 
   .title {
-    font-size: 2.9vw;
+    font-size: 3vw;
     font-weight: 600;
     letter-spacing: 0.25vw;
     line-height: 4.3vw;
@@ -1076,7 +1077,8 @@
     width: 100vw;
     height: fit-content;
     background-color: rgb(7, 5, 8);
-    font-family: "Kumbh Sans", sans-serif;
+    /* font-family: "Kumbh Sans", sans-serif; */
+    font-family: "DM Sans", sans-serif;
     overflow-y: scroll;
     overflow-x: hidden;
     scrollbar-width: thin;
@@ -1212,7 +1214,7 @@
 
 
   .title {
-    font-size: 9vw;
+    font-size: 10vw;
     font-weight: 600;
     letter-spacing: 0.25vw;
     line-height: 9vw;
