@@ -485,7 +485,7 @@ function Home() {
     modal1Style = { top: - projectsLine1ViewportOffset + 20 * vw, }
   }
 
-  const modal1 = modal1Visible ? styles.squareGradient5 : styles.squareGradient4
+  const modal1 = modal1Visible ? styles.squareGradient5 : styles.smallLeftProjectModal
 
   const videoContainer1Style = modal1Visible ? styles.projectVideoContainer : styles.projectImgContainer
 
@@ -501,7 +501,7 @@ function Home() {
     modal2Style = { top: - projectsLine1ViewportOffset + 20 * vw, }
   }
 
-  const modal2 = modal2Visible ? styles.squareGradient5 : styles.squareGradient4B
+  const modal2 = modal2Visible ? styles.squareGradient5 : styles.smallRightProjectModal
 
   const videoContainer2Style = modal2Visible ? styles.projectVideoContainer : styles.projectImgContainer
 
@@ -525,7 +525,7 @@ function Home() {
     modal3Style = { top: - modal3ViewportOffset + 20 * vw, }
   }
 
-  const modal3 = modal3Visible ? styles.squareGradient5 : styles.squareGradient4B
+  const modal3 = modal3Visible ? styles.squareGradient5 : styles.smallRightProjectModal
 
   const videoContainer3Style = modal3Visible ? styles.projectVideoContainer : styles.projectImgContainer
 
@@ -850,7 +850,7 @@ function Home() {
 
 
             <div className={styles.squareRevealContainer1}>
-              <div className={styles.squareGradient2} style={project1} onClick={() => {
+              <div className={styles.leftProjectItem} style={project1} onClick={() => {
                 !modal1Visible && setModal1Visible(true)
               }} >
                 <h6 className={styles.projectTitle}>Me Baudelin</h6>
@@ -878,7 +878,7 @@ function Home() {
 
 
             <div className={styles.squareRevealContainer2}>
-              <div className={styles.squareGradient3} style={project2} onClick={() => {
+              <div className={styles.rightProjectItem} style={project2} onClick={() => {
                 !modal2Visible && setModal2Visible(true)
               }} >
                 <h6 className={styles.projectTitle}>Boost Up</h6>
@@ -914,7 +914,7 @@ function Home() {
 
              <Link href='https://frontend-clothe-me-up.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
               <div className={styles.squareRevealContainer1}  >
-                <div className={styles.squareGradient2}
+                <div className={styles.leftProjectItem}
                   style={project3} >
                   <h6 className={styles.projectTitle}>Clothe Me Up</h6>
                   <div className={styles.projectImgContainer}>
@@ -931,7 +931,7 @@ function Home() {
 
             <Link href='https://kairos-fronted.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
               <div className={styles.squareRevealContainer2}>
-                <div className={styles.squareGradient3} style={project4}>
+                <div className={styles.rightProjectItem} style={project4}>
                   <h6 className={styles.projectTitle}>Kairos</h6>
                   <div className={styles.projectImgContainer}>
                     <Image alt="Vignette d'un site internet" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw" fill={true} src="/Kairos.png" className={styles.projectImg} />
@@ -960,7 +960,7 @@ function Home() {
 
              <Link href='https://frontend-twitter2.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
               <div className={styles.squareRevealContainer1}  >
-                <div className={styles.squareGradient2} style={project5}>
+                <div className={styles.leftProjectItem} style={project5}>
                   <h6 className={styles.projectTitle}>Hackatweet</h6>
                   <div className={styles.projectImgContainer}>
                     <Image alt="Vignette d'un site internet" fill={true} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw" src="/Hackatweet.png" className={styles.projectImg} />
@@ -975,7 +975,7 @@ function Home() {
 
 
             <div className={styles.squareRevealContainer2}>
-              <div className={styles.squareGradient3} style={project6} onClick={() => {
+              <div className={styles.rightProjectItem} style={project6} onClick={() => {
                 !modal3Visible && setModal3Visible(true)
               }} >
                 <h6 className={styles.projectTitle}>ChatApp</h6>
@@ -1000,7 +1000,7 @@ function Home() {
 
             {/* <Link href='https://morningnews-frontend-zeta.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
               <div className={styles.squareRevealContainer2}>
-                <div className={styles.squareGradient3}
+                <div className={styles.rightProjectItem}
                   style={project6} >
                   <h6 className={styles.projectTitle}>Morning News</h6>
                   <div className={styles.projectImgContainer}>
