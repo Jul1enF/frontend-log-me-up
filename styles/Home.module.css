@@ -574,22 +574,13 @@
     align-items: flex-start;
   }
 
-  .projectsLine1 {
+  .projectsLine {
     display: flex;
     justify-content: space-between;
     margin-bottom: 2vw;
     width: 50vw;
     position: relative;
     min-height: 25vw;
-  }
-
-  .projectsLine2 {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10vw;
-    width: 50vw;
-    position: relative;
-    min-height: 26vw;
   }
 
   .squareGradient2 {
@@ -1653,7 +1644,7 @@
     align-items: flex-start;
   }
 
-  .projectsLine1 {
+  .projectsLine {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -1662,17 +1653,6 @@
     width: 100%;
     position: relative;
     min-height: 25vw;
-  }
-
-  .projectsLine2 {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 18vw;
-    width: 100%;
-    position: relative;
-    min-height: 26vw;
   }
 
   .squareGradient2 {

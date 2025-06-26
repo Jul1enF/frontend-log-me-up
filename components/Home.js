@@ -841,7 +841,7 @@ function Home() {
 
 
 
-          <div className={styles.projectsLine1} ref={projectsLine1Ref}>
+          <div className={styles.projectsLine} ref={projectsLine1Ref}>
 
             <div className={mask1} onClick={() => {
               modal1Visible && setModal1Visible(false)
@@ -909,7 +909,7 @@ function Home() {
 
 
 
-          <div className={styles.projectsLine1}>
+          <div className={styles.projectsLine}>
 
 
              <Link href='https://frontend-clothe-me-up.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
@@ -951,7 +951,7 @@ function Home() {
 
 
 
-          <div className={styles.projectsLine2} ref={projectsLine3Ref}>
+          <div className={styles.projectsLine} style={{ marginBottom : (vw && vw < 6) ? 18 * vw : 10 * vw}} ref={projectsLine3Ref}>
 
             <div className={mask3} onClick={() => {
               modal3Visible && setModal3Visible(false)
