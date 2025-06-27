@@ -93,9 +93,10 @@ function Home() {
 
   // Variables pour enregistrer le offset max et les changements de style
 
-  // Offset à ne pas dépasser pour que le Header ne fasse pas moins de 10vw
-  const headerSize = 9 * vw
-  const offset = 50 * vh - headerSize
+  // computerOffsetFrontier = limite de scroll/offset à partir de laquelle on ne réajuste plus le style parceque le header a atteint sa taille finale
+  const firstComputerHeaderSize = 50 * vh
+  const finalComputerHeaderSize = 9 * vw
+  const computerOffsetFrontier = firstComputerHeaderSize - finalComputerHeaderSize
 
   let bodyStyle = videoLoaded ? {} : { display: "none" }
   let headerStyle = {}
@@ -113,20 +114,20 @@ function Home() {
   // ÉCRAN D'ORDINATEUR
 
   // Le header n'a pas encore sa taille def
-  if (vw && vw > 6 && scrollOffset > 0 && scrollOffset < offset) {
+  if (vw && vw > 6 && scrollOffset > 0 && scrollOffset < computerOffsetFrontier) {
     !animationsEnd && setAnimationsEnd(true)
 
     bodyStyle = { paddingTop: scrollOffset, transitionDuration: "0s" }
 
-    headerStyle = { height: 50 * vh - scrollOffset, transitionDuration: "0s" }
+    headerStyle = { height: firstComputerHeaderSize - scrollOffset, transitionDuration: "0s" }
 
-    modalStyle = { height: 50 * vh + scrollOffset, paddingTop: 8 * vh + scrollOffset / 4.5, transitionDuration: "0s" }
+    modalStyle = { height: firstComputerHeaderSize + scrollOffset, paddingTop: 8 * vh + scrollOffset / 4.5, transitionDuration: "0s" }
 
-    const sizeRatio = scrollOffset / (offset)
+    const sizeRatio = scrollOffset / (computerOffsetFrontier)
 
     buttonContainerStyle = { height: 17 * vw + sizeRatio * 4.5 * vw }
 
-    const opacityRatio = 1 - scrollOffset / (offset)
+    const opacityRatio = 1 - scrollOffset / (computerOffsetFrontier)
 
     videoStyle = { transitionDuration: "0.8s", opacity: `${1 * opacityRatio}` }
 
@@ -134,13 +135,13 @@ function Home() {
   }
 
   // Le header a sa taille def
-  else if (vw && vw > 6 && scrollOffset >= offset) {
+  else if (vw && vw > 6 && scrollOffset >= computerOffsetFrontier) {
 
-    bodyStyle = { paddingTop: offset + headerSize, transitionDuration: "0s" }
+    bodyStyle = { paddingTop: computerOffsetFrontier + finalComputerHeaderSize, transitionDuration: "0s" }
 
-    headerStyle = { height: headerSize, transitionDuration: "0s", position: "absolute", top: 0 }
+    headerStyle = { height: finalComputerHeaderSize, transitionDuration: "0s", position: "absolute", top: 0 }
 
-    modalStyle = { height: 50 * vh + offset, paddingTop: 8 * vh + offset / 4.5, transitionDuration: "0s", position: "absolute", top: headerSize }
+    modalStyle = { height: firstComputerHeaderSize + computerOffsetFrontier, paddingTop: 8 * vh + computerOffsetFrontier / 4.5, transitionDuration: "0s", position: "absolute", top: finalComputerHeaderSize }
 
     rightContainerStyle = { paddingLeft: 29 * vw, width: 100 * vw, transitionDuration: "0s" }
 
@@ -251,8 +252,8 @@ function Home() {
     setTimeout(() => setAnimationsBegin(true), 600)
     setTimeout(() => setAnimations2Begin(true), 1200)
     setTimeout(() => setAnimations3Begin(true), 2800)
-    setTimeout(() => setAnimations4Begin(true), 3500)
-    setTimeout(() => setAnimations5Begin(true), 3800)
+    setTimeout(() => setAnimations4Begin(true), 3250)
+    setTimeout(() => setAnimations5Begin(true), 3600)
     setTimeout(() => setAnimationsEnd(true), 9000)
   }
 
@@ -333,9 +334,9 @@ function Home() {
     const containerToScroll = bodyRef.current
 
     // Offset différent Portable / Ordi
-    const categoryOffset = vw > 6 ? 50 * vh - 11 * vw : 45 * vw
+    const categoryOffset = vw > 6 ? - finalComputerHeaderSize - 5 * vw : - finalPhoneHeaderSize - 20 * vw
 
-    const distanceToScroll = cat === "home" ? 0 : categoryToScroll.offsetTop - rightContainerRef.current.offsetTop + categoryOffset
+    const distanceToScroll = cat === "home" ? 0 : categoryToScroll.offsetTop + categoryOffset
 
     // ORDINATEUR
     vw > 6 && containerToScroll.scroll({
@@ -560,11 +561,11 @@ function Home() {
 
   // PORTABLE  : Listener de scroll
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const windowScroll = () => {
-      if (typeof window !== "undefined" && vw < 6) {
+
         bodyScroll(window.scrollY)
-      }
+
     }
 
     window.addEventListener('scroll', windowScroll)
@@ -573,31 +574,34 @@ function Home() {
       window.removeEventListener('scroll', windowScroll)
     }
 
-  }, [scrollOffset])
+  }, [vw])
 
 
 
 
   // PORTABLE : Styles conditionnels en fonction du scroll et de la taille du header
 
-  const phoneHeaderSize = 32 * vw
-  const phoneOffset = 85 * vw - phoneHeaderSize
+  // phoneOffsetFrontier = limite de scroll/offset à partir de laquelle on ne réajuste plus le style parceque le header a atteint sa taille finale
+
+  const firstPhoneHeaderSize = 85 * vw
+  const finalPhoneHeaderSize = 32 * vw
+  const phoneOffsetFrontier = firstPhoneHeaderSize - finalPhoneHeaderSize
   const modalSize = 13 * vw
 
 
   // Le header n'a pas encore sa taille def
-  if (vw && vw <= 6 && scrollOffset > 0 && scrollOffset < phoneOffset) {
+  if (vw && vw <= 6 && scrollOffset > 0 && scrollOffset < phoneOffsetFrontier) {
     !animationsEnd && setAnimationsEnd(true)
 
     rightContainerStyle = { paddingTop: modalSize, transitionDuration: "0s" }
 
-    headerStyle = { height: 85 * vw - scrollOffset, transitionDuration: "0s" }
+    headerStyle = { height : firstPhoneHeaderSize - scrollOffset, transitionDuration: "0s" }
 
-    modalStyle = { top: 85 * vw - scrollOffset }
+    modalStyle = { top: firstPhoneHeaderSize - scrollOffset }
 
-    const sizeRatio = scrollOffset / (phoneOffset)
+    const sizeRatio = scrollOffset / (phoneOffsetFrontier)
 
-    const opacityRatio = 1 - scrollOffset / (phoneOffset)
+    const opacityRatio = 1 - scrollOffset / (phoneOffsetFrontier)
 
     videoStyle = { transitionDuration: "0s", opacity: `${1 * opacityRatio}` }
 
@@ -605,12 +609,12 @@ function Home() {
   }
 
   // Le header a sa taille def
-  else if (vw && vw <= 6 && scrollOffset >= phoneOffset) {
+  else if (vw && vw <= 6 && scrollOffset >= phoneOffsetFrontier) {
     rightContainerStyle = { paddingTop: modalSize, transitionDuration: "0s" }
 
-    headerStyle = { height: phoneHeaderSize, transitionDuration: "0s", position: "fixed", top: 0 }
+    headerStyle = { height: finalPhoneHeaderSize, transitionDuration: "0s", position: "fixed", top: 0 }
 
-    modalStyle = { top: phoneHeaderSize }
+    modalStyle = { top: finalPhoneHeaderSize }
 
     videoStyle = { transitionDuration: "0.8s", opacity: 0 }
 
@@ -630,6 +634,7 @@ function Home() {
   return (
     <div className={styles.body} onScroll={(e) => {
       bodyScroll(e.target.scrollTop)
+      console.log("scroll height :", e.target.scrollTop)
     }} style={bodyStyle} ref={bodyRef} >
 
       <div className={headerContainer} style={headerStyle} >
@@ -858,7 +863,7 @@ function Home() {
                   {animationsEnd && <video src="/Me-Baudelin.mp4" className={styles.projectVideo} autoPlay={true} loop={true} playsInline muted={true} alt="vidéo d'un site internet"></video>}
                 </div>
                 <p className={styles.projectSubtitle}>
-                Appli de conseils légaux pour le cabinet Baudelin, dispo sur IOS et Android stores.
+                  Appli de conseils légaux pour le cabinet Baudelin, dispo sur IOS et Android stores.
                 </p>
               </div>
             </div>
@@ -871,7 +876,7 @@ function Home() {
                 {animationsEnd && <video src="/Me-Baudelin.mp4" className={projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>}
               </div>
               <p className={styles.projectSubtitle}>
-              Appli de conseils légaux pour le cabinet Baudelin, dispo sur IOS et Android stores.
+                Appli de conseils légaux pour le cabinet Baudelin, dispo sur IOS et Android stores.
               </p>
             </div>
 
@@ -912,7 +917,7 @@ function Home() {
           <div className={styles.projectsLine}>
 
 
-             <Link href='https://frontend-clothe-me-up.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
+            <Link href='https://frontend-clothe-me-up.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
               <div className={styles.squareRevealContainer1}  >
                 <div className={styles.leftProjectItem}
                   style={project3} >
@@ -951,14 +956,14 @@ function Home() {
 
 
 
-          <div className={styles.projectsLine} style={{ marginBottom : (vw && vw < 6) ? 18 * vw : 10 * vw}} ref={projectsLine3Ref}>
+          <div className={styles.projectsLine} style={{ marginBottom: (vw && vw < 6) ? 18 * vw : 10 * vw }} ref={projectsLine3Ref}>
 
             <div className={mask3} onClick={() => {
               modal3Visible && setModal3Visible(false)
             }}></div>
 
 
-             <Link href='https://frontend-twitter2.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
+            <Link href='https://frontend-twitter2.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
               <div className={styles.squareRevealContainer1}  >
                 <div className={styles.leftProjectItem} style={project5}>
                   <h6 className={styles.projectTitle}>Hackatweet</h6>
