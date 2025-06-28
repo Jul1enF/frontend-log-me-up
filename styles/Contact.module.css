@@ -1,0 +1,374 @@
+@media only screen and (min-width: 600px) {
+
+  .categoryTitle {
+    color: rgb(240, 235, 243);
+    font-size: 1.5vw;
+    font-weight: 300;
+    letter-spacing: 0.08vw;
+    margin: 0;
+    margin-bottom: 1.8vw;
+
+  }
+
+  .gradientTextContainer {
+    width: fit-content;
+    height: fit-content;
+    background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
+    background-clip: text;
+    margin-bottom: 4vw;
+  }
+
+
+  .categorySubtitle {
+    color: transparent;
+    font-size: 2.1vw;
+    font-weight: 700;
+    letter-spacing: 0.05vw;
+    margin: 0;
+
+  }
+
+
+
+  .textContainer2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 79%;
+    margin-bottom: 3vw;
+    position: relative;
+  }
+
+  .paragraph2 {
+    color: rgb(227, 219, 230);
+    font-size: 1.4vw;
+    font-weight: 300;
+    letter-spacing: 0.05vw;
+    margin: 0;
+    margin-bottom: 2vw;
+    text-indent: 1vw;
+  }
+
+  .copy1 {
+    color: rgb(227, 219, 230);
+    font-size: 1.2vw;
+    font-weight: 200;
+    letter-spacing: 0.05vw;
+    margin: 0;
+    position: absolute;
+    bottom: -2vw;
+    left: 18vw;
+    display: none;
+  }
+
+  .copy2 {
+    color: rgb(227, 219, 230);
+    font-size: 1.2vw;
+    font-weight: 200;
+    letter-spacing: 0.05vw;
+    margin: 0;
+    position: absolute;
+    bottom: -2vw;
+    left: 18vw;
+    display: flex;
+  }
+
+  .gradientMail {
+    width: 52.8vw;
+    height: fit-content;
+    margin-left: 5.2vw;
+    margin-bottom: 0.8vw;
+    position: relative;
+  }
+
+
+  .mail {
+    background-image: linear-gradient(90deg, #910ec1, rgb(74, 17, 165) 25%, #2a0ea5 50%, rgb(74, 17, 165) 75%, #910ec1 100%);
+    background-clip: text;
+    color: transparent;
+    animation: slidein 4.5s linear infinite;
+    font-size: 2.8vw;
+    font-weight: 450;
+    letter-spacing: 0.1vw;
+    margin: 0;
+    transform: rotateX(0deg);
+    cursor: pointer;
+  }
+
+  .copyIcon {
+    display: none;
+    height: 1.15vw;
+    color: rgba(227, 219, 230, 0.85);
+    position: absolute;
+    right: 7vw;
+    top: 1.7vw;
+    z-index: 1;
+    cursor: pointer;
+  }
+
+
+  .gradientMail2 {
+    width: 52.8vw;
+    height: 4.5vw;
+    margin-left: 5.2vw;
+    margin-bottom: 5vw;
+    position: relative;
+  }
+
+
+  .mail2 {
+    color: transparent;
+    background-image: linear-gradient(90deg, #910ec1, rgb(74, 17, 165) 25%, #2a0ea5 50%, rgb(74, 17, 165) 75%, #910ec1 100%);
+    background-clip: text;
+    font-size: 2.8vw;
+    font-weight: 400;
+    letter-spacing: 0.1vw;
+    margin: 0;
+    margin-bottom: 2vw;
+    transform: rotateX(180deg);
+    animation: slidein 4.5s linear infinite;
+    opacity: 1;
+    cursor: pointer;
+  }
+
+  @keyframes slidein {
+    from {
+      background-position: 0vw;
+    }
+
+    to {
+      background-position: -52.8vw;
+    }
+  }
+
+  .gradientShadow {
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(7, 5, 8, 0), rgba(7, 5, 8, 1));
+    pointer-events: none;
+  }
+
+  .bottomContainer {
+    width: 100%;
+    margin-top: 8vw;
+    display: flex;
+    align-items: center;
+    padding-left: 17vw;
+  }
+
+  .siteLogoContainer {
+    position: relative;
+    height: 3vw;
+    width: 3vw;
+    margin-right: 2vw;
+  }
+
+  .siteLogo {
+    object-fit: contain;
+  }
+
+  .paragraph3 {
+    color: rgb(227, 219, 230);
+    font-size: 1.2vw;
+    font-weight: 400;
+    letter-spacing: 0.05vw;
+    margin: 0;
+  }
+}
+
+
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+
+  .categoryTitle {
+    color: rgb(240, 235, 243);
+    font-size: 6.5vw;
+    font-weight: 400;
+    letter-spacing: 0.08vw;
+    margin: 0;
+    margin-bottom: 5vw;
+
+  }
+
+  .gradientTextContainer {
+    width: fit-content;
+    height: fit-content;
+    background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
+    background-clip: text;
+    margin-bottom: 11vw;
+  }
+
+  .categorySubtitle {
+    color: transparent;
+    font-size: 5.8vw;
+    font-weight: 700;
+    letter-spacing: 0.05vw;
+    margin: 0;
+
+  }
+
+
+  .gradientTextContainer2 {
+    width: fit-content;
+    height: fit-content;
+    background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
+    background-clip: text;
+    margin-bottom: 11vw;
+  }
+
+
+
+
+
+  .textContainer2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 10vw;
+    position: relative;
+  }
+
+  .paragraph2 {
+    color: rgb(227, 219, 230);
+    font-size: 4.2vw;
+    font-weight: 300;
+    letter-spacing: 0.05vw;
+    margin: 0;
+    margin-bottom: 2vw;
+    text-indent: 1vw;
+  }
+
+  .copy1 {
+    color: rgb(227, 219, 230);
+    font-size: 1.2vw;
+    font-weight: 200;
+    letter-spacing: 0.05vw;
+    margin: 0;
+    position: absolute;
+    bottom: -2vw;
+    left: 18vw;
+    display: none;
+  }
+
+  .copy2 {
+    color: rgb(227, 219, 230);
+    font-size: 4.2vw;
+    font-weight: 200;
+    letter-spacing: 0.05vw;
+    margin: 0;
+    position: absolute;
+    bottom: -6.5vw;
+    left: 27vw;
+    display: flex;
+  }
+
+  .gradientMail {
+    width: 96vw;
+    height: fit-content;
+    margin-left: 2.5vw;
+    margin-bottom: 0.8vw;
+    position: relative;
+  }
+
+
+  .mail {
+    background-image: linear-gradient(90deg, #910ec1, rgb(74, 17, 165) 25%, #2a0ea5 50%, rgb(74, 17, 165) 75%, #910ec1 100%);
+    background-clip: text;
+    color: transparent;
+    animation: slidein 4.5s linear infinite;
+    font-size: 7.5vw;
+    font-weight: 450;
+    letter-spacing: 0.1vw;
+    margin: 0;
+    transform: rotateX(0deg);
+    cursor: pointer;
+  }
+
+  .copyIcon {
+    height: 3.5vw;
+    color: rgb(227, 219, 230);
+    position: absolute;
+    right: 4.7vw;
+    top: 12vw;
+    z-index: 1;
+    cursor: pointer;
+  }
+
+
+  .gradientMail2 {
+    width: 96vw;
+    height: fit-content;
+    margin-left: 2.5vw;
+    margin-bottom: 14vw;
+    position: relative;
+  }
+
+
+  .mail2 {
+    color: transparent;
+    background-image: linear-gradient(90deg, #910ec1, rgb(74, 17, 165) 25%, #2a0ea5 50%, rgb(74, 17, 165) 75%, #910ec1 100%);
+    background-clip: text;
+    font-size: 7.5vw;
+    font-weight: 400;
+    letter-spacing: 0.1vw;
+    margin: 0;
+    transform: rotateX(180deg);
+    animation: slidein 4.5s linear infinite;
+    opacity: 1;
+    cursor: pointer;
+  }
+
+  @keyframes slidein {
+    from {
+      background-position: 0vw;
+    }
+
+    to {
+      background-position: -96vw;
+    }
+  }
+
+  .gradientShadow {
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(7, 5, 8, 0) 10%, rgba(7, 5, 8, 1));
+    pointer-events: none;
+  }
+
+  .bottomContainer {
+    width: 100%;
+    margin-top: 24vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .siteLogoContainer {
+    position: relative;
+    height: 9vw;
+    width: 9vw;
+    margin-right: 6vw;
+    ;
+  }
+
+  .siteLogo {
+    object-fit: contain;
+  }
+
+  .paragraph3 {
+    color: rgb(227, 219, 230);
+    font-size: 4.2vw;
+    font-weight: 400;
+    letter-spacing: 0.05vw;
+    margin: 0;
+  }
+}

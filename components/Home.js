@@ -1,39 +1,25 @@
 import styles from '../styles/Home.module.css';
 import { useState, useEffect, useRef, useLayoutEffect } from 'react'
-import Image from 'next/image';
-import Link from 'next/link';
 
-import { Laptop } from 'react-bootstrap-icons';
-import { Phone } from 'react-bootstrap-icons';
-import { Palette } from 'react-bootstrap-icons';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faReact, faNode } from '@fortawesome/free-brands-svg-icons'
-import { faCopy } from '@fortawesome/free-solid-svg-icons'
+import Header from './Header';
+import Skills from './Skills';
+import Projects from './Projects';
+import About from './About';
+import Contact from './Contact';
 
-import { SiNextdotjs } from "react-icons/si";
-import { SiTypescript } from "react-icons/si";
-import { FaCss3Alt } from "react-icons/fa";
-import { SiExpo } from "react-icons/si";
-import { SiExpress } from "react-icons/si";
-import { SiMongodb } from "react-icons/si";
-import { SiVercel } from "react-icons/si";
-import { SiAdobepremierepro } from "react-icons/si";
-import { SiAdobeaftereffects } from "react-icons/si";
-import { SiAdobephotoshop } from "react-icons/si";
-import { SiAdobeillustrator } from "react-icons/si";
-import { HiMiniXMark } from "react-icons/hi2";
+
+
 
 
 function Home() {
-  // États pour setter les timings d'animation
 
-  const [animationsBegin, setAnimationsBegin] = useState(false)
-  const [animations2Begin, setAnimations2Begin] = useState(false)
-  const [animations3Begin, setAnimations3Begin] = useState(false)
-  const [animations4Begin, setAnimations4Begin] = useState(false)
-  const [animations5Begin, setAnimations5Begin] = useState(false)
-  const [animationsEnd, setAnimationsEnd] = useState(false)
+  // useEffect  pour quand l'utilisateur rafraichit la page, retour en haut et réinitialisation du scrolloffset.
+
+  useEffect(() => {
+    window.history.scrollRestoration = 'manual'
+  }, []);
+
 
 
 
@@ -85,13 +71,17 @@ function Home() {
 
 
 
-  // État pour valider le chargement de la vidéo du header
+  // État et fonction IDF pour valider le chargement de la vidéo du header
 
   const [videoLoaded, setVideoLoaded] = useState(false)
 
+  const markVideoAsLoaded = () => {
+    setVideoLoaded(true)
+  }
 
 
-  // Variables pour enregistrer le offset max et les changements de style
+
+  // Variables pour enregistrer les changements de style
 
   // computerOffsetFrontier = limite de scroll/offset à partir de laquelle on ne réajuste plus le style parceque le header a atteint sa taille finale
   const firstComputerHeaderSize = 50 * vh
@@ -99,13 +89,9 @@ function Home() {
   const computerOffsetFrontier = firstComputerHeaderSize - finalComputerHeaderSize
 
   let bodyStyle = videoLoaded ? {} : { display: "none" }
-  let headerStyle = {}
-  let videoStyle = {}
-  let titleBgStyle = {}
   let buttonContainerStyle = {}
   let modalStyle = {}
   let rightContainerStyle = {}
-
 
 
   // Styles conditionnels en fonction du scroll et de la taille du header
@@ -115,11 +101,8 @@ function Home() {
 
   // Le header n'a pas encore sa taille def
   if (vw && vw > 6 && scrollOffset > 0 && scrollOffset < computerOffsetFrontier) {
-    !animationsEnd && setAnimationsEnd(true)
 
     bodyStyle = { paddingTop: scrollOffset, transitionDuration: "0s" }
-
-    headerStyle = { height: firstComputerHeaderSize - scrollOffset, transitionDuration: "0s" }
 
     modalStyle = { height: firstComputerHeaderSize + scrollOffset, paddingTop: 8 * vh + scrollOffset / 4.5, transitionDuration: "0s" }
 
@@ -127,11 +110,6 @@ function Home() {
 
     buttonContainerStyle = { height: 17 * vw + sizeRatio * 4.5 * vw }
 
-    const opacityRatio = 1 - scrollOffset / (computerOffsetFrontier)
-
-    videoStyle = { transitionDuration: "0.8s", opacity: `${1 * opacityRatio}` }
-
-    titleBgStyle = { transitionDuration: "0.8s", opacity: `${1 * opacityRatio}` }
   }
 
   // Le header a sa taille def
@@ -139,19 +117,63 @@ function Home() {
 
     bodyStyle = { paddingTop: computerOffsetFrontier + finalComputerHeaderSize, transitionDuration: "0s" }
 
-    headerStyle = { height: finalComputerHeaderSize, transitionDuration: "0s", position: "absolute", top: 0 }
-
     modalStyle = { height: firstComputerHeaderSize + computerOffsetFrontier, paddingTop: 8 * vh + computerOffsetFrontier / 4.5, transitionDuration: "0s", position: "absolute", top: finalComputerHeaderSize }
 
     rightContainerStyle = { paddingLeft: 29 * vw, width: 100 * vw, transitionDuration: "0s" }
 
     buttonContainerStyle = { height: 17 * vw + 4.5 * vw }
-
-    videoStyle = { transitionDuration: "0.8s", opacity: 0 }
-
-    titleBgStyle = { transitionDuration: "0.8s", opacity: 0 }
   }
 
+
+  // PORTABLE : Styles conditionnels en fonction du scroll et de la taille du header
+
+  // phoneOffsetFrontier = limite de scroll/offset à partir de laquelle on ne réajuste plus le style parceque le header a atteint sa taille finale
+
+  const firstPhoneHeaderSize = 85 * vw
+  const finalPhoneHeaderSize = 32 * vw
+  const phoneOffsetFrontier = firstPhoneHeaderSize - finalPhoneHeaderSize
+  const modalSize = 13 * vw
+
+
+  // Le header n'a pas encore sa taille def
+  if (vw && vw <= 6 && scrollOffset > 0 && scrollOffset < phoneOffsetFrontier) {
+
+    rightContainerStyle = { paddingTop: modalSize, transitionDuration: "0s" }
+
+    modalStyle = { top: firstPhoneHeaderSize - scrollOffset }
+
+  }
+
+  // Le header a sa taille def
+  else if (vw && vw <= 6 && scrollOffset >= phoneOffsetFrontier) {
+    rightContainerStyle = { paddingTop: modalSize, transitionDuration: "0s" }
+
+    modalStyle = { top: finalPhoneHeaderSize }
+  }
+
+
+
+
+
+
+
+
+  // PORTABLE  : Listener de scroll
+
+  useLayoutEffect(() => {
+    const windowScroll = () => {
+
+      bodyScroll(window.scrollY)
+
+    }
+
+    window.addEventListener('scroll', windowScroll)
+
+    return () => {
+      window.removeEventListener('scroll', windowScroll)
+    }
+
+  }, [vw])
 
 
 
@@ -238,10 +260,27 @@ function Home() {
   }
 
 
-
   // État pour la catégorie choisie
 
   const [category, setCategory] = useState('home')
+
+
+
+
+
+
+
+
+
+
+  // États pour setter les timings d'animation
+
+  const [animationsBegin, setAnimationsBegin] = useState(false)
+  const [animations2Begin, setAnimations2Begin] = useState(false)
+  const [animations3Begin, setAnimations3Begin] = useState(false)
+  const [animations4Begin, setAnimations4Begin] = useState(false)
+  const [animations5Begin, setAnimations5Begin] = useState(false)
+  const [animationsEnd, setAnimationsEnd] = useState(false)
 
 
   // Fonction et useEffect pour le déclenchement des timings d'animations une fois la vidéo chargée
@@ -262,24 +301,8 @@ function Home() {
     timingFunction()
   }, [videoLoaded])
 
+// Variable de className pour changement de styles pour les animations du début
 
-
-
-
-  // useEffect  pour quand l'utilisateur rafraichit la page, retour en haut et réinitialisation du scrolloffset.
-
-  useEffect(() => {
-    window.history.scrollRestoration = 'manual'
-  }, []);
-
-
-
-
-  // Variable de className pour changement de styles pour les animations du début
-
-  let titleBackground = !animationsBegin ? styles.titleBackground1 : styles.titleBackground2
-
-  let headerTextContainer = !animationsBegin ? styles.headerTextContainer1 : styles.headerTextContainer2
 
   let modal = !animations3Begin ? styles.modal1 : styles.modal2
 
@@ -296,20 +319,24 @@ function Home() {
     rightContainer = styles.rightContainer2
   }
 
-  let backgroundVideo = !animations2Begin ? styles.backgroundVideo1 : styles.backgroundVideo2
 
-
-  let headerContainer = styles.headerContainer1
-
-  // Nouvelles classeName avec réglages def et plus de transition duration pour les cas de resize de la fenêtre
+  // Nouvelles classeName avec réglages def et sans 'transition : duration' pour les cas de resize de la fenêtre
   if (animationsEnd) {
-    titleBackground = styles.titleBackground3
     modal = styles.modal3
     rightContainer = styles.rightContainer3
-    backgroundVideo = styles.backgroundVideo3
-    headerContainer = styles.headerContainer2
     buttonContainer = styles.buttonContainer3
   }
+
+
+
+  // Si l'on scroll, les animations s'arrêtent
+  if (scrollOffset > 0 && !animationsEnd) {
+    setAnimationsEnd(true)
+  }
+
+
+
+
 
 
 
@@ -358,6 +385,8 @@ function Home() {
 
 
 
+
+
   // Affichage conditionnel des boutons et de leurs lignes en fonction de la catégorie sélectionnée
 
   const categoryButton0 = category === "home" ? styles.button3 : styles.button1
@@ -382,253 +411,6 @@ function Home() {
 
 
 
-  // Styles conditionnels pour les containers des compétences
-
-  let skill1
-  let skill2
-  let skill3
-
-  const skillContainer = categoriesRef.current.skills
-
-  // ORDINATEUR
-  if (vw > 6 && skillContainer && scrollOffset + 100 * vh < skillContainer.offsetTop + 14 * vw) {
-    skill1 = { left: -20 * vw, opacity: 0, transitionDuration: "3s", marginRight: 600 }
-    skill2 = { marginRight: -40 * vw, opacity: 0, transitionDuration: "3s" }
-    skill3 = { marginTop: 10 * vw, opacity: 0, transitionDuration: "3s" }
-  }
-  // PORTABLE
-  if (vw <= 6 && skillContainer && scrollOffset + 100 * vh < skillContainer.offsetTop + 20 * vw) {
-    skill1 = { left: 40 * vw, opacity: 0, transitionDuration: "1s" }
-  }
-  if (vw <= 6 && skillContainer && scrollOffset + 100 * vh < skillContainer.offsetTop + 55 * vw) {
-    skill2 = { left: -40 * vw, opacity: 0, transitionDuration: "1s" }
-  }
-  if (vw <= 6 && skillContainer && scrollOffset + 100 * vh < skillContainer.offsetTop + 90 * vw) {
-    skill3 = { left: 40 * vw, opacity: 0, transitionDuration: "1s" }
-  }
-
-
-
-
-
-
-
-  // Styles conditionnels pour les containers des projets
-
-  let project1
-  let project2
-  let project3
-  let project4
-  let project5
-  let project6
-
-  // ORDINATEUR
-  if (vw > 6) {
-    if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 17 * vw) {
-      project1 = { width: 18 * vw, height: 19.2 * vw, opacity: 0, transitionDuration: "3s", }
-      project2 = { width: 18 * vw, height: 19.2 * vw, opacity: 0, transitionDuration: "3s", }
-    }
-
-    if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 42 * vw) {
-      project3 = { width: 18 * vw, height: 19.2 * vw, opacity: 0, transitionDuration: "3s", }
-      project4 = { width: 18 * vw, height: 19.2 * vw, opacity: 0, transitionDuration: "3s", }
-    }
-
-    if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 72 * vw) {
-      project5 = { width: 18 * vw, height: 19.2 * vw, opacity: 0, transitionDuration: "3s", }
-      project6 = { width: 18 * vw, height: 19.2 * vw, opacity: 0, transitionDuration: "3s", }
-    }
-  }
-
-  // PORTABLE
-  if (vw <= 6) {
-    if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 55 * vw) {
-      project1 = { width: 55 * vw, height: 55 * vw, opacity: 0, transitionDuration: "1s", fontSize: 2.9 * vw }
-    }
-    if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 110 * vw) {
-      project2 = { width: 55 * vw, height: 55 * vw, opacity: 0, transitionDuration: "1s", fontSize: 2.9 * vw }
-    }
-    if (categoriesRef.current.projects && scrollOffset + 100 * vh < categoriesRef.current.projects.offsetTop + 190 * vw) {
-      project3 = { width: 55 * vw, height: 55 * vw, opacity: 0, transitionDuration: "1s", fontSize: 2.9 * vw }
-      project4 = { width: 55 * vw, height: 55 * vw, opacity: 0, transitionDuration: "1s", fontSize: 2.9 * vw }
-      project5 = { width: 55 * vw, height: 55 * vw, opacity: 0, transitionDuration: "1s", fontSize: 2.9 * vw }
-      project6 = { width: 55 * vw, height: 55 * vw, opacity: 0, transitionDuration: "1s", fontSize: 2.9 * vw }
-    }
-  }
-
-
-
-
-
-
-  // États et styles conditionnel pour l'affichage des modals et de leur masque
-
-  const [modal1Visible, setModal1Visible] = useState(false)
-  const [modal2Visible, setModal2Visible] = useState(false)
-  const [modal3Visible, setModal3Visible] = useState(false)
-
-  const projectsLine1Ref = useRef(null)
-
-
-  // Réglage du offset top de la modal par rapport au viewport, pour qu'elle reste fixe dans l'écran (car normalement réglée par rapport à son parent vu qu'en position : absolute)
-  const projectsLine1ViewportOffset = projectsLine1Ref.current && projectsLine1Ref.current.offsetTop - scrollOffset
-
-  const mask1 = (modal1Visible || modal2Visible) ? styles.maskOn : styles.maskOff
-
-
-  let modal1Style
-  // ORDINATEUR
-  if (vw > 6 && modal1Visible) {
-    modal1Style = { top: - projectsLine1ViewportOffset + 3 * vw, }
-  }
-  // PORTABLE
-  if (vw <= 6 && modal1Visible) {
-    modal1Style = { top: - projectsLine1ViewportOffset + 20 * vw, }
-  }
-
-  const modal1 = modal1Visible ? styles.squareGradient5 : styles.smallLeftProjectModal
-
-  const videoContainer1Style = modal1Visible ? styles.projectVideoContainer : styles.projectImgContainer
-
-
-
-  let modal2Style
-  // ORDINATEUR
-  if (vw > 6 && modal2Visible) {
-    modal2Style = { top: - projectsLine1ViewportOffset + 3 * vw, }
-  }
-  // PORTABLE
-  if (vw <= 6 && modal2Visible) {
-    modal2Style = { top: - projectsLine1ViewportOffset + 20 * vw, }
-  }
-
-  const modal2 = modal2Visible ? styles.squareGradient5 : styles.smallRightProjectModal
-
-  const videoContainer2Style = modal2Visible ? styles.projectVideoContainer : styles.projectImgContainer
-
-
-
-
-
-  const projectsLine3Ref = useRef(null)
-
-  const modal3ViewportOffset = projectsLine3Ref.current && projectsLine3Ref.current.offsetTop - scrollOffset
-
-  const mask3 = modal3Visible ? styles.maskOn : styles.maskOff
-
-  let modal3Style
-  // ORDINATEUR
-  if (vw > 6 && modal3Visible) {
-    modal3Style = { top: - modal3ViewportOffset + 3 * vw, }
-  }
-  // PORTABLE
-  if (vw <= 6 && modal3Visible) {
-    modal3Style = { top: - modal3ViewportOffset + 20 * vw, }
-  }
-
-  const modal3 = modal3Visible ? styles.squareGradient5 : styles.smallRightProjectModal
-
-  const videoContainer3Style = modal3Visible ? styles.projectVideoContainer : styles.projectImgContainer
-
-
-
-
-  // PORTABLE Pour mettre la vidéo de la modal en cover
-  let projectVideo = styles.projectVideo
-  if (vw <= 6 && (modal1Visible || modal2Visible || modal3Visible)) {
-    projectVideo = styles.modalVideo
-  }
-
-
-
-
-
-
-
-  // Fonction et état pour copier adresse mail
-
-  const [copyVisible, setCopyVisible] = useState(false)
-
-  const copy = !copyVisible ? styles.copy1 : styles.copy2
-
-  const copyText = () => {
-    navigator.clipboard.writeText("contact@julien-furic.com")
-    setCopyVisible(true)
-    setTimeout(() => setCopyVisible(false), 1500)
-  }
-
-
-
-  // PORTABLE  : Listener de scroll
-
-  useLayoutEffect(() => {
-    const windowScroll = () => {
-
-        bodyScroll(window.scrollY)
-
-    }
-
-    window.addEventListener('scroll', windowScroll)
-
-    return () => {
-      window.removeEventListener('scroll', windowScroll)
-    }
-
-  }, [vw])
-
-
-
-
-  // PORTABLE : Styles conditionnels en fonction du scroll et de la taille du header
-
-  // phoneOffsetFrontier = limite de scroll/offset à partir de laquelle on ne réajuste plus le style parceque le header a atteint sa taille finale
-
-  const firstPhoneHeaderSize = 85 * vw
-  const finalPhoneHeaderSize = 32 * vw
-  const phoneOffsetFrontier = firstPhoneHeaderSize - finalPhoneHeaderSize
-  const modalSize = 13 * vw
-
-
-  // Le header n'a pas encore sa taille def
-  if (vw && vw <= 6 && scrollOffset > 0 && scrollOffset < phoneOffsetFrontier) {
-    !animationsEnd && setAnimationsEnd(true)
-
-    rightContainerStyle = { paddingTop: modalSize, transitionDuration: "0s" }
-
-    headerStyle = { height : firstPhoneHeaderSize - scrollOffset, transitionDuration: "0s" }
-
-    modalStyle = { top: firstPhoneHeaderSize - scrollOffset }
-
-    const sizeRatio = scrollOffset / (phoneOffsetFrontier)
-
-    const opacityRatio = 1 - scrollOffset / (phoneOffsetFrontier)
-
-    videoStyle = { transitionDuration: "0s", opacity: `${1 * opacityRatio}` }
-
-    titleBgStyle = { transitionDuration: "0s", opacity: `${1 * opacityRatio}` }
-  }
-
-  // Le header a sa taille def
-  else if (vw && vw <= 6 && scrollOffset >= phoneOffsetFrontier) {
-    rightContainerStyle = { paddingTop: modalSize, transitionDuration: "0s" }
-
-    headerStyle = { height: finalPhoneHeaderSize, transitionDuration: "0s", position: "fixed", top: 0 }
-
-    modalStyle = { top: finalPhoneHeaderSize }
-
-    videoStyle = { transitionDuration: "0.8s", opacity: 0 }
-
-    titleBgStyle = { transitionDuration: "0s", opacity: 0 }
-  }
-
-
-
-
-
-
-
-
-
 
 
   return (
@@ -637,18 +419,15 @@ function Home() {
       console.log("scroll height :", e.target.scrollTop)
     }} style={bodyStyle} ref={bodyRef} >
 
-      <div className={headerContainer} style={headerStyle} >
 
-        <video src={src} className={backgroundVideo} style={videoStyle} autoPlay={true} loop={true} muted={true} playsInline onLoadedData={() => setVideoLoaded(true)}></video>
-
-
-        <div className={headerTextContainer}>
-          <div className={titleBackground} style={titleBgStyle}></div>
-          <h1 className={styles.title}>Julien Furic</h1>
-          <h3 className={styles.subTitle}>Développeur d'applications web et mobile</h3>
-        </div>
-
-      </div>
+      <Header scrollOffset={scrollOffset} vw={vw} vh={vh} firstComputerHeaderSize={firstComputerHeaderSize} finalComputerHeaderSize={finalComputerHeaderSize} computerOffsetFrontier={computerOffsetFrontier} markVideoAsLoaded={markVideoAsLoaded}
+        firstPhoneHeaderSize={firstPhoneHeaderSize} finalPhoneHeaderSize={finalPhoneHeaderSize}
+        phoneOffsetFrontier={phoneOffsetFrontier}
+        animationsBegin={animationsBegin}
+        animations2Begin={animations2Begin}
+        animationsEnd={animationsEnd}
+        src={src}
+      />
 
 
       <div className={styles.mainContainer} >
@@ -685,378 +464,41 @@ function Home() {
         <div className={rightContainer} style={rightContainerStyle} ref={rightContainerRef} >
 
 
-          <h3 className={styles.categoryTitle} ref={(m) => categoriesRef.current.about = m} >Présentation</h3>
-          <div className={styles.gradientTextContainer}>
-            <h4 className={styles.categorySubtitle}>À propos de moi</h4>
-          </div>
+          
 
 
-          {/* <div className={styles.avatarContainer}>
-            <Image src="/ju.jpg" alt="icone d'un avatar de personnage" fill={true} className={styles.avatar} ></Image>
-          </div> */}
-
-
-          <div className={styles.categoryDetailsContainer}>
-
-            <div className={styles.textContainer}>
-              <p className={styles.paragraph1}>Hello, moi c'est Julien ! J'ai 36 ans et je suis développeur de site web et d'applications mobiles.</p>
-              <p className={styles.paragraph1}>Après avoir suivi les cours de la formation La Capsule, j'ai obtenu un diplôme bac +3 de Développeur Fullstack et travaille depuis sur des projets pros.</p>
-              {/* <p className={styles.paragraph1}> Depuis je ne cesse de développer des projets de site web ou d'applications mobiles et cherche encore et toujours de nouveaux défis à relever !</p> */}
-              <p className={styles.paragraph1}> Pour cela, quinze années d'expériences dans la vidéo, le montage et le motion design m'accompagnent afin d'élargir ma palette de compétences. Je peux ainsi personnaliser le design de mes applications en créant des animations vidéos ou des logos.</p>
-              <p className={styles.paragraph1}>N'hésitez pas à me contacter si vous avez un projet en tête et cherchez à le réaliser ou à en définir les contours !</p>
-            </div>
-
-            <div className={styles.picturesContainer}>
-
-              <div className={styles.squareGradient}>
-                <p className={styles.squareText}>
-                  Développeur web
-                </p>
-                <Laptop className={styles.skillsIcon} />
-              </div>
-
-              <div className={styles.squareGradient}>
-                <p className={styles.squareText}>
-                  Développeur mobile
-                </p>
-                <Phone className={styles.skillsIcon} />
-              </div>
-
-              <div className={styles.squareGradient}>
-                <p className={styles.squareText}>
-                  Motion designer
-                </p>
-                <Palette className={styles.skillsIcon} />
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <h3 className={styles.categoryTitle} ref={(m) => categoriesRef.current.skills = m} >Compétences</h3>
-          <div className={styles.gradientTextContainer2}>
-            <h4 className={styles.categorySubtitle}>Mes outils de travail</h4>
-          </div>
-
-          <div className={styles.toolsCategoriesContainer1}>
-
-            <div className={styles.rectangleGradient} style={skill1}>
-              <h6 className={styles.skillTitle}>Front-End</h6>
-              <div className={styles.toolsContainer}>
-
-                <div className={styles.tool}>
-                  <p className={styles.toolText}>React</p>
-                  <FontAwesomeIcon icon={faReact} className={styles.toolIcon} />
-                </div>
-
-                <div className={styles.tool}>
-                  <p className={styles.toolText}>Next.js</p>
-                  <SiNextdotjs className={styles.toolIcon} />
-                </div>
-
-                <div className={styles.tool}>
-                  <p className={styles.toolText}>TypeScript</p>
-                  <SiTypescript className={styles.toolIcon} />
-                </div>
-
-                <div className={styles.tool}>
-                  <p className={styles.toolText}>CSS</p>
-                  <FaCss3Alt className={styles.toolIcon} />
-                </div>
-
-                <div className={styles.tool}>
-                  <p className={styles.toolText}>Expo</p>
-                  <SiExpo className={styles.toolIcon} />
-                </div>
-
-              </div>
-
-            </div>
-
-            <div className={styles.rectangleGradient} style={skill2}>
-              <h6 className={styles.skillTitle}>Back-End</h6>
-              <div className={styles.toolsContainer}>
-
-                <div className={styles.tool}>
-                  <p className={styles.toolText}>Node.js</p>
-                  <FontAwesomeIcon icon={faNode} className={styles.toolIcon} />
-                </div>
-
-                <div className={styles.tool}>
-                  <p className={styles.toolText}>Express</p>
-                  <SiExpress className={styles.toolIcon} />
-                </div>
-
-                <div className={styles.tool}>
-                  <p className={styles.toolText}>MongoDB</p>
-                  <SiMongodb className={styles.toolIcon} />
-                </div>
-
-                <div className={styles.tool}>
-                  <p className={styles.toolText}>Vercel</p>
-                  <SiVercel className={styles.toolIcon} />
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <div className={styles.toolsCategoriesContainer2}>
-
-            <div className={styles.rectangleGradient} style={skill3}>
-              <h6 className={styles.skillTitle}>Vidéo / Graphisme</h6>
-              <div className={styles.toolsContainer}>
-
-                <div className={styles.tool}>
-                  <p className={styles.toolText}>Premiere</p>
-                  <SiAdobepremierepro className={styles.toolIcon} />
-                </div>
-
-                <div className={styles.tool}>
-                  <p className={styles.toolText}>After Effects</p>
-                  <SiAdobeaftereffects className={styles.toolIcon} />
-                </div>
-
-                <div className={styles.tool}>
-                  <p className={styles.toolText}>Photoshop</p>
-                  <SiAdobephotoshop className={styles.toolIcon} />
-                </div>
-
-                <div className={styles.tool}>
-                  <p className={styles.toolText}>Illustrator</p>
-                  <SiAdobeillustrator className={styles.toolIcon} />
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <h3 className={styles.categoryTitle} ref={(m) => categoriesRef.current.projects = m} >Projets</h3>
-          <div className={styles.gradientTextContainer2}>
-            <h4 className={styles.categorySubtitle}>Quelques exemples de mon travail</h4>
+          <div ref={(m) => categoriesRef.current.about = m}>
+            <About />
           </div>
 
 
 
 
-          <div className={styles.projectsLine} ref={projectsLine1Ref}>
 
-            <div className={mask1} onClick={() => {
-              modal1Visible && setModal1Visible(false)
-              modal2Visible && setModal2Visible(false)
-            }}></div>
+          <div ref={(m) => categoriesRef.current.skills = m} >
+            <Skills scrollOffset={scrollOffset} vh={vh} vw={vw} skillContainer={categoriesRef.current.skills} />
+          </div>
 
 
-            <div className={styles.squareRevealContainer1}>
-              <div className={styles.leftProjectItem} style={project1} onClick={() => {
-                !modal1Visible && setModal1Visible(true)
-              }} >
-                <h6 className={styles.projectTitle}>Me Baudelin</h6>
-                <div className={videoContainer1Style}>
-                  {animationsEnd && <video src="/Me-Baudelin.mp4" className={styles.projectVideo} autoPlay={true} loop={true} playsInline muted={true} alt="vidéo d'un site internet"></video>}
-                </div>
-                <p className={styles.projectSubtitle}>
-                  Appli de conseils légaux pour le cabinet Baudelin, dispo sur IOS et Android stores.
-                </p>
-              </div>
-            </div>
-            {/* Appli de conseils légaux pour le cabinet Baudelin, dispo sur IOS et Android stores. */}
 
-            <div className={modal1} style={modal1Style} >
-              <h6 className={styles.projectTitle}>Me Baudelin</h6>
-              <HiMiniXMark className={styles.closeIcon} onClick={() => setModal1Visible(false)} />
-              <div className={videoContainer1Style}>
-                {animationsEnd && <video src="/Me-Baudelin.mp4" className={projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>}
-              </div>
-              <p className={styles.projectSubtitle}>
-                Appli de conseils légaux pour le cabinet Baudelin, dispo sur IOS et Android stores.
-              </p>
+          
+
+
+            <div ref={(m) => categoriesRef.current.projects = m} >
+              <Projects scrollOffset={scrollOffset} projectsContainer={categoriesRef.current.projects} vh={vh} vw={vw} animationsEnd={animationsEnd} />
             </div>
 
 
 
-            <div className={styles.squareRevealContainer2}>
-              <div className={styles.rightProjectItem} style={project2} onClick={() => {
-                !modal2Visible && setModal2Visible(true)
-              }} >
-                <h6 className={styles.projectTitle}>Boost Up</h6>
-                <div className={videoContainer2Style}>
-                  {animationsEnd && <video src="/BoostUp.mp4" className={styles.projectVideo} autoPlay={true} loop={true} playsInline muted={true} alt="vidéo d'un site internet"></video>}
-                </div>
-                <p className={styles.projectSubtitle}>
-                  Appli de coaching pour l'entreprise Kevfit, dispo sur IOS et Android stores.
-                </p>
-              </div>
-            </div>
-
-            <div className={modal2} style={modal2Style} >
-              <h6 className={styles.projectTitle}>Boost Up</h6>
-              <HiMiniXMark className={styles.closeIcon} onClick={() => setModal2Visible(false)} />
-              <div className={videoContainer2Style}>
-                {animationsEnd && <video src="/BoostUp.mp4" className={projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>}
-              </div>
-              <p className={styles.projectSubtitle}>
-                Appli de coaching pour l'entreprise Kevfit, dispo sur IOS et Android stores.
-              </p>
-            </div>
 
 
+          <div ref={(m) => categoriesRef.current.contact = m} >
+            <Contact />
           </div>
+          
 
 
-
-
-
-          <div className={styles.projectsLine}>
-
-
-            <Link href='https://frontend-clothe-me-up.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
-              <div className={styles.squareRevealContainer1}  >
-                <div className={styles.leftProjectItem}
-                  style={project3} >
-                  <h6 className={styles.projectTitle}>Clothe Me Up</h6>
-                  <div className={styles.projectImgContainer}>
-                    <Image alt="Vignette d'un site internet" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw" fill={true} src="/Clothe-Me-Up2.png" className={styles.projectImg} />
-                  </div>
-                  <p className={styles.projectSubtitle}>
-                    Template pour site de e-commerce.
-                  </p>
-                </div>
-              </div>
-            </Link>
-
-
-
-            <Link href='https://kairos-fronted.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
-              <div className={styles.squareRevealContainer2}>
-                <div className={styles.rightProjectItem} style={project4}>
-                  <h6 className={styles.projectTitle}>Kairos</h6>
-                  <div className={styles.projectImgContainer}>
-                    <Image alt="Vignette d'un site internet" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw" fill={true} src="/Kairos.png" className={styles.projectImg} />
-                  </div>
-                  <p className={styles.projectSubtitle}>
-                    Site web pour réaliser une étude de marché. Projet de fin de formation.
-                  </p>
-                </div>
-              </div>
-            </Link>
-
-
-          </div>
-
-
-
-
-
-
-          <div className={styles.projectsLine} style={{ marginBottom: (vw && vw < 6) ? 18 * vw : 10 * vw }} ref={projectsLine3Ref}>
-
-            <div className={mask3} onClick={() => {
-              modal3Visible && setModal3Visible(false)
-            }}></div>
-
-
-            <Link href='https://frontend-twitter2.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
-              <div className={styles.squareRevealContainer1}  >
-                <div className={styles.leftProjectItem} style={project5}>
-                  <h6 className={styles.projectTitle}>Hackatweet</h6>
-                  <div className={styles.projectImgContainer}>
-                    <Image alt="Vignette d'un site internet" fill={true} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw" src="/Hackatweet.png" className={styles.projectImg} />
-                  </div>
-                  <p className={styles.projectSubtitle}>
-                    Réplique d'un réseau social. Exercice de formation.
-                  </p>
-                </div>
-              </div>
-            </Link>
-
-
-
-            <div className={styles.squareRevealContainer2}>
-              <div className={styles.rightProjectItem} style={project6} onClick={() => {
-                !modal3Visible && setModal3Visible(true)
-              }} >
-                <h6 className={styles.projectTitle}>ChatApp</h6>
-                <div className={videoContainer3Style}>
-                  {animationsEnd && <video src="/ChatApp.mp4" className={styles.projectVideo} autoPlay={true} loop={true} playsInline muted={true} alt="vidéo d'un site internet"></video>}
-                </div>
-                <p className={styles.projectSubtitle}>
-                  Application de Chat (messages et vocaux). Exercice de formation.
-                </p>
-              </div>
-            </div>
-            <div className={modal3} style={modal3Style} >
-              <h6 className={styles.projectTitle}>ChatApp</h6>
-              <HiMiniXMark className={styles.closeIcon} onClick={() => setModal3Visible(false)} />
-              <div className={videoContainer3Style}>
-                {animationsEnd && <video src="/ChatApp.mp4" className={projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>}
-              </div>
-              <p className={styles.projectSubtitle}>
-                Application de Chat (messages et vocaux). Exercice de formation.
-              </p>
-            </div>
-
-            {/* <Link href='https://morningnews-frontend-zeta.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
-              <div className={styles.squareRevealContainer2}>
-                <div className={styles.rightProjectItem}
-                  style={project6} >
-                  <h6 className={styles.projectTitle}>Morning News</h6>
-                  <div className={styles.projectImgContainer}>
-                    <Image alt="Vignette d'un site internet" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw" fill={true} src="/Morningnews.png" className={styles.projectImg} />
-                  </div>
-                  <p className={styles.projectSubtitle}>
-                    Site d'informations sur la tech. Exercice de formation.
-                  </p>
-                </div>
-              </div>
-            </Link> */}
-
-          </div>
-
-
-          <h3 className={styles.categoryTitle} ref={(m) => categoriesRef.current.contact = m} >Contact</h3>
-          <div className={styles.gradientTextContainer2}>
-            <h4 className={styles.categorySubtitle}>Mes coordonnées</h4>
-          </div>
-
-          <div className={styles.textContainer2}>
-            <p className={styles.paragraph2}>Une envie ? Une idée ? Une question ? N'hésitez pas à me contacter ! </p>
-            <p className={styles.paragraph2}>Vous pouvez me joindre à tout moment en m'écrivant à l'adresse mail suivante : </p>
-
-            <p className={copy}>Adresse mail copiée !</p>
-
-          </div>
-
-          <div className={styles.gradientMail} onClick={() => copyText()} >
-            <h6 className={styles.mail}>contact@julien-furic.com</h6>
-
-            <FontAwesomeIcon icon={faCopy} className={styles.copyIcon} onClick={() => copyText()} />
-
-          </div>
-
-          {/* <div className={styles.gradientMail2} onClick={() => copyText()}>
-            <div className={styles.gradientShadow}></div>
-            <h6 className={styles.mail2}>contact@julien-furic.com</h6>
-          </div> */}
-
-          {/* <p className={styles.paragraph2}> À très bientôt ! :) </p> */}
-
-          <div className={styles.bottomContainer}>
-            <div className={styles.siteLogoContainer}>
-              <Image alt="Logo du présent site internet"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw"
-                fill={true} src="/logo-9-portfolio.png"
-                className={styles.siteLogo} />
-            </div>
-            <p className={styles.paragraph3}>2025 </p>
-          </div>
+       
 
         </div>
 

@@ -1,0 +1,240 @@
+@media only screen and (min-width: 600px) {
+
+  .categoryTitle {
+    color: rgb(240, 235, 243);
+    font-size: 1.5vw;
+    font-weight: 300;
+    letter-spacing: 0.08vw;
+    margin: 0;
+    margin-bottom: 1.8vw;
+
+  }
+
+    .gradientTextContainer2 {
+    width: fit-content;
+    height: fit-content;
+    background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
+    background-clip: text;
+    margin-bottom: 5.5vw;
+  }
+
+
+    .categorySubtitle {
+    color: transparent;
+    font-size: 2.1vw;
+    font-weight: 700;
+    letter-spacing: 0.05vw;
+    margin: 0;
+
+  }
+
+
+  .toolsCategoriesContainer1 {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 1.3vw;
+    margin-right: 0;
+    min-height: 11.8vw;
+    max-height: 11.8vw;
+  }
+
+  .toolsCategoriesContainer2 {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 11vw;
+    min-height: 11.8vw;
+    max-height: 11.8vw;
+    overflow: hidden;
+  }
+
+
+  .rectangleGradient {
+    width: 27vw;
+    height: 11.8vw;
+    border-radius: 0.5vw;
+    background: linear-gradient(45deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1vw 0vw 1.3vw;
+    margin-right: 1.3vw;
+    position: relative;
+    z-index: 0;
+    transition-duration: 1.3s;
+    opacity: 1;
+    left: 0;
+    margin-top: 0;
+  }
+
+
+  .skillTitle {
+    color: rgb(255, 255, 255);
+    font-size: 1.4vw;
+    font-weight: 600;
+    letter-spacing: 0.05vw;
+    margin: 0;
+    margin-bottom: 2.4vw;
+    text-align: center;
+    text-decoration: underline;
+    text-underline-offset: 1vw;
+    text-decoration-thickness: 1px;
+  }
+
+  .toolsContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .tool {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* border : white solid 1px */
+  }
+
+  .toolText {
+    color: rgb(255, 255, 255);
+    font-size: 1vw;
+    font-weight: 400;
+    letter-spacing: 0.05vw;
+    margin: 0;
+    text-align: center;
+    margin-bottom: 1.2vw;
+  }
+
+  .toolIcon {
+    color: white;
+    height: 2.9vw;
+    width: 2.9vw;
+  }
+
+}
+
+
+
+
+
+
+
+
+/* Changement pour affichage smartphone */
+
+
+
+@media only screen and (max-width: 600px) {
+
+      .categoryTitle {
+    color: rgb(240, 235, 243);
+    font-size: 6.5vw;
+    font-weight: 400;
+    letter-spacing: 0.08vw;
+    margin: 0;
+    margin-bottom: 5vw;
+
+  }
+  .gradientTextContainer2 {
+    width: fit-content;
+    height: fit-content;
+    background: linear-gradient(90deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
+    background-clip: text;
+    margin-bottom: 11vw;
+  }
+
+
+  .categorySubtitle {
+    color: transparent;
+    font-size: 5.8vw;
+    font-weight: 700;
+    letter-spacing: 0.05vw;
+    margin: 0;
+
+  }
+
+  .toolsCategoriesContainer1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 4vw;
+    margin-right: 0;
+    min-height: 74vw;
+    max-height: 74vw;
+  }
+
+  .toolsCategoriesContainer2 {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20vw;
+    min-height: 35vw;
+    max-height: 35vw;
+    overflow: hidden;
+  }
+
+
+  .rectangleGradient {
+    width: 92%;
+    height: 35vw;
+    border-radius: 1.5vw;
+    background: linear-gradient(45deg, #8000af, rgb(62, 6, 152) 50%, #1b0093);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3vw 1.5vw 4vw;
+    margin-right: 1.3vw;
+    position: relative;
+    z-index: 0;
+    transition-duration: 1.5s;
+    opacity: 1;
+    left: 0;
+    margin-top: 0;
+  }
+
+
+  .skillTitle {
+    color: rgb(255, 255, 255);
+    font-size: 4.6vw;
+    line-height: 1em;
+    font-weight: 600;
+    letter-spacing: 0.05vw;
+    margin: 0;
+    margin-bottom: 2.4vw;
+    text-align: center;
+    text-decoration: underline;
+    text-underline-offset: 0.5em;
+    text-decoration-thickness: 1px;
+  }
+
+  .toolsContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  .tool {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* border : white solid 1px */
+  }
+
+  .toolText {
+    color: rgb(255, 255, 255);
+    font-size: 3.8vw;
+    font-weight: 400;
+    letter-spacing: 0.05vw;
+    margin: 0;
+    text-align: center;
+    margin-bottom: 3vw;
+  }
+
+  .toolIcon {
+    color: white;
+    height: 7vw;
+    width: 7vw;
+  }
+}
