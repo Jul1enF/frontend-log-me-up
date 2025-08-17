@@ -1,7 +1,7 @@
 @media only screen and (min-width: 600px) {
 
   .body {
-    height: 100vh;
+    height: 100dvh;
     width: 100vw;
     background-color: rgb(7, 5, 8);
     /* background-color: rgb(14, 14, 14); */

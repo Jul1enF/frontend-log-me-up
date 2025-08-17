@@ -37,7 +37,7 @@ function Home() {
     setVh(window.innerHeight / 100)
 
     if (window.innerWidth / 100 > 6) {
-      setSrc("/Header-Video-1.4.mp4")
+      setSrc("/Header-Video-1.5.mp4")
     } else {
       setSrc("/PhoneHeader-Video-2.mp4")
     }
