@@ -64,80 +64,84 @@ export default function Projects (props){
     
     
       // États et styles conditionnel pour l'affichage des modals et de leur masque
+      // R1C1 = Row 1 Column 1
     
-      const [modal1Visible, setModal1Visible] = useState(false)
-      const [modal2Visible, setModal2Visible] = useState(false)
-      const [modal3Visible, setModal3Visible] = useState(false)
+      const [modalR1C1Visible, setModalR1C1Visible] = useState(false)
+      const [modalR1C2Visible, setModalR1C2Visible] = useState(false)
+      const [modalR2C1Visible, setModalR2C1Visible] = useState(false)
     
-      const projectsLine1Ref = useRef(null)
+      
+
     
     
       // Réglage du offset top de la modal par rapport au viewport, pour qu'elle reste fixe dans l'écran (car normalement réglée par rapport à son parent vu qu'en position : absolute)
+      const projectsLine1Ref = useRef(null)
+
       const projectsLine1ViewportOffset = projectsLine1Ref.current && projectsLine1Ref.current.offsetTop - scrollOffset
     
-      const mask1 = (modal1Visible || modal2Visible) ? styles.maskOn : styles.maskOff
+      const maskRow1 = (modalR1C1Visible || modalR1C2Visible) ? styles.maskOn : styles.maskOff
     
     
-      let modal1Style
+      let modalR1C1Style
       // ORDINATEUR
-      if (vw > 6 && modal1Visible) {
-        modal1Style = { top: - projectsLine1ViewportOffset + 3 * vw, }
+      if (vw > 6 && modalR1C1Visible) {
+        modalR1C1Style = { top: - projectsLine1ViewportOffset + 3 * vw, }
       }
       // PORTABLE
-      if (vw <= 6 && modal1Visible) {
-        modal1Style = { top: - projectsLine1ViewportOffset + 20 * vw, }
+      if (vw <= 6 && modalR1C1Visible) {
+        modalR1C1Style = { top: - projectsLine1ViewportOffset + 20 * vw, }
       }
     
-      const modal1 = modal1Visible ? styles.bigProjectModal : styles.smallLeftProjectModal
+      const modalR1C1 = modalR1C1Visible ? styles.bigProjectModal : styles.smallLeftProjectModal
     
-      const videoContainer1Style = modal1Visible ? styles.projectVideoContainer : styles.projectImgContainer
+      const videoContainerR1C1Style = modalR1C1Visible ? styles.projectVideoContainer : styles.projectImgContainer
     
     
     
-      let modal2Style
+      let modalR1C2Style
       // ORDINATEUR
-      if (vw > 6 && modal2Visible) {
-        modal2Style = { top: - projectsLine1ViewportOffset + 3 * vw, }
+      if (vw > 6 && modalR1C2Visible) {
+        modalR1C2Style = { top: - projectsLine1ViewportOffset + 3 * vw, }
       }
       // PORTABLE
-      if (vw <= 6 && modal2Visible) {
-        modal2Style = { top: - projectsLine1ViewportOffset + 20 * vw, }
+      if (vw <= 6 && modalR1C2Visible) {
+        modalR1C2Style = { top: - projectsLine1ViewportOffset + 20 * vw, }
       }
     
-      const modal2 = modal2Visible ? styles.bigProjectModal : styles.smallRightProjectModal
+      const modalR1C2 = modalR1C2Visible ? styles.bigProjectModal : styles.smallRightProjectModal
     
-      const videoContainer2Style = modal2Visible ? styles.projectVideoContainer : styles.projectImgContainer
-    
-    
+      const videoContainerR1C2Style = modalR1C2Visible ? styles.projectVideoContainer : styles.projectImgContainer
     
     
     
-      const projectsLine3Ref = useRef(null)
     
-      const modal3ViewportOffset = projectsLine3Ref.current && projectsLine3Ref.current.offsetTop - scrollOffset
     
-      const mask3 = modal3Visible ? styles.maskOn : styles.maskOff
+      const projectsLine2Ref = useRef(null)
     
-      let modal3Style
+      const projectsLine2ViewportOffset = projectsLine2Ref.current && projectsLine2Ref.current.offsetTop - scrollOffset
+    
+      const maskRow2 = modalR2C1Visible ? styles.maskOn : styles.maskOff
+    
+      let modalR2C1Style
       // ORDINATEUR
-      if (vw > 6 && modal3Visible) {
-        modal3Style = { top: - modal3ViewportOffset + 3 * vw, }
+      if (vw > 6 && modalR2C1Visible) {
+        modalR2C1Style = { top: - projectsLine2ViewportOffset + 3 * vw, }
       }
       // PORTABLE
-      if (vw <= 6 && modal3Visible) {
-        modal3Style = { top: - modal3ViewportOffset + 20 * vw, }
+      if (vw <= 6 && modalR2C1Visible) {
+        modalR2C1Style = { top: - projectsLine2ViewportOffset + 20 * vw, }
       }
     
-      const modal3 = modal3Visible ? styles.bigProjectModal : styles.smallRightProjectModal
+      const modalR2C1 = modalR2C1Visible ? styles.bigProjectModal : styles.smallLeftProjectModal
     
-      const videoContainer3Style = modal3Visible ? styles.projectVideoContainer : styles.projectImgContainer
-    
-    
+      const videoContainerR2C1Style = modalR2C1Visible ? styles.projectVideoContainer : styles.projectImgContainer
     
     
-      // PORTABLE Pour mettre la vidéo de la modal en cover
+    
+    
+      // PORTABLE Pour mettre la vidéo de la modal en object-fit : cover
       let projectVideo = styles.projectVideo
-      if (vw <= 6 && (modal1Visible || modal2Visible || modal3Visible)) {
+      if (vw <= 6 && (modalR1C1Visible || modalR1C2Visible || modalR2C1Visible)) {
         projectVideo = styles.modalVideo
       }
 
@@ -154,18 +158,18 @@ export default function Projects (props){
 
           <div className={styles.projectsLine} ref={projectsLine1Ref}>
 
-            <div className={mask1} onClick={() => {
-              modal1Visible && setModal1Visible(false)
-              modal2Visible && setModal2Visible(false)
+            <div className={maskRow1} onClick={() => {
+              modalR1C1Visible && setModalR1C1Visible(false)
+              modalR1C2Visible && setModalR1C2Visible(false)
             }}></div>
 
 
             <div className={styles.squareRevealContainer1}>
               <div className={styles.leftProjectItem} style={project1} onClick={() => {
-                !modal1Visible && setModal1Visible(true)
+                !modalR1C1Visible && setModalR1C1Visible(true)
               }} >
                 <h6 className={styles.projectTitle}>Me Baudelin</h6>
-                <div className={videoContainer1Style}>
+                <div className={videoContainerR1C1Style}>
                   {animationsEnd && <video src="/Me-Baudelin.mp4" className={styles.projectVideo} autoPlay={true} loop={true} playsInline muted={true} alt="vidéo d'un site internet"></video>}
                 </div>
                 <p className={styles.projectSubtitle}>
@@ -177,10 +181,10 @@ export default function Projects (props){
 
             {/* Utilisation de modals pour avoir des temps de transition différents entre 1ère apparition et agrandissement */}
 
-            <div className={modal1} style={modal1Style} >
+            <div className={modalR1C1} style={modalR1C1Style} >
               <h6 className={styles.projectTitle}>Me Baudelin</h6>
-              <HiMiniXMark className={styles.closeIcon} onClick={() => setModal1Visible(false)} />
-              <div className={videoContainer1Style}>
+              <HiMiniXMark className={styles.closeIcon} onClick={() => setModalR1C1Visible(false)} />
+              <div className={videoContainerR1C1Style}>
                 {animationsEnd && <video src="/Me-Baudelin.mp4" className={projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>}
               </div>
               <p className={styles.projectSubtitle}>
@@ -192,10 +196,10 @@ export default function Projects (props){
 
             <div className={styles.squareRevealContainer2}>
               <div className={styles.rightProjectItem} style={project2} onClick={() => {
-                !modal2Visible && setModal2Visible(true)
+                !modalR1C2Visible && setModalR1C2Visible(true)
               }} >
                 <h6 className={styles.projectTitle}>Boost Up</h6>
-                <div className={videoContainer2Style}>
+                <div className={videoContainerR1C2Style}>
                   {animationsEnd && <video src="/BoostUp.mp4" className={styles.projectVideo} autoPlay={true} loop={true} playsInline muted={true} alt="vidéo d'un site internet"></video>}
                 </div>
                 <p className={styles.projectSubtitle}>
@@ -204,10 +208,10 @@ export default function Projects (props){
               </div>
             </div>
 
-            <div className={modal2} style={modal2Style} >
+            <div className={modalR1C2} style={modalR1C2Style} >
               <h6 className={styles.projectTitle}>Boost Up</h6>
-              <HiMiniXMark className={styles.closeIcon} onClick={() => setModal2Visible(false)} />
-              <div className={videoContainer2Style}>
+              <HiMiniXMark className={styles.closeIcon} onClick={() => setModalR1C2Visible(false)} />
+              <div className={videoContainerR1C2Style}>
                 {animationsEnd && <video src="/BoostUp.mp4" className={projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>}
               </div>
               <p className={styles.projectSubtitle}>
@@ -264,10 +268,10 @@ export default function Projects (props){
 
 
 
-          <div className={styles.projectsLine} style={{ marginBottom: (vw && vw < 6) ? 18 * vw : 10 * vw }} ref={projectsLine3Ref}>
+          <div className={styles.projectsLine} style={{ marginBottom: (vw && vw < 6) ? 18 * vw : 10 * vw }} ref={projectsLine2Ref}>
 
-            <div className={mask3} onClick={() => {
-              modal3Visible && setModal3Visible(false)
+            <div className={maskRow2} onClick={() => {
+              modalR2C1Visible && setModalR2C1Visible(false)
             }}></div>
 
 
@@ -289,10 +293,10 @@ export default function Projects (props){
 
             <div className={styles.squareRevealContainer2}>
               <div className={styles.rightProjectItem} style={project6} onClick={() => {
-                !modal3Visible && setModal3Visible(true)
+                !modalR2C1Visible && setModalR2C1Visible(true)
               }} >
                 <h6 className={styles.projectTitle}>ChatApp</h6>
-                <div className={videoContainer3Style}>
+                <div className={videoContainerR2C1Style}>
                   {animationsEnd && <video src="/ChatApp.mp4" className={styles.projectVideo} autoPlay={true} loop={true} playsInline muted={true} alt="vidéo d'un site internet"></video>}
                 </div>
                 <p className={styles.projectSubtitle}>
@@ -300,10 +304,10 @@ export default function Projects (props){
                 </p>
               </div>
             </div>
-            <div className={modal3} style={modal3Style} >
+            <div className={modalR2C1} style={modalR2C1Style} >
               <h6 className={styles.projectTitle}>ChatApp</h6>
-              <HiMiniXMark className={styles.closeIcon} onClick={() => setModal3Visible(false)} />
-              <div className={videoContainer3Style}>
+              <HiMiniXMark className={styles.closeIcon} onClick={() => setModalR2C1Visible(false)} />
+              <div className={videoContainerR2C1Style}>
                 {animationsEnd && <video src="/ChatApp.mp4" className={projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>}
               </div>
               <p className={styles.projectSubtitle}>
