@@ -164,7 +164,7 @@ export default function Projects (props){
             }}></div>
 
 
-            <div className={styles.squareRevealContainer1}>
+            <div className={styles.squareRevealContainerLeftOrTopLine}>
               <div className={styles.leftProjectItem} style={project1} onClick={() => {
                 !modalR1C1Visible && setModalR1C1Visible(true)
               }} >
@@ -177,7 +177,7 @@ export default function Projects (props){
                 </p>
               </div>
             </div>
-            {/* Appli de conseils légaux pour le cabinet Baudelin, dispo sur IOS et Android stores. */}
+
 
             {/* Utilisation de modals pour avoir des temps de transition différents entre 1ère apparition et agrandissement */}
 
@@ -194,7 +194,7 @@ export default function Projects (props){
 
 
 
-            <div className={styles.squareRevealContainer2}>
+            <div className={styles.squareRevealContainerRightOrBottomLine}>
               <div className={styles.rightProjectItem} style={project2} onClick={() => {
                 !modalR1C2Visible && setModalR1C2Visible(true)
               }} >
@@ -230,7 +230,7 @@ export default function Projects (props){
 
 
             <Link href='https://frontend-clothe-me-up.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
-              <div className={styles.squareRevealContainer1}  >
+              <div className={styles.squareRevealContainerLeftOrTopLine}  >
                 <div className={styles.leftProjectItem}
                   style={project3} >
                   <h6 className={styles.projectTitle}>Clothe Me Up</h6>
@@ -247,7 +247,7 @@ export default function Projects (props){
 
 
             <Link href='https://kairos-fronted.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
-              <div className={styles.squareRevealContainer2}>
+              <div className={styles.squareRevealContainerRightOrBottomLine}>
                 <div className={styles.rightProjectItem} style={project4}>
                   <h6 className={styles.projectTitle}>Kairos</h6>
                   <div className={styles.projectImgContainer}>
@@ -276,7 +276,7 @@ export default function Projects (props){
 
 
             <Link href='https://frontend-twitter2.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
-              <div className={styles.squareRevealContainer1}  >
+              <div className={styles.squareRevealContainerLeftOrTopLine}  >
                 <div className={styles.leftProjectItem} style={project5}>
                   <h6 className={styles.projectTitle}>Hackatweet</h6>
                   <div className={styles.projectImgContainer}>
@@ -291,7 +291,7 @@ export default function Projects (props){
 
 
 
-            <div className={styles.squareRevealContainer2}>
+            <div className={styles.squareRevealContainerRightOrBottomLine}>
               <div className={styles.rightProjectItem} style={project6} onClick={() => {
                 !modalR2C1Visible && setModalR2C1Visible(true)
               }} >
@@ -316,7 +316,7 @@ export default function Projects (props){
             </div>
 
             {/* <Link href='https://morningnews-frontend-zeta.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
-              <div className={styles.squareRevealContainer2}>
+              <div className={styles.squareRevealContainerRightOrBottomLine}>
                 <div className={styles.rightProjectItem}
                   style={project6} >
                   <h6 className={styles.projectTitle}>Morning News</h6>

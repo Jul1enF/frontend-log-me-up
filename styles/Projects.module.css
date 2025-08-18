@@ -64,7 +64,7 @@
         opacity: 1;
     }
 
-    .squareRevealContainer1 {
+    .squareRevealContainerLeftOrTopLine {
         width: 24vw;
         height: 25vw;
         font-size: 1.3vw;
@@ -96,7 +96,7 @@
         opacity: 1;
     }
 
-    .squareRevealContainer2 {
+    .squareRevealContainerRightOrBottomLine {
         width: 24vw;
         height: 25vw;
         font-size: 1.3vw;
@@ -304,7 +304,7 @@
     /* Hover */
 
 
-    .squareRevealContainer1:hover {
+    .squareRevealContainerLeftOrTopLine:hover {
     width: 25vw;
     height: 26vw;
     border-radius: 0.7vw;
@@ -314,7 +314,7 @@
     margin-left: -0.5vw;
   }
 
-  .squareRevealContainer2:hover {
+  .squareRevealContainerRightOrBottomLine:hover {
     width: 25vw;
     height: 26vw;
     border-radius: 0.7vw;
@@ -405,7 +405,7 @@
         opacity: 1;
     }
 
-    .squareRevealContainer1 {
+    .squareRevealContainerLeftOrTopLine {
         width: 85vw;
         height: 85vw;
         transition-duration: 0.6s;
@@ -436,7 +436,7 @@
         opacity: 1;
     }
 
-    .squareRevealContainer2 {
+    .squareRevealContainerRightOrBottomLine {
         width: 85vw;
         height: 85vw;
         transition-duration: 0.6s;
