@@ -168,7 +168,7 @@ export default function Projects(props) {
               {animationsEnd && <video src="/Sport-Amat.mp4" className={styles.projectVideo} autoPlay={true} loop={true} playsInline muted={true} alt="vidéo d'un site internet"></video>}
             </div>
             <p className={styles.projectSubtitle}>
-              Appli de streams sportifs pour l'entreprise Sport Amat, bientôt sur IOS et Android.
+              Appli de streams sportifs pour l'entreprise Sport Amat, disponible sur IOS.
             </p>
           </div>
         </div>
@@ -182,7 +182,7 @@ export default function Projects(props) {
             {animationsEnd && <video src="/Sport-Amat.mp4" className={styles.projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>}
           </div>
           <p className={styles.projectSubtitle}>
-             Appli de streams sportifs pour l'entreprise Sport Amat, bientôt sur IOS et Android.
+             Appli de streams sportifs pour l'entreprise Sport Amat, disponible sur IOS.
           </p>
         </div>
 
