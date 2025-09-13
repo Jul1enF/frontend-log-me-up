@@ -74,11 +74,11 @@
   }
 
   .gradientMail {
-    width: 52.8vw;
+   width: 79%;
     height: fit-content;
-    margin-left: 5.2vw;
-    margin-bottom: 0.8vw;
     position: relative;
+    display: flex;
+    justify-content: center;
   }
 
 

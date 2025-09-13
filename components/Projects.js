@@ -67,8 +67,8 @@ export default function Projects(props) {
   // R1C1 = Row 1 Column 1
 
   const [modalR1C1Visible, setModalR1C1Visible] = useState(false)
-  const [modalR1C2Visible, setModalR1C2Visible] = useState(false)
   const [modalR2C1Visible, setModalR2C1Visible] = useState(false)
+  const [modalR2C2Visible, setModalR2C2Visible] = useState(false)
 
 
 
@@ -79,7 +79,7 @@ export default function Projects(props) {
 
   const projectsLine1ViewportOffset = projectsLine1Ref.current && projectsLine1Ref.current.offsetTop - scrollOffset
 
-  const maskRow1 = (modalR1C1Visible || modalR1C2Visible) ? styles.maskOn : styles.maskOff
+  const maskRow1 = modalR1C1Visible ? styles.maskOn : styles.maskOff
 
 
   let modalR1C1Style
@@ -98,21 +98,6 @@ export default function Projects(props) {
 
 
 
-  let modalR1C2Style
-  // ORDINATEUR
-  if (vw > 6 && modalR1C2Visible) {
-    modalR1C2Style = { top: - projectsLine1ViewportOffset + 3 * vw, }
-  }
-  // PORTABLE
-  if (vw <= 6 && modalR1C2Visible) {
-    modalR1C2Style = { top: - projectsLine1ViewportOffset + 20 * vw, }
-  }
-
-  const modalR1C2 = modalR1C2Visible ? styles.bigProjectModal : styles.smallRightProjectModal
-
-  const videoContainerR1C2Style = modalR1C2Visible ? styles.projectVideoContainer : styles.projectImgContainer
-
-
 
 
 
@@ -120,7 +105,7 @@ export default function Projects(props) {
 
   const projectsLine2ViewportOffset = projectsLine2Ref.current && projectsLine2Ref.current.offsetTop - scrollOffset
 
-  const maskRow2 = modalR2C1Visible ? styles.maskOn : styles.maskOff
+  const maskRow2 = (modalR2C1Visible || modalR2C2Visible) ? styles.maskOn : styles.maskOff
 
   let modalR2C1Style
   // ORDINATEUR
@@ -135,6 +120,22 @@ export default function Projects(props) {
   const modalR2C1 = modalR2C1Visible ? styles.bigProjectModal : styles.smallLeftProjectModal
 
   const videoContainerR2C1Style = modalR2C1Visible ? styles.projectVideoContainer : styles.projectImgContainer
+
+
+
+  let modalR2C2Style
+  // ORDINATEUR
+  if (vw > 6 && modalR2C2Visible) {
+    modalR2C2Style = { top: - projectsLine2ViewportOffset + 3 * vw, }
+  }
+  // PORTABLE
+  if (vw <= 6 && modalR2C2Visible) {
+    modalR2C2Style = { top: - projectsLine2ViewportOffset + 20 * vw, }
+  }
+
+  const modalR2C2 = modalR2C2Visible ? styles.bigProjectModal : styles.smallRightProjectModal
+
+  const videoContainerR2C2Style = modalR2C2Visible ? styles.projectVideoContainer : styles.projectImgContainer
 
 
 
@@ -155,7 +156,6 @@ export default function Projects(props) {
 
         <div className={maskRow1} onClick={() => {
           modalR1C1Visible && setModalR1C1Visible(false)
-          modalR1C2Visible && setModalR1C2Visible(false)
         }}></div>
 
 
@@ -163,7 +163,7 @@ export default function Projects(props) {
           <div className={styles.leftProjectItem} style={project1} onClick={() => {
             !modalR1C1Visible && setModalR1C1Visible(true)
           }} >
-            <h6 className={styles.projectTitle}>Sport Amat</h6>
+            <h6 className={styles.projectTitle}>Sport Amat - App</h6>
             <div className={videoContainerR1C1Style}>
               {animationsEnd && <video src="/Sport-Amat.mp4" className={styles.projectVideo} autoPlay={true} loop={true} playsInline muted={true} alt="vidéo d'un site internet"></video>}
             </div>
@@ -176,43 +176,31 @@ export default function Projects(props) {
         {/* Utilisation de modals pour avoir des temps de transition différents entre 1ère apparition et agrandissement */}
 
         <div className={modalR1C1} style={modalR1C1Style} >
-          <h6 className={styles.projectTitle}>Sport Amat</h6>
+          <h6 className={styles.projectTitle}>Sport Amat - App</h6>
           <HiMiniXMark className={styles.closeIcon} onClick={() => setModalR1C1Visible(false)} />
           <div className={videoContainerR1C1Style}>
             {animationsEnd && <video src="/Sport-Amat.mp4" className={styles.projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>}
           </div>
           <p className={styles.projectSubtitle}>
-             Appli de streams sportifs pour l'entreprise Sport Amat, dispo sur IOS et Android.
+            Appli de streams sportifs pour l'entreprise Sport Amat, dispo sur IOS et Android.
           </p>
         </div>
 
 
 
-
-        <div className={styles.squareRevealContainerRightOrBottomLine}>
-          <div className={styles.rightProjectItem} style={project2} onClick={() => {
-            !modalR1C2Visible && setModalR1C2Visible(true)
-          }} >
-            <h6 className={styles.projectTitle}>Me Baudelin</h6>
-            <div className={videoContainerR1C2Style}>
-              {animationsEnd && <video src="/Me-Baudelin.mp4" className={styles.projectVideo} autoPlay={true} loop={true} playsInline muted={true} alt="vidéo d'un site internet"></video>}
+          <Link href='https://sport-amat-web-frontend.vercel.app' target="_blank" style={{ textDecoration: 'none' }}>
+          <div className={styles.squareRevealContainerRightOrBottomLine}>
+            <div className={styles.rightProjectItem} style={project2}>
+              <h6 className={styles.projectTitle}>Sport Amat - Web</h6>
+              <div className={styles.projectImgContainer}>
+                <Image alt="Vignette d'un site internet" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw" fill={true} src="/Sport-Amat-Web.png" className={styles.projectImg} />
+              </div>
+              <p className={styles.projectSubtitle}>
+                Site web de streams sportifs pour l'entreprise Sport Amat.
+              </p>
             </div>
-            <p className={styles.projectSubtitle}>
-              Appli de conseils légaux pour le cabinet Baudelin, dispo sur IOS et Android stores.
-            </p>
           </div>
-        </div>
-
-        <div className={modalR1C2} style={modalR1C2Style} >
-          <h6 className={styles.projectTitle}>Me Baudelin</h6>
-          <HiMiniXMark className={styles.closeIcon} onClick={() => setModalR1C2Visible(false)} />
-          <div className={videoContainerR1C2Style}>
-            {animationsEnd && <video src="/Me-Baudelin.mp4" className={styles.projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>}
-          </div>
-          <p className={styles.projectSubtitle}>
-            Appli de conseils légaux pour le cabinet Baudelin, dispo sur IOS et Android stores.
-          </p>
-        </div>
+        </Link>
 
 
       </div>
@@ -223,13 +211,44 @@ export default function Projects(props) {
 
       <div className={styles.projectsLine} ref={projectsLine2Ref}>
 
+        <div className={maskRow2} onClick={() => {
+          modalR2C1Visible && setModalR2C1Visible(false)
+          modalR2C2Visible && setModalR2C2Visible(false)
+        }}></div>
+
 
         <div className={styles.squareRevealContainerLeftOrTopLine}>
           <div className={styles.leftProjectItem} style={project3} onClick={() => {
             !modalR2C1Visible && setModalR2C1Visible(true)
           }} >
-            <h6 className={styles.projectTitle}>Boost Up</h6>
+            <h6 className={styles.projectTitle}>Me Baudelin</h6>
             <div className={videoContainerR2C1Style}>
+              {animationsEnd && <video src="/Me-Baudelin.mp4" className={styles.projectVideo} autoPlay={true} loop={true} playsInline muted={true} alt="vidéo d'un site internet"></video>}
+            </div>
+            <p className={styles.projectSubtitle}>
+              Appli de conseils légaux pour le cabinet Baudelin, dispo sur IOS et Android stores.
+            </p>
+          </div>
+        </div>
+
+        <div className={modalR2C1} style={modalR2C1Style} >
+          <h6 className={styles.projectTitle}>Me Baudelin</h6>
+          <HiMiniXMark className={styles.closeIcon} onClick={() => setModalR2C1Visible(false)} />
+          <div className={videoContainerR2C1Style}>
+            {animationsEnd && <video src="/Me-Baudelin.mp4" className={styles.projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>}
+          </div>
+          <p className={styles.projectSubtitle}>
+            Appli de conseils légaux pour le cabinet Baudelin, dispo sur IOS et Android stores.
+          </p>
+        </div>
+
+
+        <div className={styles.squareRevealContainerRightOrBottomLine}>
+          <div className={styles.rightProjectItem} style={project4} onClick={() => {
+            !modalR2C2Visible && setModalR2C2Visible(true)
+          }} >
+            <h6 className={styles.projectTitle}>Boost Up</h6>
+            <div className={videoContainerR2C2Style}>
               {animationsEnd && <video src="/BoostUp.mp4" className={styles.projectVideo} autoPlay={true} loop={true} playsInline muted={true} alt="vidéo d'un site internet"></video>}
             </div>
             <p className={styles.projectSubtitle}>
@@ -237,10 +256,11 @@ export default function Projects(props) {
             </p>
           </div>
         </div>
-        <div className={modalR2C1} style={modalR2C1Style} >
+
+        <div className={modalR2C2} style={modalR2C2Style} >
           <h6 className={styles.projectTitle}>Boost Up</h6>
-          <HiMiniXMark className={styles.closeIcon} onClick={() => setModalR2C1Visible(false)} />
-          <div className={videoContainerR2C1Style}>
+          <HiMiniXMark className={styles.closeIcon} onClick={() => setModalR2C2Visible(false)} />
+          <div className={videoContainerR2C2Style}>
             {animationsEnd && <video src="/BoostUp.mp4" className={styles.projectVideo} autoPlay={true} loop={true} muted={true} playsInline alt="vidéo d'un site internet" ></video>}
           </div>
           <p className={styles.projectSubtitle}>
@@ -249,10 +269,21 @@ export default function Projects(props) {
         </div>
 
 
+
+      </div>
+
+
+
+
+
+
+      <div className={styles.projectsLine} style={{ marginBottom: (vw && vw < 6) ? 18 * vw : 10 * vw }} >
+
+
         <Link href='https://frontend-clothe-me-up.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
-          <div className={styles.squareRevealContainerRightOrBottomLine}  >
-            <div className={styles.rightProjectItem}
-              style={project4} >
+          <div className={styles.squareRevealContainerLeftOrTopLine}  >
+            <div className={styles.leftProjectItem}
+              style={project5} >
               <h6 className={styles.projectTitle}>Clothe Me Up</h6>
               <div className={styles.projectImgContainer}>
                 <Image alt="Vignette d'un site internet" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw" fill={true} src="/Clothe-Me-Up2.png" className={styles.projectImg} />
@@ -266,24 +297,9 @@ export default function Projects(props) {
 
 
 
-      </div>
-
-
-
-
-
-
-      <div className={styles.projectsLine} style={{ marginBottom: (vw && vw < 6) ? 18 * vw : 10 * vw }} >
-
-        <div className={maskRow2} onClick={() => {
-          modalR2C1Visible && setModalR2C1Visible(false)
-        }}></div>
-
-
-
         <Link href='https://kairos-fronted.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
-          <div className={styles.squareRevealContainerLeftOrTopLine}>
-            <div className={styles.leftProjectItem} style={project5}>
+          <div className={styles.squareRevealContainerRightOrBottomLine}>
+            <div className={styles.rightProjectItem} style={project6}>
               <h6 className={styles.projectTitle}>Kairos</h6>
               <div className={styles.projectImgContainer}>
                 <Image alt="Vignette d'un site internet" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw" fill={true} src="/Kairos.png" className={styles.projectImg} />
@@ -297,7 +313,8 @@ export default function Projects(props) {
 
 
 
-        <Link href='https://frontend-twitter2.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
+
+        {/* <Link href='https://frontend-twitter2.vercel.app/' target="_blank" style={{ textDecoration: 'none' }}>
           <div className={styles.squareRevealContainerRightOrBottomLine}  >
             <div className={styles.rightProjectItem} style={project6}>
               <h6 className={styles.projectTitle}>Hackatweet</h6>
@@ -309,12 +326,7 @@ export default function Projects(props) {
               </p>
             </div>
           </div>
-        </Link>
-
-
-
-
-
+        </Link> */}
 
         {/* 
             <div className={styles.squareRevealContainerRightOrBottomLine}>
