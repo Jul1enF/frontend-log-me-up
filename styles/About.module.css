@@ -67,8 +67,18 @@
     font-weight: 350;
     letter-spacing: 0.05vw;
     margin: 0;
-    margin-bottom: 1vw;
+    margin-bottom: 1.5vw;
     /* text-indent: 1vw; */
+  }
+
+  .paragraph2 {
+    color: rgb(227, 219, 230);
+    font-size: 1.25vw;
+    line-height: 1.6em;
+    font-weight: 350;
+    letter-spacing: 0.05vw;
+    margin: 0;
+    margin-bottom: 0.5vw;
   }
 
   .picturesContainer {
@@ -176,6 +186,17 @@
 
   .paragraph1 {
     /* color: rgb(211, 204, 214); */
+    color: rgb(227, 219, 230);
+    font-size: 4.2vw;
+    line-height: 1.5em;
+    font-weight: 450;
+    letter-spacing: 0.05vw;
+    margin: 0;
+    margin-bottom: 3vw;
+    text-indent: 5vw;
+  }
+
+   .paragraph2 {
     color: rgb(227, 219, 230);
     font-size: 4.2vw;
     line-height: 1.5em;
