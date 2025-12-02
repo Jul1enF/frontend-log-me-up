@@ -188,7 +188,7 @@ export default function Projects(props) {
 
 
 
-          <Link href='https://sport-amat-web-frontend.vercel.app' target="_blank" style={{ textDecoration: 'none' }}>
+          <Link href='https://direct.sportamat.fr' target="_blank" style={{ textDecoration: 'none' }}>
           <div className={styles.squareRevealContainerRightOrBottomLine}>
             <div className={styles.rightProjectItem} style={project2}>
               <h6 className={styles.projectTitle}>Sport Amat - Web</h6>
